@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../widgets/header_section.dart';
-import '../widgets/about_section.dart';
-import '../widgets/projects_section.dart';
-import '../widgets/lab_section.dart';
-import '../widgets/contact_section.dart';
+import '../sections/header_section.dart';
+import '../sections/about_section.dart';
+import '../sections/projects_section.dart';
+import '../sections/lab_section.dart';
+import '../sections/contact_section.dart';
 import '../widgets/sticky_nav_bar.dart';
 import '../widgets/language_switcher.dart';
 import '../theme/app_theme.dart';

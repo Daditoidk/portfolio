@@ -20,6 +20,7 @@ class ContactSection extends StatelessWidget {
         ),
         child: Container(
           width: double.infinity,
+          color: Colors.white,
           padding: EdgeInsets.all(isMobile ? 20 : 40),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

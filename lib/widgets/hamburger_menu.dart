@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../constants/semantic_labels.dart';
 import '../theme/app_theme.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class HamburgerMenu extends StatelessWidget {
   final Function(String) onSectionTap;
@@ -88,6 +89,7 @@ class HamburgerMenu extends StatelessWidget {
       {'locale': const Locale('es'), 'title': 'Español', 'flag': '🇪🇸'},
       {'locale': const Locale('ja'), 'title': '日本語', 'flag': '🇯🇵'},
     ];
+    final isMobile = MediaQuery.of(context).size.width < 600;
     return Positioned(
       right: 0,
       top: 0,
@@ -149,8 +151,7 @@ class HamburgerMenu extends StatelessWidget {
                               section['title']!,
                               section['id']!,
                             ),
-                          )
-                          .toList(),
+                      ),
                       // Divider before language options
                       const Divider(height: 1, thickness: 1),
                       const Divider(height: 32, thickness: 1),
@@ -179,11 +180,12 @@ class HamburgerMenu extends StatelessWidget {
                               language['flag'] as String,
                               language['locale'] as Locale,
                             ),
-                          )
-                          .toList(),
+                      ),
+                      if (isMobile) const VersionInfo(),
                     ],
                   ),
                 ),
+                
               ],
             ),
           ),
@@ -324,5 +326,32 @@ class HamburgerMenu extends StatelessWidget {
       default:
         return Icons.circle;
     }
+  }
+}
+
+class VersionInfo extends StatelessWidget {
+  const VersionInfo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<PackageInfo>(
+      future: PackageInfo.fromPlatform(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) return const SizedBox.shrink();
+        final version = snapshot.data!.version;
+        return Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 25),
+            child: Text(
+              'v$version',
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: Colors.grey,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 }

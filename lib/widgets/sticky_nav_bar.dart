@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:ui';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../constants/semantic_labels.dart';
 import '../theme/app_theme.dart';

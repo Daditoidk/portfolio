@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dart:ui';
+import 'package:portfolio_web/widgets/hamburger_menu.dart';
 import '../theme/app_theme.dart';
 import '../constants/semantic_labels.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'hamburger_menu.dart';
 
 class HeaderSection extends StatelessWidget {
   final Function(String) onSectionTap;

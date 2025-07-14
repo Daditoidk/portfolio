@@ -147,41 +147,51 @@ class LanguageSwitcher extends StatelessWidget {
             },
             child: GestureDetector(
               onTap: isActive ? null : () => onLocaleChanged(locale),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 8,
-                ),
-                decoration: BoxDecoration(
-                  color:
-                      isActive
-                          ? Colors.blue.withValues(alpha: 0.1)
-                          : isHovered
-                          ? Colors.blue.withValues(alpha: 0.05)
-                          : Colors.transparent,
-                  borderRadius: getBorderRadius(),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Semantics(
-                      label: SemanticLabels.americanFlag,
-                      child: Text(flag, style: const TextStyle(fontSize: 20)),
+              child: Builder(
+                builder: (context) {
+                  Color backgroundColor;
+                  if (isActive) {
+                    backgroundColor = Colors.blue.withValues(alpha: 0.1);
+                  } else if (isHovered) {
+                    backgroundColor = Colors.blue.withValues(alpha: 0.05);
+                  } else {
+                    backgroundColor = Colors.transparent;
+                  }
+                  return AnimatedContainer(
+                    duration: const Duration(milliseconds: 200),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 8,
                     ),
-                    if (isActive) ...[
-                      const SizedBox(width: 8),
-                      Semantics(
-                        label: SemanticLabels.selected,
-                        child: Icon(
-                          Icons.check_circle,
-                          size: 16,
-                          color: Colors.blue.shade600,
+                    decoration: BoxDecoration(
+                      color: backgroundColor,
+                      borderRadius: getBorderRadius(),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Semantics(
+                          label: SemanticLabels.americanFlag,
+                          child: Text(
+                            flag,
+                            style: const TextStyle(fontSize: 20),
+                          ),
                         ),
-                      ),
-                    ],
-                  ],
-                ),
+                        if (isActive) ...[
+                          const SizedBox(width: 8),
+                          Semantics(
+                            label: SemanticLabels.selected,
+                            child: Icon(
+                              Icons.check_circle,
+                              size: 16,
+                              color: Colors.blue.shade600,
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
           );
