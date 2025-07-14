@@ -1,0 +1,459 @@
+{
+  "@@locale": "en",
+  "appTitle": "Portfolio",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  
+  "headerName": "Your Name",
+  "@headerName": {
+    "description": "The name displayed in the header section"
+  },
+  
+  "headerTitle": "Flutter Developer",
+  "@headerTitle": {
+    "description": "The professional title in the header"
+  },
+  
+  "headerSubtitle": "Creating beautiful mobile experiences",
+  "@headerSubtitle": {
+    "description": "The subtitle in the header section"
+  },
+  
+  "aboutTitle": "About Me",
+  "@aboutTitle": {
+    "description": "Title of the about section"
+  },
+  
+  "aboutDescription": "I am a passionate Flutter developer with experience in creating beautiful and functional mobile applications. I love turning ideas into reality through clean code and intuitive user interfaces.",
+  "@aboutDescription": {
+    "description": "The main description in the about section"
+  },
+  
+  "skillFlutter": "Flutter",
+  "@skillFlutter": {
+    "description": "Flutter skill name"
+  },
+  
+  "skillDart": "Dart",
+  "@skillDart": {
+    "description": "Dart skill name"
+  },
+  
+  "skillFirebase": "Firebase",
+  "@skillFirebase": {
+    "description": "Firebase skill name"
+  },
+  
+  "projectsTitle": "My Projects",
+  "@projectsTitle": {
+    "description": "Title of the projects section"
+  },
+  
+  "projectEcommerceTitle": "E-Commerce App",
+  "@projectEcommerceTitle": {
+    "description": "Title of the e-commerce project"
+  },
+  
+  "projectEcommerceDescription": "A full-featured mobile shopping app with payment integration",
+  "@projectEcommerceDescription": {
+    "description": "Description of the e-commerce project"
+  },
+  
+  "projectTaskManagerTitle": "Task Manager",
+  "@projectTaskManagerTitle": {
+    "description": "Title of the task manager project"
+  },
+  
+  "projectTaskManagerDescription": "Simple and intuitive task management application",
+  "@projectTaskManagerDescription": {
+    "description": "Description of the task manager project"
+  },
+  
+  "projectWeatherTitle": "Weather App",
+  "@projectWeatherTitle": {
+    "description": "Title of the weather app project"
+  },
+  
+  "projectWeatherDescription": "Real-time weather updates with beautiful UI",
+  "@projectWeatherDescription": {
+    "description": "Description of the weather app project"
+  },
+  
+  "labTitle": "Lab",
+  "@labTitle": {
+    "description": "Title of the lab section"
+  },
+  
+  "labSubtitle": "Experimental projects and creative experiments",
+  "@labSubtitle": {
+    "description": "Subtitle of the lab section"
+  },
+  
+  "labAIChatTitle": "AI Chat Bot",
+  "@labAIChatTitle": {
+    "description": "Title of the AI chat bot lab project"
+  },
+  
+  "labAIChatDescription": "Experimental chatbot using machine learning",
+  "@labAIChatDescription": {
+    "description": "Description of the AI chat bot lab project"
+  },
+  
+  "labARTitle": "AR Experience",
+  "@labARTitle": {
+    "description": "Title of the AR experience lab project"
+  },
+  
+  "labARDescription": "Augmented reality prototype for mobile",
+  "@labARDescription": {
+    "description": "Description of the AR experience lab project"
+  },
+  
+  "labVoiceTitle": "Voice Assistant",
+  "@labVoiceTitle": {
+    "description": "Title of the voice assistant lab project"
+  },
+  
+  "labVoiceDescription": "Voice-controlled app interface",
+  "@labVoiceDescription": {
+    "description": "Description of the voice assistant lab project"
+  },
+  
+  "experimentalBadge": "Experimental",
+  "@experimentalBadge": {
+    "description": "Badge text for experimental projects"
+  },
+  
+  "contactTitle": "Get In Touch",
+  "@contactTitle": {
+    "description": "Title of the contact section"
+  },
+  
+  "contactSubtitle": "Let's work together on your next project",
+  "@contactSubtitle": {
+    "description": "Subtitle of the contact section"
+  },
+  
+  "contactEmail": "email@example.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  
+  "contactPhone": "+1 234 567 890",
+  "@contactPhone": {
+    "description": "Contact phone number"
+  },
+  
+  "contactLocation": "Your City, Country",
+  "@contactLocation": {
+    "description": "Contact location"
+  },
+  
+  "navHome": "Home",
+  "@navHome": {
+    "description": "Navigation item for home section"
+  },
+  
+  "navAbout": "About",
+  "@navAbout": {
+    "description": "Navigation item for about section"
+  },
+  
+  "navProjects": "Projects",
+  "@navProjects": {
+    "description": "Navigation item for projects section"
+  },
+  
+  "navLab": "Lab",
+  "@navLab": {
+    "description": "Navigation item for lab section"
+  },
+  
+  "navContact": "Contact",
+  "@navContact": {
+    "description": "Navigation item for contact section"
+  },
+
+  "a11yLanguageSwitcher": "Language switcher",
+  "@a11yLanguageSwitcher": {
+    "description": "Accessibility label for language switcher"
+  },
+
+  "a11yLanguageSwitcherHint": "Double tap to change language",
+  "@a11yLanguageSwitcherHint": {
+    "description": "Accessibility hint for language switcher"
+  },
+
+  "a11ySwitchToEnglish": "Switch to English",
+  "@a11ySwitchToEnglish": {
+    "description": "Accessibility label for English language button"
+  },
+
+  "a11yCurrentlySelectedLanguage": "Currently selected language",
+  "@a11yCurrentlySelectedLanguage": {
+    "description": "Accessibility hint for currently selected language"
+  },
+
+  "a11yDoubleTapToSwitchToEnglish": "Double tap to switch to English",
+  "@a11yDoubleTapToSwitchToEnglish": {
+    "description": "Accessibility hint for switching to English"
+  },
+
+  "a11ySelected": "Selected",
+  "@a11ySelected": {
+    "description": "Accessibility value for selected state"
+  },
+
+  "a11yNotSelected": "Not selected",
+  "@a11yNotSelected": {
+    "description": "Accessibility value for not selected state"
+  },
+
+  "a11yAmericanFlag": "American flag",
+  "@a11yAmericanFlag": {
+    "description": "Accessibility label for American flag"
+  },
+
+  "a11y_navigationMenu": "Navigation menu",
+  "@a11y_navigationMenu": {
+    "description": "Accessibility label for navigation menu"
+  },
+
+  "a11y_navigationMenuHint": "Use to navigate between sections",
+  "@a11y_navigationMenuHint": {
+    "description": "Accessibility hint for navigation menu"
+  },
+
+  "a11y_portfolioTitle": "Portfolio title",
+  "@a11y_portfolioTitle": {
+    "description": "Accessibility label for portfolio title"
+  },
+
+  "a11y_navigationLinks": "Navigation links",
+  "@a11y_navigationLinks": {
+    "description": "Accessibility label for navigation links"
+  },
+
+  "a11y_currentSectionHint": "Current section, double tap to stay here",
+  "@a11y_currentSectionHint": {
+    "description": "Accessibility hint for current section"
+  },
+
+  "a11y_doubleTapToNavigateToSection": "Double tap to navigate to {section} section",
+  "@a11y_doubleTapToNavigateToSection": {
+    "description": "Accessibility hint for navigating to section",
+    "placeholders": {
+      "section": {
+        "type": "String",
+        "example": "About"
+      }
+    }
+  },
+
+  "a11y_current": "Current",
+  "@a11y_current": {
+    "description": "Accessibility value for current state"
+  },
+
+  "a11y_notCurrent": "Not current",
+  "@a11y_notCurrent": {
+    "description": "Accessibility value for not current state"
+  },
+
+  "a11y_headerSection": "Header section",
+  "@a11y_headerSection": {
+    "description": "Accessibility label for header section"
+  },
+
+  "a11y_profilePicture": "Profile picture",
+  "@a11y_profilePicture": {
+    "description": "Accessibility label for profile picture"
+  },
+
+  "a11y_name": "Name",
+  "@a11y_name": {
+    "description": "Accessibility label for name"
+  },
+
+  "a11y_professionalTitle": "Professional title",
+  "@a11y_professionalTitle": {
+    "description": "Accessibility label for professional title"
+  },
+
+  "a11y_professionalDescription": "Professional description",
+  "@a11y_professionalDescription": {
+    "description": "Accessibility label for professional description"
+  },
+
+  "a11y_mainNavigation": "Main navigation",
+  "@a11y_mainNavigation": {
+    "description": "Accessibility label for main navigation"
+  },
+
+  "a11y_aboutSection": "About section",
+  "@a11y_aboutSection": {
+    "description": "Accessibility label for about section"
+  },
+
+  "a11y_sectionTitle": "Section title",
+  "@a11y_sectionTitle": {
+    "description": "Accessibility label for section title"
+  },
+
+  "a11y_aboutDescription": "About description",
+  "@a11y_aboutDescription": {
+    "description": "Accessibility label for about description"
+  },
+
+  "a11y_skillsAndTechnologies": "Skills and technologies",
+  "@a11y_skillsAndTechnologies": {
+    "description": "Accessibility label for skills and technologies"
+  },
+
+  "a11y_skillLabel": "{skill} skill",
+  "@a11y_skillLabel": {
+    "description": "Accessibility label for skill",
+    "placeholders": {
+      "skill": {
+        "type": "String",
+        "example": "Flutter"
+      }
+    }
+  },
+
+  "a11y_skillIcon": "{skill} icon",
+  "@a11y_skillIcon": {
+    "description": "Accessibility label for skill icon",
+    "placeholders": {
+      "skill": {
+        "type": "String",
+        "example": "Flutter"
+      }
+    }
+  },
+
+  "a11y_projectsSection": "Projects section",
+  "@a11y_projectsSection": {
+    "description": "Accessibility label for projects section"
+  },
+
+  "a11y_projectList": "Project list",
+  "@a11y_projectList": {
+    "description": "Accessibility label for project list"
+  },
+
+  "a11y_projectLabel": "Project: {title}",
+  "@a11y_projectLabel": {
+    "description": "Accessibility label for project",
+    "placeholders": {
+      "title": {
+        "type": "String",
+        "example": "E-Commerce App"
+      }
+    }
+  },
+
+  "a11y_projectHint": "Double tap to view project details",
+  "@a11y_projectHint": {
+    "description": "Accessibility hint for project"
+  },
+
+  "a11y_projectIcon": "Project icon",
+  "@a11y_projectIcon": {
+    "description": "Accessibility label for project icon"
+  },
+
+  "a11y_projectTitle": "Project title",
+  "@a11y_projectTitle": {
+    "description": "Accessibility label for project title"
+  },
+
+  "a11y_projectDescription": "Project description",
+  "@a11y_projectDescription": {
+    "description": "Accessibility label for project description"
+  },
+
+  "a11y_labSection": "Lab section",
+  "@a11y_labSection": {
+    "description": "Accessibility label for lab section"
+  },
+
+  "a11y_sectionDescription": "Section description",
+  "@a11y_sectionDescription": {
+    "description": "Accessibility label for section description"
+  },
+
+  "a11y_experimentalProjects": "Experimental projects",
+  "@a11y_experimentalProjects": {
+    "description": "Accessibility label for experimental projects"
+  },
+
+  "a11y_experimentalProjectLabel": "Experimental project: {title}",
+  "@a11y_experimentalProjectLabel": {
+    "description": "Accessibility label for experimental project",
+    "placeholders": {
+      "title": {
+        "type": "String",
+        "example": "AI Chat Bot"
+      }
+    }
+  },
+
+  "a11y_experimentalProjectHint": "Double tap to view experimental project details",
+  "@a11y_experimentalProjectHint": {
+    "description": "Accessibility hint for experimental project"
+  },
+
+  "a11y_experimentalBadge": "Experimental badge",
+  "@a11y_experimentalBadge": {
+    "description": "Accessibility label for experimental badge"
+  },
+
+  "a11y_contactSection": "Contact section",
+  "@a11y_contactSection": {
+    "description": "Accessibility label for contact section"
+  },
+
+  "a11y_contactInformation": "Contact information",
+  "@a11y_contactInformation": {
+    "description": "Accessibility label for contact information"
+  },
+
+  "a11y_contactIcon": "Contact icon",
+  "@a11y_contactIcon": {
+    "description": "Accessibility label for contact icon"
+  },
+
+  "a11y_contactDetails": "Contact details",
+  "@a11y_contactDetails": {
+    "description": "Accessibility label for contact details"
+  },
+
+  "a11y_socialMediaLinks": "Social media links",
+  "@a11y_socialMediaLinks": {
+    "description": "Accessibility label for social media links"
+  },
+
+  "a11y_socialProfile": "{platform} profile",
+  "@a11y_socialProfile": {
+    "description": "Accessibility label for social profile",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "Facebook"
+      }
+    }
+  },
+
+  "a11y_socialProfileHint": "Double tap to visit {platform} profile",
+  "@a11y_socialProfileHint": {
+    "description": "Accessibility hint for social profile",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "Facebook"
+      }
+    }
+  }
+} 

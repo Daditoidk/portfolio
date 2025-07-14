@@ -1,0 +1,398 @@
+{
+  "@@locale": "ja",
+  "appTitle": "ポートフォリオ",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  
+  "headerName": "あなたの名前",
+  "@headerName": {
+    "description": "The name displayed in the header section"
+  },
+  
+  "headerTitle": "Flutter開発者",
+  "@headerTitle": {
+    "description": "The professional title in the header"
+  },
+  
+  "headerSubtitle": "美しいモバイル体験を作り出す",
+  "@headerSubtitle": {
+    "description": "The subtitle in the header section"
+  },
+  
+  "aboutTitle": "私について",
+  "@aboutTitle": {
+    "description": "Title of the about section"
+  },
+  
+  "aboutDescription": "私は美しく機能的なモバイルアプリケーションを作成する経験を持つ情熱的なFlutter開発者です。クリーンなコードと直感的なユーザーインターフェースを通じて、アイデアを現実に変えることが大好きです。",
+  "@aboutDescription": {
+    "description": "The main description in the about section"
+  },
+  
+  "skillFlutter": "Flutter",
+  "@skillFlutter": {
+    "description": "Flutter skill name"
+  },
+  
+  "skillDart": "Dart",
+  "@skillDart": {
+    "description": "Dart skill name"
+  },
+  
+  "skillFirebase": "Firebase",
+  "@skillFirebase": {
+    "description": "Firebase skill name"
+  },
+  
+  "projectsTitle": "私のプロジェクト",
+  "@projectsTitle": {
+    "description": "Title of the projects section"
+  },
+  
+  "projectEcommerceTitle": "Eコマースアプリ",
+  "@projectEcommerceTitle": {
+    "description": "Title of the e-commerce project"
+  },
+  
+  "projectEcommerceDescription": "決済統合を備えたフル機能のモバイルショッピングアプリ",
+  "@projectEcommerceDescription": {
+    "description": "Description of the e-commerce project"
+  },
+  
+  "projectTaskManagerTitle": "タスクマネージャー",
+  "@projectTaskManagerTitle": {
+    "description": "Title of the task manager project"
+  },
+  
+  "projectTaskManagerDescription": "シンプルで直感的なタスク管理アプリケーション",
+  "@projectTaskManagerDescription": {
+    "description": "Description of the task manager project"
+  },
+  
+  "projectWeatherTitle": "天気アプリ",
+  "@projectWeatherTitle": {
+    "description": "Title of the weather app project"
+  },
+  
+  "projectWeatherDescription": "美しいUIを備えたリアルタイム天気更新",
+  "@projectWeatherDescription": {
+    "description": "Description of the weather app project"
+  },
+  
+  "labTitle": "ラボ",
+  "@labTitle": {
+    "description": "Title of the lab section"
+  },
+  
+  "labSubtitle": "実験的プロジェクトとクリエイティブな実験",
+  "@labSubtitle": {
+    "description": "Subtitle of the lab section"
+  },
+  
+  "labAIChatTitle": "AIチャットボット",
+  "@labAIChatTitle": {
+    "description": "Title of the AI chat bot lab project"
+  },
+  
+  "labAIChatDescription": "機械学習を使用した実験的チャットボット",
+  "@labAIChatDescription": {
+    "description": "Description of the AI chat bot lab project"
+  },
+  
+  "labARTitle": "AR体験",
+  "@labARTitle": {
+    "description": "Title of the AR experience lab project"
+  },
+  
+  "labARDescription": "モバイル用拡張現実プロトタイプ",
+  "@labARDescription": {
+    "description": "Description of the AR experience lab project"
+  },
+  
+  "labVoiceTitle": "音声アシスタント",
+  "@labVoiceTitle": {
+    "description": "Title of the voice assistant lab project"
+  },
+  
+  "labVoiceDescription": "音声制御アプリインターフェース",
+  "@labVoiceDescription": {
+    "description": "Description of the voice assistant lab project"
+  },
+  
+  "experimentalBadge": "実験的",
+  "@experimentalBadge": {
+    "description": "Badge text for experimental projects"
+  },
+  
+  "contactTitle": "お問い合わせ",
+  "@contactTitle": {
+    "description": "Title of the contact section"
+  },
+  
+  "contactSubtitle": "あなたの次のプロジェクトで一緒に働きましょう",
+  "@contactSubtitle": {
+    "description": "Subtitle of the contact section"
+  },
+  
+  "contactEmail": "email@example.com",
+  "@contactEmail": {
+    "description": "Contact email address"
+  },
+  
+  "contactPhone": "+1 234 567 890",
+  "@contactPhone": {
+    "description": "Contact phone number"
+  },
+  
+  "contactLocation": "あなたの街、国",
+  "@contactLocation": {
+    "description": "Contact location"
+  },
+  
+  "navHome": "ホーム",
+  "@navHome": {
+    "description": "Navigation item for home section"
+  },
+  
+  "navAbout": "私について",
+  "@navAbout": {
+    "description": "Navigation item for about section"
+  },
+  
+  "navProjects": "プロジェクト",
+  "@navProjects": {
+    "description": "Navigation item for projects section"
+  },
+  
+  "navLab": "ラボ",
+  "@navLab": {
+    "description": "Navigation item for lab section"
+  },
+  
+  "navContact": "お問い合わせ",
+  "@navContact": {
+    "description": "Navigation item for contact section"
+  },
+
+  "a11yLanguageSwitcher": "言語切り替え",
+  "@a11yLanguageSwitcher": {
+    "description": "Accessibility label for language switcher"
+  },
+
+  "a11yLanguageSwitcherHint": "ダブルタップで言語を変更",
+  "@a11yLanguageSwitcherHint": {
+    "description": "Accessibility hint for language switcher"
+  },
+
+  "a11ySwitchToEnglish": "英語に切り替え",
+  "@a11ySwitchToEnglish": {
+    "description": "Accessibility label for English language button"
+  },
+
+  "a11yCurrentlySelectedLanguage": "現在選択されている言語",
+  "@a11yCurrentlySelectedLanguage": {
+    "description": "Accessibility hint for currently selected language"
+  },
+
+  "a11yDoubleTapToSwitchToEnglish": "ダブルタップで英語に切り替え",
+  "@a11yDoubleTapToSwitchToEnglish": {
+    "description": "Accessibility hint for switching to English"
+  },
+
+  "a11ySelected": "選択済み",
+  "@a11ySelected": {
+    "description": "Accessibility value for selected state"
+  },
+
+  "a11yNotSelected": "未選択",
+  "@a11yNotSelected": {
+    "description": "Accessibility value for not selected state"
+  },
+
+  "a11yAmericanFlag": "アメリカ国旗",
+  "@a11yAmericanFlag": {
+    "description": "Accessibility label for American flag"
+  },
+
+  "a11y_navigationMenu": "ナビゲーションメニュー",
+  "@a11y_navigationMenu": {
+    "description": "Accessibility label for navigation menu"
+  },
+
+  "a11y_navigationMenuHint": "セクション間を移動するために使用",
+  "@a11y_navigationMenuHint": {
+    "description": "Accessibility hint for navigation menu"
+  },
+
+  "a11y_portfolioTitle": "ポートフォリオタイトル",
+  "@a11y_portfolioTitle": {
+    "description": "Accessibility label for portfolio title"
+  },
+
+  "a11y_navigationLinks": "ナビゲーションリンク",
+  "@a11y_navigationLinks": {
+    "description": "Accessibility label for navigation links"
+  },
+
+  "a11y_currentSectionHint": "現在のセクション、ダブルタップでここに留まる",
+  "@a11y_currentSectionHint": {
+    "description": "Accessibility hint for current section"
+  },
+
+  "a11y_doubleTapToNavigateToSection": "ダブルタップで{section}セクションに移動",
+  "@a11y_doubleTapToNavigateToSection": {
+    "description": "Accessibility hint for navigating to section",
+    "placeholders": {
+      "section": {
+        "type": "String",
+        "example": "About"
+      }
+    }
+  },
+
+  "a11y_navigateToSection": "セクションに移動",
+  "@a11y_navigateToSection": {
+    "description": "Accessibility hint for section navigation"
+  },
+
+  "a11y_useToNavigate": "ナビゲーションに使用",
+  "@a11y_useToNavigate": {
+    "description": "Accessibility hint for navigation usage"
+  },
+
+  "a11y_doubleTapToStay": "ダブルタップで留まる",
+  "@a11y_doubleTapToStay": {
+    "description": "Accessibility hint for staying in current section"
+  },
+
+  "a11y_doubleTapToNavigate": "ダブルタップで移動",
+  "@a11y_doubleTapToNavigate": {
+    "description": "Accessibility hint for navigation"
+  },
+
+  "a11y_current": "現在",
+  "@a11y_current": {
+    "description": "Accessibility value for current state"
+  },
+
+  "a11y_notCurrent": "現在ではない",
+  "@a11y_notCurrent": {
+    "description": "Accessibility value for not current state"
+  },
+
+  "a11y_headerSection": "ヘッダーセクション",
+  "@a11y_headerSection": {
+    "description": "Accessibility label for header section"
+  },
+
+  "a11y_mainNavigation": "メインナビゲーション",
+  "@a11y_mainNavigation": {
+    "description": "Accessibility label for main navigation"
+  },
+
+  "a11y_profilePicture": "プロフィール写真",
+  "@a11y_profilePicture": {
+    "description": "Accessibility label for profile picture"
+  },
+
+  "a11y_name": "名前",
+  "@a11y_name": {
+    "description": "Accessibility label for name"
+  },
+
+  "a11y_professionalTitle": "職業タイトル",
+  "@a11y_professionalTitle": {
+    "description": "Accessibility label for professional title"
+  },
+
+  "a11y_professionalDescription": "職業説明",
+  "@a11y_professionalDescription": {
+    "description": "Accessibility label for professional description"
+  },
+
+  "a11y_aboutSection": "私についてセクション",
+  "@a11y_aboutSection": {
+    "description": "Accessibility label for about section"
+  },
+
+  "a11y_sectionTitle": "セクションタイトル",
+  "@a11y_sectionTitle": {
+    "description": "Accessibility label for section title"
+  },
+
+  "a11y_aboutDescription": "私についての説明",
+  "@a11y_aboutDescription": {
+    "description": "Accessibility label for about description"
+  },
+
+  "a11y_skillsAndTechnologies": "スキルとテクノロジー",
+  "@a11y_skillsAndTechnologies": {
+    "description": "Accessibility label for skills and technologies"
+  },
+
+  "a11y_projectsSection": "プロジェクトセクション",
+  "@a11y_projectsSection": {
+    "description": "Accessibility label for projects section"
+  },
+
+  "a11y_projectList": "プロジェクトリスト",
+  "@a11y_projectList": {
+    "description": "Accessibility label for project list"
+  },
+
+  "a11y_project": "プロジェクト",
+  "@a11y_project": {
+    "description": "Accessibility label for project"
+  },
+
+  "a11y_viewProjectDetails": "プロジェクト詳細を表示",
+  "@a11y_viewProjectDetails": {
+    "description": "Accessibility hint for viewing project details"
+  },
+
+  "a11y_projectIcon": "プロジェクトアイコン",
+  "@a11y_projectIcon": {
+    "description": "Accessibility label for project icon"
+  },
+
+  "a11y_labSection": "ラボセクション",
+  "@a11y_labSection": {
+    "description": "Accessibility label for lab section"
+  },
+
+  "a11y_sectionDescription": "セクション説明",
+  "@a11y_sectionDescription": {
+    "description": "Accessibility label for section description"
+  },
+
+  "a11y_experimentalProjects": "実験的プロジェクト",
+  "@a11y_experimentalProjects": {
+    "description": "Accessibility label for experimental projects"
+  },
+
+  "a11y_experimentalProject": "実験的プロジェクト",
+  "@a11y_experimentalProject": {
+    "description": "Accessibility label for experimental project"
+  },
+
+  "a11y_viewExperimentalProjectDetails": "実験的プロジェクト詳細を表示",
+  "@a11y_viewExperimentalProjectDetails": {
+    "description": "Accessibility hint for viewing experimental project details"
+  },
+
+  "a11y_contactSection": "お問い合わせセクション",
+  "@a11y_contactSection": {
+    "description": "Accessibility label for contact section"
+  },
+
+  "a11y_contactInformation": "お問い合わせ情報",
+  "@a11y_contactInformation": {
+    "description": "Accessibility label for contact information"
+  },
+
+  "a11y_socialMediaLinks": "ソーシャルメディアリンク",
+  "@a11y_socialMediaLinks": {
+    "description": "Accessibility label for social media links"
+  }
+} 

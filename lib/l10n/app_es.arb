@@ -1,0 +1,121 @@
+{
+  "@@locale": "es",
+  "appTitle": "Portafolio",
+  
+  "headerName": "Tu Nombre",
+  
+  "headerTitle": "Desarrollador Flutter",
+  
+  "headerSubtitle": "Creando experiencias móviles hermosas",
+  
+  "aboutTitle": "Sobre Mí",
+  
+  "aboutDescription": "Soy un desarrollador Flutter apasionado con experiencia en crear aplicaciones móviles hermosas y funcionales. Me encanta convertir ideas en realidad a través de código limpio e interfaces intuitivas.",
+  
+  "skillFlutter": "Flutter",
+  
+  "skillDart": "Dart",
+  
+  "skillFirebase": "Firebase",
+  
+  "projectsTitle": "Mis Proyectos",
+  
+  "projectEcommerceTitle": "App de E-Commerce",
+  
+  "projectEcommerceDescription": "Una aplicación móvil de compras completa con integración de pagos",
+  
+  "projectTaskManagerTitle": "Gestor de Tareas",
+  
+  "projectTaskManagerDescription": "Aplicación simple e intuitiva para gestión de tareas",
+  
+  "projectWeatherTitle": "App del Clima",
+  
+  "projectWeatherDescription": "Actualizaciones del clima en tiempo real con una hermosa interfaz",
+  
+  "labTitle": "Laboratorio",
+  
+  "labSubtitle": "Proyectos experimentales y experimentos creativos",
+  
+  "labAIChatTitle": "Chat Bot IA",
+  
+  "labAIChatDescription": "Chatbot experimental usando aprendizaje automático",
+  
+  "labARTitle": "Experiencia RA",
+  
+  "labARDescription": "Prototipo de realidad aumentada para móviles",
+  
+  "labVoiceTitle": "Asistente de Voz",
+  
+  "labVoiceDescription": "Interfaz de aplicación controlada por voz",
+  
+  "experimentalBadge": "Experimental",
+  
+  "contactTitle": "Ponte en Contacto",
+  
+  "contactSubtitle": "Trabajemos juntos en tu próximo proyecto",
+  
+  "contactEmail": "email@ejemplo.com",
+  
+  "contactPhone": "+1 234 567 890",
+  
+  "contactLocation": "Tu Ciudad, País",
+  
+  "navHome": "Inicio",
+  
+  "navAbout": "Sobre Mí",
+  
+  "navProjects": "Proyectos",
+  
+  "navLab": "Laboratorio",
+  
+  "navContact": "Contacto",
+
+  "a11yLanguageSwitcher": "Selector de idioma",
+  "a11yLanguageSwitcherHint": "Doble toque para cambiar idioma",
+  "a11ySwitchToEnglish": "Cambiar a Inglés",
+  "a11yCurrentlySelectedLanguage": "Idioma actualmente seleccionado",
+  "a11yDoubleTapToSwitchToEnglish": "Doble toque para cambiar a Inglés",
+  "a11ySelected": "Seleccionado",
+  "a11yNotSelected": "No seleccionado",
+  "a11yAmericanFlag": "Bandera americana",
+  "a11y_navigationMenu": "Menú de navegación",
+  "a11y_navigationMenuHint": "Usar para navegar entre secciones",
+  "a11y_portfolioTitle": "Título del portafolio",
+  "a11y_navigationLinks": "Enlaces de navegación",
+  "a11y_currentSectionHint": "Sección actual, doble toque para permanecer aquí",
+  "a11y_doubleTapToNavigateToSection": "Doble toque para navegar a la sección {section}",
+  "a11y_current": "Actual",
+  "a11y_notCurrent": "No actual",
+  "a11y_headerSection": "Sección de encabezado",
+  "a11y_profilePicture": "Foto de perfil",
+  "a11y_name": "Nombre",
+  "a11y_professionalTitle": "Título profesional",
+  "a11y_professionalDescription": "Descripción profesional",
+  "a11y_mainNavigation": "Navegación principal",
+  "a11y_aboutSection": "Sección sobre mí",
+  "a11y_sectionTitle": "Título de sección",
+  "a11y_aboutDescription": "Descripción sobre mí",
+  "a11y_skillsAndTechnologies": "Habilidades y tecnologías",
+  "a11y_skillLabel": "Habilidad {skill}",
+  "a11y_skillIcon": "Icono de {skill}",
+  "a11y_projectsSection": "Sección de proyectos",
+  "a11y_projectList": "Lista de proyectos",
+  "a11y_projectLabel": "Proyecto: {title}",
+  "a11y_projectHint": "Doble toque para ver detalles del proyecto",
+  "a11y_projectIcon": "Icono del proyecto",
+  "a11y_projectTitle": "Título del proyecto",
+  "a11y_projectDescription": "Descripción del proyecto",
+  "a11y_labSection": "Sección de laboratorio",
+  "a11y_sectionDescription": "Descripción de sección",
+  "a11y_experimentalProjects": "Proyectos experimentales",
+  "a11y_experimentalProjectLabel": "Proyecto experimental: {title}",
+  "a11y_experimentalProjectHint": "Doble toque para ver detalles del proyecto experimental",
+  "a11y_experimentalBadge": "Insignia experimental",
+  "a11y_contactSection": "Sección de contacto",
+  "a11y_contactInformation": "Información de contacto",
+  "a11y_contactIcon": "Icono de contacto",
+  "a11y_contactDetails": "Detalles de contacto",
+  "a11y_socialMediaLinks": "Enlaces de redes sociales",
+  "a11y_socialProfile": "Perfil de {platform}",
+  "a11y_socialProfileHint": "Doble toque para visitar perfil de {platform}"
+} 
