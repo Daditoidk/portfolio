@@ -18,7 +18,7 @@ class AboutSection extends StatelessWidget {
 
   Widget _buildContent(BuildContext context, {required bool isMobile}) {
     final l10n = AppLocalizations.of(context)!;
-    final theme = Theme.of(context);
+    // final theme = Theme.of(context); // unused, removed
     
     return Semantics(
       label: SemanticLabels.aboutSection,
@@ -38,7 +38,7 @@ class AboutSection extends StatelessWidget {
               label: SemanticLabels.sectionTitle,
               child: Text(
                 l10n.aboutTitle,
-                style: theme.textTheme.headlineMedium,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
             const SizedBox(height: 30),
@@ -46,7 +46,7 @@ class AboutSection extends StatelessWidget {
               label: SemanticLabels.sectionDescription,
               child: Text(
                 l10n.aboutSubtitle,
-                style: theme.textTheme.bodyLarge,
+                style: Theme.of(context).textTheme.bodyLarge,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -60,7 +60,6 @@ class AboutSection extends StatelessWidget {
 
   Widget _buildSkillsGrid(BuildContext context, bool isMobile) {
     final l10n = AppLocalizations.of(context)!;
-    final theme = Theme.of(context);
     final skills = l10n.aboutSkills.split(',');
     
     // Alternate navy and light blue for chip backgrounds

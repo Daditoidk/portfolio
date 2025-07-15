@@ -30,8 +30,6 @@ class HeaderSection extends StatelessWidget {
 
   Widget _buildContent(BuildContext context, {required bool isMobile}) {
     final loc = AppLocalizations.of(context)!;
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isLandscape = screenWidth < 500; // Landscape mode detection
 
     return Semantics(
       label: SemanticLabels.headerSection,

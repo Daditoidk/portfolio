@@ -69,7 +69,7 @@ class LabSection extends StatelessWidget {
           width: isMobile ? 140 : 200,
           height: isMobile ? 100 : 140,
           decoration: BoxDecoration(
-            color: theme.colorScheme.primary.withOpacity(0.1),
+            color: theme.colorScheme.primary.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(16),
           ),
           alignment: Alignment.center,

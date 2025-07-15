@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../sections/header_section.dart';
 import '../sections/about_section.dart';
-import '../sections/projects_section.dart';
+import '../sections/projects_section/projects_section.dart';
 import '../sections/lab_section.dart';
 import '../sections/contact_section.dart';
 import '../widgets/sticky_nav_bar.dart';
