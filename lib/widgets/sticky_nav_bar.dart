@@ -37,7 +37,7 @@ class StickyNavBar extends StatelessWidget {
         opacity: isVisible ? 1.0 : 0.0,
         child: Container(
           height: 60,
-          color: AppTheme.stickyNavBackground,
+          color: _getStickyNavColor(),
           child: Container(
             padding: EdgeInsets.symmetric(
               horizontal: isMobile ? 20 : 40,
@@ -127,9 +127,15 @@ class StickyNavBar extends StatelessWidget {
                           fontWeight:
                               isActive ? FontWeight.bold : FontWeight.w500,
                           color:
-                              isActive
-                                  ? AppTheme.navActive
-                                  : AppTheme.navInactive,
+                              currentSection == 'projects'
+                                  ? (isActive ? AppTheme.navy : Colors.white)
+                                  : currentSection == 'lab'
+                                  ? (isActive ? AppTheme.navy : AppTheme.blue)
+                                  : currentSection == 'contact'
+                                  ? (isActive ? Colors.white : Colors.white70)
+                                  : (isActive
+                                      ? AppTheme.navActive
+                                      : AppTheme.navInactive),
                         ),
                       ),
                       const SizedBox(height: 0),
@@ -138,7 +144,12 @@ class StickyNavBar extends StatelessWidget {
                         height: 2,
                         width: isActive ? 18 : 0,
                         decoration: BoxDecoration(
-                          color: AppTheme.navIndicator,
+                          color:
+                              currentSection == 'lab' && isActive
+                                  ? AppTheme.darkRed
+                                  : currentSection == 'contact' && isActive
+                                  ? AppTheme.navy
+                                  : AppTheme.navIndicator,
                           borderRadius: BorderRadius.circular(1),
                         ),
                       ),
@@ -149,5 +160,22 @@ class StickyNavBar extends StatelessWidget {
             ),
           ),
     );
+  }
+
+  Color _getStickyNavColor() {
+    switch (currentSection) {
+      case 'home':
+        return AppTheme.stickyNavHeader;
+      case 'about':
+        return AppTheme.stickyNavAbout;
+      case 'projects':
+        return AppTheme.stickyNavProjects;
+      case 'lab':
+        return AppTheme.stickyNavLab;
+      case 'contact':
+        return AppTheme.stickyNavContact;
+      default:
+        return AppTheme.stickyNavHeader;
+    }
   }
 }

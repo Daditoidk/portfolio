@@ -6,7 +6,6 @@ import '../sections/lab_section.dart';
 import '../sections/contact_section.dart';
 import '../widgets/sticky_nav_bar.dart';
 import '../widgets/language_switcher.dart';
-import '../theme/app_theme.dart';
 
 class HomeScreen extends StatefulWidget {
   final Function(Locale) onLocaleChanged;
@@ -106,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.cream,
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           SingleChildScrollView(

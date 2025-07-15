@@ -1,108 +1,92 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../constants/semantic_labels.dart';
-import '../theme/app_theme.dart';
+import '../helpers/responsive.dart';
+import '../theme/app_theme.dart'; // Added import for AppTheme
 
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isMobile = screenWidth < 600;
+    return Responsive(
+      mobile: (context) => _buildContent(context, isMobile: true),
+      desktop: (context) => _buildContent(context, isMobile: false),
+      tablet: (context) => _buildContent(context, isMobile: false),
+    );
+  }
 
+  Widget _buildContent(BuildContext context, {required bool isMobile}) {
+    final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+    
     return Semantics(
       label: SemanticLabels.aboutSection,
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minHeight: MediaQuery.of(context).size.height,
+      child: Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height,
+        color: Colors.white,
+        padding: EdgeInsets.symmetric(
+          horizontal: isMobile ? 20 : 80,
+          vertical: isMobile ? 40 : 80,
         ),
-        child: Container(
-          width: double.infinity,
-          padding: EdgeInsets.all(isMobile ? 20 : 40),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: isMobile ? 40 : 0),
-              Semantics(
-                label: SemanticLabels.sectionTitle,
-                child: Text(
-                  l10n.aboutTitle,
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Semantics(
+              label: SemanticLabels.sectionTitle,
+              child: Text(
+                l10n.aboutTitle,
+                style: theme.textTheme.headlineMedium,
               ),
-              const SizedBox(height: 30),
-              Semantics(
-                label: SemanticLabels.aboutDescription,
-                child: Text(
-                  l10n.aboutDescription,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodyLarge?.copyWith(height: 1.6),
-                  textAlign: TextAlign.center,
-                ),
+            ),
+            const SizedBox(height: 30),
+            Semantics(
+              label: SemanticLabels.sectionDescription,
+              child: Text(
+                l10n.aboutSubtitle,
+                style: theme.textTheme.bodyLarge,
+                textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 40),
-              Semantics(
-                label: SemanticLabels.skillsAndTechnologies,
-                child: Wrap(
-                  spacing: isMobile ? 15 : 20,
-                  runSpacing: isMobile ? 15 : 20,
-                  alignment: WrapAlignment.center,
-                  children: [
-                    _buildSkillCard(l10n.skillFlutter, Icons.mobile_friendly),
-                    _buildSkillCard(l10n.skillDart, Icons.code),
-                    _buildSkillCard(l10n.skillFirebase, Icons.cloud),
-                  ],
-                ),
-              ),
-              SizedBox(height: isMobile ? 40 : 0),
-            ],
-          ),
+            ),
+            const SizedBox(height: 40),
+            _buildSkillsGrid(context, isMobile),
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildSkillCard(String title, IconData icon) {
-    return Builder(
-      builder: (context) {
-        final screenWidth = MediaQuery.of(context).size.width;
-        final isMobile = screenWidth < 600;
-
-        return Semantics(
-          label: '$title ${SemanticLabels.skillsAndTechnologies.toLowerCase()}',
-          child: Container(
-            padding: EdgeInsets.all(isMobile ? 15 : 20),
-            decoration: BoxDecoration(
-              color: AppTheme.cardBackground,
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: AppTheme.cardBorder),
-            ),
-            child: Column(
-              children: [
-                Semantics(
-                  label: '$title ${SemanticLabels.projectIcon.toLowerCase()}',
-                  child: Icon(
-                    icon,
-                    size: isMobile ? 30 : 40,
-                    color: AppTheme.primaryIcon,
-                  ),
-                ),
-                SizedBox(height: isMobile ? 8 : 10),
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontSize: isMobile ? 14 : null,
-                  ),
-                ),
-              ],
-            ),
+  Widget _buildSkillsGrid(BuildContext context, bool isMobile) {
+    final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+    final skills = l10n.aboutSkills.split(',');
+    
+    // Alternate navy and light blue for chip backgrounds
+    return Wrap(
+      spacing: isMobile ? 12 : 24,
+      runSpacing: isMobile ? 12 : 24,
+      alignment: WrapAlignment.center,
+      children: List.generate(skills.length, (i) {
+        final skill = skills[i].trim();
+        final isEven = i % 2 == 0;
+        final bgColor = isEven ? AppTheme.navy : AppTheme.blue;
+        final textColor = isEven ? Colors.white : AppTheme.navy;
+        return Chip(
+          label: Text(skill),
+          backgroundColor: bgColor,
+          labelStyle: TextStyle(
+            color: textColor,
+            fontWeight: FontWeight.w500,
+            fontSize: isMobile ? 12 : 14,
+          ),
+          padding: EdgeInsets.symmetric(
+            horizontal: isMobile ? 10 : 16,
+            vertical: isMobile ? 4 : 8,
           ),
         );
-      },
+      }),
     );
   }
 }

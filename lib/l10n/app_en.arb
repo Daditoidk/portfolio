@@ -30,6 +30,15 @@
     "description": "The main description in the about section"
   },
   
+  "aboutSubtitle": "Passionate developer with experience in Flutter, Dart, and web technologies.",
+  "@aboutSubtitle": {
+    "description": "Subtitle for the about section"
+  },
+  "aboutSkills": "Flutter, Dart, JavaScript, HTML, CSS, Firebase, REST APIs, Git, UI/UX Design",
+  "@aboutSkills": {
+    "description": "Comma-separated list of skills for the about section"
+  },
+  
   "skillFlutter": "Flutter",
   "@skillFlutter": {
     "description": "Flutter skill name"
@@ -48,6 +57,11 @@
   "projectsTitle": "My Projects",
   "@projectsTitle": {
     "description": "Title of the projects section"
+  },
+  
+  "projectsSubtitle": "A selection of my recent projects.",
+  "@projectsSubtitle": {
+    "description": "Subtitle of the projects section"
   },
   
   "projectEcommerceTitle": "E-Commerce App",
@@ -455,5 +469,10 @@
         "example": "Facebook"
       }
     }
+  },
+
+  "demoAvailableOnTabletOrDesktop": "Demo available in tablet or desktop device",
+  "@demoAvailableOnTabletOrDesktop": {
+    "description": "Message shown on mobile when the project demo is only available on tablet or desktop."
   }
 } 

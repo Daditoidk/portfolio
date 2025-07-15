@@ -3,6 +3,7 @@ import 'package:portfolio_web/widgets/hamburger_menu.dart';
 import '../theme/app_theme.dart';
 import '../constants/semantic_labels.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../helpers/responsive.dart';
 
 class HeaderSection extends StatelessWidget {
   final Function(String) onSectionTap;
@@ -20,16 +21,24 @@ class HeaderSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Responsive(
+      mobile: (context) => _buildContent(context, isMobile: true),
+      desktop: (context) => _buildContent(context, isMobile: false),
+      tablet: (context) => _buildContent(context, isMobile: false),
+    );
+  }
+
+  Widget _buildContent(BuildContext context, {required bool isMobile}) {
     final loc = AppLocalizations.of(context)!;
     final screenWidth = MediaQuery.of(context).size.width;
-    final isMobile = screenWidth < 600;
+    final isLandscape = screenWidth < 500; // Landscape mode detection
 
     return Semantics(
       label: SemanticLabels.headerSection,
       child: Container(
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
-        color: AppTheme.headerBackground,
+        color: AppTheme.cream,
         child: Column(
           children: [
             _buildNavigationBar(context, loc),

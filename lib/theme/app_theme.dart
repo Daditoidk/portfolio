@@ -1,86 +1,94 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  // Custom Color Palette
-  static const Color cream = Color(0xFFF0EAD2);
-  static const Color lightGreen = Color(0xFFDDE5B6);
-  static const Color green = Color(0xFFADC178);
-  static const Color brown = Color(0xFFA98467);
-  static const Color darkBrown = Color(0xFF6C584C);
+  // Custom Color Palette (new)
+  static const Color darkRed = Color(0xFF780000); // 780000
+  static const Color red = Color(0xFFC1121F); // C1121F
+  static const Color cream = Color(0xFFFDF0D5); // FDF0D5
+  static const Color navy = Color(0xFF003049); // 003049
+  static const Color blue = Color(0xFF669BBC); // 669BBC
 
   // Theme Data
   static ThemeData get lightTheme {
     return ThemeData(
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: green,
-        primary: green,
-        secondary: brown,
-        surface: cream,
-        onPrimary: darkBrown,
-        onSecondary: cream,
-        onSurface: darkBrown,
+      colorScheme: ColorScheme(
+        brightness: Brightness.light,
+        primary: navy, // Main accent
+        onPrimary: Colors.white, // Text/icons on primary
+        secondary: red, // Secondary accent
+        onSecondary: Colors.white,
+        surface: cream, // Card backgrounds, surfaces
+        onSurface: navy, // App background
+        error: red,
+        onError: Colors.white,
       ),
       useMaterial3: true,
       textTheme: const TextTheme(
         headlineLarge: TextStyle(
           fontSize: 48,
           fontWeight: FontWeight.bold,
-          color: darkBrown,
+          color: navy,
         ),
         headlineMedium: TextStyle(
           fontSize: 36,
           fontWeight: FontWeight.bold,
-          color: darkBrown,
+          color: navy,
         ),
         headlineSmall: TextStyle(
           fontSize: 24,
           fontWeight: FontWeight.bold,
-          color: darkBrown,
+          color: navy,
         ),
         titleLarge: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
-          color: darkBrown,
+          color: navy,
         ),
         titleMedium: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.w500,
-          color: darkBrown,
+          color: navy,
         ),
-        bodyLarge: TextStyle(fontSize: 18, color: darkBrown),
-        bodyMedium: TextStyle(fontSize: 16, color: darkBrown),
-        bodySmall: TextStyle(fontSize: 14, color: darkBrown),
+        bodyLarge: TextStyle(fontSize: 18, color: navy),
+        bodyMedium: TextStyle(fontSize: 16, color: navy),
+        bodySmall: TextStyle(fontSize: 14, color: navy),
       ),
     );
   }
 
-  // Section Background Colors
-  static const Color headerBackground = lightGreen;
-  static const Color aboutBackground = cream;
-  static const Color projectsBackground = lightGreen;
-  static const Color labBackground = cream;
-  static const Color contactBackground = cream;
+  // Section Background Colors (unique for each section)
+  static const Color headerBackground = darkRed; // Header section
+  static const Color aboutBackground = Colors.white; // About section
+  static const Color projectsBackground = blue; // Projects section
+  static const Color labBackground = Colors.white; // Lab section
+  static const Color contactBackground = red; // Contact section (light red)
+
+  // Sticky Bar Colors (match section backgrounds)
+  static const Color stickyNavHeader = cream;
+  static const Color stickyNavAbout = Colors.white;
+  static const Color stickyNavProjects = blue;
+  static const Color stickyNavLab = Colors.white;
+  static const Color stickyNavContact = red;
 
   // Card Colors
-  static const Color cardBackground = cream;
-  static const Color cardBorder = brown;
-  static const Color cardShadow = Color(0xFFE0E0E0);
+  static const Color cardBackground = blue;
+  static const Color cardBorder = navy;
+  static const Color cardShadow = Color(0x22000000); // semi-transparent black
 
   // Navigation Colors
-  static const Color navActive = darkBrown;
-  static const Color navInactive = brown;
-  static const Color navIndicator = green;
-  static const Color stickyNavBackground = Color(0xFFF8F8F8);
+  static const Color navActive = navy;
+  static const Color navInactive = blue;
+  static const Color navIndicator = red;
 
   // Icon Colors
-  static const Color primaryIcon = green;
-  static const Color secondaryIcon = brown;
-  static const Color avatarBackground = green;
-  static const Color avatarIcon = cream;
+  static const Color primaryIcon = navy;
+  static const Color secondaryIcon = blue;
+  static const Color avatarBackground = red;
+  static const Color avatarIcon = Colors.white;
 
   // Button Colors
-  static const Color primaryButton = green;
-  static const Color primaryButtonText = cream;
-  static const Color secondaryButton = brown;
-  static const Color secondaryButtonText = cream;
+  static const Color primaryButton = navy;
+  static const Color primaryButtonText = Colors.white;
+  static const Color secondaryButton = red;
+  static const Color secondaryButtonText = Colors.white;
 }

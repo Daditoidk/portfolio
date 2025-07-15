@@ -12,6 +12,9 @@
   
   "aboutDescription": "Soy un desarrollador Flutter apasionado con experiencia en crear aplicaciones móviles hermosas y funcionales. Me encanta convertir ideas en realidad a través de código limpio e interfaces intuitivas.",
   
+  "aboutSubtitle": "Desarrollador apasionado con experiencia en Flutter, Dart y tecnologías web.",
+  "aboutSkills": "Flutter, Dart, JavaScript, HTML, CSS, Firebase, REST APIs, Git, Diseño UI/UX",
+  
   "skillFlutter": "Flutter",
   
   "skillDart": "Dart",
@@ -19,6 +22,8 @@
   "skillFirebase": "Firebase",
   
   "projectsTitle": "Mis Proyectos",
+  
+  "projectsSubtitle": "Una selección de mis proyectos recientes.",
   
   "projectEcommerceTitle": "App de E-Commerce",
   
@@ -117,5 +122,9 @@
   "a11y_contactDetails": "Detalles de contacto",
   "a11y_socialMediaLinks": "Enlaces de redes sociales",
   "a11y_socialProfile": "Perfil de {platform}",
-  "a11y_socialProfileHint": "Doble toque para visitar perfil de {platform}"
+  "a11y_socialProfileHint": "Doble toque para visitar perfil de {platform}",
+  "demoAvailableOnTabletOrDesktop": "La demo está disponible en tablet o dispositivo de escritorio",
+  "@demoAvailableOnTabletOrDesktop": {
+    "description": "Mensaje mostrado en móvil cuando la demo del proyecto solo está disponible en tablet o escritorio."
+  }
 } 

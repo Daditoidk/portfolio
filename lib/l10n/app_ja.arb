@@ -30,6 +30,15 @@
     "description": "The main description in the about section"
   },
   
+  "aboutSubtitle": "Flutter、Dart、Web技術に精通した情熱的な開発者です。",
+  "@aboutSubtitle": {
+    "description": "Aboutセクションのサブタイトル"
+  },
+  "aboutSkills": "Flutter, Dart, JavaScript, HTML, CSS, Firebase, REST API, Git, UI/UXデザイン",
+  "@aboutSkills": {
+    "description": "Aboutセクションのスキル一覧（カンマ区切り）"
+  },
+  
   "skillFlutter": "Flutter",
   "@skillFlutter": {
     "description": "Flutter skill name"
@@ -48,6 +57,11 @@
   "projectsTitle": "私のプロジェクト",
   "@projectsTitle": {
     "description": "Title of the projects section"
+  },
+  
+  "projectsSubtitle": "最近のプロジェクトの一部をご紹介します。",
+  "@projectsSubtitle": {
+    "description": "Subtitle of the projects section"
   },
   
   "projectEcommerceTitle": "Eコマースアプリ",
@@ -394,5 +408,74 @@
   "a11y_socialMediaLinks": "ソーシャルメディアリンク",
   "@a11y_socialMediaLinks": {
     "description": "Accessibility label for social media links"
+  },
+
+  "a11y_skillLabel": "スキルラベル",
+  "@a11y_skillLabel": {
+    "description": "Accessibility label for skill label"
+  },
+
+  "a11y_skillIcon": "スキルアイコン",
+  "@a11y_skillIcon": {
+    "description": "Accessibility label for skill icon"
+  },
+
+  "a11y_projectLabel": "プロジェクトラベル",
+  "@a11y_projectLabel": {
+    "description": "Accessibility label for project label"
+  },
+
+  "a11y_projectHint": "プロジェクトの詳細を表示",
+  "@a11y_projectHint": {
+    "description": "Accessibility hint for project details"
+  },
+
+  "a11y_projectTitle": "プロジェクトタイトル",
+  "@a11y_projectTitle": {
+    "description": "Accessibility label for project title"
+  },
+
+  "a11y_projectDescription": "プロジェクトの説明",
+  "@a11y_projectDescription": {
+    "description": "Accessibility label for project description"
+  },
+
+  "a11y_experimentalProjectLabel": "実験的プロジェクトラベル",
+  "@a11y_experimentalProjectLabel": {
+    "description": "Accessibility label for experimental project label"
+  },
+
+  "a11y_experimentalProjectHint": "実験的プロジェクトの詳細を表示",
+  "@a11y_experimentalProjectHint": {
+    "description": "Accessibility hint for experimental project details"
+  },
+
+  "a11y_experimentalBadge": "実験的バッジ",
+  "@a11y_experimentalBadge": {
+    "description": "Accessibility label for experimental badge"
+  },
+
+  "a11y_contactIcon": "連絡先アイコン",
+  "@a11y_contactIcon": {
+    "description": "Accessibility label for contact icon"
+  },
+
+  "a11y_contactDetails": "連絡先の詳細",
+  "@a11y_contactDetails": {
+    "description": "Accessibility label for contact details"
+  },
+
+  "a11y_socialProfile": "ソーシャルプロフィール",
+  "@a11y_socialProfile": {
+    "description": "Accessibility label for social profile"
+  },
+
+  "a11y_socialProfileHint": "ソーシャルプロフィールを表示",
+  "@a11y_socialProfileHint": {
+    "description": "Accessibility hint for social profile"
+  },
+  "demoAvailableOnTabletOrDesktop": "デモはタブレットまたはデスクトップデバイスで利用できます",
+  "@demoAvailableOnTabletOrDesktop": {
+    "description": "プロジェクトのデモがタブレットまたはデスクトップでのみ利用可能な場合にモバイルで表示されるメッセージ。"
   }
 } 

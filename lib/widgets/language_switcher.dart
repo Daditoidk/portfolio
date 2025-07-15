@@ -54,7 +54,7 @@ class LanguageSwitcher extends StatelessWidget {
                 color: Colors.grey.withValues(alpha: 0.25),
               ),
               const SizedBox(width: 5),
-              _buildFlagButton(context, '🇪🇸', const Locale('es'), 'Español'),
+              _buildFlagButton(context, '🇨🇴', const Locale('es'), 'Español'),
               const SizedBox(width: 5),
               Container(
                 width: 1.5,
