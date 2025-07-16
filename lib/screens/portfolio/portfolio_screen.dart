@@ -115,6 +115,8 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+
+                      //TODO: Add the home section
                       Container(
                         key: _sectionKeys['home'],
                         child: HeaderSection(
