@@ -249,6 +249,66 @@
     "description": "Accessibility label for navigation links"
   },
 
+  "mainSelectionWelcome": "Welcome",
+  "@mainSelectionWelcome": {
+    "description": "Welcome message on the main selection screen"
+  },
+
+  "mainSelectionSubtitle": "Choose your destination",
+  "@mainSelectionSubtitle": {
+    "description": "Subtitle on the main selection screen"
+  },
+
+  "mainSelectionPortfolioTitle": "Portfolio",
+  "@mainSelectionPortfolioTitle": {
+    "description": "Title for the portfolio navigation button"
+  },
+
+  "mainSelectionPortfolioSubtitle": "View my projects and experience",
+  "@mainSelectionPortfolioSubtitle": {
+    "description": "Subtitle for the portfolio navigation button"
+  },
+
+  "mainSelectionLabTitle": "Lab",
+  "@mainSelectionLabTitle": {
+    "description": "Title for the lab navigation button"
+  },
+
+  "mainSelectionLabSubtitle": "Explore experimental projects",
+  "@mainSelectionLabSubtitle": {
+    "description": "Subtitle for the lab navigation button"
+  },
+
+  "a11y_mainSelectionPortfolioButton": "Portfolio navigation button",
+  "@a11y_mainSelectionPortfolioButton": {
+    "description": "Accessibility label for portfolio navigation button"
+  },
+
+  "a11y_mainSelectionPortfolioButtonHint": "Double tap to navigate to portfolio",
+  "@a11y_mainSelectionPortfolioButtonHint": {
+    "description": "Accessibility hint for portfolio navigation button"
+  },
+
+  "a11y_mainSelectionLabButton": "Lab navigation button",
+  "@a11y_mainSelectionLabButton": {
+    "description": "Accessibility label for lab navigation button"
+  },
+
+  "a11y_mainSelectionLabButtonHint": "Double tap to navigate to lab",
+  "@a11y_mainSelectionLabButtonHint": {
+    "description": "Accessibility hint for lab navigation button"
+  },
+
+  "a11y_mainSelectionScreen": "Main selection screen",
+  "@a11y_mainSelectionScreen": {
+    "description": "Accessibility label for main selection screen"
+  },
+
+  "a11y_mainSelectionScreenHint": "Choose between portfolio and lab sections",
+  "@a11y_mainSelectionScreenHint": {
+    "description": "Accessibility hint for main selection screen"
+  },
+
   "a11y_currentSectionHint": "Current section, double tap to stay here",
   "@a11y_currentSectionHint": {
     "description": "Accessibility hint for current section"
@@ -471,8 +531,7 @@
     }
   },
 
-  "demoAvailableOnTabletOrDesktop": "Demo available in tablet or desktop device",
-  "@demoAvailableOnTabletOrDesktop": {
-    "description": "Message shown on mobile when the project demo is only available on tablet or desktop."
-  }
+  "projectDemoHelloWorld": "Hello world",
+  "projectDemoAvailableOnTabletOrDesktop": "Demo available in tablet or desktop device",
+  "projectKnowMore": "Know More"
 } 

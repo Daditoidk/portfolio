@@ -40,7 +40,10 @@ Widget _buildPageIndicators(_ProjectsSectionState state) {
         state.projects.length,
         (i) => _buildPageIndicatorDot(
           isActive: i == state._currentPage,
-          onTap: i == state._currentPage ? null : () => state._onDotTap(i),
+          onTap:
+              i == state._currentPage || state._isPageAnimating
+                  ? null
+                  : () => state._onDotTap(i),
         ),
       ),
     ),
@@ -63,9 +66,9 @@ Widget _buildDesktopProjectPage(
                 height: 655,
                 overlayPadding: const EdgeInsets.fromLTRB(30, 40, 30, 40),
                 borderRadius: BorderRadius.circular(32),
-                child: const Center(
+                child: Center(
                   child: Text(
-                    'Hello world',
+                    AppLocalizations.of(context)!.projectDemoHelloWorld,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     textAlign: TextAlign.center,
                   ),
@@ -93,9 +96,9 @@ Widget _buildDesktopProjectPage(
                         frameHeight * 0.14,
                       ),
                       borderRadius: BorderRadius.circular(24),
-                      child: const Center(
+                      child: Center(
                         child: Text(
-                          'Hello world',
+                          AppLocalizations.of(context)!.projectDemoHelloWorld,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -111,46 +114,43 @@ Widget _buildDesktopProjectPage(
           );
   final textWidget = Expanded(
     flex: 2,
-    child: Container(
-      color: Colors.blue.withValues(alpha: 0.1),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 54.0, vertical: 24),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(project['title'], style: theme.textTheme.headlineSmall),
-            const SizedBox(height: 16),
-            Text(project['description'], style: theme.textTheme.bodyLarge),
-            const SizedBox(height: 32),
-            ElevatedButton(onPressed: () {}, child: const Text('Know More')),
-          ],
-        ),
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 54.0, vertical: 24),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(project['title'], style: theme.textTheme.headlineSmall),
+          const SizedBox(height: 16),
+          Text(project['description'], style: theme.textTheme.bodyLarge),
+          const SizedBox(height: 32),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text(AppLocalizations.of(context)!.projectKnowMore),
+          ),
+        ],
       ),
     ),
   );
-  return Container(
-    color: Colors.amber,
-    child: Stack(
-      clipBehavior: Clip.none,
-      children: [
-        Row(
-          crossAxisAlignment:
-              project['frame'].contains('phone')
-                  ? CrossAxisAlignment.start
-                  : CrossAxisAlignment.center,
-          children:
-              project['frame'].contains('phone')
-                  ? [
-                    SizedBox(width: 60),
-                    frameWidget,
-                    SizedBox(width: 40),
-                    textWidget,
-                  ]
-                  : [textWidget, frameWidget],
-        ),
-      ],
-    ),
+  return Stack(
+    clipBehavior: Clip.none,
+    children: [
+      Row(
+        crossAxisAlignment:
+            project['frame'].contains('phone')
+                ? CrossAxisAlignment.start
+                : CrossAxisAlignment.center,
+        children:
+            project['frame'].contains('phone')
+                ? [
+                  SizedBox(width: 60),
+                  frameWidget,
+                  SizedBox(width: 40),
+                  textWidget,
+                ]
+                : [textWidget, frameWidget],
+      ),
+    ],
   );
 }
 
@@ -172,7 +172,9 @@ Widget _buildMobileProjectPage(
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
-              'Demo available in tablet or desktop device',
+              AppLocalizations.of(
+                context,
+              )!.projectDemoAvailableOnTabletOrDesktop,
               style: theme.textTheme.bodyLarge?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: AppTheme.red.withValues(alpha: 0.5),
@@ -198,7 +200,10 @@ Widget _buildMobileProjectPage(
               const SizedBox(height: 12),
               Text(project['description'], style: theme.textTheme.bodyLarge),
               const SizedBox(height: 24),
-              ElevatedButton(onPressed: () {}, child: const Text('Know More')),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text(AppLocalizations.of(context)!.projectKnowMore),
+              ),
             ],
           ),
         ),
@@ -222,9 +227,9 @@ Widget _buildTabletProjectPage(
           height: 600,
           overlayPadding: const EdgeInsets.fromLTRB(40, 40, 40, 40),
           borderRadius: BorderRadius.circular(24),
-          child: const Center(
+          child: Center(
             child: Text(
-              'Hello world',
+              AppLocalizations.of(context)!.projectDemoHelloWorld,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               textAlign: TextAlign.center,
             ),
@@ -241,7 +246,10 @@ Widget _buildTabletProjectPage(
             const SizedBox(height: 16),
             Text(project['description'], style: theme.textTheme.bodyLarge),
             const SizedBox(height: 32),
-            ElevatedButton(onPressed: () {}, child: const Text('Know More')),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text(AppLocalizations.of(context)!.projectKnowMore),
+            ),
           ],
         ),
       ),
@@ -278,25 +286,24 @@ Widget _tabletProjectsPageView({
         if (currentPage > 0)
           ProjectPageArrow(
             isLeft: true,
+            absorbing: state._isPageAnimating || currentPage <= 0,
             onPressed: () {
-              if (currentPage > 0) {
-                pageController.previousPage(
-                  duration: const Duration(milliseconds: 400),
-                  curve: Curves.easeInOut,
-                );
-              }
+              pageController.previousPage(
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.easeInOut,
+              );
             },
           ),
         if (currentPage < projects.length - 1)
           ProjectPageArrow(
             isLeft: false,
+            absorbing:
+                state._isPageAnimating || currentPage >= projects.length - 1,
             onPressed: () {
-              if (currentPage < projects.length - 1) {
-                pageController.nextPage(
-                  duration: const Duration(milliseconds: 400),
-                  curve: Curves.easeInOut,
-                );
-              }
+              pageController.nextPage(
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.easeInOut,
+              );
             },
           ),
       ],
@@ -316,10 +323,10 @@ Widget _desktopMobileProjectsPageView({
   return SizedBox(
     height:
         isMobile
-            ? 320
+            ? 340
             : isTablet
-            ? 420
-            : 420 * 1.35,
+            ? 430
+            : 430 * 1.35,
     child: Stack(
       children: [
         Padding(
@@ -342,25 +349,24 @@ Widget _desktopMobileProjectsPageView({
         if (currentPage > 0)
           ProjectPageArrow(
             isLeft: true,
+            absorbing: state._isPageAnimating || currentPage <= 0,
             onPressed: () {
-              if (currentPage > 0) {
-                pageController.previousPage(
-                  duration: const Duration(milliseconds: 400),
-                  curve: Curves.easeInOut,
-                );
-              }
+              pageController.previousPage(
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.easeInOut,
+              );
             },
           ),
         if (currentPage < projects.length - 1)
           ProjectPageArrow(
             isLeft: false,
+            absorbing:
+                state._isPageAnimating || currentPage >= projects.length - 1,
             onPressed: () {
-              if (currentPage < projects.length - 1) {
-                pageController.nextPage(
-                  duration: const Duration(milliseconds: 400),
-                  curve: Curves.easeInOut,
-                );
-              }
+              pageController.nextPage(
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.easeInOut,
+              );
             },
           ),
       ],

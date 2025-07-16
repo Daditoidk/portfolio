@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../constants/semantic_labels.dart';
-import '../theme/app_theme.dart';
+import '../core/constants/semantic_labels.dart';
+import '../core/theme/app_theme.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import '../last_update.dart';
 
 class HamburgerMenu extends StatelessWidget {
   final Function(String) onSectionTap;
@@ -81,7 +82,6 @@ class HamburgerMenu extends StatelessWidget {
       {'id': 'home', 'title': l10n.navHome},
       {'id': 'about', 'title': l10n.navAbout},
       {'id': 'projects', 'title': l10n.navProjects},
-      {'id': 'lab', 'title': l10n.navLab},
       {'id': 'contact', 'title': l10n.navContact},
     ];
     final languages = [
@@ -100,13 +100,13 @@ class HamburgerMenu extends StatelessWidget {
           end: Offset.zero,
         ).animate(CurvedAnimation(parent: animation, curve: Curves.easeInOut)),
         child: Material(
-          color: Colors.white,
+          color: Colors.grey.shade200,
           child: Container(
             width: MediaQuery.of(context).size.width * 0.8,
             height: double.infinity,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
+            decoration: BoxDecoration(
+              color: Colors.grey.shade200,
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 10,
@@ -218,8 +218,7 @@ class HamburgerMenu extends StatelessWidget {
           decoration: BoxDecoration(
             color:
                 isActive
-                    ? AppTheme.navIndicator.withValues(alpha: 0.5)
-                    : Colors.white,
+                    ? AppTheme.cream : Color(0xFFF5F5F5),
             border: Border(
               bottom: BorderSide(color: Colors.grey.shade200, width: 0.5),
             ),
@@ -279,8 +278,7 @@ class HamburgerMenu extends StatelessWidget {
           decoration: BoxDecoration(
             color:
                 isActive
-                    ? AppTheme.navIndicator.withValues(alpha: 0.5)
-                    : Colors.white,
+                    ? AppTheme.cream : Color(0xFFF5F5F5),
             border: Border(
               bottom: BorderSide(color: Colors.grey.shade200, width: 0.5),
             ),
@@ -319,8 +317,6 @@ class HamburgerMenu extends StatelessWidget {
         return Icons.person;
       case 'projects':
         return Icons.work;
-      case 'lab':
-        return Icons.science;
       case 'contact':
         return Icons.contact_mail;
       default:
@@ -342,12 +338,24 @@ class VersionInfo extends StatelessWidget {
         return Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 25),
-            child: Text(
-              'v$version',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Colors.grey,
-                fontWeight: FontWeight.w500,
-              ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Last update: ' + lastUpdate,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                Text(
+                  'v$version',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
             ),
           ),
         );

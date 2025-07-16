@@ -87,6 +87,69 @@
   "a11y_navigationMenuHint": "Usar para navegar entre secciones",
   "a11y_portfolioTitle": "Título del portafolio",
   "a11y_navigationLinks": "Enlaces de navegación",
+  "@a11y_navigationLinks": {
+    "description": "Accessibility label for navigation links"
+  },
+
+  "mainSelectionWelcome": "Bienvenido",
+  "@mainSelectionWelcome": {
+    "description": "Welcome message on the main selection screen"
+  },
+
+  "mainSelectionSubtitle": "Elige tu destino",
+  "@mainSelectionSubtitle": {
+    "description": "Subtitle on the main selection screen"
+  },
+
+  "mainSelectionPortfolioTitle": "Portafolio",
+  "@mainSelectionPortfolioTitle": {
+    "description": "Title for the portfolio navigation button"
+  },
+
+  "mainSelectionPortfolioSubtitle": "Ver mis proyectos y experiencia",
+  "@mainSelectionPortfolioSubtitle": {
+    "description": "Subtitle for the portfolio navigation button"
+  },
+
+  "mainSelectionLabTitle": "Laboratorio",
+  "@mainSelectionLabTitle": {
+    "description": "Title for the lab navigation button"
+  },
+
+  "mainSelectionLabSubtitle": "Explorar proyectos experimentales",
+  "@mainSelectionLabSubtitle": {
+    "description": "Subtitle for the lab navigation button"
+  },
+
+  "a11y_mainSelectionPortfolioButton": "Botón de navegación al portafolio",
+  "@a11y_mainSelectionPortfolioButton": {
+    "description": "Accessibility label for portfolio navigation button"
+  },
+
+  "a11y_mainSelectionPortfolioButtonHint": "Doble toque para navegar al portafolio",
+  "@a11y_mainSelectionPortfolioButtonHint": {
+    "description": "Accessibility hint for portfolio navigation button"
+  },
+
+  "a11y_mainSelectionLabButton": "Botón de navegación al laboratorio",
+  "@a11y_mainSelectionLabButton": {
+    "description": "Accessibility label for lab navigation button"
+  },
+
+  "a11y_mainSelectionLabButtonHint": "Doble toque para navegar al laboratorio",
+  "@a11y_mainSelectionLabButtonHint": {
+    "description": "Accessibility hint for lab navigation button"
+  },
+
+  "a11y_mainSelectionScreen": "Pantalla de selección principal",
+  "@a11y_mainSelectionScreen": {
+    "description": "Accessibility label for main selection screen"
+  },
+
+  "a11y_mainSelectionScreenHint": "Elige entre las secciones de portafolio y laboratorio",
+  "@a11y_mainSelectionScreenHint": {
+    "description": "Accessibility hint for main selection screen"
+  },
   "a11y_currentSectionHint": "Sección actual, doble toque para permanecer aquí",
   "a11y_doubleTapToNavigateToSection": "Doble toque para navegar a la sección {section}",
   "a11y_current": "Actual",
@@ -126,5 +189,8 @@
   "demoAvailableOnTabletOrDesktop": "La demo está disponible en tablet o dispositivo de escritorio",
   "@demoAvailableOnTabletOrDesktop": {
     "description": "Mensaje mostrado en móvil cuando la demo del proyecto solo está disponible en tablet o escritorio."
-  }
+  },
+  "projectDemoHelloWorld": "Hola mundo",
+  "projectDemoAvailableOnTabletOrDesktop": "La demo está disponible en tablet o dispositivo de escritorio",
+  "projectKnowMore": "Saber más"
 } 

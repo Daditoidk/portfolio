@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../constants/semantic_labels.dart';
-import '../helpers/responsive.dart';
-import '../theme/app_theme.dart'; // Added import for AppTheme
+import '../../../core/constants/semantic_labels.dart';
+import '../../../core/helpers/responsive.dart';
+import '../../../core/theme/app_theme.dart'; // Added import for AppTheme
 
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
@@ -19,7 +19,7 @@ class AboutSection extends StatelessWidget {
   Widget _buildContent(BuildContext context, {required bool isMobile}) {
     final l10n = AppLocalizations.of(context)!;
     // final theme = Theme.of(context); // unused, removed
-    
+
     return Semantics(
       label: SemanticLabels.aboutSection,
       child: Container(
@@ -61,7 +61,7 @@ class AboutSection extends StatelessWidget {
   Widget _buildSkillsGrid(BuildContext context, bool isMobile) {
     final l10n = AppLocalizations.of(context)!;
     final skills = l10n.aboutSkills.split(',');
-    
+
     // Alternate navy and light blue for chip backgrounds
     return Wrap(
       spacing: isMobile ? 12 : 24,

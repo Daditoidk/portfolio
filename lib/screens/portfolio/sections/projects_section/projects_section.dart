@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../constants/semantic_labels.dart';
-import '../../theme/app_theme.dart';
-import '../../helpers/frame_container.dart';
+import '../../../../core/constants/semantic_labels.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../core/helpers/frame_container.dart';
 import 'project_page_arrow.dart';
 part 'projects_section_aux.dart';
 
@@ -26,10 +26,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       duration: const Duration(milliseconds: 400),
       curve: Curves.easeInOut,
     );
-    setState(() {
-      _currentPage = i;
-      _isPageAnimating = false;
-    });
+    // _isPageAnimating will be set to false in onPageChanged
   }
 
   final List<Map<String, dynamic>> projects = List.generate(
@@ -60,7 +57,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
             isTablet
                 ? screenHeight * 2
                 : (MediaQuery.of(context).size.width >= 1024
-                    ? screenHeight * 1.5
+                    ? screenHeight * 1.2
                     : screenHeight),
         color: AppTheme.projectsBackground,
         padding: EdgeInsets.symmetric(
@@ -95,7 +92,12 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                   projects: projects,
                   currentPage: _currentPage,
                   pageController: _pageController,
-                  onPageChanged: (i) => setState(() => _currentPage = i),
+                  onPageChanged: (i) {
+                    setState(() {
+                      _currentPage = i;
+                      _isPageAnimating = false;
+                    });
+                  },
                 )
                 : _desktopMobileProjectsPageView(
                   state: this,
@@ -104,7 +106,12 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                   projects: projects,
                   currentPage: _currentPage,
                   pageController: _pageController,
-                  onPageChanged: (i) => setState(() => _currentPage = i),
+                  onPageChanged: (i) {
+                    setState(() {
+                      _currentPage = i;
+                      _isPageAnimating = false;
+                    });
+                  },
                 ),
             const SizedBox(height: 12),
             _buildPageIndicators(this),

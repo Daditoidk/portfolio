@@ -249,6 +249,66 @@
     "description": "Accessibility label for navigation links"
   },
 
+  "mainSelectionWelcome": "ようこそ",
+  "@mainSelectionWelcome": {
+    "description": "Welcome message on the main selection screen"
+  },
+
+  "mainSelectionSubtitle": "目的地を選択してください",
+  "@mainSelectionSubtitle": {
+    "description": "Subtitle on the main selection screen"
+  },
+
+  "mainSelectionPortfolioTitle": "ポートフォリオ",
+  "@mainSelectionPortfolioTitle": {
+    "description": "Title for the portfolio navigation button"
+  },
+
+  "mainSelectionPortfolioSubtitle": "プロジェクトと経験を見る",
+  "@mainSelectionPortfolioSubtitle": {
+    "description": "Subtitle for the portfolio navigation button"
+  },
+
+  "mainSelectionLabTitle": "ラボ",
+  "@mainSelectionLabTitle": {
+    "description": "Title for the lab navigation button"
+  },
+
+  "mainSelectionLabSubtitle": "実験的プロジェクトを探索",
+  "@mainSelectionLabSubtitle": {
+    "description": "Subtitle for the lab navigation button"
+  },
+
+  "a11y_mainSelectionPortfolioButton": "ポートフォリオナビゲーションボタン",
+  "@a11y_mainSelectionPortfolioButton": {
+    "description": "Accessibility label for portfolio navigation button"
+  },
+
+  "a11y_mainSelectionPortfolioButtonHint": "ダブルタップでポートフォリオに移動",
+  "@a11y_mainSelectionPortfolioButtonHint": {
+    "description": "Accessibility hint for portfolio navigation button"
+  },
+
+  "a11y_mainSelectionLabButton": "ラボナビゲーションボタン",
+  "@a11y_mainSelectionLabButton": {
+    "description": "Accessibility label for lab navigation button"
+  },
+
+  "a11y_mainSelectionLabButtonHint": "ダブルタップでラボに移動",
+  "@a11y_mainSelectionLabButtonHint": {
+    "description": "Accessibility hint for lab navigation button"
+  },
+
+  "a11y_mainSelectionScreen": "メイン選択画面",
+  "@a11y_mainSelectionScreen": {
+    "description": "Accessibility label for main selection screen"
+  },
+
+  "a11y_mainSelectionScreenHint": "ポートフォリオとラボセクションから選択",
+  "@a11y_mainSelectionScreenHint": {
+    "description": "Accessibility hint for main selection screen"
+  },
+
   "a11y_currentSectionHint": "現在のセクション、ダブルタップでここに留まる",
   "@a11y_currentSectionHint": {
     "description": "Accessibility hint for current section"
@@ -474,6 +534,9 @@
   "@a11y_socialProfileHint": {
     "description": "Accessibility hint for social profile"
   },
+  "projectDemoHelloWorld": "こんにちは世界",
+  "projectDemoAvailableOnTabletOrDesktop": "デモはタブレットまたはデスクトップデバイスで利用できます",
+  "projectKnowMore": "もっと知る",
   "demoAvailableOnTabletOrDesktop": "デモはタブレットまたはデスクトップデバイスで利用できます",
   "@demoAvailableOnTabletOrDesktop": {
     "description": "プロジェクトのデモがタブレットまたはデスクトップでのみ利用可能な場合にモバイルで表示されるメッセージ。"

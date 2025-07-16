@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../constants/semantic_labels.dart';
-import '../helpers/responsive.dart';
-import '../theme/app_theme.dart';
+import '../../../core/constants/semantic_labels.dart';
+import '../../../core/helpers/responsive.dart';
+import '../../../core/theme/app_theme.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
@@ -19,7 +19,7 @@ class ContactSection extends StatelessWidget {
   Widget _buildContent(BuildContext context, {required bool isMobile}) {
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    
+
     return Semantics(
       label: SemanticLabels.contactSection,
       child: Container(
