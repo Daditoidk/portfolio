@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../core/l10n/app_localizations.dart';
 import '../core/theme/app_theme.dart';
 import '../core/navigation/route_names.dart';
 import '../widgets/language_switcher.dart';
