@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../core/l10n/app_localizations.dart';
 import '../../../core/constants/semantic_labels.dart';
 import '../../../core/helpers/responsive.dart';
-import '../../../core/theme/app_theme.dart'; // Added import for AppTheme
 
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
@@ -18,7 +17,6 @@ class AboutSection extends StatelessWidget {
 
   Widget _buildContent(BuildContext context, {required bool isMobile}) {
     final l10n = AppLocalizations.of(context)!;
-    // final theme = Theme.of(context); // unused, removed
 
     return Semantics(
       label: SemanticLabels.aboutSection,
@@ -43,49 +41,37 @@ class AboutSection extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             Semantics(
-              label: SemanticLabels.sectionDescription,
-              child: Text(
-                l10n.aboutSubtitle,
-                style: Theme.of(context).textTheme.bodyLarge,
-                textAlign: TextAlign.center,
+              label: SemanticLabels.aboutDescription,
+              child: Container(
+                constraints: BoxConstraints(
+                  maxWidth: isMobile ? double.infinity : 600,
+                ),
+                child: Text(
+                  l10n.aboutDescription,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
-            const SizedBox(height: 40),
-            _buildSkillsGrid(context, isMobile),
+            const SizedBox(height: 20),
+            Semantics(
+              label: SemanticLabels.sectionDescription,
+              child: Container(
+                constraints: BoxConstraints(
+                  maxWidth: isMobile ? double.infinity : 600,
+                ),
+                child: Text(
+                  l10n.aboutSubtitle,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildSkillsGrid(BuildContext context, bool isMobile) {
-    final l10n = AppLocalizations.of(context)!;
-    final skills = l10n.aboutSkills.split(',');
-
-    // Alternate navy and light blue for chip backgrounds
-    return Wrap(
-      spacing: isMobile ? 12 : 24,
-      runSpacing: isMobile ? 12 : 24,
-      alignment: WrapAlignment.center,
-      children: List.generate(skills.length, (i) {
-        final skill = skills[i].trim();
-        final isEven = i % 2 == 0;
-        final bgColor = isEven ? AppTheme.navy : AppTheme.blue;
-        final textColor = isEven ? Colors.white : AppTheme.navy;
-        return Chip(
-          label: Text(skill),
-          backgroundColor: bgColor,
-          labelStyle: TextStyle(
-            color: textColor,
-            fontWeight: FontWeight.w500,
-            fontSize: isMobile ? 12 : 14,
-          ),
-          padding: EdgeInsets.symmetric(
-            horizontal: isMobile ? 10 : 16,
-            vertical: isMobile ? 4 : 8,
-          ),
-        );
-      }),
     );
   }
 }

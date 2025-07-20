@@ -106,13 +106,13 @@ abstract class AppLocalizations {
   /// The name displayed in the header section
   ///
   /// In en, this message translates to:
-  /// **'Your Name'**
+  /// **'Camilo Santacruz Abadiano'**
   String get headerName;
 
   /// The professional title in the header
   ///
   /// In en, this message translates to:
-  /// **'Flutter Developer'**
+  /// **'Mobile Developer'**
   String get headerTitle;
 
   /// The subtitle in the header section
@@ -130,20 +130,62 @@ abstract class AppLocalizations {
   /// The main description in the about section
   ///
   /// In en, this message translates to:
-  /// **'I am a passionate Flutter developer with experience in creating beautiful and functional mobile applications. I love turning ideas into reality through clean code and intuitive user interfaces.'**
+  /// **'I am a curious person passionate about technology, food, video games, soccer, fitness, dance, music, philosophy, psychology, and a bit of history. I love exploring my country and learning about its diverse cultures and landscapes.'**
   String get aboutDescription;
 
   /// Subtitle for the about section
   ///
   /// In en, this message translates to:
-  /// **'Passionate developer with experience in Flutter, Dart, and web technologies.'**
+  /// **'A tech enthusiast who believes in continuous learning and finding joy in both digital innovation and life\'s simple pleasures.'**
   String get aboutSubtitle;
 
   /// Comma-separated list of skills for the about section
   ///
   /// In en, this message translates to:
-  /// **'Flutter, Dart, JavaScript, HTML, CSS, Firebase, REST APIs, Git, UI/UX Design'**
+  /// **'Flutter, Kotlin, Swift, Rive, Cursor, CodeMagic, REST APIs, Git, UX/UI Design'**
   String get aboutSkills;
+
+  /// Title of the skills section
+  ///
+  /// In en, this message translates to:
+  /// **'Skills & Technologies'**
+  String get skillsTitle;
+
+  /// Subtitle of the skills section
+  ///
+  /// In en, this message translates to:
+  /// **'My technical expertise and tools I work with'**
+  String get skillsSubtitle;
+
+  /// Category title for programming languages
+  ///
+  /// In en, this message translates to:
+  /// **'Programming Languages'**
+  String get skillsLanguages;
+
+  /// Category title for editors and development tools
+  ///
+  /// In en, this message translates to:
+  /// **'Editors & Tools'**
+  String get skillsEditors;
+
+  /// Category title for design and animation tools
+  ///
+  /// In en, this message translates to:
+  /// **'Design & Animation'**
+  String get skillsDesign;
+
+  /// Category title for DevOps and CI/CD tools
+  ///
+  /// In en, this message translates to:
+  /// **'DevOps & CI/CD'**
+  String get skillsDevOps;
+
+  /// Category title for APIs and services
+  ///
+  /// In en, this message translates to:
+  /// **'APIs & Services'**
+  String get skillsAPIs;
 
   /// Flutter skill name
   ///
@@ -157,11 +199,197 @@ abstract class AppLocalizations {
   /// **'Dart'**
   String get skillDart;
 
+  /// Kotlin skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Kotlin'**
+  String get skillKotlin;
+
+  /// Kotlin Multiplatform skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Kotlin Multiplatform'**
+  String get skillKotlinMultiplatform;
+
+  /// Swift skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Swift'**
+  String get skillSwift;
+
+  /// Rive skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Rive'**
+  String get skillRive;
+
+  /// Figma skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Figma'**
+  String get skillFigma;
+
+  /// Adobe XD skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Adobe XD'**
+  String get skillAdobeXD;
+
+  /// Android Studio skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Android Studio'**
+  String get skillAndroidStudio;
+
+  /// Visual Studio Code skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Visual Studio Code'**
+  String get skillVSCode;
+
+  /// Cursor skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Cursor'**
+  String get skillCursor;
+
+  /// Git skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Git'**
+  String get skillGit;
+
+  /// Scrum skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Scrum'**
+  String get skillScrum;
+
+  /// Agile skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Agile'**
+  String get skillAgile;
+
+  /// Kanban skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Kanban'**
+  String get skillKanban;
+
+  /// CodeMagic skill name
+  ///
+  /// In en, this message translates to:
+  /// **'CodeMagic'**
+  String get skillCodeMagic;
+
+  /// GitHub Actions skill name
+  ///
+  /// In en, this message translates to:
+  /// **'GitHub Actions'**
+  String get skillGithubActions;
+
+  /// Riverpod skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Riverpod'**
+  String get skillRiverpod;
+
+  /// Provider skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Provider'**
+  String get skillProvider;
+
+  /// Hooks skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Hooks'**
+  String get skillHooks;
+
+  /// Freezed skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Freezed'**
+  String get skillFreezed;
+
+  /// Platform Channels skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Platform Channels'**
+  String get skillPlatformChannels;
+
+  /// REST skill name
+  ///
+  /// In en, this message translates to:
+  /// **'REST'**
+  String get skillRest;
+
+  /// Isar Database skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Isar Database'**
+  String get skillIsarDatabase;
+
+  /// SQLite skill name
+  ///
+  /// In en, this message translates to:
+  /// **'SQLite'**
+  String get skillSqlLite;
+
   /// Firebase skill name
   ///
   /// In en, this message translates to:
   /// **'Firebase'**
   String get skillFirebase;
+
+  /// Firebase Analytics skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Firebase Analytics'**
+  String get skillFirebaseAnalytics;
+
+  /// Firebase Crashlytics skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Firebase Crashlytics'**
+  String get skillFirebaseCrashlytics;
+
+  /// Mason skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Mason'**
+  String get skillMason;
+
+  /// Years of experience text
+  ///
+  /// In en, this message translates to:
+  /// **'{years}+ years of experience'**
+  String yearsOfExperience(String years);
+
+  /// Text for 1 year or less experience
+  ///
+  /// In en, this message translates to:
+  /// **'1 year or less of experience'**
+  String get oneYearOrLess;
+
+  /// Label for currently used technologies
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get currentlyUsing;
+
+  /// Tooltip text for active technology badge
+  ///
+  /// In en, this message translates to:
+  /// **'Currently using this technology'**
+  String get activeTooltip;
+
+  /// Tooltip text for experience badges
+  ///
+  /// In en, this message translates to:
+  /// **'Click to see experience details'**
+  String get experienceTooltip;
 
   /// Title of the projects section
   ///
@@ -702,6 +930,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Know More'**
   String get projectKnowMore;
+
+  /// Credit text showing who created the application
+  ///
+  /// In en, this message translates to:
+  /// **'Created by Camilo Santacruz'**
+  String get createdBy;
+
+  /// GetX skill name
+  ///
+  /// In en, this message translates to:
+  /// **'GetX'**
+  String get skillGetX;
+
+  /// Bloc skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Bloc'**
+  String get skillBloc;
+
+  /// Flutter Web skill name
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter Web'**
+  String get skillFlutterWeb;
+
+  /// Title for Flutter technologies section
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter & Dart Technologies'**
+  String get flutterTechnologies;
+
+  /// Category title for state management technologies
+  ///
+  /// In en, this message translates to:
+  /// **'State Management'**
+  String get stateManagement;
+
+  /// Category title for code generation technologies
+  ///
+  /// In en, this message translates to:
+  /// **'Code Generation'**
+  String get codeGeneration;
+
+  /// Category title for native integration technologies
+  ///
+  /// In en, this message translates to:
+  /// **'Native Integration'**
+  String get nativeIntegration;
+
+  /// Category title for database technologies
+  ///
+  /// In en, this message translates to:
+  /// **'Databases'**
+  String get databases;
+
+  /// Category title for analytics and monitoring technologies
+  ///
+  /// In en, this message translates to:
+  /// **'Analytics & Monitoring'**
+  String get analyticsMonitoring;
+
+  /// Category title for development tools
+  ///
+  /// In en, this message translates to:
+  /// **'Development Tools'**
+  String get developmentTools;
+
+  /// Category title for project management skills
+  ///
+  /// In en, this message translates to:
+  /// **'Project Management'**
+  String get projectManagement;
+
+  /// Tooltip text for 1 year or less experience
+  ///
+  /// In en, this message translates to:
+  /// **'1 year or less of experience'**
+  String get experienceTooltipOneYear;
+
+  /// Tooltip text for years of experience
+  ///
+  /// In en, this message translates to:
+  /// **'{years}+ years of experience'**
+  String experienceTooltipYears(String years);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

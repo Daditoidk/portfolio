@@ -12,10 +12,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get appTitle => 'Portafolio';
 
   @override
-  String get headerName => 'Tu Nombre';
+  String get headerName => 'Camilo Santacruz Abadiano';
 
   @override
-  String get headerTitle => 'Desarrollador Flutter';
+  String get headerTitle => 'Desarrollador Móvil';
 
   @override
   String get headerSubtitle => 'Creando experiencias móviles hermosas';
@@ -24,13 +24,34 @@ class AppLocalizationsEs extends AppLocalizations {
   String get aboutTitle => 'Sobre Mí';
 
   @override
-  String get aboutDescription => 'Soy un desarrollador Flutter apasionado con experiencia en crear aplicaciones móviles hermosas y funcionales. Me encanta convertir ideas en realidad a través de código limpio e interfaces intuitivas.';
+  String get aboutDescription => 'Soy una persona curiosa apasionada por la tecnología, la comida, los videojuegos, el fútbol, el fitness, el baile, la música, la filosofía, la psicología y un poco de historia. Me encanta explorar mi país y aprender sobre sus diversas culturas y paisajes.';
 
   @override
-  String get aboutSubtitle => 'Desarrollador apasionado con experiencia en Flutter, Dart y tecnologías web.';
+  String get aboutSubtitle => 'Un entusiasta de la tecnología que cree en el aprendizaje continuo y encuentra alegría tanto en la innovación digital como en los placeres simples de la vida.';
 
   @override
-  String get aboutSkills => 'Flutter, Dart, JavaScript, HTML, CSS, Firebase, REST APIs, Git, Diseño UI/UX';
+  String get aboutSkills => 'Flutter, Kotlin, Swift, Rive, Cursor, CodeMagic, REST APIs, Git, Diseño UX/UI';
+
+  @override
+  String get skillsTitle => 'Habilidades y Tecnologías';
+
+  @override
+  String get skillsSubtitle => 'Mi experiencia técnica y herramientas con las que trabajo';
+
+  @override
+  String get skillsLanguages => 'Lenguajes de Programación';
+
+  @override
+  String get skillsEditors => 'Editores y Herramientas';
+
+  @override
+  String get skillsDesign => 'Diseño y Animación';
+
+  @override
+  String get skillsDevOps => 'DevOps y CI/CD';
+
+  @override
+  String get skillsAPIs => 'APIs y Servicios';
 
   @override
   String get skillFlutter => 'Flutter';
@@ -39,7 +60,102 @@ class AppLocalizationsEs extends AppLocalizations {
   String get skillDart => 'Dart';
 
   @override
+  String get skillKotlin => 'Kotlin';
+
+  @override
+  String get skillKotlinMultiplatform => 'Kotlin Multiplatform';
+
+  @override
+  String get skillSwift => 'Swift';
+
+  @override
+  String get skillRive => 'Rive';
+
+  @override
+  String get skillFigma => 'Figma';
+
+  @override
+  String get skillAdobeXD => 'Adobe XD';
+
+  @override
+  String get skillAndroidStudio => 'Android Studio';
+
+  @override
+  String get skillVSCode => 'Visual Studio Code';
+
+  @override
+  String get skillCursor => 'Cursor';
+
+  @override
+  String get skillGit => 'Git';
+
+  @override
+  String get skillScrum => 'Scrum';
+
+  @override
+  String get skillAgile => 'Agile';
+
+  @override
+  String get skillKanban => 'Kanban';
+
+  @override
+  String get skillCodeMagic => 'CodeMagic';
+
+  @override
+  String get skillGithubActions => 'GitHub Actions';
+
+  @override
+  String get skillRiverpod => 'Riverpod';
+
+  @override
+  String get skillProvider => 'Provider';
+
+  @override
+  String get skillHooks => 'Hooks';
+
+  @override
+  String get skillFreezed => 'Freezed';
+
+  @override
+  String get skillPlatformChannels => 'Platform Channels';
+
+  @override
+  String get skillRest => 'REST';
+
+  @override
+  String get skillIsarDatabase => 'Isar Database';
+
+  @override
+  String get skillSqlLite => 'SQLite';
+
+  @override
   String get skillFirebase => 'Firebase';
+
+  @override
+  String get skillFirebaseAnalytics => 'Firebase Analytics';
+
+  @override
+  String get skillFirebaseCrashlytics => 'Firebase Crashlytics';
+
+  @override
+  String get skillMason => 'Mason';
+
+  @override
+  String yearsOfExperience(String years) {
+    return '$years+ años de experiencia';
+  }
+
+  @override
+  String get oneYearOrLess => '1 año o menos de experiencia';
+
+  @override
+  String get currentlyUsing => 'Activo';
+
+  @override
+  String get activeTooltip => 'Actualmente usando esta tecnología';
+
+  @override
+  String get experienceTooltip => 'Haz clic para ver detalles de experiencia';
 
   @override
   String get projectsTitle => 'Mis Proyectos';
@@ -324,4 +440,48 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get projectKnowMore => 'Saber más';
+
+  @override
+  String get createdBy => 'Creado por Camilo Santacruz';
+
+  @override
+  String get skillGetX => 'GetX';
+
+  @override
+  String get skillBloc => 'Bloc';
+
+  @override
+  String get skillFlutterWeb => 'Flutter Web';
+
+  @override
+  String get flutterTechnologies => 'Tecnologías Flutter & Dart';
+
+  @override
+  String get stateManagement => 'Gestión de Estado';
+
+  @override
+  String get codeGeneration => 'Generación de Código';
+
+  @override
+  String get nativeIntegration => 'Integración Nativa';
+
+  @override
+  String get databases => 'Bases de Datos';
+
+  @override
+  String get analyticsMonitoring => 'Analíticas y Monitoreo';
+
+  @override
+  String get developmentTools => 'Herramientas de Desarrollo';
+
+  @override
+  String get projectManagement => 'Gestión de Proyectos';
+
+  @override
+  String get experienceTooltipOneYear => '1 año o menos de experiencia';
+
+  @override
+  String experienceTooltipYears(String years) {
+    return '$years+ años de experiencia';
+  }
 }

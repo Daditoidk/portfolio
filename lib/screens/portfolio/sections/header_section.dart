@@ -30,25 +30,28 @@ class HeaderSection extends StatelessWidget {
 
   Widget _buildContent(BuildContext context, {required bool isMobile}) {
     final loc = AppLocalizations.of(context)!;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     return Semantics(
       label: SemanticLabels.headerSection,
-      child: IntrinsicHeight(
-        child: Container(
-          width: double.infinity,
-          color: AppTheme.cream,
-          child: Column(
-            children: [
-              _buildNavigationBar(context, loc),
-              Expanded(
+      child: Container(
+        width: double.infinity,
+        height: screenHeight,
+        color: AppTheme.cream,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _buildNavigationBar(context, loc),
+            Expanded(
+              child: Center(
                 child: LayoutBuilder(
                   builder: (context, constraints) {
-                    final screenHeight = MediaQuery.of(context).size.height;
                     final isLandscape =
                         screenHeight < 500; // Landscape mode detection
-
                     return Column(
+                      mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(height: isMobile && !isLandscape ? 20 : 0),
                         Semantics(
@@ -56,11 +59,8 @@ class HeaderSection extends StatelessWidget {
                           child: CircleAvatar(
                             radius: isLandscape ? 40 : (isMobile ? 60 : 80),
                             backgroundColor: AppTheme.avatarBackground,
-                            child: Icon(
-                              Icons.person,
-                              size: isLandscape ? 40 : (isMobile ? 60 : 80),
-                              color: AppTheme.avatarIcon,
-                            ),
+                            backgroundImage: const AssetImage('assets/bgs/avatar.jpg'),
+                            child: null,
                           ),
                         ),
                         SizedBox(height: isLandscape ? 15 : 30),
@@ -68,6 +68,7 @@ class HeaderSection extends StatelessWidget {
                           label: SemanticLabels.name,
                           child: Text(
                             loc.headerName,
+                            textAlign: TextAlign.center,
                             style: Theme.of(
                               context,
                             ).textTheme.headlineLarge?.copyWith(
@@ -110,8 +111,8 @@ class HeaderSection extends StatelessWidget {
                   },
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

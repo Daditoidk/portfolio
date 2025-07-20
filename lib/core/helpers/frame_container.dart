@@ -34,25 +34,36 @@ class FrameContainer extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          Image.asset(
-            frameAsset,
-            width: width,
-            height: height,
-            fit: BoxFit.contain,
-          ),
+          // Contenido del demo - Completamente contenido en el área de pantalla
           Positioned(
             left: overlayPadding.left,
             top: overlayPadding.top,
             right: overlayPadding.right,
             bottom: overlayPadding.bottom,
-            child: ClipRRect(
-              borderRadius: borderRadius,
-              child: SizedBox(
-                width: width - overlayPadding.horizontal,
-                height: height - overlayPadding.vertical,
-                child: child,
+            child: Container(
+              width: width - overlayPadding.horizontal,
+              height: height - overlayPadding.vertical,
+              decoration: BoxDecoration(
+                borderRadius: borderRadius,
+                color: Colors.transparent,
+              ),
+              clipBehavior: Clip.hardEdge,
+              child: ClipRRect(
+                borderRadius: borderRadius,
+                child: SizedBox(
+                  width: width - overlayPadding.horizontal,
+                  height: height - overlayPadding.vertical,
+                  child: child,
+                ),
               ),
             ),
+          ),
+          // Frame del dispositivo (capa superior)
+          Image.asset(
+            frameAsset,
+            width: width,
+            height: height,
+            fit: BoxFit.contain,
           ),
         ],
       ),

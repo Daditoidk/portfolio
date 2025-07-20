@@ -2,18 +2,229 @@
   "@@locale": "es",
   "appTitle": "Portafolio",
   
-  "headerName": "Tu Nombre",
+  "headerName": "Camilo Santacruz Abadiano",
   
-  "headerTitle": "Desarrollador Flutter",
+  "headerTitle": "Desarrollador Móvil",
   
   "headerSubtitle": "Creando experiencias móviles hermosas",
   
   "aboutTitle": "Sobre Mí",
   
-  "aboutDescription": "Soy un desarrollador Flutter apasionado con experiencia en crear aplicaciones móviles hermosas y funcionales. Me encanta convertir ideas en realidad a través de código limpio e interfaces intuitivas.",
+  "aboutDescription": "Soy una persona curiosa apasionada por la tecnología, la comida, los videojuegos, el fútbol, el fitness, el baile, la música, la filosofía, la psicología y un poco de historia. Me encanta explorar mi país y aprender sobre sus diversas culturas y paisajes.",
   
-  "aboutSubtitle": "Desarrollador apasionado con experiencia en Flutter, Dart y tecnologías web.",
-  "aboutSkills": "Flutter, Dart, JavaScript, HTML, CSS, Firebase, REST APIs, Git, Diseño UI/UX",
+  "aboutSubtitle": "Un entusiasta de la tecnología que cree en el aprendizaje continuo y encuentra alegría tanto en la innovación digital como en los placeres simples de la vida.",
+  "aboutSkills": "Flutter, Kotlin, Swift, Rive, Cursor, CodeMagic, REST APIs, Git, Diseño UX/UI",
+
+  "skillsTitle": "Habilidades y Tecnologías",
+  "@skillsTitle": {
+    "description": "Title of the skills section"
+  },
+
+  "skillsSubtitle": "Mi experiencia técnica y herramientas con las que trabajo",
+  "@skillsSubtitle": {
+    "description": "Subtitle of the skills section"
+  },
+
+  "skillsLanguages": "Lenguajes de Programación",
+  "@skillsLanguages": {
+    "description": "Category title for programming languages"
+  },
+
+  "skillsEditors": "Editores y Herramientas",
+  "@skillsEditors": {
+    "description": "Category title for editors and development tools"
+  },
+
+  "skillsDesign": "Diseño y Animación",
+  "@skillsDesign": {
+    "description": "Category title for design and animation tools"
+  },
+
+  "skillsDevOps": "DevOps y CI/CD",
+  "@skillsDevOps": {
+    "description": "Category title for DevOps and CI/CD tools"
+  },
+
+  "skillsAPIs": "APIs y Servicios",
+  "@skillsAPIs": {
+    "description": "Category title for APIs and services"
+  },
+
+  "skillFlutter": "Flutter",
+  "@skillFlutter": {
+    "description": "Flutter skill name"
+  },
+
+  "skillDart": "Dart",
+  "@skillDart": {
+    "description": "Dart skill name"
+  },
+
+  "skillKotlin": "Kotlin",
+  "@skillKotlin": {
+    "description": "Kotlin skill name"
+  },
+
+  "skillKotlinMultiplatform": "Kotlin Multiplatform",
+  "@skillKotlinMultiplatform": {
+    "description": "Kotlin Multiplatform skill name"
+  },
+
+  "skillSwift": "Swift",
+  "@skillSwift": {
+    "description": "Swift skill name"
+  },
+
+  "skillRive": "Rive",
+  "@skillRive": {
+    "description": "Rive skill name"
+  },
+
+  "skillFigma": "Figma",
+  "@skillFigma": {
+    "description": "Figma skill name"
+  },
+
+  "skillAdobeXD": "Adobe XD",
+  "@skillAdobeXD": {
+    "description": "Adobe XD skill name"
+  },
+
+  "skillAndroidStudio": "Android Studio",
+  "@skillAndroidStudio": {
+    "description": "Android Studio skill name"
+  },
+
+  "skillVSCode": "Visual Studio Code",
+  "@skillVSCode": {
+    "description": "Visual Studio Code skill name"
+  },
+
+  "skillCursor": "Cursor",
+  "@skillCursor": {
+    "description": "Cursor skill name"
+  },
+
+  "skillGit": "Git",
+  "@skillGit": {
+    "description": "Git skill name"
+  },
+
+  "skillScrum": "Scrum",
+  "@skillScrum": {
+    "description": "Scrum skill name"
+  },
+
+  "skillAgile": "Agile",
+  "@skillAgile": {
+    "description": "Agile skill name"
+  },
+
+  "skillKanban": "Kanban",
+  "@skillKanban": {
+    "description": "Kanban skill name"
+  },
+
+  "skillCodeMagic": "CodeMagic",
+  "@skillCodeMagic": {
+    "description": "CodeMagic skill name"
+  },
+
+  "skillGithubActions": "GitHub Actions",
+  "@skillGithubActions": {
+    "description": "GitHub Actions skill name"
+  },
+
+  "skillRiverpod": "Riverpod",
+  "@skillRiverpod": {
+    "description": "Riverpod skill name"
+  },
+
+  "skillProvider": "Provider",
+  "@skillProvider": {
+    "description": "Provider skill name"
+  },
+
+  "skillHooks": "Hooks",
+  "@skillHooks": {
+    "description": "Hooks skill name"
+  },
+
+  "skillFreezed": "Freezed",
+  "@skillFreezed": {
+    "description": "Freezed skill name"
+  },
+
+  "skillPlatformChannels": "Platform Channels",
+  "@skillPlatformChannels": {
+    "description": "Platform Channels skill name"
+  },
+
+  "skillRest": "REST",
+  "@skillRest": {
+    "description": "REST skill name"
+  },
+
+  "skillIsarDatabase": "Isar Database",
+  "@skillIsarDatabase": {
+    "description": "Isar Database skill name"
+  },
+
+  "skillSqlLite": "SQLite",
+  "@skillSqlLite": {
+    "description": "SQLite skill name"
+  },
+
+  "skillFirebase": "Firebase",
+  "@skillFirebase": {
+    "description": "Firebase skill name"
+  },
+
+  "skillFirebaseAnalytics": "Firebase Analytics",
+  "@skillFirebaseAnalytics": {
+    "description": "Firebase Analytics skill name"
+  },
+
+  "skillFirebaseCrashlytics": "Firebase Crashlytics",
+  "@skillFirebaseCrashlytics": {
+    "description": "Firebase Crashlytics skill name"
+  },
+
+  "skillMason": "Mason",
+  "@skillMason": {
+    "description": "Mason skill name"
+  },
+
+  "yearsOfExperience": "{years}+ años de experiencia",
+  "@yearsOfExperience": {
+    "description": "Years of experience text",
+    "placeholders": {
+      "years": {
+        "type": "String",
+        "example": "3"
+      }
+    }
+  },
+
+  "oneYearOrLess": "1 año o menos de experiencia",
+  "@oneYearOrLess": {
+    "description": "Text for 1 year or less experience"
+  },
+
+  "currentlyUsing": "Activo",
+  "@currentlyUsing": {
+    "description": "Label for currently used technologies"
+  },
+
+  "activeTooltip": "Actualmente usando esta tecnología",
+  "@activeTooltip": {
+    "description": "Tooltip text for active technology badge"
+  },
+
+  "experienceTooltip": "Haz clic para ver detalles de experiencia",
+  "@experienceTooltip": {
+    "description": "Tooltip text for experience badges"
+  },
   
   "skillFlutter": "Flutter",
   
@@ -192,5 +403,81 @@
   },
   "projectDemoHelloWorld": "Hola mundo",
   "projectDemoAvailableOnTabletOrDesktop": "La demo está disponible en tablet o dispositivo de escritorio",
-  "projectKnowMore": "Saber más"
+  "projectKnowMore": "Saber más",
+  
+  "createdBy": "Creado por Camilo Santacruz",
+  "@createdBy": {
+    "description": "Credit text showing who created the application"
+  },
+
+  "skillGetX": "GetX",
+  "@skillGetX": {
+    "description": "Nombre de la habilidad GetX"
+  },
+
+  "skillBloc": "Bloc",
+  "@skillBloc": {
+    "description": "Nombre de la habilidad Bloc"
+  },
+
+  "skillFlutterWeb": "Flutter Web",
+  "@skillFlutterWeb": {
+    "description": "Nombre de la habilidad Flutter Web"
+  },
+
+  "flutterTechnologies": "Tecnologías Flutter & Dart",
+  "@flutterTechnologies": {
+    "description": "Título para la sección de tecnologías Flutter"
+  },
+
+  "stateManagement": "Gestión de Estado",
+  "@stateManagement": {
+    "description": "Título de categoría para tecnologías de gestión de estado"
+  },
+
+  "codeGeneration": "Generación de Código",
+  "@codeGeneration": {
+    "description": "Título de categoría para tecnologías de generación de código"
+  },
+
+  "nativeIntegration": "Integración Nativa",
+  "@nativeIntegration": {
+    "description": "Título de categoría para tecnologías de integración nativa"
+  },
+
+  "databases": "Bases de Datos",
+  "@databases": {
+    "description": "Título de categoría para tecnologías de bases de datos"
+  },
+
+  "analyticsMonitoring": "Analíticas y Monitoreo",
+  "@analyticsMonitoring": {
+    "description": "Título de categoría para tecnologías de analíticas y monitoreo"
+  },
+
+  "developmentTools": "Herramientas de Desarrollo",
+  "@developmentTools": {
+    "description": "Título de categoría para herramientas de desarrollo"
+  },
+
+  "projectManagement": "Gestión de Proyectos",
+  "@projectManagement": {
+    "description": "Título de categoría para habilidades de gestión de proyectos"
+  },
+
+  "experienceTooltipOneYear": "1 año o menos de experiencia",
+  "@experienceTooltipOneYear": {
+    "description": "Texto del tooltip para 1 año o menos de experiencia"
+  },
+
+  "experienceTooltipYears": "{years}+ años de experiencia",
+  "@experienceTooltipYears": {
+    "description": "Texto del tooltip para años de experiencia",
+    "placeholders": {
+      "years": {
+        "type": "String",
+        "example": "3"
+      }
+    }
+  }
 } 

@@ -5,12 +5,12 @@
     "description": "The title of the application"
   },
   
-  "headerName": "あなたの名前",
+  "headerName": "Camilo Santacruz Abadiano",
   "@headerName": {
     "description": "The name displayed in the header section"
   },
   
-  "headerTitle": "Flutter開発者",
+  "headerTitle": "モバイル開発者",
   "@headerTitle": {
     "description": "The professional title in the header"
   },
@@ -25,16 +25,227 @@
     "description": "Title of the about section"
   },
   
-  "aboutDescription": "私は美しく機能的なモバイルアプリケーションを作成する経験を持つ情熱的なFlutter開発者です。クリーンなコードと直感的なユーザーインターフェースを通じて、アイデアを現実に変えることが大好きです。",
+  "aboutDescription": "私は技術、食べ物、ビデオゲーム、サッカー、フィットネス、ダンス、音楽、哲学、心理学、そして少し歴史に情熱を持つ好奇心旺盛な人です。自分の国を探索し、その多様な文化や風景について学ぶことが大好きです。",
   "@aboutDescription": {
     "description": "The main description in the about section"
   },
   
-  "aboutSubtitle": "Flutter、Dart、Web技術に精通した情熱的な開発者です。",
+  "aboutSubtitle": "継続的な学習を信じ、デジタルイノベーションと人生のシンプルな喜びの両方に喜びを見出す技術愛好家です。",
   "@aboutSubtitle": {
     "description": "Aboutセクションのサブタイトル"
   },
-  "aboutSkills": "Flutter, Dart, JavaScript, HTML, CSS, Firebase, REST API, Git, UI/UXデザイン",
+  "aboutSkills": "Flutter, Kotlin, Swift, Rive, Cursor, CodeMagic, REST API, Git, UX/UIデザイン",
+
+  "skillsTitle": "スキルとテクノロジー",
+  "@skillsTitle": {
+    "description": "Title of the skills section"
+  },
+
+  "skillsSubtitle": "私の技術的専門知識と使用ツール",
+  "@skillsSubtitle": {
+    "description": "Subtitle of the skills section"
+  },
+
+  "skillsLanguages": "プログラミング言語",
+  "@skillsLanguages": {
+    "description": "Category title for programming languages"
+  },
+
+  "skillsEditors": "エディターとツール",
+  "@skillsEditors": {
+    "description": "Category title for editors and development tools"
+  },
+
+  "skillsDesign": "デザインとアニメーション",
+  "@skillsDesign": {
+    "description": "Category title for design and animation tools"
+  },
+
+  "skillsDevOps": "DevOpsとCI/CD",
+  "@skillsDevOps": {
+    "description": "Category title for DevOps and CI/CD tools"
+  },
+
+  "skillsAPIs": "APIとサービス",
+  "@skillsAPIs": {
+    "description": "Category title for APIs and services"
+  },
+
+  "skillFlutter": "Flutter",
+  "@skillFlutter": {
+    "description": "Flutter skill name"
+  },
+
+  "skillDart": "Dart",
+  "@skillDart": {
+    "description": "Dart skill name"
+  },
+
+  "skillKotlin": "Kotlin",
+  "@skillKotlin": {
+    "description": "Kotlin skill name"
+  },
+
+  "skillKotlinMultiplatform": "Kotlin Multiplatform",
+  "@skillKotlinMultiplatform": {
+    "description": "Kotlin Multiplatform skill name"
+  },
+
+  "skillSwift": "Swift",
+  "@skillSwift": {
+    "description": "Swift skill name"
+  },
+
+  "skillRive": "Rive",
+  "@skillRive": {
+    "description": "Rive skill name"
+  },
+
+  "skillFigma": "Figma",
+  "@skillFigma": {
+    "description": "Figma skill name"
+  },
+
+  "skillAdobeXD": "Adobe XD",
+  "@skillAdobeXD": {
+    "description": "Adobe XD skill name"
+  },
+
+  "skillAndroidStudio": "Android Studio",
+  "@skillAndroidStudio": {
+    "description": "Android Studio skill name"
+  },
+
+  "skillVSCode": "Visual Studio Code",
+  "@skillVSCode": {
+    "description": "Visual Studio Code skill name"
+  },
+
+  "skillCursor": "Cursor",
+  "@skillCursor": {
+    "description": "Cursor skill name"
+  },
+
+  "skillGit": "Git",
+  "@skillGit": {
+    "description": "Git skill name"
+  },
+
+  "skillScrum": "Scrum",
+  "@skillScrum": {
+    "description": "Scrum skill name"
+  },
+
+  "skillAgile": "Agile",
+  "@skillAgile": {
+    "description": "Agile skill name"
+  },
+
+  "skillKanban": "Kanban",
+  "@skillKanban": {
+    "description": "Kanban skill name"
+  },
+
+  "skillCodeMagic": "CodeMagic",
+  "@skillCodeMagic": {
+    "description": "CodeMagic skill name"
+  },
+
+  "skillGithubActions": "GitHub Actions",
+  "@skillGithubActions": {
+    "description": "GitHub Actions skill name"
+  },
+
+  "skillRiverpod": "Riverpod",
+  "@skillRiverpod": {
+    "description": "Riverpod skill name"
+  },
+
+  "skillProvider": "Provider",
+  "@skillProvider": {
+    "description": "Provider skill name"
+  },
+
+  "skillHooks": "Hooks",
+  "@skillHooks": {
+    "description": "Hooks skill name"
+  },
+
+  "skillFreezed": "Freezed",
+  "@skillFreezed": {
+    "description": "Freezed skill name"
+  },
+
+  "skillPlatformChannels": "Platform Channels",
+  "@skillPlatformChannels": {
+    "description": "Platform Channels skill name"
+  },
+
+  "skillRest": "REST",
+  "@skillRest": {
+    "description": "REST skill name"
+  },
+
+  "skillIsarDatabase": "Isar Database",
+  "@skillIsarDatabase": {
+    "description": "Isar Database skill name"
+  },
+
+  "skillSqlLite": "SQLite",
+  "@skillSqlLite": {
+    "description": "SQLite skill name"
+  },
+
+  "skillFirebase": "Firebase",
+  "@skillFirebase": {
+    "description": "Firebase skill name"
+  },
+
+  "skillFirebaseAnalytics": "Firebase Analytics",
+  "@skillFirebaseAnalytics": {
+    "description": "Firebase Analytics skill name"
+  },
+
+  "skillFirebaseCrashlytics": "Firebase Crashlytics",
+  "@skillFirebaseCrashlytics": {
+    "description": "Firebase Crashlytics skill name"
+  },
+
+  "skillMason": "Mason",
+  "@skillMason": {
+    "description": "Mason skill name"
+  },
+
+  "yearsOfExperience": "{years}+年の経験",
+  "@yearsOfExperience": {
+    "description": "Years of experience text",
+    "placeholders": {
+      "years": {
+        "type": "String",
+        "example": "3"
+      }
+    }
+  },
+
+  "oneYearOrLess": "1年以下の経験",
+  "@oneYearOrLess": {
+    "description": "Text for 1 year or less experience"
+  },
+
+  "currentlyUsing": "アクティブ",
+  "@currentlyUsing": {
+    "description": "Label for currently used technologies"
+  },
+
+  "activeTooltip": "現在この技術を使用中",
+  "@activeTooltip": {
+    "description": "Tooltip text for active technology badge"
+  },
+
+  "experienceTooltip": "クリックして経験の詳細を表示",
+  "@experienceTooltip": {
+    "description": "Tooltip text for experience badges"
+  },
   "@aboutSkills": {
     "description": "Aboutセクションのスキル一覧（カンマ区切り）"
   },
@@ -540,5 +751,81 @@
   "demoAvailableOnTabletOrDesktop": "デモはタブレットまたはデスクトップデバイスで利用できます",
   "@demoAvailableOnTabletOrDesktop": {
     "description": "プロジェクトのデモがタブレットまたはデスクトップでのみ利用可能な場合にモバイルで表示されるメッセージ。"
+  },
+  
+  "createdBy": "Camilo Santacruz 作成",
+  "@createdBy": {
+    "description": "Credit text showing who created the application"
+  },
+
+  "skillGetX": "GetX",
+  "@skillGetX": {
+    "description": "GetXスキル名"
+  },
+
+  "skillBloc": "Bloc",
+  "@skillBloc": {
+    "description": "Blocスキル名"
+  },
+
+  "skillFlutterWeb": "Flutter Web",
+  "@skillFlutterWeb": {
+    "description": "Flutter Webスキル名"
+  },
+
+  "flutterTechnologies": "Flutter & Dart技術",
+  "@flutterTechnologies": {
+    "description": "Flutter技術セクションのタイトル"
+  },
+
+  "stateManagement": "状態管理",
+  "@stateManagement": {
+    "description": "状態管理技術のカテゴリタイトル"
+  },
+
+  "codeGeneration": "コード生成",
+  "@codeGeneration": {
+    "description": "コード生成技術のカテゴリタイトル"
+  },
+
+  "nativeIntegration": "ネイティブ統合",
+  "@nativeIntegration": {
+    "description": "ネイティブ統合技術のカテゴリタイトル"
+  },
+
+  "databases": "データベース",
+  "@databases": {
+    "description": "データベース技術のカテゴリタイトル"
+  },
+
+  "analyticsMonitoring": "分析とモニタリング",
+  "@analyticsMonitoring": {
+    "description": "分析とモニタリング技術のカテゴリタイトル"
+  },
+
+  "developmentTools": "開発ツール",
+  "@developmentTools": {
+    "description": "開発ツールのカテゴリタイトル"
+  },
+
+  "projectManagement": "プロジェクト管理",
+  "@projectManagement": {
+    "description": "プロジェクト管理スキルのカテゴリタイトル"
+  },
+
+  "experienceTooltipOneYear": "1年以下の経験",
+  "@experienceTooltipOneYear": {
+    "description": "1年以下の経験のツールチップテキスト"
+  },
+
+  "experienceTooltipYears": "{years}+年の経験",
+  "@experienceTooltipYears": {
+    "description": "経験年数のツールチップテキスト",
+    "placeholders": {
+      "years": {
+        "type": "String",
+        "example": "3"
+      }
+    }
   }
 } 

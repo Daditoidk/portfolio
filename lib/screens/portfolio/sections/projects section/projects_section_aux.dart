@@ -66,13 +66,7 @@ Widget _buildDesktopProjectPage(
                 height: 655,
                 overlayPadding: const EdgeInsets.fromLTRB(30, 40, 30, 40),
                 borderRadius: BorderRadius.circular(32),
-                child: Center(
-                  child: Text(
-                    AppLocalizations.of(context)!.projectDemoHelloWorld,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+                child: project['demo'],
               ),
             ),
           )
@@ -96,16 +90,7 @@ Widget _buildDesktopProjectPage(
                         frameHeight * 0.14,
                       ),
                       borderRadius: BorderRadius.circular(24),
-                      child: Center(
-                        child: Text(
-                          AppLocalizations.of(context)!.projectDemoHelloWorld,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
+                      child: project['demo'],
                     ),
                   );
                 },
@@ -227,13 +212,7 @@ Widget _buildTabletProjectPage(
           height: 600,
           overlayPadding: const EdgeInsets.fromLTRB(40, 40, 40, 40),
           borderRadius: BorderRadius.circular(24),
-          child: Center(
-            child: Text(
-              AppLocalizations.of(context)!.projectDemoHelloWorld,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              textAlign: TextAlign.center,
-            ),
-          ),
+          child: project['demo'],
         ),
       ),
       const SizedBox(height: 32),

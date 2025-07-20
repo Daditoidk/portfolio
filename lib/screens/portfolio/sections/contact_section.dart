@@ -3,6 +3,7 @@ import '../../../core/l10n/app_localizations.dart';
 import '../../../core/constants/semantic_labels.dart';
 import '../../../core/helpers/responsive.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../../widgets/version_info.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
@@ -108,6 +109,9 @@ class ContactSection extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(height: 40),
+            // Version and last update info - only show on desktop
+            if (!isMobile) VersionInfo(isMobile: false),
             SizedBox(height: isMobile ? 40 : 0),
           ],
         ),

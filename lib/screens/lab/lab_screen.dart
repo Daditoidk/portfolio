@@ -34,7 +34,7 @@ class _LabScreenState extends State<LabScreen> {
                   height: double.infinity,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/lab_bg.jpg'),
+                      image: AssetImage('assets/bgs/lab_bg.jpg'),
                       fit: BoxFit.cover,
                     ),
                   ),

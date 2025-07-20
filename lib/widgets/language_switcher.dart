@@ -31,15 +31,15 @@ class LanguageSwitcher extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         color: Colors.transparent,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
           decoration: BoxDecoration(
             color: Colors.white.withValues(alpha: 0.95),
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withValues(alpha: 0.18),
-                blurRadius: 10,
-                offset: const Offset(0, 6),
+                blurRadius: 8,
+                offset: const Offset(0, 4),
               ),
             ],
           ),
@@ -47,21 +47,21 @@ class LanguageSwitcher extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               _buildFlagButton(context, '🇺🇸', const Locale('en'), 'English'),
-              const SizedBox(width: 5),
+              const SizedBox(width: 3),
               Container(
-                width: 1.5,
-                height: 30,
+                width: 1,
+                height: 24,
                 color: Colors.grey.withValues(alpha: 0.25),
               ),
-              const SizedBox(width: 5),
+              const SizedBox(width: 3),
               _buildFlagButton(context, '🇨🇴', const Locale('es'), 'Español'),
-              const SizedBox(width: 5),
+              const SizedBox(width: 3),
               Container(
-                width: 1.5,
-                height: 30,
+                width: 1,
+                height: 24,
                 color: Colors.grey.withValues(alpha: 0.25),
               ),
-              const SizedBox(width: 5),
+              const SizedBox(width: 3),
               _buildFlagButton(context, '🇯🇵', const Locale('ja'), '日本語'),
             ],
           ),
@@ -99,14 +99,14 @@ class LanguageSwitcher extends StatelessWidget {
     // Custom border radius based on position and selection state
     BorderRadius getBorderRadius() {
       if (!isActive) {
-        return BorderRadius.circular(25);
+        return BorderRadius.circular(18);
       }
 
       if (isEnglish) {
         // First item: no border on right corners (adjacent to divider)
         return const BorderRadius.only(
-          topLeft: Radius.circular(25),
-          bottomLeft: Radius.circular(25),
+          topLeft: Radius.circular(18),
+          bottomLeft: Radius.circular(18),
           topRight: Radius.zero,
           bottomRight: Radius.zero,
         );
@@ -118,12 +118,12 @@ class LanguageSwitcher extends StatelessWidget {
         return const BorderRadius.only(
           topLeft: Radius.zero,
           bottomLeft: Radius.zero,
-          topRight: Radius.circular(25),
-          bottomRight: Radius.circular(25),
+          topRight: Radius.circular(18),
+          bottomRight: Radius.circular(18),
         );
       }
 
-      return BorderRadius.circular(25);
+      return BorderRadius.circular(18);
     }
 
     return Semantics(
@@ -160,8 +160,8 @@ class LanguageSwitcher extends StatelessWidget {
                   return AnimatedContainer(
                     duration: const Duration(milliseconds: 200),
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 8,
+                      horizontal: 12,
+                      vertical: 6,
                     ),
                     decoration: BoxDecoration(
                       color: backgroundColor,
@@ -174,16 +174,16 @@ class LanguageSwitcher extends StatelessWidget {
                           label: SemanticLabels.americanFlag,
                           child: Text(
                             flag,
-                            style: const TextStyle(fontSize: 20),
+                            style: const TextStyle(fontSize: 16),
                           ),
                         ),
                         if (isActive) ...[
-                          const SizedBox(width: 8),
+                          const SizedBox(width: 4),
                           Semantics(
                             label: SemanticLabels.selected,
                             child: Icon(
                               Icons.check_circle,
-                              size: 16,
+                              size: 14,
                               color: Colors.blue.shade600,
                             ),
                           ),

@@ -3,8 +3,7 @@ import 'dart:ui';
 import '../core/l10n/app_localizations.dart';
 import '../core/constants/semantic_labels.dart';
 import '../core/theme/app_theme.dart';
-import 'package:package_info_plus/package_info_plus.dart';
-import '../last_update.dart';
+import 'version_info.dart';
 
 class HamburgerMenu extends StatelessWidget {
   final Function(String) onSectionTap;
@@ -181,7 +180,7 @@ class HamburgerMenu extends StatelessWidget {
                               language['locale'] as Locale,
                             ),
                       ),
-                      if (isMobile) const VersionInfo(),
+                      if (isMobile) const VersionInfo(isMobile: true),
                     ],
                   ),
                 ),
@@ -322,44 +321,5 @@ class HamburgerMenu extends StatelessWidget {
       default:
         return Icons.circle;
     }
-  }
-}
-
-class VersionInfo extends StatelessWidget {
-  const VersionInfo({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<PackageInfo>(
-      future: PackageInfo.fromPlatform(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) return const SizedBox.shrink();
-        final version = snapshot.data!.version;
-        return Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 25),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Last update: ' + lastUpdate,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                Text(
-                  'v$version',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
   }
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'sections/header_section.dart';
 import 'sections/about_section.dart';
-import 'sections/projects_section/projects_section.dart';
+import 'sections/skills section/skills_section.dart';
+import 'sections/projects section/projects_section.dart';
 import 'sections/contact_section.dart';
 import '../../widgets/portfolio_nav_bar.dart';
 import '../../widgets/language_switcher.dart';
@@ -18,6 +19,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   final Map<String, GlobalKey> _sectionKeys = {
     'home': GlobalKey(),
     'about': GlobalKey(),
+    'skills': GlobalKey(),
     'projects': GlobalKey(),
     'contact': GlobalKey(),
   };
@@ -63,6 +65,8 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     } else if (scrollPosition < sectionHeight * 2 - threshold) {
       newSection = 'about';
     } else if (scrollPosition < sectionHeight * 3 - threshold) {
+      newSection = 'skills';
+    } else if (scrollPosition < sectionHeight * 4 - threshold) {
       newSection = 'projects';
     } else {
       newSection = 'contact';
@@ -115,8 +119,6 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-
-                      //TODO: Add the home section
                       Container(
                         key: _sectionKeys['home'],
                         child: HeaderSection(
@@ -129,6 +131,10 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                       Container(
                         key: _sectionKeys['about'],
                         child: const AboutSection(),
+                      ),
+                      Container(
+                        key: _sectionKeys['skills'],
+                        child: const SkillsSectionScreen(),
                       ),
                       Container(
                         key: _sectionKeys['projects'],
