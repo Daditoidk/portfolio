@@ -32,9 +32,21 @@ class FrameContainer extends StatelessWidget {
   /// Calcula el padding interno adicional para frames de teléfono
   EdgeInsets get _internalPadding {
     if (_isPhoneFrame) {
-      return const EdgeInsets.symmetric(horizontal: 40);
+      return const EdgeInsets.symmetric(horizontal: 30);
     }
     return EdgeInsets.zero;
+  }
+
+  /// Widget que maneja el contenido con SafeArea para teléfonos
+  Widget _buildContent() {
+    final content = Padding(padding: _internalPadding, child: child);
+
+    // Para frames de teléfono, remover el bottom safe area
+    if (_isPhoneFrame) {
+      return SafeArea(bottom: false, child: content);
+    }
+
+    return content;
   }
 
   @override
@@ -64,9 +76,7 @@ class FrameContainer extends StatelessWidget {
                 child: SizedBox(
                   width: width - overlayPadding.horizontal,
                   height: height - overlayPadding.vertical,
-                  child: Padding(padding: _internalPadding,
-                    child: child,
-                  ),
+                  child: _buildContent(),
                 ),
               ),
             ),
