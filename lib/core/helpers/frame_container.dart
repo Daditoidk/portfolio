@@ -26,6 +26,17 @@ class FrameContainer extends StatelessWidget {
     required this.borderRadius,
   });
 
+  /// Detecta si el frame es de teléfono basado en el nombre del asset
+  bool get _isPhoneFrame => frameAsset.contains('phone_frame');
+
+  /// Calcula el padding interno adicional para frames de teléfono
+  EdgeInsets get _internalPadding {
+    if (_isPhoneFrame) {
+      return const EdgeInsets.symmetric(horizontal: 40);
+    }
+    return EdgeInsets.zero;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -53,7 +64,9 @@ class FrameContainer extends StatelessWidget {
                 child: SizedBox(
                   width: width - overlayPadding.horizontal,
                   height: height - overlayPadding.vertical,
-                  child: child,
+                  child: Padding(padding: _internalPadding,
+                    child: child,
+                  ),
                 ),
               ),
             ),
