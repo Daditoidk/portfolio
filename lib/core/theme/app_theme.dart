@@ -35,7 +35,7 @@ class AppTheme {
         outlineVariant: palePink, // Subtle borders
       ),
       scaffoldBackgroundColor: palePink,
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: Colors.white,
         elevation: 4,
         shadowColor: veryDarkRed.withValues(alpha: 0.1),
