@@ -77,7 +77,7 @@ class ExpandedSubTechnologies extends StatelessWidget {
                 const SizedBox(height: 12),
               ],
             );
-          }).toList(),
+          }),
         ],
       ),
     );

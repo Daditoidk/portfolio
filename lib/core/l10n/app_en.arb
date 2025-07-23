@@ -250,21 +250,6 @@
     "description": "Tooltip text for experience badges"
   },
   
-  "skillFlutter": "Flutter",
-  "@skillFlutter": {
-    "description": "Flutter skill name"
-  },
-  
-  "skillDart": "Dart",
-  "@skillDart": {
-    "description": "Dart skill name"
-  },
-  
-  "skillFirebase": "Firebase",
-  "@skillFirebase": {
-    "description": "Firebase skill name"
-  },
-  
   "projectsTitle": "My Projects",
   "@projectsTitle": {
     "description": "Title of the projects section"
@@ -820,5 +805,69 @@
         "example": "3"
       }
     }
-  }
+  },
+
+  "resumeDownload": "Download",
+  "@resumeDownload": {
+    "description": "Button text for downloading the resume in the Resume section."
+  },
+  "resumeSectionTitle": "Resume",
+  "@resumeSectionTitle": { "description": "Title for the resume section." },
+  "resumeSectionDescription": "Download my latest resume. If you want to know more about my experience, this is the place!",
+  "@resumeSectionDescription": { "description": "Description for the resume section." },
+  "resumeLastUpdated": "Last updated: {date}",
+  "@resumeLastUpdated": { "description": "Label for last updated date of the resume file.", "placeholders": { "date": { "type": "String", "example": "2024-06-01" } } }
+  ,
+  "seasonTab": "Season",
+  "communityTab": "Community",
+  "profileTab": "Profile",
+  "communityTitle": "Weekly Leaderboard",
+  "weeklyTab": "Weekly",
+  "globalTab": "Global",
+  "profileTitle": "Profile",
+  "profileLevelAdvanced": "Level: Advanced",
+  "profileRecommendations": "Recommendations",
+  "profilePerformance": "Performance",
+  "profileAchievements": "Achievements",
+  "profileExternalReport": "External Evaluation Report"
+  ,
+  "todayLabel": "Today",
+  "preEmotionalLabel": "Emotional Pre",
+  "planLabel": "Plan",
+  "matchLabel": "Match",
+  "postEmotionalLabel": "Emotional Post",
+  "selfEvaluationLabel": "Self-evaluation",
+  "popupPastWeekTitle": "Date finished",
+  "popupPastWeekContent": "This date has finished, check your progress in your profile.",
+  "popupCurrentWeekTitle": "Not available",
+  "popupCurrentWeekContent": "This flag will be available {when}",
+  "popupFutureWeekTitle": "Not available",
+  "popupFutureWeekContent": "This task will be activated in {weeks} weeks.",
+  "popupFutureWeekContentSpecial": "This task will be activated {when}.",
+  "popupTaskCompleted": "Huray! Task completed",
+  "popupNewTaskAssigned": "New task assigned",
+  "popupDribblingQuestion": "Task: How do you rate your dribbling in the last match?",
+  "popupPassingQuestion": "Task: How do you rate your passing in the last match?",
+  "popupTomorrow": "tomorrow",
+  "popupInXDays": "in {days} days",
+  "popupNextWeek": "next week",
+  "popupLastWeek": "last week",
+  "popupInXWeeks": "in {weeks} weeks",
+  "popupYesterday": "yesterday",
+  "preEmotionalLabelShort": "Pre",
+  "planLabelShort": "Plan",
+  "matchLabelShort": "Match",
+  "postEmotionalLabelShort": "Post",
+  "selfEvaluationLabelShort": "Self",
+  "week1Label": "Week 1",
+  "week2Label": "Week 2",
+  "week3Label": "Week 3",
+  "week4Label": "Week 4",
+  "week5Label": "Week 5",
+  "b4sDemoTitle": "Brain4Goals Demo",
+  "b4sDemoTapToStart": "Tap to start the demo",
+  "b4sSplashTitle": "Brain4Goals",
+  "b4sSplashSubtitle": "Your season, your success",
+  "fieldScreenPrepareTitle": "Get ready\nfor the match!",
+  "fieldScreenPrepareSubtitle": "Prepare your mind and body for the upcoming match."
 } 

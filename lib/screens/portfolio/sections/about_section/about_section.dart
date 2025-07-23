@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../core/l10n/app_localizations.dart';
-import '../../../core/constants/semantic_labels.dart';
-import '../../../core/helpers/responsive.dart';
+import '../../../../core/l10n/app_localizations.dart';
+import '../../../../core/constants/semantic_labels.dart';
+import '../../../../core/helpers/responsive.dart';
 
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});

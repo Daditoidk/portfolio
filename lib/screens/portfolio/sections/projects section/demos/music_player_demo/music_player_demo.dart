@@ -54,7 +54,7 @@ class _MusicPlayerDemoState extends State<MusicPlayerDemo> {
                       width: 200,
                       height: 200,
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(100),
                       ),
                       child: const Icon(

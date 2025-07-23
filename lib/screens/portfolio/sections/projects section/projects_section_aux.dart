@@ -64,7 +64,7 @@ Widget _buildDesktopProjectPage(
                 frameAsset: project['frame'],
                 width: 370,
                 height: 655,
-                overlayPadding: const EdgeInsets.fromLTRB(30, 40, 30, 40),
+                overlayPadding: const EdgeInsets.fromLTRB(52, 8, 52, 10),
                 borderRadius: BorderRadius.circular(32),
                 child: project['demo'],
               ),

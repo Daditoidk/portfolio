@@ -1014,6 +1014,336 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{years}+ years of experience'**
   String experienceTooltipYears(String years);
+
+  /// Button text for downloading the resume in the Resume section.
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get resumeDownload;
+
+  /// Title for the resume section.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume'**
+  String get resumeSectionTitle;
+
+  /// Description for the resume section.
+  ///
+  /// In en, this message translates to:
+  /// **'Download my latest resume. If you want to know more about my experience, this is the place!'**
+  String get resumeSectionDescription;
+
+  /// Label for last updated date of the resume file.
+  ///
+  /// In en, this message translates to:
+  /// **'Last updated: {date}'**
+  String resumeLastUpdated(String date);
+
+  /// No description provided for @seasonTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Season'**
+  String get seasonTab;
+
+  /// No description provided for @communityTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Community'**
+  String get communityTab;
+
+  /// No description provided for @profileTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profileTab;
+
+  /// No description provided for @communityTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly Leaderboard'**
+  String get communityTitle;
+
+  /// No description provided for @weeklyTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly'**
+  String get weeklyTab;
+
+  /// No description provided for @globalTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Global'**
+  String get globalTab;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profileTitle;
+
+  /// No description provided for @profileLevelAdvanced.
+  ///
+  /// In en, this message translates to:
+  /// **'Level: Advanced'**
+  String get profileLevelAdvanced;
+
+  /// No description provided for @profileRecommendations.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommendations'**
+  String get profileRecommendations;
+
+  /// No description provided for @profilePerformance.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance'**
+  String get profilePerformance;
+
+  /// No description provided for @profileAchievements.
+  ///
+  /// In en, this message translates to:
+  /// **'Achievements'**
+  String get profileAchievements;
+
+  /// No description provided for @profileExternalReport.
+  ///
+  /// In en, this message translates to:
+  /// **'External Evaluation Report'**
+  String get profileExternalReport;
+
+  /// No description provided for @todayLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get todayLabel;
+
+  /// No description provided for @preEmotionalLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Emotional Pre'**
+  String get preEmotionalLabel;
+
+  /// No description provided for @planLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan'**
+  String get planLabel;
+
+  /// No description provided for @matchLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Match'**
+  String get matchLabel;
+
+  /// No description provided for @postEmotionalLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Emotional Post'**
+  String get postEmotionalLabel;
+
+  /// No description provided for @selfEvaluationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Self-evaluation'**
+  String get selfEvaluationLabel;
+
+  /// No description provided for @popupPastWeekTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Date finished'**
+  String get popupPastWeekTitle;
+
+  /// No description provided for @popupPastWeekContent.
+  ///
+  /// In en, this message translates to:
+  /// **'This date has finished, check your progress in your profile.'**
+  String get popupPastWeekContent;
+
+  /// No description provided for @popupCurrentWeekTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available'**
+  String get popupCurrentWeekTitle;
+
+  /// No description provided for @popupCurrentWeekContent.
+  ///
+  /// In en, this message translates to:
+  /// **'This flag will be available {when}'**
+  String popupCurrentWeekContent(Object when);
+
+  /// No description provided for @popupFutureWeekTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available'**
+  String get popupFutureWeekTitle;
+
+  /// No description provided for @popupFutureWeekContent.
+  ///
+  /// In en, this message translates to:
+  /// **'This task will be activated in {weeks} weeks.'**
+  String popupFutureWeekContent(Object weeks);
+
+  /// No description provided for @popupFutureWeekContentSpecial.
+  ///
+  /// In en, this message translates to:
+  /// **'This task will be activated {when}.'**
+  String popupFutureWeekContentSpecial(Object when);
+
+  /// No description provided for @popupTaskCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Huray! Task completed'**
+  String get popupTaskCompleted;
+
+  /// No description provided for @popupNewTaskAssigned.
+  ///
+  /// In en, this message translates to:
+  /// **'New task assigned'**
+  String get popupNewTaskAssigned;
+
+  /// No description provided for @popupDribblingQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Task: How do you rate your dribbling in the last match?'**
+  String get popupDribblingQuestion;
+
+  /// No description provided for @popupPassingQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Task: How do you rate your passing in the last match?'**
+  String get popupPassingQuestion;
+
+  /// No description provided for @popupTomorrow.
+  ///
+  /// In en, this message translates to:
+  /// **'tomorrow'**
+  String get popupTomorrow;
+
+  /// No description provided for @popupInXDays.
+  ///
+  /// In en, this message translates to:
+  /// **'in {days} days'**
+  String popupInXDays(Object days);
+
+  /// No description provided for @popupNextWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'next week'**
+  String get popupNextWeek;
+
+  /// No description provided for @popupLastWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'last week'**
+  String get popupLastWeek;
+
+  /// No description provided for @popupInXWeeks.
+  ///
+  /// In en, this message translates to:
+  /// **'in {weeks} weeks'**
+  String popupInXWeeks(Object weeks);
+
+  /// No description provided for @popupYesterday.
+  ///
+  /// In en, this message translates to:
+  /// **'yesterday'**
+  String get popupYesterday;
+
+  /// No description provided for @preEmotionalLabelShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Pre'**
+  String get preEmotionalLabelShort;
+
+  /// No description provided for @planLabelShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan'**
+  String get planLabelShort;
+
+  /// No description provided for @matchLabelShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Match'**
+  String get matchLabelShort;
+
+  /// No description provided for @postEmotionalLabelShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Post'**
+  String get postEmotionalLabelShort;
+
+  /// No description provided for @selfEvaluationLabelShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Self'**
+  String get selfEvaluationLabelShort;
+
+  /// No description provided for @week1Label.
+  ///
+  /// In en, this message translates to:
+  /// **'Week 1'**
+  String get week1Label;
+
+  /// No description provided for @week2Label.
+  ///
+  /// In en, this message translates to:
+  /// **'Week 2'**
+  String get week2Label;
+
+  /// No description provided for @week3Label.
+  ///
+  /// In en, this message translates to:
+  /// **'Week 3'**
+  String get week3Label;
+
+  /// No description provided for @week4Label.
+  ///
+  /// In en, this message translates to:
+  /// **'Week 4'**
+  String get week4Label;
+
+  /// No description provided for @week5Label.
+  ///
+  /// In en, this message translates to:
+  /// **'Week 5'**
+  String get week5Label;
+
+  /// No description provided for @b4sDemoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Brain4Goals Demo'**
+  String get b4sDemoTitle;
+
+  /// No description provided for @b4sDemoTapToStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to start the demo'**
+  String get b4sDemoTapToStart;
+
+  /// No description provided for @b4sSplashTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Brain4Goals'**
+  String get b4sSplashTitle;
+
+  /// No description provided for @b4sSplashSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your season, your success'**
+  String get b4sSplashSubtitle;
+
+  /// No description provided for @fieldScreenPrepareTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Get ready\nfor the match!'**
+  String get fieldScreenPrepareTitle;
+
+  /// No description provided for @fieldScreenPrepareSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Prepare your mind and body for the upcoming match.'**
+  String get fieldScreenPrepareSubtitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

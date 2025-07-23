@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'sections/header_section.dart';
-import 'sections/about_section.dart';
+import 'sections/header_section/header_section.dart';
+import 'sections/about_section/about_section.dart';
 import 'sections/skills section/skills_section.dart';
 import 'sections/projects section/projects_section.dart';
-import 'sections/contact_section.dart';
+import 'sections/contact_section/contact_section.dart';
+import 'sections/resume_section/resume_section.dart';
 import '../../widgets/portfolio_nav_bar.dart';
 import '../../widgets/language_switcher.dart';
 
@@ -20,6 +21,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     'home': GlobalKey(),
     'about': GlobalKey(),
     'skills': GlobalKey(),
+    'resume': GlobalKey(),
     'projects': GlobalKey(),
     'contact': GlobalKey(),
   };
@@ -65,8 +67,10 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     } else if (scrollPosition < sectionHeight * 2 - threshold) {
       newSection = 'about';
     } else if (scrollPosition < sectionHeight * 3 - threshold) {
-      newSection = 'skills';
+      newSection = 'resume';
     } else if (scrollPosition < sectionHeight * 4 - threshold) {
+      newSection = 'skills';
+    } else if (scrollPosition < sectionHeight * 5 - threshold) {
       newSection = 'projects';
     } else {
       newSection = 'contact';
@@ -135,6 +139,11 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                       Container(
                         key: _sectionKeys['skills'],
                         child: const SkillsSectionScreen(),
+                      ),
+                      // Resume Section (moved after Skills)
+                      Container(
+                        key: _sectionKeys['resume'],
+                        child: const ResumeSection(),
                       ),
                       Container(
                         key: _sectionKeys['projects'],

@@ -28,9 +28,7 @@ class AppTheme {
         secondary: lightRed, // Secondary accent
         onSecondary: Colors.white,
         surface: palePink, // Main background
-        onSurface: veryDarkRed, // Text on surface
-        background: palePink, // App background
-        onBackground: veryDarkRed, // Text on background
+        onSurface: veryDarkRed, // Text on background
         error: deepRed, // Error color
         onError: Colors.white,
         outline: softPink, // Borders

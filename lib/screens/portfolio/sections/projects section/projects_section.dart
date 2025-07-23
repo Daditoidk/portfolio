@@ -24,6 +24,8 @@ class _ProjectsSectionState extends State<ProjectsSection> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
   bool _isPageAnimating = false;
+  
+  // Estados para el overlay del demo B4S
 
   void _onDotTap(int i) async {
     if (_isPageAnimating) return;
@@ -41,7 +43,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       'title': 'Brain4Goals App',
       'description':
           'A comprehensive sports management application with community features, profile management, and activity tracking.',
-      'frame': 'assets/device_frames/laptop_frame.png',
+      'frame': 'assets/device_frames/phone_frame.png',
       'demo': const Brain4GoalsDemo(),
     },
     {
@@ -113,58 +115,63 @@ class _ProjectsSectionState extends State<ProjectsSection> {
           horizontal: isMobile ? 0 : 60,
           vertical: isMobile ? 0 : 40,
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Stack(
           children: [
-            const SizedBox(height: 16),
-            Semantics(
-              label: SemanticLabels.sectionTitle,
-              child: Text(
-                l10n.projectsTitle,
-                style: theme.textTheme.headlineMedium,
-              ),
-            ),
-            const SizedBox(height: 12),
-            Semantics(
-              label: SemanticLabels.sectionDescription,
-              child: Text(
-                l10n.projectsSubtitle,
-                style: theme.textTheme.bodyLarge,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const SizedBox(height: 16),
-            isTablet
-                ? _tabletProjectsPageView(
-                  state: this,
-                  isMobile: isMobile,
-                  projects: projects,
-                  currentPage: _currentPage,
-                  pageController: _pageController,
-                  onPageChanged: (i) {
-                    setState(() {
-                      _currentPage = i;
-                      _isPageAnimating = false;
-                    });
-                  },
-                )
-                : _desktopMobileProjectsPageView(
-                  state: this,
-                  isMobile: isMobile,
-                  isTablet: isTablet,
-                  projects: projects,
-                  currentPage: _currentPage,
-                  pageController: _pageController,
-                  onPageChanged: (i) {
-                    setState(() {
-                      _currentPage = i;
-                      _isPageAnimating = false;
-                    });
-                  },
+            // Contenido principal
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 16),
+                Semantics(
+                  label: SemanticLabels.sectionTitle,
+                  child: Text(
+                    l10n.projectsTitle,
+                    style: theme.textTheme.headlineMedium,
+                  ),
                 ),
-            const SizedBox(height: 12),
-            _buildPageIndicators(this),
-            const SizedBox(height: 12),
+                const SizedBox(height: 12),
+                Semantics(
+                  label: SemanticLabels.sectionDescription,
+                  child: Text(
+                    l10n.projectsSubtitle,
+                    style: theme.textTheme.bodyLarge,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                isTablet
+                    ? _tabletProjectsPageView(
+                      state: this,
+                      isMobile: isMobile,
+                      projects: projects,
+                      currentPage: _currentPage,
+                      pageController: _pageController,
+                      onPageChanged: (i) {
+                        setState(() {
+                          _currentPage = i;
+                          _isPageAnimating = false;
+                        });
+                      },
+                    )
+                    : _desktopMobileProjectsPageView(
+                      state: this,
+                      isMobile: isMobile,
+                      isTablet: isTablet,
+                      projects: projects,
+                      currentPage: _currentPage,
+                      pageController: _pageController,
+                      onPageChanged: (i) {
+                        setState(() {
+                          _currentPage = i;
+                          _isPageAnimating = false;
+                        });
+                      },
+                    ),
+                const SizedBox(height: 12),
+                _buildPageIndicators(this),
+                const SizedBox(height: 12),
+              ],
+            ),
           ],
         ),
       ),

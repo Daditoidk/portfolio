@@ -17,6 +17,7 @@ dependencies:
   flutter_riverpod: ^2.6.1
   hooks_riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -30,3 +31,6 @@ flutter:
     - assets/bgs/
     - assets/blueprints/
     - assets/device_frames/
+    - assets/demos/
+    - assets/demos/b4s/
+    - assets/Camilo Santacruz Abadiano resume.pdf

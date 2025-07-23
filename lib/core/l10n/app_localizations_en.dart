@@ -484,4 +484,181 @@ class AppLocalizationsEn extends AppLocalizations {
   String experienceTooltipYears(String years) {
     return '$years+ years of experience';
   }
+
+  @override
+  String get resumeDownload => 'Download';
+
+  @override
+  String get resumeSectionTitle => 'Resume';
+
+  @override
+  String get resumeSectionDescription => 'Download my latest resume. If you want to know more about my experience, this is the place!';
+
+  @override
+  String resumeLastUpdated(String date) {
+    return 'Last updated: $date';
+  }
+
+  @override
+  String get seasonTab => 'Season';
+
+  @override
+  String get communityTab => 'Community';
+
+  @override
+  String get profileTab => 'Profile';
+
+  @override
+  String get communityTitle => 'Weekly Leaderboard';
+
+  @override
+  String get weeklyTab => 'Weekly';
+
+  @override
+  String get globalTab => 'Global';
+
+  @override
+  String get profileTitle => 'Profile';
+
+  @override
+  String get profileLevelAdvanced => 'Level: Advanced';
+
+  @override
+  String get profileRecommendations => 'Recommendations';
+
+  @override
+  String get profilePerformance => 'Performance';
+
+  @override
+  String get profileAchievements => 'Achievements';
+
+  @override
+  String get profileExternalReport => 'External Evaluation Report';
+
+  @override
+  String get todayLabel => 'Today';
+
+  @override
+  String get preEmotionalLabel => 'Emotional Pre';
+
+  @override
+  String get planLabel => 'Plan';
+
+  @override
+  String get matchLabel => 'Match';
+
+  @override
+  String get postEmotionalLabel => 'Emotional Post';
+
+  @override
+  String get selfEvaluationLabel => 'Self-evaluation';
+
+  @override
+  String get popupPastWeekTitle => 'Date finished';
+
+  @override
+  String get popupPastWeekContent => 'This date has finished, check your progress in your profile.';
+
+  @override
+  String get popupCurrentWeekTitle => 'Not available';
+
+  @override
+  String popupCurrentWeekContent(Object when) {
+    return 'This flag will be available $when';
+  }
+
+  @override
+  String get popupFutureWeekTitle => 'Not available';
+
+  @override
+  String popupFutureWeekContent(Object weeks) {
+    return 'This task will be activated in $weeks weeks.';
+  }
+
+  @override
+  String popupFutureWeekContentSpecial(Object when) {
+    return 'This task will be activated $when.';
+  }
+
+  @override
+  String get popupTaskCompleted => 'Huray! Task completed';
+
+  @override
+  String get popupNewTaskAssigned => 'New task assigned';
+
+  @override
+  String get popupDribblingQuestion => 'Task: How do you rate your dribbling in the last match?';
+
+  @override
+  String get popupPassingQuestion => 'Task: How do you rate your passing in the last match?';
+
+  @override
+  String get popupTomorrow => 'tomorrow';
+
+  @override
+  String popupInXDays(Object days) {
+    return 'in $days days';
+  }
+
+  @override
+  String get popupNextWeek => 'next week';
+
+  @override
+  String get popupLastWeek => 'last week';
+
+  @override
+  String popupInXWeeks(Object weeks) {
+    return 'in $weeks weeks';
+  }
+
+  @override
+  String get popupYesterday => 'yesterday';
+
+  @override
+  String get preEmotionalLabelShort => 'Pre';
+
+  @override
+  String get planLabelShort => 'Plan';
+
+  @override
+  String get matchLabelShort => 'Match';
+
+  @override
+  String get postEmotionalLabelShort => 'Post';
+
+  @override
+  String get selfEvaluationLabelShort => 'Self';
+
+  @override
+  String get week1Label => 'Week 1';
+
+  @override
+  String get week2Label => 'Week 2';
+
+  @override
+  String get week3Label => 'Week 3';
+
+  @override
+  String get week4Label => 'Week 4';
+
+  @override
+  String get week5Label => 'Week 5';
+
+  @override
+  String get b4sDemoTitle => 'Brain4Goals Demo';
+
+  @override
+  String get b4sDemoTapToStart => 'Tap to start the demo';
+
+  @override
+  String get b4sSplashTitle => 'Brain4Goals';
+
+  @override
+  String get b4sSplashSubtitle => 'Your season, your success';
+
+  @override
+  String get fieldScreenPrepareTitle => 'Get ready\nfor the match!';
+
+  @override
+  String get fieldScreenPrepareSubtitle => 'Prepare your mind and body for the upcoming match.';
 }

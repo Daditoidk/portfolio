@@ -484,4 +484,181 @@ class AppLocalizationsEs extends AppLocalizations {
   String experienceTooltipYears(String years) {
     return '$years+ años de experiencia';
   }
+
+  @override
+  String get resumeDownload => 'Descargar';
+
+  @override
+  String get resumeSectionTitle => 'Currículum';
+
+  @override
+  String get resumeSectionDescription => 'Descarga mi currículum actualizado. Si quieres saber más sobre mi experiencia, ¡este es el lugar!';
+
+  @override
+  String resumeLastUpdated(String date) {
+    return 'Última actualización: $date';
+  }
+
+  @override
+  String get seasonTab => 'Temporada';
+
+  @override
+  String get communityTab => 'Comunidad';
+
+  @override
+  String get profileTab => 'Perfil';
+
+  @override
+  String get communityTitle => 'Tabla de posición semanal';
+
+  @override
+  String get weeklyTab => 'Semanal';
+
+  @override
+  String get globalTab => 'Global';
+
+  @override
+  String get profileTitle => 'Perfil';
+
+  @override
+  String get profileLevelAdvanced => 'Nivel: Avanzado';
+
+  @override
+  String get profileRecommendations => 'Recomendaciones';
+
+  @override
+  String get profilePerformance => 'Rendimiento';
+
+  @override
+  String get profileAchievements => 'Logros';
+
+  @override
+  String get profileExternalReport => 'Informe valoración externa';
+
+  @override
+  String get todayLabel => 'HOY';
+
+  @override
+  String get preEmotionalLabel => 'Emocional Pre';
+
+  @override
+  String get planLabel => 'Plan partido';
+
+  @override
+  String get matchLabel => 'Partido';
+
+  @override
+  String get postEmotionalLabel => 'Emocional Pos';
+
+  @override
+  String get selfEvaluationLabel => 'Autoevaluación';
+
+  @override
+  String get popupPastWeekTitle => 'Fecha finalizada';
+
+  @override
+  String get popupPastWeekContent => 'Esta fecha ha finalizado, revisa tu progreso en tu perfil.';
+
+  @override
+  String get popupCurrentWeekTitle => 'No disponible';
+
+  @override
+  String popupCurrentWeekContent(Object when) {
+    return 'Esta tarea se activará $when';
+  }
+
+  @override
+  String get popupFutureWeekTitle => 'No disponible';
+
+  @override
+  String popupFutureWeekContent(Object weeks) {
+    return 'Esta tarea se activará en $weeks semanas.';
+  }
+
+  @override
+  String popupFutureWeekContentSpecial(Object when) {
+    return 'Esta tarea se activará $when.';
+  }
+
+  @override
+  String get popupTaskCompleted => '¡Hurra! Tarea completada';
+
+  @override
+  String get popupNewTaskAssigned => 'Nueva tarea asignada';
+
+  @override
+  String get popupDribblingQuestion => 'Tarea: ¿Cómo calificarías tu regate en el último partido?';
+
+  @override
+  String get popupPassingQuestion => 'Tarea: ¿Cómo calificarías tu pase en el último partido?';
+
+  @override
+  String get popupTomorrow => 'mañana';
+
+  @override
+  String popupInXDays(Object days) {
+    return 'en $days días';
+  }
+
+  @override
+  String get popupNextWeek => 'la próxima semana';
+
+  @override
+  String get popupLastWeek => 'la semana pasada';
+
+  @override
+  String popupInXWeeks(Object weeks) {
+    return 'en $weeks semanas';
+  }
+
+  @override
+  String get popupYesterday => 'ayer';
+
+  @override
+  String get preEmotionalLabelShort => 'Pre';
+
+  @override
+  String get planLabelShort => 'Plan';
+
+  @override
+  String get matchLabelShort => 'Partido';
+
+  @override
+  String get postEmotionalLabelShort => 'Pos';
+
+  @override
+  String get selfEvaluationLabelShort => 'Auto';
+
+  @override
+  String get week1Label => 'Semana 1';
+
+  @override
+  String get week2Label => 'Semana 2';
+
+  @override
+  String get week3Label => 'Semana 3';
+
+  @override
+  String get week4Label => 'Semana 4';
+
+  @override
+  String get week5Label => 'Semana 5';
+
+  @override
+  String get b4sDemoTitle => 'Brain4Goals Demo';
+
+  @override
+  String get b4sDemoTapToStart => 'Toca para iniciar la demo';
+
+  @override
+  String get b4sSplashTitle => 'Brain4Goals';
+
+  @override
+  String get b4sSplashSubtitle => 'Tu temporada, tu éxito';
+
+  @override
+  String get fieldScreenPrepareTitle => 'Prepárate\npara el partido!';
+
+  @override
+  String get fieldScreenPrepareSubtitle => 'Prepare your mind and body for the upcoming match.';
 }

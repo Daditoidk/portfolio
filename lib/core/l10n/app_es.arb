@@ -226,12 +226,6 @@
     "description": "Tooltip text for experience badges"
   },
   
-  "skillFlutter": "Flutter",
-  
-  "skillDart": "Dart",
-  
-  "skillFirebase": "Firebase",
-  
   "projectsTitle": "Mis Proyectos",
   
   "projectsSubtitle": "Una selección de mis proyectos recientes.",
@@ -479,5 +473,66 @@
         "example": "3"
       }
     }
-  }
+  },
+  "resumeDownload": "Descargar",
+  "@resumeDownload": {
+    "description": "Texto del botón para descargar el currículum en la sección de Resume."
+  },
+  "resumeSectionTitle": "Currículum",
+  "@resumeSectionTitle": { "description": "Título para la sección de currículum." },
+  "resumeSectionDescription": "Descarga mi currículum actualizado. Si quieres saber más sobre mi experiencia, ¡este es el lugar!",
+  "@resumeSectionDescription": { "description": "Descripción para la sección de currículum." },
+  "resumeLastUpdated": "Última actualización: {date}",
+  "@resumeLastUpdated": { "description": "Etiqueta para la última fecha de actualización del archivo de currículum.", "placeholders": { "date": { "type": "String", "example": "2024-06-01" } } },
+  "seasonTab": "Temporada",
+  "communityTab": "Comunidad",
+  "profileTab": "Perfil",
+  "communityTitle": "Tabla de posición semanal",
+  "weeklyTab": "Semanal",
+  "globalTab": "Global",
+  "profileTitle": "Perfil",
+  "profileLevelAdvanced": "Nivel: Avanzado",
+  "profileRecommendations": "Recomendaciones",
+  "profilePerformance": "Rendimiento",
+  "profileAchievements": "Logros",
+  "profileExternalReport": "Informe valoración externa"
+  ,
+  "todayLabel": "HOY",
+  "preEmotionalLabel": "Emocional Pre",
+  "planLabel": "Plan partido",
+  "matchLabel": "Partido",
+  "postEmotionalLabel": "Emocional Pos",
+  "selfEvaluationLabel": "Autoevaluación",
+  "popupPastWeekTitle": "Fecha finalizada",
+  "popupPastWeekContent": "Esta fecha ha finalizado, revisa tu progreso en tu perfil.",
+  "popupCurrentWeekTitle": "No disponible",
+  "popupCurrentWeekContent": "Esta tarea se activará {when}",
+  "popupFutureWeekTitle": "No disponible",
+  "popupFutureWeekContent": "Esta tarea se activará en {weeks} semanas.",
+  "popupFutureWeekContentSpecial": "Esta tarea se activará {when}.",
+  "popupTaskCompleted": "¡Hurra! Tarea completada",
+  "popupNewTaskAssigned": "Nueva tarea asignada",
+  "popupDribblingQuestion": "Tarea: ¿Cómo calificarías tu regate en el último partido?",
+  "popupPassingQuestion": "Tarea: ¿Cómo calificarías tu pase en el último partido?",
+  "popupTomorrow": "mañana",
+  "popupInXDays": "en {days} días",
+  "popupNextWeek": "la próxima semana",
+  "popupLastWeek": "la semana pasada",
+  "popupInXWeeks": "en {weeks} semanas",
+  "popupYesterday": "ayer",
+  "preEmotionalLabelShort": "Pre",
+  "planLabelShort": "Plan",
+  "matchLabelShort": "Partido",
+  "postEmotionalLabelShort": "Pos",
+  "selfEvaluationLabelShort": "Auto",
+  "week1Label": "Semana 1",
+  "week2Label": "Semana 2",
+  "week3Label": "Semana 3",
+  "week4Label": "Semana 4",
+  "week5Label": "Semana 5",
+  "b4sDemoTitle": "Brain4Goals Demo",
+  "b4sDemoTapToStart": "Toca para iniciar la demo",
+  "b4sSplashTitle": "Brain4Goals",
+  "b4sSplashSubtitle": "Tu temporada, tu éxito",
+  "fieldScreenPrepareTitle": "Prepárate\npara el partido!"
 } 

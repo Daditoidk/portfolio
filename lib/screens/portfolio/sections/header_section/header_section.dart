@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../core/constants/semantic_labels.dart';
-import '../../../core/l10n/app_localizations.dart';
-import '../../../core/helpers/responsive.dart';
-import '../../../widgets/portfolio_nav_bar.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../core/constants/semantic_labels.dart';
+import '../../../../core/l10n/app_localizations.dart';
+import '../../../../core/helpers/responsive.dart';
+import '../../../../widgets/portfolio_nav_bar.dart';
 
 class HeaderSection extends StatelessWidget {
   final Function(String) onSectionTap;
@@ -59,7 +59,9 @@ class HeaderSection extends StatelessWidget {
                           child: CircleAvatar(
                             radius: isLandscape ? 40 : (isMobile ? 60 : 80),
                             backgroundColor: AppTheme.avatarBackground,
-                            backgroundImage: const AssetImage('assets/bgs/avatar.jpg'),
+                            backgroundImage: const AssetImage(
+                              'assets/bgs/avatar.jpg',
+                            ),
                             child: null,
                           ),
                         ),

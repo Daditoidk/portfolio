@@ -484,4 +484,181 @@ class AppLocalizationsJa extends AppLocalizations {
   String experienceTooltipYears(String years) {
     return '$years+年の経験';
   }
+
+  @override
+  String get resumeDownload => 'ダウンロード';
+
+  @override
+  String get resumeSectionTitle => '履歴書';
+
+  @override
+  String get resumeSectionDescription => '最新の履歴書をダウンロードできます。私の経験についてもっと知りたい方はこちらから！';
+
+  @override
+  String resumeLastUpdated(String date) {
+    return '最終更新日: $date';
+  }
+
+  @override
+  String get seasonTab => 'シーズン';
+
+  @override
+  String get communityTab => 'コミュニティ';
+
+  @override
+  String get profileTab => 'プロフィール';
+
+  @override
+  String get communityTitle => '週間リーダーボード';
+
+  @override
+  String get weeklyTab => '週間';
+
+  @override
+  String get globalTab => 'グローバル';
+
+  @override
+  String get profileTitle => 'プロフィール';
+
+  @override
+  String get profileLevelAdvanced => 'レベル: 上級';
+
+  @override
+  String get profileRecommendations => 'おすすめ';
+
+  @override
+  String get profilePerformance => 'パフォーマンス';
+
+  @override
+  String get profileAchievements => '実績';
+
+  @override
+  String get profileExternalReport => '外部評価レポート';
+
+  @override
+  String get todayLabel => 'HOY';
+
+  @override
+  String get preEmotionalLabel => '感情プレ';
+
+  @override
+  String get planLabel => 'プラン';
+
+  @override
+  String get matchLabel => '試合';
+
+  @override
+  String get postEmotionalLabel => '感情ポスト';
+
+  @override
+  String get selfEvaluationLabel => '自己評価';
+
+  @override
+  String get popupPastWeekTitle => '日付が終了しました';
+
+  @override
+  String get popupPastWeekContent => 'この日付は終了しました。プロフィールで進捗を確認してください。';
+
+  @override
+  String get popupCurrentWeekTitle => '利用できません';
+
+  @override
+  String popupCurrentWeekContent(Object when) {
+    return 'このタスクは$whenに有効になります。';
+  }
+
+  @override
+  String get popupFutureWeekTitle => '利用できません';
+
+  @override
+  String popupFutureWeekContent(Object weeks) {
+    return 'このタスクは$weeks週間後に有効になります。';
+  }
+
+  @override
+  String popupFutureWeekContentSpecial(Object when) {
+    return '$whenにこのタスクが有効になります。';
+  }
+
+  @override
+  String get popupTaskCompleted => 'やった！タスク完了';
+
+  @override
+  String get popupNewTaskAssigned => '新しいタスクが割り当てられました';
+
+  @override
+  String get popupDribblingQuestion => 'タスク：最後の試合でのドリブルをどう評価しますか？';
+
+  @override
+  String get popupPassingQuestion => 'タスク：最後の試合でのパスをどう評価しますか？';
+
+  @override
+  String get popupTomorrow => '明日';
+
+  @override
+  String popupInXDays(Object days) {
+    return '$days日後';
+  }
+
+  @override
+  String get popupNextWeek => '来週';
+
+  @override
+  String get popupLastWeek => '先週';
+
+  @override
+  String popupInXWeeks(Object weeks) {
+    return '$weeks週間後';
+  }
+
+  @override
+  String get popupYesterday => '昨日';
+
+  @override
+  String get preEmotionalLabelShort => 'プレ';
+
+  @override
+  String get planLabelShort => 'プラン';
+
+  @override
+  String get matchLabelShort => '試合';
+
+  @override
+  String get postEmotionalLabelShort => 'ポスト';
+
+  @override
+  String get selfEvaluationLabelShort => '自己';
+
+  @override
+  String get week1Label => '第1週';
+
+  @override
+  String get week2Label => '第2週';
+
+  @override
+  String get week3Label => '第3週';
+
+  @override
+  String get week4Label => '第4週';
+
+  @override
+  String get week5Label => '第5週';
+
+  @override
+  String get b4sDemoTitle => 'Brain4Goalsデモ';
+
+  @override
+  String get b4sDemoTapToStart => 'デモを開始するにはタップしてください';
+
+  @override
+  String get b4sSplashTitle => 'Brain4Goals';
+
+  @override
+  String get b4sSplashSubtitle => 'あなたのシーズン、あなたの成功';
+
+  @override
+  String get fieldScreenPrepareTitle => '試合に向けて準備しよう！';
+
+  @override
+  String get fieldScreenPrepareSubtitle => 'Prepare your mind and body for the upcoming match.';
 }

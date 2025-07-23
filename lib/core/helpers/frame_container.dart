@@ -26,17 +26,6 @@ class FrameContainer extends StatelessWidget {
     required this.borderRadius,
   });
 
-  /// Detecta si el frame es de teléfono basado en el nombre del asset
-  bool get _isPhoneFrame => frameAsset.contains('phone_frame');
-
-  /// Calcula el padding interno adicional para frames de teléfono
-  EdgeInsets get _internalPadding {
-    if (_isPhoneFrame) {
-      return const EdgeInsets.fromLTRB(30, 0, 30, 40);
-    }
-    return EdgeInsets.zero;
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -56,25 +45,21 @@ class FrameContainer extends StatelessWidget {
               height: height - overlayPadding.vertical,
               decoration: BoxDecoration(
                 borderRadius: borderRadius,
-                color: Colors.transparent,
+                color: Colors.blue,
               ),
               clipBehavior: Clip.hardEdge,
-              child: ClipRRect(
-                borderRadius: borderRadius,
-                child: SizedBox(
-                  width: width - overlayPadding.horizontal,
-                  height: height - overlayPadding.vertical,
-                  child: Padding(padding: _internalPadding, child: child),
-                ),
-              ),
+              child: child,
+            
             ),
           ),
           // Frame del dispositivo (capa superior)
-          Image.asset(
+          IgnorePointer(
+            child: Image.asset(
             frameAsset,
             width: width,
             height: height,
             fit: BoxFit.contain,
+            ),
           ),
         ],
       ),

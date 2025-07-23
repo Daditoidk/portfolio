@@ -250,21 +250,6 @@
     "description": "Aboutセクションのスキル一覧（カンマ区切り）"
   },
   
-  "skillFlutter": "Flutter",
-  "@skillFlutter": {
-    "description": "Flutter skill name"
-  },
-  
-  "skillDart": "Dart",
-  "@skillDart": {
-    "description": "Dart skill name"
-  },
-  
-  "skillFirebase": "Firebase",
-  "@skillFirebase": {
-    "description": "Firebase skill name"
-  },
-  
   "projectsTitle": "私のプロジェクト",
   "@projectsTitle": {
     "description": "Title of the projects section"
@@ -827,5 +812,65 @@
         "example": "3"
       }
     }
-  }
+  },
+  "resumeDownload": "ダウンロード",
+  "@resumeDownload": {
+    "description": "履歴書セクションのダウンロードボタンのテキスト。"
+  },
+  "resumeSectionTitle": "履歴書",
+  "@resumeSectionTitle": { "description": "履歴書セクションのタイトル。" },
+  "resumeSectionDescription": "最新の履歴書をダウンロードできます。私の経験についてもっと知りたい方はこちらから！",
+  "@resumeSectionDescription": { "description": "履歴書セクションの説明。" },
+  "resumeLastUpdated": "最終更新日: {date}",
+  "@resumeLastUpdated": { "description": "履歴書ファイルの最終更新日ラベル。", "placeholders": { "date": { "type": "String", "example": "2024-06-01" } } },
+  "seasonTab": "シーズン",
+  "communityTab": "コミュニティ",
+  "profileTab": "プロフィール",
+  "communityTitle": "週間リーダーボード",
+  "weeklyTab": "週間",
+  "globalTab": "グローバル",
+  "profileTitle": "プロフィール",
+  "profileLevelAdvanced": "レベル: 上級",
+  "profileRecommendations": "おすすめ",
+  "profilePerformance": "パフォーマンス",
+  "profileAchievements": "実績",
+  "profileExternalReport": "外部評価レポート",
+  "todayLabel": "HOY",
+  "preEmotionalLabel": "感情プレ",
+  "planLabel": "プラン",
+  "matchLabel": "試合",
+  "postEmotionalLabel": "感情ポスト",
+  "selfEvaluationLabel": "自己評価",
+  "popupPastWeekTitle": "日付が終了しました",
+  "popupPastWeekContent": "この日付は終了しました。プロフィールで進捗を確認してください。",
+  "popupCurrentWeekTitle": "利用できません",
+  "popupCurrentWeekContent": "このタスクは{when}に有効になります。",
+  "popupFutureWeekTitle": "利用できません",
+  "popupFutureWeekContent": "このタスクは{weeks}週間後に有効になります。",
+  "popupFutureWeekContentSpecial": "{when}にこのタスクが有効になります。",
+  "popupTaskCompleted": "やった！タスク完了",
+  "popupNewTaskAssigned": "新しいタスクが割り当てられました",
+  "popupDribblingQuestion": "タスク：最後の試合でのドリブルをどう評価しますか？",
+  "popupPassingQuestion": "タスク：最後の試合でのパスをどう評価しますか？",
+  "popupTomorrow": "明日",
+  "popupInXDays": "{days}日後",
+  "popupNextWeek": "来週",
+  "popupLastWeek": "先週",
+  "popupInXWeeks": "{weeks}週間後",
+  "popupYesterday": "昨日",
+  "preEmotionalLabelShort": "プレ",
+  "planLabelShort": "プラン",
+  "matchLabelShort": "試合",
+  "postEmotionalLabelShort": "ポスト",
+  "selfEvaluationLabelShort": "自己",
+  "week1Label": "第1週",
+  "week2Label": "第2週",
+  "week3Label": "第3週",
+  "week4Label": "第4週",
+  "week5Label": "第5週",
+  "b4sDemoTitle": "Brain4Goalsデモ",
+  "b4sDemoTapToStart": "デモを開始するにはタップしてください",
+  "b4sSplashTitle": "Brain4Goals",
+  "b4sSplashSubtitle": "あなたのシーズン、あなたの成功",
+  "fieldScreenPrepareTitle": "試合に向けて準備しよう！"
 } 

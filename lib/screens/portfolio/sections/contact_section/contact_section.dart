@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../core/l10n/app_localizations.dart';
-import '../../../core/constants/semantic_labels.dart';
-import '../../../core/helpers/responsive.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../widgets/version_info.dart';
+import '../../../../core/l10n/app_localizations.dart';
+import '../../../../core/constants/semantic_labels.dart';
+import '../../../../core/helpers/responsive.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../widgets/version_info.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});

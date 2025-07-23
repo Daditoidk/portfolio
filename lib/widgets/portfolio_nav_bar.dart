@@ -51,9 +51,10 @@ class PortfolioNavBar extends StatelessWidget {
                 final navItems = [
                   _buildNavItem(l10n.navHome, 0),
                   _buildNavItem(l10n.navAbout, 1),
-                  _buildNavItem(l10n.skillsTitle, 2),
-                  _buildNavItem(l10n.navProjects, 3),
-                  _buildNavItem(l10n.navContact, 4),
+                  _buildNavItem(l10n.resumeSectionTitle, 2),
+                  _buildNavItem(l10n.skillsTitle, 3),
+                  _buildNavItem(l10n.navProjects, 4),
+                  _buildNavItem(l10n.navContact, 5),
                 ];
                 final estimatedNavWidth = navItems.length * 80.0;
                 final availableWidth = constraints.maxWidth - 100;
@@ -118,7 +119,14 @@ class PortfolioNavBar extends StatelessWidget {
   }
 
   Widget _buildNavItem(String title, int sectionIndex) {
-    final sections = ['home', 'about', 'skills', 'projects', 'contact'];
+    final sections = [
+      'home',
+      'about',
+      'resume',
+      'skills',
+      'projects',
+      'contact',
+    ];
     final sectionId = sections[sectionIndex];
     final isActive = currentSection == sectionId;
 
