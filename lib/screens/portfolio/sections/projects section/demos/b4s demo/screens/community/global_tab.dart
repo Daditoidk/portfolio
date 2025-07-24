@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../b4s_colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio_web/core/l10n/app_localizations.dart';
+
+const String kB4SLogoAsset = 'assets/demos/b4s/logo_clean.svg';
 
 class GlobalCommunityTab extends StatelessWidget {
   const GlobalCommunityTab({super.key});
@@ -9,121 +13,121 @@ class GlobalCommunityTab extends StatelessWidget {
     // 20 mock users for demo
     {
       'name': 'Paul C. Ramos',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 5075,
       'isCurrent': true,
     },
     {
       'name': 'Derrick L. Thoman',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 4985,
       'isCurrent': false,
     },
     {
       'name': 'Kelsey T. Donovan',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 4642,
       'isCurrent': false,
     },
     {
       'name': 'Jack L. Gregory',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3874,
       'isCurrent': false,
     },
     {
       'name': 'Mary R. Mercado',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3567,
       'isCurrent': false,
     },
     {
       'name': 'Theresa N. Maki',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3478,
       'isCurrent': false,
     },
     {
       'name': 'James R. Stokes',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3257,
       'isCurrent': false,
     },
     {
       'name': 'David B. Rodriguez',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3250,
       'isCurrent': false,
     },
     {
       'name': 'Annette R. Allen',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3212,
       'isCurrent': false,
     },
     {
       'name': 'Lucas M. White',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3100,
       'isCurrent': false,
     },
     {
       'name': 'Sophie L. Turner',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3050,
       'isCurrent': false,
     },
     {
       'name': 'Carlos G. Perez',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2990,
       'isCurrent': false,
     },
     {
       'name': 'Emma S. Clark',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2950,
       'isCurrent': false,
     },
     {
       'name': 'Noah J. Lee',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2900,
       'isCurrent': false,
     },
     {
       'name': 'Olivia K. Adams',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2850,
       'isCurrent': false,
     },
     {
       'name': 'Mason D. Evans',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2800,
       'isCurrent': false,
     },
     {
       'name': 'Ava F. Scott',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2750,
       'isCurrent': false,
     },
     {
       'name': 'Ethan H. King',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2700,
       'isCurrent': false,
     },
     {
       'name': 'Mia I. Wright',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2650,
       'isCurrent': false,
     },
     {
       'name': 'Logan J. Baker',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2600,
       'isCurrent': false,
     },
@@ -131,6 +135,7 @@ class GlobalCommunityTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       color: const Color(0xff1F2022),
       child: Column(
@@ -140,19 +145,25 @@ class GlobalCommunityTab extends StatelessWidget {
             color: const Color(0xff515151),
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Row(
-              children: const [
+              children: [
                 SizedBox(
                   width: 24,
-                  child: Text('#', style: TextStyle(color: Colors.white)),
+                  child: Text(
+                    l10n.communityLeaderboardHeaderNumber,
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 SizedBox(width: 48),
                 Expanded(
                   child: Text(
-                    'Deportista',
+                    l10n.communityLeaderboardHeaderAthlete,
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                Text('Puntos', style: TextStyle(color: Colors.white)),
+                Text(
+                  l10n.communityLeaderboardHeaderPoints,
+                  style: TextStyle(color: Colors.white),
+                ),
               ],
             ),
           ),
@@ -166,8 +177,8 @@ class GlobalCommunityTab extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
                           child: Text(
-                            'No users found for the global leaderboard.',
-                            style: TextStyle(
+                          l10n.communityNoUsersGlobal,
+                          style: const TextStyle(
                               color: Colors.white70,
                               fontSize: 16,
                             ),
@@ -187,15 +198,12 @@ class GlobalCommunityTab extends StatelessWidget {
                                   ? B4SDemoColors.buttonRed
                                   : const Color(0xff3E3E3E),
                           child: ListTile(
-                            leading: CircleAvatar(
-                              backgroundImage: AssetImage(user['avatar']),
+                          leading: CircleAvatar(
                               backgroundColor: Colors.white,
-                              child: Text(
-                                (index + 1).toString(),
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                            child: SvgPicture.asset(
+                              user['avatar'],
+                              width: 32,
+                              height: 32,
                               ),
                             ),
                             title: Text(
@@ -204,10 +212,10 @@ class GlobalCommunityTab extends StatelessWidget {
                             ),
                             subtitle:
                                 isCurrent
-                                    ? const Text(
-                                      'Tú',
-                                      style: TextStyle(color: Colors.white70),
-                                    )
+                              ? Text(
+                                  l10n.communityCurrentUser,
+                                  style: const TextStyle(color: Colors.white70),
+                                )
                                     : null,
                             trailing: Text(
                               user['points'].toString(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../b4s_colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio_web/core/l10n/app_localizations.dart';
 
 class ProfileCardDemo extends StatelessWidget {
   const ProfileCardDemo({super.key});
@@ -22,7 +23,7 @@ class ProfileCardDemo extends StatelessWidget {
         gradient: b4sProfileCardGradient,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.15),
+            color: Colors.black.withValues(alpha: 0.15),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -61,7 +62,7 @@ class ProfileCardDemo extends StatelessWidget {
                 children: [
                   // Add your text widgets here, e.g.:
                   Text(
-                    'Player Name',
+                    AppLocalizations.of(context)!.profileCardPlayerName,
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -72,21 +73,21 @@ class ProfileCardDemo extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Position',
+                    AppLocalizations.of(context)!.profileCardPosition,
                     style: const TextStyle(color: Colors.white70, fontSize: 14),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Stage',
+                    AppLocalizations.of(context)!.profileCardStage,
                     style: const TextStyle(color: Colors.white70, fontSize: 14),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Leader: Demo',
+                    AppLocalizations.of(context)!.profileCardLeaderStrategic,
                     style: const TextStyle(color: Colors.white70, fontSize: 14),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

@@ -91,6 +91,25 @@ class FieldMainScreen extends StatelessWidget {
         title: monthTitle,
         showBackButton: true,
         showIcons: true,
+        showPopup: (popup) {
+          final originalAction = (popup as B4SPopup).actions.first;
+          String? buttonText;
+          if (originalAction is TextButton && originalAction.child is Text) {
+            buttonText = (originalAction.child as Text).data;
+          }
+          showPopup(
+            B4SPopup(
+              title: popup.title,
+              content: popup.content,
+              actions: [
+                TextButton(
+                  onPressed: dismissPopup,
+                  child: Text(buttonText ?? ''),
+                ),
+              ],
+            ),
+          );
+        },
       ),
       extendBodyBehindAppBar: true,
       body: Container(
@@ -250,28 +269,36 @@ class _FieldViewState extends State<_FieldView> {
 
   List<Widget> _buildFlagWidgets(BuildContext context, int selectedWeek) {
     final l10n = AppLocalizations.of(context)!;
+    // Week starts on Wednesday: 0=Wed, 1=Thu, 2=Fri/weekend (center), 3=Mon, 4=Tue
     final labels = [
-      l10n.preEmotionalLabel, // Monday
-      l10n.planLabel, // Tuesday
+      l10n.preEmotionalLabel, // Wednesday (top left)
+      l10n.planLabel, // Thursday (top right)
       l10n.matchLabel, // Friday/weekend (center)
-      l10n.postEmotionalLabel, // Wednesday
-      l10n.selfEvaluationLabel, // Thursday
+      l10n.postEmotionalLabel, // Monday (bottom left)
+      l10n.selfEvaluationLabel, // Tuesday (bottom right)
+    ];
+    final dayInitials = [
+      l10n.dayShortWed, // Wednesday
+      l10n.dayShortThu, // Thursday
+      l10n.dayShortFri, // Friday (center)
+      l10n.dayShortMon, // Monday
+      l10n.dayShortTue, // Tuesday
     ];
     final now = DateTime.now();
     final currentWeek = ((now.day - 1) ~/ 7).clamp(0, 4);
     final weekday = now.weekday; // 1=Mon, ..., 7=Sun
-    // Map flags to days: 0=Mon, 1=Tue, 3=Wed, 4=Thu, 2=Fri/weekend
+    // Map flags to days: 0=Wed, 1=Thu, 2=Fri/weekend, 3=Mon, 4=Tue
     int todayIndex;
-    if (weekday >= 5) {
-      todayIndex = 2; // Center flag for Fri/Sat/Sun
+    if (weekday == 3) {
+      todayIndex = 0; // Wednesday
+    } else if (weekday == 4) {
+      todayIndex = 1; // Thursday
+    } else if (weekday == 5 || weekday == 6 || weekday == 7) {
+      todayIndex = 2; // Friday, Saturday, Sunday
     } else if (weekday == 1) {
-      todayIndex = 0;
-    } else if (weekday == 2) {
-      todayIndex = 1;
-    } else if (weekday == 3) {
-      todayIndex = 3;
+      todayIndex = 3; // Monday
     } else {
-      todayIndex = 4;
+      todayIndex = 4; // Tuesday
     }
     final percentages = _weekPercentages[selectedWeek]!;
     return List.generate(5, (i) {
@@ -283,6 +310,7 @@ class _FieldViewState extends State<_FieldView> {
         todayIndex: todayIndex,
         percentages: percentages,
         labels: labels,
+        dayInitials: dayInitials,
         weekday: weekday,
       );
     });
@@ -296,8 +324,10 @@ class _FieldViewState extends State<_FieldView> {
     required int todayIndex,
     required List<int> percentages,
     required List<String> labels,
+    required List<String> dayInitials,
     required int weekday,
   }) {
+    // Positions: 0=top left, 1=top right, 2=center, 3=bottom left, 4=bottom right
     final isCenter = index == 2;
     final isToday = selectedWeek == currentWeek && index == todayIndex;
     final flagData = _getFlagData(
@@ -311,27 +341,45 @@ class _FieldViewState extends State<_FieldView> {
     );
     Widget flag = GestureDetector(
       onTap: flagData['onTap'],
-      child: FieldFlag(
-        label: labels[index],
-        flagAsset: flagData['flagAsset'],
-        percent: flagData['percent'],
-        isToday: isToday,
-        isCenter: isCenter,
-        isActive: flagData['isActive'],
-        height: 64,
-        width: 44,
+      child: Column(
+        children: [
+          FieldFlag(
+            label: labels[index],
+            flagAsset: flagData['flagAsset'],
+            percent: flagData['percent'],
+            isToday: isToday,
+            isCenter: isCenter,
+            isActive: flagData['isActive'],
+            height: 64,
+            width: 44,
+          ),
+          const SizedBox(height: 2),
+          Text(
+            dayInitials[index],
+            style: const TextStyle(
+              fontSize: 12,
+              color: Colors.white70,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
     if (index == 0) {
-      return Positioned(top: 0, left: 0, child: flag);
+      return Positioned(top: 0, left: 10, child: flag); // top left (Wed)
     } else if (index == 1) {
-      return Positioned(top: 0, right: 0, child: flag);
+      return Positioned(top: 0, right: 40, child: flag); // top right (Thu)
     } else if (index == 2) {
-      return Positioned(top: 100, left: 0, right: 0, child: flag);
+      return Positioned(
+        top: 100,
+        left: 0,
+        right: 0,
+        child: flag,
+      ); // center (Fri/weekend)
     } else if (index == 3) {
-      return Positioned(bottom: 0, left: 0, child: flag);
+      return Positioned(bottom: 0, left: 0, child: flag); // bottom left (Mon)
     } else {
-      return Positioned(bottom: 0, right: 0, child: flag);
+      return Positioned(bottom: 0, right: 0, child: flag); // bottom right (Tue)
     }
   }
 
@@ -460,9 +508,14 @@ class _FieldViewState extends State<_FieldView> {
   void _showTaskCompletedDialog() {
     _showPopup(
       B4SPopup(
-        title: 'Huray!',
+        title: AppLocalizations.of(context)!.popupTaskCompletedTitle,
         content: Text(AppLocalizations.of(context)!.popupTaskCompleted),
-        actions: [TextButton(onPressed: _dismissPopup, child: Text('OK'))],
+        actions: [
+          TextButton(
+            onPressed: _dismissPopup,
+            child: Text(AppLocalizations.of(context)!.popupOk),
+          ),
+        ],
       ),
     );
   }
@@ -473,7 +526,12 @@ class _FieldViewState extends State<_FieldView> {
       InteractiveB4SPopup(
         title: AppLocalizations.of(context)!.popupNewTaskAssigned,
         content: Text(AppLocalizations.of(context)!.popupDribblingQuestion),
-        actions: [TextButton(onPressed: _dismissPopup, child: Text('OK'))],
+        actions: [
+          TextButton(
+            onPressed: _dismissPopup,
+            child: Text(AppLocalizations.of(context)!.popupOk),
+          ),
+        ],
         builder: (context, onComplete) {
           return StatefulBuilder(
             builder:
@@ -488,16 +546,19 @@ class _FieldViewState extends State<_FieldView> {
                       onChanged: (value) {
                         setState(() => sliderValue = value.round());
                         Future.delayed(const Duration(milliseconds: 300), () {
-                          if (!mounted) return;
+                      if (!context.mounted) return;
                           _dismissPopup();
                           if (flagIndex != null) {
-                            setState(() {
-                              _weekPercentages[widget
-                                      .selectedWeek]![flagIndex] =
-                                  100;
-                            });
-                          }
-                          _showTaskCompletedDialog();
+                        if (context.mounted) {
+                          setState(() {
+                            _weekPercentages[widget.selectedWeek]![flagIndex] =
+                                100;
+                          });
+                        }
+                      }
+                      if (context.mounted) {
+                        _showTaskCompletedDialog();
+                      }
                         });
                       },
                     ),
@@ -516,7 +577,12 @@ class _FieldViewState extends State<_FieldView> {
       InteractiveB4SPopup(
         title: AppLocalizations.of(context)!.popupNewTaskAssigned,
         content: SizedBox.shrink(),
-        actions: [TextButton(onPressed: _dismissPopup, child: Text('OK'))],
+        actions: [
+          TextButton(
+            onPressed: _dismissPopup,
+            child: Text(AppLocalizations.of(context)!.popupOk),
+          ),
+        ],
         builder: (context, onComplete) {
           return StatefulBuilder(
             builder:
@@ -532,16 +598,19 @@ class _FieldViewState extends State<_FieldView> {
                       onChanged: (value) {
                         setState(() => sliderValue1 = value.round());
                         Future.delayed(const Duration(milliseconds: 300), () {
-                          if (!mounted) return;
+                      if (!context.mounted) return;
                           _dismissPopup();
                           if (flagIndex != null) {
-                            setState(() {
-                              _weekPercentages[widget
-                                      .selectedWeek]![flagIndex] =
-                                  100;
-                            });
-                          }
-                          _showTaskCompletedDialog();
+                        if (context.mounted) {
+                          setState(() {
+                            _weekPercentages[widget.selectedWeek]![flagIndex] =
+                                100;
+                          });
+                        }
+                      }
+                      if (context.mounted) {
+                        _showTaskCompletedDialog();
+                      }
                         });
                       },
                     ),
@@ -555,16 +624,19 @@ class _FieldViewState extends State<_FieldView> {
                       onChanged: (value) {
                         setState(() => sliderValue2 = value.round());
                         Future.delayed(const Duration(milliseconds: 300), () {
-                          if (!mounted) return;
+                      if (!context.mounted) return;
                           _dismissPopup();
                           if (flagIndex != null) {
-                            setState(() {
-                              _weekPercentages[widget
-                                      .selectedWeek]![flagIndex] =
-                                  100;
-                            });
-                          }
-                          _showTaskCompletedDialog();
+                        if (context.mounted) {
+                          setState(() {
+                            _weekPercentages[widget.selectedWeek]![flagIndex] =
+                                100;
+                          });
+                        }
+                      }
+                      if (context.mounted) {
+                        _showTaskCompletedDialog();
+                      }
                         });
                       },
                     ),
@@ -587,8 +659,16 @@ class _FieldViewState extends State<_FieldView> {
   }
 
   void _showCurrentWeekInactiveDialog(int index, int todayIndex) {
-    final diff = index - todayIndex;
-    final when = formatDaysMessage(context, diff);
+    // Map index to weekday for new week order
+    // 0=Wed, 1=Thu, 2=Fri/weekend, 3=Mon, 4=Tue
+    final dayNames = [
+      AppLocalizations.of(context)!.dayLongWed,
+      AppLocalizations.of(context)!.dayLongThu,
+      AppLocalizations.of(context)!.dayLongFri,
+      AppLocalizations.of(context)!.dayLongMon,
+      AppLocalizations.of(context)!.dayLongTue,
+    ];
+    final when = dayNames[index];
     final contentText = AppLocalizations.of(
       context,
     )!.popupCurrentWeekContent(when);
@@ -624,8 +704,13 @@ class _FieldViewState extends State<_FieldView> {
     _showPopup(
       B4SPopup(
         title: AppLocalizations.of(context)!.popupFutureWeekTitle,
-        content: Text('This flag will be active on Friday and the weekend.'),
-        actions: [TextButton(onPressed: _dismissPopup, child: Text('OK'))],
+        content: Text(AppLocalizations.of(context)!.popupCenterFlagInfo),
+        actions: [
+          TextButton(
+            onPressed: _dismissPopup,
+            child: Text(AppLocalizations.of(context)!.popupOk),
+          ),
+        ],
       ),
     );
   }

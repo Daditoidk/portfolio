@@ -3,6 +3,7 @@ import '../../widgets/b4s_custom_appbar.dart';
 import '../../widgets/profile_card_demo.dart';
 import '../../b4s_colors.dart';
 import '../../widgets/b4s_popup.dart';
+import 'package:portfolio_web/core/l10n/app_localizations.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -14,12 +15,6 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   Widget? _popup;
 
-  void _showPopup(Widget popup) {
-    setState(() {
-      _popup = popup;
-    });
-  }
-
   void _dismissPopup() {
     setState(() {
       _popup = null;
@@ -28,6 +23,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Stack(
       children: [
         Scaffold(
@@ -38,8 +34,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             showIcons: false,
             actionIcon: IconButton(
               icon: const Icon(Icons.settings, color: Colors.white),
-              onPressed: () {},
-              tooltip: 'Settings',
+              onPressed: () => _showDemoFeaturePopup(l10n),
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
             ),
           ),
           extendBodyBehindAppBar: true,
@@ -71,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
 
                     // Promedio mensual del jugador
-                    _MonthlyStatsRow(),
+                    _MonthlyStatsRow(l10n: l10n),
 
                     const SizedBox(height: 16),
                     // Consejos button
@@ -89,14 +85,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             padding: const EdgeInsets.symmetric(vertical: 14),
                           ),
                           icon: const Icon(Icons.chat_bubble_outline),
-                          label: const Text(
-                            'CONSEJOS',
-                            style: TextStyle(
+                          label: Text(
+                            l10n.profileAdviceButton,
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
                             ),
                           ),
-                          onPressed: _showDemoFeaturePopup,
+                          onPressed: () => _showDemoFeaturePopup(l10n),
                         ),
                       ),
                     ),
@@ -104,7 +100,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     // Profile grid
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: _ProfileStatsGrid(),
+                      child: _ProfileStatsGrid(l10n: l10n),
                     ),
                     const SizedBox(height: 16),
                     // Action buttons
@@ -117,9 +113,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Icons.show_chart,
                               color: Colors.white,
                             ),
-                            title: const Text(
-                              'Rendimiento',
-                              style: TextStyle(
+                            title: Text(
+                              l10n.profileActionPerformance,
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -129,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               color: Colors.white,
                               size: 18,
                             ),
-                            onTap: () => _showDemoFeaturePopup(),
+                            onTap: () => _showDemoFeaturePopup(l10n),
                             tileColor: Color(0xFF303539),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -144,9 +140,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Icons.emoji_events,
                               color: Colors.white,
                             ),
-                            title: const Text(
-                              'Logros',
-                              style: TextStyle(
+                            title: Text(
+                              l10n.profileActionAchievements,
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -156,7 +152,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               color: Colors.white,
                               size: 18,
                             ),
-                            onTap: () => _showDemoFeaturePopup(),
+                            onTap: () => _showDemoFeaturePopup(l10n),
                             tileColor: Color(0xFF303539),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -171,9 +167,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Icons.assignment_turned_in,
                               color: Colors.white,
                             ),
-                            title: const Text(
-                              'Informe valoración externa',
-                              style: TextStyle(
+                            title: Text(
+                              l10n.profileActionExternalReport,
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -183,7 +179,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               color: Colors.white,
                               size: 18,
                             ),
-                            onTap: () => _showDemoFeaturePopup(),
+                            onTap: () => _showDemoFeaturePopup(l10n),
                             tileColor: Color(0xFF303539),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -204,7 +200,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         if (_popup != null)
           Positioned.fill(
             child: Container(
-              color: Colors.black.withOpacity(0.45),
+              color: Colors.black.withValues(alpha: 0.45),
               child: Center(child: _popup),
             ),
           ),
@@ -212,13 +208,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  void _showDemoFeaturePopup() {
+  void _showDemoFeaturePopup(AppLocalizations l10n) {
     setState(() {
       _popup = B4SPopup(
-        title: 'Feature unavailable',
-        content: const Text('This demo does not support this feature.'),
+        title: l10n.profilePopupTitle,
+        content: Text(l10n.profilePopupContent),
         actions: [
-          TextButton(onPressed: _dismissPopup, child: const Text('OK')),
+          TextButton(
+            onPressed: _dismissPopup,
+            child: Text(l10n.profilePopupOk),
+          ),
         ],
       );
     });
@@ -226,31 +225,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
 }
 
 class _MonthlyStatsRow extends StatelessWidget {
+  final AppLocalizations l10n;
+  const _MonthlyStatsRow({required this.l10n});
+
   @override
   Widget build(BuildContext context) {
     // Demo values and colors
     final stats = [
       {
         'value': 81,
-        'label': 'Psicológico',
+        'label': l10n.profileStatPsychological,
         'color': Color(0xFF11D59A),
         'icon': Icons.arrow_upward,
       },
       {
         'value': 43,
-        'label': 'Técnico',
+        'label': l10n.profileStatTechnical,
         'color': Color(0xFFF4A836),
         'icon': Icons.arrow_downward,
       },
       {
         'value': 61,
-        'label': 'Táctico',
+        'label': l10n.profileStatTactical,
         'color': Color(0xFFFF686D),
         'icon': Icons.arrow_downward,
       },
       {
         'value': 86,
-        'label': 'Físico',
+        'label': l10n.profileStatPhysical,
         'color': Color(0xFFC16CE9),
         'icon': Icons.arrow_upward,
       },
@@ -268,7 +270,7 @@ class _MonthlyStatsRow extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Promedio mensual del jugador',
+                l10n.profileMonthlyAverage,
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -340,13 +342,16 @@ class _MonthlyStatsRow extends StatelessWidget {
 }
 
 class _ProfileStatsGrid extends StatelessWidget {
+  final AppLocalizations l10n;
+  const _ProfileStatsGrid({required this.l10n});
+
   @override
   Widget build(BuildContext context) {
     final stats = [
-      {'value': '2', 'label': 'Racha'},
-      {'value': '598', 'label': 'EXP'},
-      {'value': 'ORO', 'label': 'División'},
-      {'value': '5', 'label': 'Insignias'},
+      {'value': '2', 'label': l10n.profileGridStreak},
+      {'value': '598', 'label': l10n.profileGridExp},
+      {'value': 'GOLD', 'label': l10n.profileGridGold},
+      {'value': '5', 'label': l10n.profileGridBadges},
     ];
     return GridView.count(
       crossAxisCount: 2,
@@ -378,7 +383,7 @@ class _ProfileGridItem extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: Colors.white),
         borderRadius: BorderRadius.circular(8),
-        color: Colors.white.withOpacity(0.03),
+        color: Colors.white.withValues(alpha: 0.03),
       ),
       padding: const EdgeInsets.fromLTRB(30, 8, 0, 8),
       child: Column(

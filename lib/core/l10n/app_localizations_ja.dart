@@ -665,6 +665,202 @@ class AppLocalizationsJa extends AppLocalizations {
   String get fieldScreenPrepareTitle => '試合に向けて準備しよう！';
 
   @override
-  String get fieldScreenPrepareSubtitle =>
-      'Prepare your mind and body for the upcoming match.';
+  String get fieldScreenPrepareSubtitle => '次の試合に向けて心と体を準備しましょう。';
+
+  @override
+  String get communityWeeklyTitle => '週間リーダーボード';
+
+  @override
+  String get communityTabWeekly => '週間';
+
+  @override
+  String get communityTabGlobal => 'グローバル';
+
+  @override
+  String get communityFilterStage => 'ステージ';
+
+  @override
+  String get communityFilterCategory => 'カテゴリ';
+
+  @override
+  String get communityFilterGender => '性別';
+
+  @override
+  String get communityFilterOptionBenjamin => 'ベンジャミン';
+
+  @override
+  String get communityFilterOptionAlevin => 'アレビン';
+
+  @override
+  String get communityFilterOptionCadete => 'カデット';
+
+  @override
+  String get communityFilterOptionInfantil => 'インファント';
+
+  @override
+  String get communityFilterOptionJuvenil => 'ユース';
+
+  @override
+  String get communityFilterOptionAmateur => 'アマチュア';
+
+  @override
+  String get communityFilterOptionAll => 'すべて';
+
+  @override
+  String get communityFilterOptionNone => 'なし';
+
+  @override
+  String get communityFilterOptionA => 'A';
+
+  @override
+  String get communityFilterOptionB => 'B';
+
+  @override
+  String get communityFilterOptionC => 'C';
+
+  @override
+  String get communityFilterOptionMixed => 'ミックス';
+
+  @override
+  String get communityFilterOptionM => 'M';
+
+  @override
+  String get communityFilterOptionF => 'F';
+
+  @override
+  String get communityLeagueBronze => 'ブロンズ';
+
+  @override
+  String get communityLeagueSilver => 'シルバー';
+
+  @override
+  String get communityLeagueGold => 'ゴールド';
+
+  @override
+  String get communityLeagueInfo => '週末の上位3名が次のリーグに進出';
+
+  @override
+  String communityLeagueLabel(Object league) {
+    return 'リーグ $league';
+  }
+
+  @override
+  String get communityLeaderboardHeaderNumber => '#';
+
+  @override
+  String get communityLeaderboardHeaderAthlete => '選手';
+
+  @override
+  String get communityLeaderboardHeaderPoints => 'ポイント';
+
+  @override
+  String get communityNoUsersFilters => '選択したフィルターに該当するユーザーがいません。';
+
+  @override
+  String get communityNoUsersGlobal => 'グローバルリーダーボードにユーザーがいません。';
+
+  @override
+  String get communityCurrentUser => 'あなた';
+
+  @override
+  String get profileAdviceButton => 'アドバイス';
+
+  @override
+  String get profileActionPerformance => 'パフォーマンス';
+
+  @override
+  String get profileActionAchievements => '実績';
+
+  @override
+  String get profileActionExternalReport => '外部評価レポート';
+
+  @override
+  String get profilePopupTitle => '機能は利用できません';
+
+  @override
+  String get profilePopupContent => 'このデモではこの機能は利用できません。';
+
+  @override
+  String get profilePopupOk => 'OK';
+
+  @override
+  String get profileMonthlyAverage => '選手の月間平均';
+
+  @override
+  String get profileStatPsychological => '心理';
+
+  @override
+  String get profileStatTechnical => '技術';
+
+  @override
+  String get profileStatTactical => '戦術';
+
+  @override
+  String get profileStatPhysical => 'フィジカル';
+
+  @override
+  String get profileGridStreak => '連勝';
+
+  @override
+  String get profileGridExp => 'EXP';
+
+  @override
+  String get profileGridGold => 'ゴールド';
+
+  @override
+  String get profileGridDivision => 'ディビジョン';
+
+  @override
+  String get profileGridBadges => 'バッジ';
+
+  @override
+  String get profileCardPlayerName => '選手名';
+
+  @override
+  String get profileCardPosition => 'ポジション';
+
+  @override
+  String get profileCardStage => 'ステージ';
+
+  @override
+  String get profileCardLeaderStrategic => 'リーダー: 戦略的';
+
+  @override
+  String get popupTaskCompletedTitle => 'Huray!';
+
+  @override
+  String get popupOk => 'OK';
+
+  @override
+  String get popupCenterFlagInfo => 'このフラグは金曜日、土曜日、日曜日に有効になります。';
+
+  @override
+  String get dayShortMon => '月';
+
+  @override
+  String get dayShortTue => '火';
+
+  @override
+  String get dayShortWed => '水';
+
+  @override
+  String get dayShortThu => '木';
+
+  @override
+  String get dayShortFri => '金';
+
+  @override
+  String get dayLongMon => '月曜日';
+
+  @override
+  String get dayLongTue => '火曜日';
+
+  @override
+  String get dayLongWed => '水曜日';
+
+  @override
+  String get dayLongThu => '木曜日';
+
+  @override
+  String get dayLongFri => '金曜日';
 }

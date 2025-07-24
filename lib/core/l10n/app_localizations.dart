@@ -1347,6 +1347,396 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Prepare your mind and body for the upcoming match.'**
   String get fieldScreenPrepareSubtitle;
+
+  /// No description provided for @communityWeeklyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly Leaderboard'**
+  String get communityWeeklyTitle;
+
+  /// No description provided for @communityTabWeekly.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly'**
+  String get communityTabWeekly;
+
+  /// No description provided for @communityTabGlobal.
+  ///
+  /// In en, this message translates to:
+  /// **'Global'**
+  String get communityTabGlobal;
+
+  /// No description provided for @communityFilterStage.
+  ///
+  /// In en, this message translates to:
+  /// **'Stage'**
+  String get communityFilterStage;
+
+  /// No description provided for @communityFilterCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get communityFilterCategory;
+
+  /// No description provided for @communityFilterGender.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender'**
+  String get communityFilterGender;
+
+  /// No description provided for @communityFilterOptionBenjamin.
+  ///
+  /// In en, this message translates to:
+  /// **'Benjamin'**
+  String get communityFilterOptionBenjamin;
+
+  /// No description provided for @communityFilterOptionAlevin.
+  ///
+  /// In en, this message translates to:
+  /// **'Alevin'**
+  String get communityFilterOptionAlevin;
+
+  /// No description provided for @communityFilterOptionCadete.
+  ///
+  /// In en, this message translates to:
+  /// **'Cadet'**
+  String get communityFilterOptionCadete;
+
+  /// No description provided for @communityFilterOptionInfantil.
+  ///
+  /// In en, this message translates to:
+  /// **'Infant'**
+  String get communityFilterOptionInfantil;
+
+  /// No description provided for @communityFilterOptionJuvenil.
+  ///
+  /// In en, this message translates to:
+  /// **'Youth'**
+  String get communityFilterOptionJuvenil;
+
+  /// No description provided for @communityFilterOptionAmateur.
+  ///
+  /// In en, this message translates to:
+  /// **'Amateur'**
+  String get communityFilterOptionAmateur;
+
+  /// No description provided for @communityFilterOptionAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get communityFilterOptionAll;
+
+  /// No description provided for @communityFilterOptionNone.
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get communityFilterOptionNone;
+
+  /// No description provided for @communityFilterOptionA.
+  ///
+  /// In en, this message translates to:
+  /// **'A'**
+  String get communityFilterOptionA;
+
+  /// No description provided for @communityFilterOptionB.
+  ///
+  /// In en, this message translates to:
+  /// **'B'**
+  String get communityFilterOptionB;
+
+  /// No description provided for @communityFilterOptionC.
+  ///
+  /// In en, this message translates to:
+  /// **'C'**
+  String get communityFilterOptionC;
+
+  /// No description provided for @communityFilterOptionMixed.
+  ///
+  /// In en, this message translates to:
+  /// **'Mixed'**
+  String get communityFilterOptionMixed;
+
+  /// No description provided for @communityFilterOptionM.
+  ///
+  /// In en, this message translates to:
+  /// **'M'**
+  String get communityFilterOptionM;
+
+  /// No description provided for @communityFilterOptionF.
+  ///
+  /// In en, this message translates to:
+  /// **'F'**
+  String get communityFilterOptionF;
+
+  /// No description provided for @communityLeagueBronze.
+  ///
+  /// In en, this message translates to:
+  /// **'Bronze'**
+  String get communityLeagueBronze;
+
+  /// No description provided for @communityLeagueSilver.
+  ///
+  /// In en, this message translates to:
+  /// **'Silver'**
+  String get communityLeagueSilver;
+
+  /// No description provided for @communityLeagueGold.
+  ///
+  /// In en, this message translates to:
+  /// **'Gold'**
+  String get communityLeagueGold;
+
+  /// No description provided for @communityLeagueInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Top 3 at the end of the week advance to the next league'**
+  String get communityLeagueInfo;
+
+  /// No description provided for @communityLeagueLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'League {league}'**
+  String communityLeagueLabel(Object league);
+
+  /// No description provided for @communityLeaderboardHeaderNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'#'**
+  String get communityLeaderboardHeaderNumber;
+
+  /// No description provided for @communityLeaderboardHeaderAthlete.
+  ///
+  /// In en, this message translates to:
+  /// **'Athlete'**
+  String get communityLeaderboardHeaderAthlete;
+
+  /// No description provided for @communityLeaderboardHeaderPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Points'**
+  String get communityLeaderboardHeaderPoints;
+
+  /// No description provided for @communityNoUsersFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'No users found for the selected filters.'**
+  String get communityNoUsersFilters;
+
+  /// No description provided for @communityNoUsersGlobal.
+  ///
+  /// In en, this message translates to:
+  /// **'No users found for the global leaderboard.'**
+  String get communityNoUsersGlobal;
+
+  /// No description provided for @communityCurrentUser.
+  ///
+  /// In en, this message translates to:
+  /// **'You'**
+  String get communityCurrentUser;
+
+  /// No description provided for @profileAdviceButton.
+  ///
+  /// In en, this message translates to:
+  /// **'ADVICE'**
+  String get profileAdviceButton;
+
+  /// No description provided for @profileActionPerformance.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance'**
+  String get profileActionPerformance;
+
+  /// No description provided for @profileActionAchievements.
+  ///
+  /// In en, this message translates to:
+  /// **'Achievements'**
+  String get profileActionAchievements;
+
+  /// No description provided for @profileActionExternalReport.
+  ///
+  /// In en, this message translates to:
+  /// **'External Evaluation Report'**
+  String get profileActionExternalReport;
+
+  /// No description provided for @profilePopupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Feature unavailable'**
+  String get profilePopupTitle;
+
+  /// No description provided for @profilePopupContent.
+  ///
+  /// In en, this message translates to:
+  /// **'This demo does not support this feature.'**
+  String get profilePopupContent;
+
+  /// No description provided for @profilePopupOk.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get profilePopupOk;
+
+  /// No description provided for @profileMonthlyAverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Player\'s monthly average'**
+  String get profileMonthlyAverage;
+
+  /// No description provided for @profileStatPsychological.
+  ///
+  /// In en, this message translates to:
+  /// **'Psychological'**
+  String get profileStatPsychological;
+
+  /// No description provided for @profileStatTechnical.
+  ///
+  /// In en, this message translates to:
+  /// **'Technical'**
+  String get profileStatTechnical;
+
+  /// No description provided for @profileStatTactical.
+  ///
+  /// In en, this message translates to:
+  /// **'Tactical'**
+  String get profileStatTactical;
+
+  /// No description provided for @profileStatPhysical.
+  ///
+  /// In en, this message translates to:
+  /// **'Physical'**
+  String get profileStatPhysical;
+
+  /// No description provided for @profileGridStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Streak'**
+  String get profileGridStreak;
+
+  /// No description provided for @profileGridExp.
+  ///
+  /// In en, this message translates to:
+  /// **'EXP'**
+  String get profileGridExp;
+
+  /// No description provided for @profileGridGold.
+  ///
+  /// In en, this message translates to:
+  /// **'GOLD'**
+  String get profileGridGold;
+
+  /// No description provided for @profileGridDivision.
+  ///
+  /// In en, this message translates to:
+  /// **'Division'**
+  String get profileGridDivision;
+
+  /// No description provided for @profileGridBadges.
+  ///
+  /// In en, this message translates to:
+  /// **'Badges'**
+  String get profileGridBadges;
+
+  /// No description provided for @profileCardPlayerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Player Name'**
+  String get profileCardPlayerName;
+
+  /// No description provided for @profileCardPosition.
+  ///
+  /// In en, this message translates to:
+  /// **'Position'**
+  String get profileCardPosition;
+
+  /// No description provided for @profileCardStage.
+  ///
+  /// In en, this message translates to:
+  /// **'Stage'**
+  String get profileCardStage;
+
+  /// No description provided for @profileCardLeaderStrategic.
+  ///
+  /// In en, this message translates to:
+  /// **'Leader: Strategic'**
+  String get profileCardLeaderStrategic;
+
+  /// No description provided for @popupTaskCompletedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Huray!'**
+  String get popupTaskCompletedTitle;
+
+  /// No description provided for @popupOk.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get popupOk;
+
+  /// No description provided for @popupCenterFlagInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'This flag will be active on Friday and the weekend.'**
+  String get popupCenterFlagInfo;
+
+  /// No description provided for @dayShortMon.
+  ///
+  /// In en, this message translates to:
+  /// **'M'**
+  String get dayShortMon;
+
+  /// No description provided for @dayShortTue.
+  ///
+  /// In en, this message translates to:
+  /// **'T'**
+  String get dayShortTue;
+
+  /// No description provided for @dayShortWed.
+  ///
+  /// In en, this message translates to:
+  /// **'W'**
+  String get dayShortWed;
+
+  /// No description provided for @dayShortThu.
+  ///
+  /// In en, this message translates to:
+  /// **'T'**
+  String get dayShortThu;
+
+  /// No description provided for @dayShortFri.
+  ///
+  /// In en, this message translates to:
+  /// **'F'**
+  String get dayShortFri;
+
+  /// No description provided for @dayLongMon.
+  ///
+  /// In en, this message translates to:
+  /// **'Monday'**
+  String get dayLongMon;
+
+  /// No description provided for @dayLongTue.
+  ///
+  /// In en, this message translates to:
+  /// **'Tuesday'**
+  String get dayLongTue;
+
+  /// No description provided for @dayLongWed.
+  ///
+  /// In en, this message translates to:
+  /// **'Wednesday'**
+  String get dayLongWed;
+
+  /// No description provided for @dayLongThu.
+  ///
+  /// In en, this message translates to:
+  /// **'Thursday'**
+  String get dayLongThu;
+
+  /// No description provided for @dayLongFri.
+  ///
+  /// In en, this message translates to:
+  /// **'Friday'**
+  String get dayLongFri;
 }
 
 class _AppLocalizationsDelegate

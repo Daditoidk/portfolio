@@ -680,4 +680,205 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get fieldScreenPrepareSubtitle =>
       'Prepare your mind and body for the upcoming match.';
+
+  @override
+  String get communityWeeklyTitle => 'Weekly Leaderboard';
+
+  @override
+  String get communityTabWeekly => 'Weekly';
+
+  @override
+  String get communityTabGlobal => 'Global';
+
+  @override
+  String get communityFilterStage => 'Stage';
+
+  @override
+  String get communityFilterCategory => 'Category';
+
+  @override
+  String get communityFilterGender => 'Gender';
+
+  @override
+  String get communityFilterOptionBenjamin => 'Benjamin';
+
+  @override
+  String get communityFilterOptionAlevin => 'Alevin';
+
+  @override
+  String get communityFilterOptionCadete => 'Cadet';
+
+  @override
+  String get communityFilterOptionInfantil => 'Infant';
+
+  @override
+  String get communityFilterOptionJuvenil => 'Youth';
+
+  @override
+  String get communityFilterOptionAmateur => 'Amateur';
+
+  @override
+  String get communityFilterOptionAll => 'All';
+
+  @override
+  String get communityFilterOptionNone => 'None';
+
+  @override
+  String get communityFilterOptionA => 'A';
+
+  @override
+  String get communityFilterOptionB => 'B';
+
+  @override
+  String get communityFilterOptionC => 'C';
+
+  @override
+  String get communityFilterOptionMixed => 'Mixed';
+
+  @override
+  String get communityFilterOptionM => 'M';
+
+  @override
+  String get communityFilterOptionF => 'F';
+
+  @override
+  String get communityLeagueBronze => 'Bronze';
+
+  @override
+  String get communityLeagueSilver => 'Silver';
+
+  @override
+  String get communityLeagueGold => 'Gold';
+
+  @override
+  String get communityLeagueInfo =>
+      'Top 3 at the end of the week advance to the next league';
+
+  @override
+  String communityLeagueLabel(Object league) {
+    return 'League $league';
+  }
+
+  @override
+  String get communityLeaderboardHeaderNumber => '#';
+
+  @override
+  String get communityLeaderboardHeaderAthlete => 'Athlete';
+
+  @override
+  String get communityLeaderboardHeaderPoints => 'Points';
+
+  @override
+  String get communityNoUsersFilters =>
+      'No users found for the selected filters.';
+
+  @override
+  String get communityNoUsersGlobal =>
+      'No users found for the global leaderboard.';
+
+  @override
+  String get communityCurrentUser => 'You';
+
+  @override
+  String get profileAdviceButton => 'ADVICE';
+
+  @override
+  String get profileActionPerformance => 'Performance';
+
+  @override
+  String get profileActionAchievements => 'Achievements';
+
+  @override
+  String get profileActionExternalReport => 'External Evaluation Report';
+
+  @override
+  String get profilePopupTitle => 'Feature unavailable';
+
+  @override
+  String get profilePopupContent => 'This demo does not support this feature.';
+
+  @override
+  String get profilePopupOk => 'OK';
+
+  @override
+  String get profileMonthlyAverage => 'Player\'s monthly average';
+
+  @override
+  String get profileStatPsychological => 'Psychological';
+
+  @override
+  String get profileStatTechnical => 'Technical';
+
+  @override
+  String get profileStatTactical => 'Tactical';
+
+  @override
+  String get profileStatPhysical => 'Physical';
+
+  @override
+  String get profileGridStreak => 'Streak';
+
+  @override
+  String get profileGridExp => 'EXP';
+
+  @override
+  String get profileGridGold => 'GOLD';
+
+  @override
+  String get profileGridDivision => 'Division';
+
+  @override
+  String get profileGridBadges => 'Badges';
+
+  @override
+  String get profileCardPlayerName => 'Player Name';
+
+  @override
+  String get profileCardPosition => 'Position';
+
+  @override
+  String get profileCardStage => 'Stage';
+
+  @override
+  String get profileCardLeaderStrategic => 'Leader: Strategic';
+
+  @override
+  String get popupTaskCompletedTitle => 'Huray!';
+
+  @override
+  String get popupOk => 'OK';
+
+  @override
+  String get popupCenterFlagInfo =>
+      'This flag will be active on Friday and the weekend.';
+
+  @override
+  String get dayShortMon => 'M';
+
+  @override
+  String get dayShortTue => 'T';
+
+  @override
+  String get dayShortWed => 'W';
+
+  @override
+  String get dayShortThu => 'T';
+
+  @override
+  String get dayShortFri => 'F';
+
+  @override
+  String get dayLongMon => 'Monday';
+
+  @override
+  String get dayLongTue => 'Tuesday';
+
+  @override
+  String get dayLongWed => 'Wednesday';
+
+  @override
+  String get dayLongThu => 'Thursday';
+
+  @override
+  String get dayLongFri => 'Friday';
 }

@@ -561,7 +561,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get preEmotionalLabel => 'Emocional Pre';
 
   @override
-  String get planLabel => 'Plan partido';
+  String get planLabel => 'Plan';
 
   @override
   String get matchLabel => 'Partido';
@@ -679,9 +679,210 @@ class AppLocalizationsEs extends AppLocalizations {
   String get b4sSplashSubtitle => 'Tu temporada, tu éxito';
 
   @override
-  String get fieldScreenPrepareTitle => 'Prepárate\npara el partido!';
+  String get fieldScreenPrepareTitle => '¡Prepárate\npara el partido!';
 
   @override
   String get fieldScreenPrepareSubtitle =>
-      'Prepare your mind and body for the upcoming match.';
+      'Prepara tu mente y cuerpo para el próximo partido.';
+
+  @override
+  String get communityWeeklyTitle => 'Tabla de posición semanal';
+
+  @override
+  String get communityTabWeekly => 'Semanal';
+
+  @override
+  String get communityTabGlobal => 'Global';
+
+  @override
+  String get communityFilterStage => 'Etapa';
+
+  @override
+  String get communityFilterCategory => 'Categoría';
+
+  @override
+  String get communityFilterGender => 'Género';
+
+  @override
+  String get communityFilterOptionBenjamin => 'Benjamin';
+
+  @override
+  String get communityFilterOptionAlevin => 'Alevín';
+
+  @override
+  String get communityFilterOptionCadete => 'Cadete';
+
+  @override
+  String get communityFilterOptionInfantil => 'Infantil';
+
+  @override
+  String get communityFilterOptionJuvenil => 'Juvenil';
+
+  @override
+  String get communityFilterOptionAmateur => 'Amateur';
+
+  @override
+  String get communityFilterOptionAll => 'Todas';
+
+  @override
+  String get communityFilterOptionNone => 'Ninguno';
+
+  @override
+  String get communityFilterOptionA => 'A';
+
+  @override
+  String get communityFilterOptionB => 'B';
+
+  @override
+  String get communityFilterOptionC => 'C';
+
+  @override
+  String get communityFilterOptionMixed => 'Mixto';
+
+  @override
+  String get communityFilterOptionM => 'M';
+
+  @override
+  String get communityFilterOptionF => 'F';
+
+  @override
+  String get communityLeagueBronze => 'Bronce';
+
+  @override
+  String get communityLeagueSilver => 'Plata';
+
+  @override
+  String get communityLeagueGold => 'Oro';
+
+  @override
+  String get communityLeagueInfo =>
+      'Los top 3, al finalizar la semana, avanzan a la siguiente liga';
+
+  @override
+  String communityLeagueLabel(Object league) {
+    return 'Liga $league';
+  }
+
+  @override
+  String get communityLeaderboardHeaderNumber => '#';
+
+  @override
+  String get communityLeaderboardHeaderAthlete => 'Deportista';
+
+  @override
+  String get communityLeaderboardHeaderPoints => 'Puntos';
+
+  @override
+  String get communityNoUsersFilters =>
+      'No se encontraron usuarios para los filtros seleccionados.';
+
+  @override
+  String get communityNoUsersGlobal =>
+      'No se encontraron usuarios para la tabla global.';
+
+  @override
+  String get communityCurrentUser => 'Tú';
+
+  @override
+  String get profileAdviceButton => 'CONSEJOS';
+
+  @override
+  String get profileActionPerformance => 'Rendimiento';
+
+  @override
+  String get profileActionAchievements => 'Logros';
+
+  @override
+  String get profileActionExternalReport => 'Informe valoración externa';
+
+  @override
+  String get profilePopupTitle => 'Función no disponible';
+
+  @override
+  String get profilePopupContent => 'Esta demo no soporta esta función.';
+
+  @override
+  String get profilePopupOk => 'OK';
+
+  @override
+  String get profileMonthlyAverage => 'Promedio mensual del jugador';
+
+  @override
+  String get profileStatPsychological => 'Psicológico';
+
+  @override
+  String get profileStatTechnical => 'Técnico';
+
+  @override
+  String get profileStatTactical => 'Táctico';
+
+  @override
+  String get profileStatPhysical => 'Físico';
+
+  @override
+  String get profileGridStreak => 'Racha';
+
+  @override
+  String get profileGridExp => 'EXP';
+
+  @override
+  String get profileGridGold => 'ORO';
+
+  @override
+  String get profileGridDivision => 'División';
+
+  @override
+  String get profileGridBadges => 'Insignias';
+
+  @override
+  String get profileCardPlayerName => 'Nombre del jugador';
+
+  @override
+  String get profileCardPosition => 'Posición';
+
+  @override
+  String get profileCardStage => 'Etapa';
+
+  @override
+  String get profileCardLeaderStrategic => 'Líder: Estratégico';
+
+  @override
+  String get popupTaskCompletedTitle => 'Huray!';
+
+  @override
+  String get popupOk => 'OK';
+
+  @override
+  String get popupCenterFlagInfo =>
+      'Esta bandera estará activa el viernes, sábado y domingo.';
+
+  @override
+  String get dayShortMon => 'L';
+
+  @override
+  String get dayShortTue => 'M';
+
+  @override
+  String get dayShortWed => 'X';
+
+  @override
+  String get dayShortThu => 'J';
+
+  @override
+  String get dayShortFri => 'V';
+
+  @override
+  String get dayLongMon => 'Lunes';
+
+  @override
+  String get dayLongTue => 'Martes';
+
+  @override
+  String get dayLongWed => 'Miércoles';
+
+  @override
+  String get dayLongThu => 'Jueves';
+
+  @override
+  String get dayLongFri => 'Viernes';
 }

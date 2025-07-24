@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../b4s_colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio_web/core/l10n/app_localizations.dart';
+
+const String kB4SLogoAsset = 'assets/demos/b4s/logo_clean.svg';
 
 class LocalCommunityTab extends StatefulWidget {
   const LocalCommunityTab({super.key});
@@ -11,565 +15,565 @@ class LocalCommunityTab extends StatefulWidget {
 class _LocalCommunityTabState extends State<LocalCommunityTab> {
   // Mock filter state
   String stage = 'Benjamin';
-  String category = 'Todas';
-  String gender = 'Mixto';
-  String league = 'Bronce';
+  String category = 'All';
+  String gender = 'Mixed';
+  String league = 'Bronze';
 
   // Mock user data
   final List<Map<String, dynamic>> allUsers = [
     // 40 mock users for demo
     {
       'name': 'Paul C. Ramos',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 5075,
       'isCurrent': true,
       'stage': 'Benjamin',
       'category': 'A',
       'gender': 'M',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Derrick L. Thoman',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 4985,
       'isCurrent': false,
       'stage': 'Alevin',
       'category': 'B',
       'gender': 'M',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'Kelsey T. Donovan',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 4642,
       'isCurrent': false,
       'stage': 'Benjamin',
       'category': 'A',
       'gender': 'F',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Jack L. Gregory',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3874,
       'isCurrent': false,
-      'stage': 'Cadete',
+      'stage': 'Cadet',
       'category': 'C',
       'gender': 'M',
-      'league': 'Oro',
+      'league': 'Gold',
     },
     {
       'name': 'Mary R. Mercado',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3567,
       'isCurrent': false,
       'stage': 'Benjamin',
       'category': 'A',
       'gender': 'F',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Theresa N. Maki',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3478,
       'isCurrent': false,
       'stage': 'Alevin',
       'category': 'B',
       'gender': 'F',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'James R. Stokes',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3257,
       'isCurrent': false,
       'stage': 'Infantil',
       'category': 'C',
       'gender': 'M',
-      'league': 'Oro',
+      'league': 'Gold',
     },
     {
       'name': 'David B. Rodriguez',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3250,
       'isCurrent': false,
       'stage': 'Juvenil',
       'category': 'B',
       'gender': 'M',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'Annette R. Allen',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3212,
       'isCurrent': false,
       'stage': 'Amateur',
       'category': 'A',
       'gender': 'F',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Lucas M. White',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3100,
       'isCurrent': false,
       'stage': 'Benjamin',
       'category': 'B',
       'gender': 'M',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Sophie L. Turner',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 3050,
       'isCurrent': false,
       'stage': 'Alevin',
       'category': 'C',
       'gender': 'F',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'Carlos G. Perez',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2990,
       'isCurrent': false,
       'stage': 'Cadete',
       'category': 'A',
       'gender': 'M',
-      'league': 'Oro',
+      'league': 'Bronze',
     },
     {
       'name': 'Emma S. Clark',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2950,
       'isCurrent': false,
       'stage': 'Infantil',
       'category': 'B',
       'gender': 'F',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Noah J. Lee',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2900,
       'isCurrent': false,
       'stage': 'Juvenil',
       'category': 'C',
       'gender': 'M',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'Olivia K. Adams',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2850,
       'isCurrent': false,
       'stage': 'Amateur',
       'category': 'A',
       'gender': 'F',
-      'league': 'Oro',
+      'league': 'Bronze',
     },
     {
       'name': 'Mason D. Evans',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2800,
       'isCurrent': false,
       'stage': 'Benjamin',
       'category': 'B',
       'gender': 'M',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Ava F. Scott',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2750,
       'isCurrent': false,
       'stage': 'Alevin',
       'category': 'C',
       'gender': 'F',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'Ethan H. King',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2700,
       'isCurrent': false,
       'stage': 'Cadete',
       'category': 'A',
       'gender': 'M',
-      'league': 'Oro',
+      'league': 'Bronze',
     },
     {
       'name': 'Mia I. Wright',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2650,
       'isCurrent': false,
       'stage': 'Infantil',
       'category': 'B',
       'gender': 'F',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Logan J. Baker',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2600,
       'isCurrent': false,
       'stage': 'Juvenil',
       'category': 'C',
       'gender': 'M',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'Ella K. Nelson',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2550,
       'isCurrent': false,
       'stage': 'Amateur',
       'category': 'A',
       'gender': 'F',
-      'league': 'Oro',
+      'league': 'Bronze',
     },
     {
       'name': 'Jacob L. Carter',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2500,
       'isCurrent': false,
       'stage': 'Benjamin',
       'category': 'B',
       'gender': 'M',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Charlotte M. Mitchell',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2450,
       'isCurrent': false,
       'stage': 'Alevin',
       'category': 'C',
       'gender': 'F',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'William N. Perez',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2400,
       'isCurrent': false,
       'stage': 'Cadete',
       'category': 'A',
       'gender': 'M',
-      'league': 'Oro',
+      'league': 'Bronze',
     },
     {
       'name': 'Amelia O. Roberts',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2350,
       'isCurrent': false,
       'stage': 'Infantil',
       'category': 'B',
       'gender': 'F',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Henry P. Murphy',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2300,
       'isCurrent': false,
       'stage': 'Juvenil',
       'category': 'C',
       'gender': 'M',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'Grace Q. Foster',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2250,
       'isCurrent': false,
       'stage': 'Amateur',
       'category': 'A',
       'gender': 'F',
-      'league': 'Oro',
+      'league': 'Bronze',
     },
     {
       'name': 'Benjamin R. Bell',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2200,
       'isCurrent': false,
       'stage': 'Benjamin',
       'category': 'B',
       'gender': 'M',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Zoe S. Cooper',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2150,
       'isCurrent': false,
       'stage': 'Alevin',
       'category': 'C',
       'gender': 'F',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'Alexander T. Ward',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2100,
       'isCurrent': false,
       'stage': 'Cadete',
       'category': 'A',
       'gender': 'M',
-      'league': 'Oro',
+      'league': 'Bronze',
     },
     {
       'name': 'Lily U. Morgan',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2050,
       'isCurrent': false,
       'stage': 'Infantil',
       'category': 'B',
       'gender': 'F',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Samuel V. Reed',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 2000,
       'isCurrent': false,
       'stage': 'Juvenil',
       'category': 'C',
       'gender': 'M',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'Chloe W. Bailey',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1950,
       'isCurrent': false,
       'stage': 'Amateur',
       'category': 'A',
       'gender': 'F',
-      'league': 'Oro',
+      'league': 'Bronze',
     },
     {
       'name': 'Matthew X. Rivera',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1900,
       'isCurrent': false,
       'stage': 'Benjamin',
       'category': 'B',
       'gender': 'M',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Scarlett Y. Kim',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1850,
       'isCurrent': false,
       'stage': 'Alevin',
       'category': 'C',
       'gender': 'F',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'Daniel Z. Cox',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1800,
       'isCurrent': false,
       'stage': 'Cadete',
       'category': 'A',
       'gender': 'M',
-      'league': 'Oro',
+      'league': 'Bronze',
     },
     {
       'name': 'Victoria A. Brooks',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1750,
       'isCurrent': false,
       'stage': 'Infantil',
       'category': 'B',
       'gender': 'F',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Jackson B. Sanders',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1700,
       'isCurrent': false,
       'stage': 'Juvenil',
       'category': 'C',
       'gender': 'M',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'Penelope C. Price',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1650,
       'isCurrent': false,
       'stage': 'Amateur',
       'category': 'A',
       'gender': 'F',
-      'league': 'Oro',
+      'league': 'Bronze',
     },
     {
       'name': 'Sebastian D. Bennett',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1600,
       'isCurrent': false,
       'stage': 'Benjamin',
       'category': 'B',
       'gender': 'M',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Layla E. Barnes',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1550,
       'isCurrent': false,
       'stage': 'Alevin',
       'category': 'C',
       'gender': 'F',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'Aiden F. Ross',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1500,
       'isCurrent': false,
       'stage': 'Cadete',
       'category': 'A',
       'gender': 'M',
-      'league': 'Oro',
+      'league': 'Bronze',
     },
     {
       'name': 'Hannah G. Henderson',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1450,
       'isCurrent': false,
       'stage': 'Infantil',
       'category': 'B',
       'gender': 'F',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Lucas H. Bryant',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1400,
       'isCurrent': false,
       'stage': 'Juvenil',
       'category': 'C',
       'gender': 'M',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'Mila I. Griffin',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1350,
       'isCurrent': false,
       'stage': 'Amateur',
       'category': 'A',
       'gender': 'F',
-      'league': 'Oro',
+      'league': 'Bronze',
     },
     {
       'name': 'Elijah J. Russell',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1300,
       'isCurrent': false,
       'stage': 'Benjamin',
       'category': 'B',
       'gender': 'M',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Aria K. Hayes',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1250,
       'isCurrent': false,
       'stage': 'Alevin',
       'category': 'C',
       'gender': 'F',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'Logan L. Patterson',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1200,
       'isCurrent': false,
       'stage': 'Cadete',
       'category': 'A',
       'gender': 'M',
-      'league': 'Oro',
+      'league': 'Bronze',
     },
     {
       'name': 'Sofia M. Simmons',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1150,
       'isCurrent': false,
       'stage': 'Infantil',
       'category': 'B',
       'gender': 'F',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
     {
       'name': 'Mason N. Alexander',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1100,
       'isCurrent': false,
       'stage': 'Juvenil',
       'category': 'C',
       'gender': 'M',
-      'league': 'Plata',
+      'league': 'Silver',
     },
     {
       'name': 'Camila O. Griffin',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1050,
       'isCurrent': false,
       'stage': 'Amateur',
       'category': 'A',
       'gender': 'F',
-      'league': 'Oro',
+      'league': 'Bronze',
     },
     {
       'name': 'Oliver P. Ford',
-      'avatar': 'assets/demos/b4s/avatar.jpg',
+      'avatar': kB4SLogoAsset,
       'points': 1000,
       'isCurrent': false,
       'stage': 'Benjamin',
       'category': 'B',
       'gender': 'M',
-      'league': 'Bronce',
+      'league': 'Bronze',
     },
   ];
 
   List<Map<String, dynamic>> get filteredUsers {
     return allUsers.where((user) {
-        final stageMatch = (stage == 'Todas' || user['stage'] == stage);
+      final stageMatch = (stage == 'All' || user['stage'] == stage);
         final categoryMatch =
-            (category == 'Todas' ||
-                category == 'Ninguno' ||
-                user['category'] == category);
-        final genderMatch = (gender == 'Mixto' || user['gender'] == gender);
+          (category == 'All' ||
+          category == 'None' ||
+          user['category'] == category);
+      final genderMatch = (gender == 'Mixed' || user['gender'] == gender);
         final leagueMatch = (league == '' || user['league'] == league);
         return stageMatch && categoryMatch && genderMatch && leagueMatch;
       }).toList()
       ..sort((a, b) => b['points'].compareTo(a['points']));
   }
 
-  // League colors
+  // League colorsr
   LinearGradient getLeagueGradient() {
     switch (league) {
-      case 'Bronce':
+      case 'Bronze':
         return const LinearGradient(
           colors: [Color(0xFFEF8D31), Color(0x00EF8D31)],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         );
-      case 'Plata':
+      case 'Silver':
         return const LinearGradient(
           colors: [Color(0xFFA7B5C0), Color(0x007B7B7B)],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         );
-      case 'Oro':
+      case 'Gold':
         return const LinearGradient(
           colors: [Color(0xFFF6C619), Color(0x00F6C619)],
           begin: Alignment.topCenter,
@@ -582,6 +586,7 @@ class _LocalCommunityTabState extends State<LocalCommunityTab> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       color: const Color(0xff1F2022),
       child: SingleChildScrollView(
@@ -594,29 +599,55 @@ class _LocalCommunityTabState extends State<LocalCommunityTab> {
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                 children: [
-                  _buildDropdown('Etapa', stage, [
-                    'Benjamin',
-                    'Alevin',
-                    'Cadete',
-                    'Infantil',
-                    'Juvenil',
-                    'Amateur',
-                    'Todas',
-                  ], (v) => setState(() => stage = v)),
+                  _buildDropdown(
+                    l10n.communityFilterStage,
+                    stage,
+                    [
+                      'Benjamin',
+                      'Alevin',
+                      'Cadet',
+                      'Infant',
+                      'Youth',
+                      'Amateur',
+                      'All',
+                    ],
+                    (v) => setState(() => stage = v),
+                    displayValues: [
+                      l10n.communityFilterOptionBenjamin,
+                      l10n.communityFilterOptionAlevin,
+                      l10n.communityFilterOptionCadete,
+                      l10n.communityFilterOptionInfantil,
+                      l10n.communityFilterOptionJuvenil,
+                      l10n.communityFilterOptionAmateur,
+                      l10n.communityFilterOptionAll,
+                    ],
+                  ),
                   const SizedBox(width: 8),
-                  _buildDropdown('Categoria', category, [
-                    'Ninguno',
-                    'A',
-                    'B',
-                    'C',
-                    'Todas',
-                  ], (v) => setState(() => category = v)),
+                  _buildDropdown(
+                    l10n.communityFilterCategory,
+                    category,
+                    ['None', 'A', 'B', 'C', 'All'],
+                    (v) => setState(() => category = v),
+                    displayValues: [
+                      l10n.communityFilterOptionNone,
+                      l10n.communityFilterOptionA,
+                      l10n.communityFilterOptionB,
+                      l10n.communityFilterOptionC,
+                      l10n.communityFilterOptionAll,
+                    ],
+                  ),
                   const SizedBox(width: 8),
-                  _buildDropdown('Género', gender, [
-                    'M',
-                    'F',
-                    'Mixto',
-                  ], (v) => setState(() => gender = v)),
+                  _buildDropdown(
+                    l10n.communityFilterGender,
+                    gender,
+                    ['M', 'F', 'Mixed'],
+                    (v) => setState(() => gender = v),
+                    displayValues: [
+                      l10n.communityFilterOptionM,
+                      l10n.communityFilterOptionF,
+                      l10n.communityFilterOptionMixed,
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -632,7 +663,7 @@ class _LocalCommunityTabState extends State<LocalCommunityTab> {
               child: Column(
                 children: [
                   Text(
-                    'Liga $league',
+                    l10n.communityLeagueLabel(l10n.leagueDisplay(league)),
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -640,18 +671,18 @@ class _LocalCommunityTabState extends State<LocalCommunityTab> {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  const Text(
-                    'Los top 3, al finalizar la semana, avanzan a la siguiente liga',
-                    style: TextStyle(color: Colors.white70, fontSize: 14),
+                  Text(
+                    l10n.communityLeagueInfo,
+                    style: const TextStyle(color: Colors.white70, fontSize: 14),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      _buildLeagueSelector('Bronce', Color(0xFFEF8D31)),
-                      _buildLeagueSelector('Plata', Color(0xFFA7B5C0)),
-                      _buildLeagueSelector('Oro', Color(0xFFF6C619)),
+                      _buildLeagueSelector('Bronze', Color(0xFFEF8D31)),
+                      _buildLeagueSelector('Silver', Color(0xFFA7B5C0)),
+                      _buildLeagueSelector('Gold', Color(0xFFF6C619)),
                     ],
                   ),
                 ],
@@ -662,19 +693,25 @@ class _LocalCommunityTabState extends State<LocalCommunityTab> {
               color: const Color(0xff515151),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
-                children: const [
+                children: [
                   SizedBox(
                     width: 24,
-                    child: Text('#', style: TextStyle(color: Colors.white)),
-                  ),
-                  SizedBox(width: 48),
-                  Expanded(
                     child: Text(
-                      'Deportista',
+                      l10n.communityLeaderboardHeaderNumber,
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  Text('Puntos', style: TextStyle(color: Colors.white)),
+                  const SizedBox(width: 48),
+                  Expanded(
+                    child: Text(
+                      l10n.communityLeaderboardHeaderAthlete,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  Text(
+                    l10n.communityLeaderboardHeaderPoints,
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ],
               ),
             ),
@@ -686,7 +723,7 @@ class _LocalCommunityTabState extends State<LocalCommunityTab> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      'No users found for the selected filters.',
+                      l10n.communityNoUsersFilters,
                       style: TextStyle(color: Colors.white70, fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
@@ -708,8 +745,12 @@ class _LocalCommunityTabState extends State<LocalCommunityTab> {
                             : const Color(0xff3E3E3E),
                     child: ListTile(
                       leading: CircleAvatar(
-                        backgroundImage: AssetImage(user['avatar']),
                         backgroundColor: Colors.white,
+                        child: SvgPicture.asset(
+                          user['avatar'],
+                          width: 32,
+                          height: 32,
+                        ),
                       ),
                       title: Text(
                         user['name'],
@@ -717,10 +758,10 @@ class _LocalCommunityTabState extends State<LocalCommunityTab> {
                       ),
                       subtitle:
                           isCurrent
-                              ? const Text(
-                                'Tú',
-                                style: TextStyle(color: Colors.white70),
-                              )
+                          ? Text(
+                              l10n.communityCurrentUser,
+                              style: const TextStyle(color: Colors.white70),
+                            )
                               : null,
                       trailing: Text(
                         user['points'].toString(),
@@ -740,8 +781,9 @@ class _LocalCommunityTabState extends State<LocalCommunityTab> {
     String label,
     String value,
     List<String> options,
-    ValueChanged<String> onChanged,
-  ) {
+    ValueChanged<String> onChanged, {
+    List<String>? displayValues,
+  }) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
@@ -751,10 +793,15 @@ class _LocalCommunityTabState extends State<LocalCommunityTab> {
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
           value: value,
-          items:
-              options
-                  .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-                  .toList(),
+          items: List.generate(
+            options.length,
+            (i) => DropdownMenuItem(
+              value: options[i],
+              child: Text(
+                displayValues != null ? displayValues[i] : options[i],
+              ),
+            ),
+          ),
           onChanged: (v) => v != null ? onChanged(v) : null,
           style: const TextStyle(color: Colors.black),
           dropdownColor: Colors.white,
@@ -782,5 +829,20 @@ class _LocalCommunityTabState extends State<LocalCommunityTab> {
         ),
       ),
     );
+  }
+}
+
+extension LocalCommunityTabL10n on AppLocalizations {
+  String leagueDisplay(String league) {
+    switch (league) {
+      case 'Bronze':
+        return communityLeagueBronze;
+      case 'Silver':
+        return communityLeagueSilver;
+      case 'Gold':
+        return communityLeagueGold;
+      default:
+        return league;
+    }
   }
 }
