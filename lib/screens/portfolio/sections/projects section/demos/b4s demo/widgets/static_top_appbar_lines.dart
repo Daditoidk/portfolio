@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class StaticAppBarInnerLineTop extends StatelessWidget {
+  const StaticAppBarInnerLineTop({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Image.asset(
@@ -12,6 +14,8 @@ class StaticAppBarInnerLineTop extends StatelessWidget {
 }
 
 class StaticAppBarOuterLineTop extends StatelessWidget {
+  const StaticAppBarOuterLineTop({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Image.asset(

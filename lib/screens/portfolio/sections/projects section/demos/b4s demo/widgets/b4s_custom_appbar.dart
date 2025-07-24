@@ -17,6 +17,7 @@ class B4SCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showIcons;
   final PreferredSizeWidget? bottom;
   final TextStyle? titleStyle;
+  final Widget? actionIcon;
 
   const B4SCustomAppBar({
     super.key,
@@ -25,6 +26,7 @@ class B4SCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showIcons = true,
     this.bottom,
     this.titleStyle,
+    this.actionIcon,
   });
 
   @override
@@ -34,7 +36,9 @@ class B4SCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     Widget child = Container(
       decoration: BoxDecoration(
         color: const Color(0xff676767),
-        border: const Border(bottom: BorderSide(color: Colors.white54)),
+        border: const Border(
+          bottom: BorderSide(color: Colors.white54, width: 0.5),
+        ),
       ),
       child: Stack(
         alignment: Alignment.center,
@@ -43,6 +47,7 @@ class B4SCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           Positioned(top: -180, right: -320, child: StaticAppBarInnerLineTop()),
           Positioned(top: -320, right: -440, child: StaticAppBarOuterLineTop()),
           SafeArea(
+            bottom: false,
             child: Padding(
               padding: const EdgeInsets.only(top: kToolbarHeight, bottom: 0.0),
               child: Align(
@@ -153,6 +158,11 @@ class B4SCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                           ],
                         ),
                       ),
+                    if (actionIcon != null)
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0, left: 8.0),
+                        child: actionIcon,
+                      ),
                   ],
                 ),
               ),
@@ -162,7 +172,10 @@ class B4SCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
 
-    return Column(children: [child, if (bottom != null) bottom!]);
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [child, if (bottom != null) bottom!],
+    );
   }
 
   @override

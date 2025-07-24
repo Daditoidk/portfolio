@@ -1,12 +1,12 @@
 // NOTE: Navigation is now handled by B4SDemoNavigationShell. Use FieldScreen only for the field UI.
 import 'package:flutter/material.dart';
-import '../b4s_colors.dart';
+import '../../b4s_colors.dart';
 import 'package:intl/intl.dart';
 import 'package:portfolio_web/core/l10n/app_localizations.dart';
-import '../widgets/field_flag.dart';
+import 'field_flag.dart';
 import 'dart:math';
-import '../widgets/b4s_popup.dart';
-import '../widgets/b4s_custom_appbar.dart';
+import '../../widgets/b4s_popup.dart';
+import '../../widgets/b4s_custom_appbar.dart';
 
 class FieldScreen extends StatefulWidget {
   const FieldScreen({super.key});
@@ -633,16 +633,18 @@ class _FieldViewState extends State<_FieldView> {
   String formatWeeksMessage(BuildContext context, int diff) {
     if (diff == 1) return AppLocalizations.of(context)!.popupNextWeek;
     if (diff == -1) return AppLocalizations.of(context)!.popupLastWeek;
-    if (diff.abs() > 1)
+    if (diff.abs() > 1) {
       return AppLocalizations.of(context)!.popupInXWeeks(diff.abs());
+    }
     return '';
   }
 
   String formatDaysMessage(BuildContext context, int diff) {
     if (diff == 1) return AppLocalizations.of(context)!.popupTomorrow;
     if (diff == -1) return AppLocalizations.of(context)!.popupYesterday;
-    if (diff.abs() > 1)
+    if (diff.abs() > 1) {
       return AppLocalizations.of(context)!.popupInXDays(diff.abs());
+    }
     return '';
   }
 }

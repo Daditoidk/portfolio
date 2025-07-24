@@ -10,7 +10,7 @@ flutter analyze
 
 dart fix --dry-run
 
-dart apply
+dart fix --apply
 
 echo "🚀 Running Flutter app in Chrome..."
 flutter run -d chrome 

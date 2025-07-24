@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../b4s_colors.dart';
 
 class GlobalCommunityTab extends StatelessWidget {
-  GlobalCommunityTab({super.key});
+  const GlobalCommunityTab({super.key});
 
   // Mock user data
   final List<Map<String, dynamic>> users = const [

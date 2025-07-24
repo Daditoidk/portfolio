@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/screens/portfolio/sections/projects%20section/demos/b4s%20demo/screens/community/community_screen.dart';
-import 'field_screen.dart';
-import 'profile_screen.dart';
+import 'season/field_screen.dart';
+import 'profile/profile_screen.dart';
 import 'package:portfolio_web/core/l10n/app_localizations.dart';
 import '../b4s_colors.dart';
 
