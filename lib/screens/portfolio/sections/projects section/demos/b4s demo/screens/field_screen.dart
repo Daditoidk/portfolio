@@ -1,11 +1,12 @@
+// NOTE: Navigation is now handled by B4SDemoNavigationShell. Use FieldScreen only for the field UI.
 import 'package:flutter/material.dart';
 import '../b4s_colors.dart';
 import 'package:intl/intl.dart';
 import 'package:portfolio_web/core/l10n/app_localizations.dart';
-import 'field_flag.dart';
+import '../widgets/field_flag.dart';
 import 'dart:math';
-import 'b4s_popup.dart';
-import 'package:portfolio_web/screens/portfolio/sections/projects section/demos/b4s_demo/widgets/b4s_custom_appbar.dart';
+import '../widgets/b4s_popup.dart';
+import '../widgets/b4s_custom_appbar.dart';
 
 class FieldScreen extends StatefulWidget {
   const FieldScreen({super.key});
@@ -15,9 +16,8 @@ class FieldScreen extends StatefulWidget {
 }
 
 class _FieldScreenState extends State<FieldScreen> {
-  int _currentIndex = 0;
   int _selectedWeek = 0; // 0-based index for 'Fecha'
-  static const int _maxWeeks = 5;
+  Widget? _popup;
 
   @override
   void initState() {
@@ -26,18 +26,71 @@ class _FieldScreenState extends State<FieldScreen> {
     _selectedWeek = ((now.day - 1) ~/ 7).clamp(0, 4);
   }
 
+  void _showPopup(Widget popup) {
+    setState(() {
+      _popup = popup;
+    });
+  }
+
+  void _dismissPopup() {
+    setState(() {
+      _popup = null;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final String monthTitle = DateFormat.MMMM(
       Localizations.localeOf(context).toString(),
     ).format(DateTime.now());
+    return Stack(
+      children: [
+        FieldMainScreen(
+          monthTitle: monthTitle,
+          l10n: l10n,
+          selectedWeek: _selectedWeek,
+          onWeekChanged: (week) => setState(() => _selectedWeek = week),
+          showPopup: _showPopup,
+          dismissPopup: _dismissPopup,
+        ),
+        if (_popup != null)
+          Positioned.fill(
+            child: Container(
+              color: Colors.black.withValues(alpha: 0.45),
+              child: Center(child: _popup),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+class FieldMainScreen extends StatelessWidget {
+  final String monthTitle;
+  final AppLocalizations l10n;
+  final int selectedWeek;
+  final ValueChanged<int> onWeekChanged;
+  final void Function(Widget) showPopup;
+  final VoidCallback dismissPopup;
+
+  const FieldMainScreen({
+    super.key,
+    required this.monthTitle,
+    required this.l10n,
+    required this.selectedWeek,
+    required this.onWeekChanged,
+    required this.showPopup,
+    required this.dismissPopup,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: B4SCustomAppBar(
         title: monthTitle,
         showBackButton: true,
-        showIcons: false,
-        showPremium: false,
+        showIcons: true,
       ),
       extendBodyBehindAppBar: true,
       body: Container(
@@ -66,51 +119,21 @@ class _FieldScreenState extends State<FieldScreen> {
                 ),
               ),
               Expanded(
-                child:
-                    _currentIndex == 0
-                        ? _FieldView(selectedWeek: _selectedWeek)
-                        : Container(),
+                child: _FieldView(
+                  selectedWeek: selectedWeek,
+                  showPopup: showPopup,
+                  dismissPopup: dismissPopup,
+                ),
               ),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _buildWeekNavigator(context),
-          BottomNavigationBar(
-            currentIndex: _currentIndex,
-            onTap: (index) => setState(() => _currentIndex = index),
-            backgroundColor: B4SDemoColors.modalsBackground,
-            selectedItemColor: B4SDemoColors.buttonRed,
-            unselectedItemColor: Colors.grey,
-            selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
-            unselectedLabelStyle: const TextStyle(
-              fontWeight: FontWeight.normal,
-            ),
-            items: [
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.sports_soccer),
-                label: l10n.seasonTab,
-              ),
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.people),
-                label: l10n.communityTab,
-              ),
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.person),
-                label: l10n.profileTab,
-              ),
-            ],
-          ),
-        ],
-      ),
+      bottomNavigationBar: _buildWeekNavigator(context),
     );
   }
 
   Widget _buildWeekNavigator(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final weekTitles = [
       l10n.week1Label,
       l10n.week2Label,
@@ -130,28 +153,28 @@ class _FieldScreenState extends State<FieldScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          if (_selectedWeek != 0)
+          if (selectedWeek != 0)
             IconButton(
               icon: Icon(Icons.arrow_back_ios, color: B4SDemoColors.buttonRed),
-              onPressed: () => setState(() => _selectedWeek--),
+              onPressed: () => onWeekChanged(selectedWeek - 1),
             )
           else
             const SizedBox(width: 48),
           Text(
-            weekTitles[_selectedWeek],
+            weekTitles[selectedWeek],
             style: TextStyle(
               color: B4SDemoColors.buttonRed,
               fontWeight: FontWeight.bold,
               fontSize: 18,
             ),
           ),
-          if (_selectedWeek != _maxWeeks - 1)
+          if (selectedWeek != 4)
             IconButton(
               icon: Icon(
                 Icons.arrow_forward_ios,
                 color: B4SDemoColors.buttonRed,
               ),
-              onPressed: () => setState(() => _selectedWeek++),
+              onPressed: () => onWeekChanged(selectedWeek + 1),
             )
           else
             const SizedBox(width: 48),
@@ -163,14 +186,19 @@ class _FieldScreenState extends State<FieldScreen> {
 
 class _FieldView extends StatefulWidget {
   final int selectedWeek;
-  const _FieldView({required this.selectedWeek});
+  final void Function(Widget) showPopup;
+  final VoidCallback dismissPopup;
+  const _FieldView({
+    required this.selectedWeek,
+    required this.showPopup,
+    required this.dismissPopup,
+  });
 
   @override
   State<_FieldView> createState() => _FieldViewState();
 }
 
 class _FieldViewState extends State<_FieldView> {
-  Widget? _popup;
   late Map<int, List<int>> _weekPercentages;
 
   @override
@@ -193,37 +221,24 @@ class _FieldViewState extends State<_FieldView> {
   }
 
   void _showPopup(Widget popup) {
-    setState(() {
-      _popup = popup;
-    });
+    widget.showPopup(popup);
   }
 
   void _dismissPopup() {
-    setState(() {
-      _popup = null;
-    });
+    widget.dismissPopup();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        width: 320,
-        height: 340,
-        child: Stack(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Stack(
           children: [
             _buildFieldBackground(),
             ..._buildFlagWidgets(context, widget.selectedWeek),
-            if (_popup != null)
-              Positioned.fill(
-                child: Container(
-                  color: Colors.black.withValues(alpha: 0.45),
-                  child: Center(child: _popup),
-                ),
-              ),
           ],
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -333,7 +348,6 @@ class _FieldViewState extends State<_FieldView> {
     bool isActive = false;
     String flagAsset = 'assets/demos/b4s/gray_flag.png';
     VoidCallback? onTap;
-    final l10n = AppLocalizations.of(context)!;
     if (selectedWeek < currentWeek) {
       // Past weeks: all flags active as before
       isActive = true;
@@ -420,7 +434,6 @@ class _FieldViewState extends State<_FieldView> {
   }
 
   void _handlePastWeekFlagTap(String flagAsset, [int? flagIndex]) {
-    final l10n = AppLocalizations.of(context)!;
     if (flagAsset.contains('green_flag')) {
       _showTaskCompletedDialog();
     } else if (flagAsset.contains('red_flag')) {
@@ -433,7 +446,6 @@ class _FieldViewState extends State<_FieldView> {
   }
 
   void _handleCurrentDayFlagTap(String flagAsset, [int? flagIndex]) {
-    final l10n = AppLocalizations.of(context)!;
     if (flagAsset.contains('green_flag')) {
       _showTaskCompletedDialog();
     } else if (flagAsset.contains('red_flag')) {
@@ -446,23 +458,21 @@ class _FieldViewState extends State<_FieldView> {
   }
 
   void _showTaskCompletedDialog() {
-    final l10n = AppLocalizations.of(context)!;
     _showPopup(
       B4SPopup(
         title: 'Huray!',
-        content: Text(l10n.popupTaskCompleted),
+        content: Text(AppLocalizations.of(context)!.popupTaskCompleted),
         actions: [TextButton(onPressed: _dismissPopup, child: Text('OK'))],
       ),
     );
   }
 
   void _showRedFlagDialog([int? flagIndex]) {
-    final l10n = AppLocalizations.of(context)!;
     int sliderValue = 1;
     _showPopup(
       InteractiveB4SPopup(
-        title: l10n.popupNewTaskAssigned,
-        content: Text(l10n.popupDribblingQuestion),
+        title: AppLocalizations.of(context)!.popupNewTaskAssigned,
+        content: Text(AppLocalizations.of(context)!.popupDribblingQuestion),
         actions: [TextButton(onPressed: _dismissPopup, child: Text('OK'))],
         builder: (context, onComplete) {
           return StatefulBuilder(
@@ -500,12 +510,11 @@ class _FieldViewState extends State<_FieldView> {
   }
 
   void _showYellowFlagDialog([int? flagIndex]) {
-    final l10n = AppLocalizations.of(context)!;
     int sliderValue1 = 1;
     int sliderValue2 = 1;
     _showPopup(
       InteractiveB4SPopup(
-        title: l10n.popupNewTaskAssigned,
+        title: AppLocalizations.of(context)!.popupNewTaskAssigned,
         content: SizedBox.shrink(),
         actions: [TextButton(onPressed: _dismissPopup, child: Text('OK'))],
         builder: (context, onComplete) {
@@ -513,7 +522,7 @@ class _FieldViewState extends State<_FieldView> {
             builder:
                 (context, setState) => Column(
                   children: [
-                    Text(l10n.popupDribblingQuestion),
+                    Text(AppLocalizations.of(context)!.popupDribblingQuestion),
                     Slider(
                       value: sliderValue1.toDouble(),
                       min: 1,
@@ -536,7 +545,7 @@ class _FieldViewState extends State<_FieldView> {
                         });
                       },
                     ),
-                    Text(l10n.popupPassingQuestion),
+                    Text(AppLocalizations.of(context)!.popupPassingQuestion),
                     Slider(
                       value: sliderValue2.toDouble(),
                       min: 1,
@@ -568,11 +577,10 @@ class _FieldViewState extends State<_FieldView> {
   }
 
   void _showPastWeekDialog() {
-    final l10n = AppLocalizations.of(context)!;
     _showPopup(
       B4SPopup(
-        title: l10n.popupPastWeekTitle,
-        content: Text(l10n.popupPastWeekContent),
+        title: AppLocalizations.of(context)!.popupPastWeekTitle,
+        content: Text(AppLocalizations.of(context)!.popupPastWeekContent),
         actions: [TextButton(onPressed: _dismissPopup, child: Text('OK'))],
       ),
     );
@@ -581,11 +589,12 @@ class _FieldViewState extends State<_FieldView> {
   void _showCurrentWeekInactiveDialog(int index, int todayIndex) {
     final diff = index - todayIndex;
     final when = formatDaysMessage(context, diff);
-    final l10n = AppLocalizations.of(context)!;
-    final contentText = l10n.popupCurrentWeekContent(when);
+    final contentText = AppLocalizations.of(
+      context,
+    )!.popupCurrentWeekContent(when);
     _showPopup(
       B4SPopup(
-        title: l10n.popupCurrentWeekTitle,
+        title: AppLocalizations.of(context)!.popupCurrentWeekTitle,
         content: Text(contentText),
         actions: [TextButton(onPressed: _dismissPopup, child: Text('OK'))],
       ),
@@ -595,15 +604,16 @@ class _FieldViewState extends State<_FieldView> {
   void _showFutureWeekInactiveDialog(int selectedWeek, int currentWeek) {
     final diff = selectedWeek - currentWeek;
     final when = formatWeeksMessage(context, diff);
-    final l10n = AppLocalizations.of(context)!;
-    final isSpecial = when == l10n.popupNextWeek || when == l10n.popupLastWeek;
+    final isSpecial =
+        when == AppLocalizations.of(context)!.popupNextWeek ||
+        when == AppLocalizations.of(context)!.popupLastWeek;
     final contentText =
         isSpecial
-            ? l10n.popupFutureWeekContentSpecial(when)
-            : l10n.popupFutureWeekContent(when);
+            ? AppLocalizations.of(context)!.popupFutureWeekContentSpecial(when)
+            : AppLocalizations.of(context)!.popupFutureWeekContent(when);
     _showPopup(
       B4SPopup(
-        title: l10n.popupFutureWeekTitle,
+        title: AppLocalizations.of(context)!.popupFutureWeekTitle,
         content: Text(contentText),
         actions: [TextButton(onPressed: _dismissPopup, child: Text('OK'))],
       ),
@@ -611,10 +621,9 @@ class _FieldViewState extends State<_FieldView> {
   }
 
   void _showCenterFlagInactiveDialog() {
-    final l10n = AppLocalizations.of(context)!;
     _showPopup(
       B4SPopup(
-        title: l10n.popupFutureWeekTitle,
+        title: AppLocalizations.of(context)!.popupFutureWeekTitle,
         content: Text('This flag will be active on Friday and the weekend.'),
         actions: [TextButton(onPressed: _dismissPopup, child: Text('OK'))],
       ),
@@ -622,18 +631,18 @@ class _FieldViewState extends State<_FieldView> {
   }
 
   String formatWeeksMessage(BuildContext context, int diff) {
-    final l10n = AppLocalizations.of(context)!;
-    if (diff == 1) return l10n.popupNextWeek;
-    if (diff == -1) return l10n.popupLastWeek;
-    if (diff.abs() > 1) return l10n.popupInXWeeks(diff.abs());
+    if (diff == 1) return AppLocalizations.of(context)!.popupNextWeek;
+    if (diff == -1) return AppLocalizations.of(context)!.popupLastWeek;
+    if (diff.abs() > 1)
+      return AppLocalizations.of(context)!.popupInXWeeks(diff.abs());
     return '';
   }
 
   String formatDaysMessage(BuildContext context, int diff) {
-    final l10n = AppLocalizations.of(context)!;
-    if (diff == 1) return l10n.popupTomorrow;
-    if (diff == -1) return l10n.popupYesterday;
-    if (diff.abs() > 1) return l10n.popupInXDays(diff.abs());
+    if (diff == 1) return AppLocalizations.of(context)!.popupTomorrow;
+    if (diff == -1) return AppLocalizations.of(context)!.popupYesterday;
+    if (diff.abs() > 1)
+      return AppLocalizations.of(context)!.popupInXDays(diff.abs());
     return '';
   }
 }

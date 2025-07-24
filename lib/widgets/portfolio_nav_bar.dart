@@ -51,8 +51,8 @@ class PortfolioNavBar extends StatelessWidget {
                 final navItems = [
                   _buildNavItem(l10n.navHome, 0),
                   _buildNavItem(l10n.navAbout, 1),
-                  _buildNavItem(l10n.resumeSectionTitle, 2),
-                  _buildNavItem(l10n.skillsTitle, 3),
+                  _buildNavItem(l10n.skillsTitle, 2),
+                  _buildNavItem(l10n.resumeSectionTitle, 3),
                   _buildNavItem(l10n.navProjects, 4),
                   _buildNavItem(l10n.navContact, 5),
                 ];
@@ -122,14 +122,14 @@ class PortfolioNavBar extends StatelessWidget {
     final sections = [
       'home',
       'about',
-      'resume',
       'skills',
+      'resume',
       'projects',
       'contact',
     ];
     final sectionId = sections[sectionIndex];
+    // Adjust active state: if currentSection is 'resume', highlight Resume nav item
     final isActive = currentSection == sectionId;
-
     return Builder(
       builder:
           (context) => Semantics(

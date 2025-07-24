@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'widgets/field_screen.dart';
-import 'widgets/b4s_splash_screen.dart';
+import 'screens/navigation_shell.dart';
+import 'screens/b4s_splash_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'b4s_colors.dart';
 import 'package:portfolio_web/core/l10n/app_localizations.dart';
@@ -71,13 +71,12 @@ class _Brain4GoalsDemoState extends State<Brain4GoalsDemo> {
               ],
             ),
           ),
-
         ),
       );
     } else if (!_splashComplete) {
       return B4SSplashScreen(onSplashComplete: _onSplashComplete);
     } else {
-      return const FieldScreen();
+      return const B4SDemoNavigationShell();
     }
   }
 }

@@ -4,7 +4,7 @@ import '../../../../core/constants/semantic_labels.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/helpers/frame_container.dart';
 import 'project_page_arrow.dart';
-import 'demos/b4s_demo/b4s_demo.dart';
+import 'demos/b4s demo/b4s_demo.dart';
 import 'demos/ecommerce_demo/ecommerce_demo.dart';
 import 'demos/social_media_demo/social_media_demo.dart';
 import 'demos/weather_demo/weather_demo.dart';

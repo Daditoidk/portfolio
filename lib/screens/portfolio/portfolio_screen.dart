@@ -47,6 +47,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
 
     final scrollPosition = _scrollController.position.pixels;
     final screenHeight = MediaQuery.of(context).size.height;
+    final centerOfScreen = scrollPosition + screenHeight / 2;
 
     // Show sticky nav when scrolling past header
     final shouldShowStickyNav = scrollPosition > screenHeight * 0.3;
@@ -56,25 +57,24 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       });
     }
 
-    // Calculate which section is currently visible with 20% threshold
-    final sectionHeight = screenHeight;
-    final threshold = sectionHeight * 0.2; // 20% threshold
-
+    // Find the section whose center is closest to the center of the viewport
     String newSection = 'home';
-
-    if (scrollPosition < sectionHeight - threshold) {
-      newSection = 'home';
-    } else if (scrollPosition < sectionHeight * 2 - threshold) {
-      newSection = 'about';
-    } else if (scrollPosition < sectionHeight * 3 - threshold) {
-      newSection = 'resume';
-    } else if (scrollPosition < sectionHeight * 4 - threshold) {
-      newSection = 'skills';
-    } else if (scrollPosition < sectionHeight * 5 - threshold) {
-      newSection = 'projects';
-    } else {
-      newSection = 'contact';
-    }
+    double minDistance = double.infinity;
+    _sectionKeys.forEach((section, key) {
+      final context = key.currentContext;
+      if (context != null) {
+        final box = context.findRenderObject() as RenderBox;
+        final position =
+            box.localToGlobal(Offset.zero, ancestor: null).dy + scrollPosition;
+        final sectionHeight = box.size.height;
+        final sectionCenter = position + sectionHeight / 2;
+        final distance = (centerOfScreen - sectionCenter).abs();
+        if (distance < minDistance) {
+          minDistance = distance;
+          newSection = section;
+        }
+      }
+    });
 
     // If section changed, update navigation
     if (_currentSection != newSection) {
@@ -98,6 +98,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
           key!.currentContext!,
           duration: const Duration(milliseconds: 800),
           curve: Curves.easeInOut,
+          alignment: sectionId == 'resume' ? 0.5 : 0.0, // Center Resume section
         );
       }
     } catch (e) {

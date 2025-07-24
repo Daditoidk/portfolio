@@ -24,13 +24,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get aboutTitle => 'About Me';
 
   @override
-  String get aboutDescription => 'I am a curious person passionate about technology, food, video games, soccer, fitness, dance, music, philosophy, psychology, and a bit of history. I love exploring my country and learning about its diverse cultures and landscapes.';
+  String get aboutDescription =>
+      'I am a curious person passionate about technology, food, video games, soccer, fitness, dance, music, philosophy, psychology, and a bit of history. I love exploring my country and learning about its diverse cultures and landscapes.';
 
   @override
-  String get aboutSubtitle => 'A tech enthusiast who believes in continuous learning and finding joy in both digital innovation and life\'s simple pleasures.';
+  String get aboutSubtitle =>
+      'A tech enthusiast who believes in continuous learning and finding joy in both digital innovation and life\'s simple pleasures.';
 
   @override
-  String get aboutSkills => 'Flutter, Kotlin, Swift, Rive, Cursor, CodeMagic, REST APIs, Git, UX/UI Design';
+  String get aboutSkills =>
+      'Flutter, Kotlin, Swift, Rive, Cursor, CodeMagic, REST APIs, Git, UX/UI Design';
 
   @override
   String get skillsTitle => 'Skills & Technologies';
@@ -167,19 +170,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get projectEcommerceTitle => 'E-Commerce App';
 
   @override
-  String get projectEcommerceDescription => 'A full-featured mobile shopping app with payment integration';
+  String get projectEcommerceDescription =>
+      'A full-featured mobile shopping app with payment integration';
 
   @override
   String get projectTaskManagerTitle => 'Task Manager';
 
   @override
-  String get projectTaskManagerDescription => 'Simple and intuitive task management application';
+  String get projectTaskManagerDescription =>
+      'Simple and intuitive task management application';
 
   @override
   String get projectWeatherTitle => 'Weather App';
 
   @override
-  String get projectWeatherDescription => 'Real-time weather updates with beautiful UI';
+  String get projectWeatherDescription =>
+      'Real-time weather updates with beautiful UI';
 
   @override
   String get labTitle => 'Lab';
@@ -191,7 +197,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get labAIChatTitle => 'AI Chat Bot';
 
   @override
-  String get labAIChatDescription => 'Experimental chatbot using machine learning';
+  String get labAIChatDescription =>
+      'Experimental chatbot using machine learning';
 
   @override
   String get labARTitle => 'AR Experience';
@@ -251,7 +258,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get a11yCurrentlySelectedLanguage => 'Currently selected language';
 
   @override
-  String get a11yDoubleTapToSwitchToEnglish => 'Double tap to switch to English';
+  String get a11yDoubleTapToSwitchToEnglish =>
+      'Double tap to switch to English';
 
   @override
   String get a11ySelected => 'Selected';
@@ -284,7 +292,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get mainSelectionPortfolioTitle => 'Portfolio';
 
   @override
-  String get mainSelectionPortfolioSubtitle => 'View my projects and experience';
+  String get mainSelectionPortfolioSubtitle =>
+      'View my projects and experience';
 
   @override
   String get mainSelectionLabTitle => 'Lab';
@@ -296,7 +305,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get a11y_mainSelectionPortfolioButton => 'Portfolio navigation button';
 
   @override
-  String get a11y_mainSelectionPortfolioButtonHint => 'Double tap to navigate to portfolio';
+  String get a11y_mainSelectionPortfolioButtonHint =>
+      'Double tap to navigate to portfolio';
 
   @override
   String get a11y_mainSelectionLabButton => 'Lab navigation button';
@@ -308,10 +318,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get a11y_mainSelectionScreen => 'Main selection screen';
 
   @override
-  String get a11y_mainSelectionScreenHint => 'Choose between portfolio and lab sections';
+  String get a11y_mainSelectionScreenHint =>
+      'Choose between portfolio and lab sections';
 
   @override
-  String get a11y_currentSectionHint => 'Current section, double tap to stay here';
+  String get a11y_currentSectionHint =>
+      'Current section, double tap to stay here';
 
   @override
   String a11y_doubleTapToNavigateToSection(String section) {
@@ -402,7 +414,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get a11y_experimentalProjectHint => 'Double tap to view experimental project details';
+  String get a11y_experimentalProjectHint =>
+      'Double tap to view experimental project details';
 
   @override
   String get a11y_experimentalBadge => 'Experimental badge';
@@ -436,7 +449,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get projectDemoHelloWorld => 'Hello world';
 
   @override
-  String get projectDemoAvailableOnTabletOrDesktop => 'Demo available in tablet or desktop device';
+  String get projectDemoAvailableOnTabletOrDesktop =>
+      'Demo available in tablet or desktop device';
 
   @override
   String get projectKnowMore => 'Know More';
@@ -492,7 +506,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resumeSectionTitle => 'Resume';
 
   @override
-  String get resumeSectionDescription => 'Download my latest resume. If you want to know more about my experience, this is the place!';
+  String get resumeSectionDescription =>
+      'Download my latest resume. If you want to know more about my experience, this is the place!';
 
   @override
   String resumeLastUpdated(String date) {
@@ -557,7 +572,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get popupPastWeekTitle => 'Date finished';
 
   @override
-  String get popupPastWeekContent => 'This date has finished, check your progress in your profile.';
+  String get popupPastWeekContent =>
+      'This date has finished, check your progress in your profile.';
 
   @override
   String get popupCurrentWeekTitle => 'Not available';
@@ -587,10 +603,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get popupNewTaskAssigned => 'New task assigned';
 
   @override
-  String get popupDribblingQuestion => 'Task: How do you rate your dribbling in the last match?';
+  String get popupDribblingQuestion =>
+      'Task: How do you rate your dribbling in the last match?';
 
   @override
-  String get popupPassingQuestion => 'Task: How do you rate your passing in the last match?';
+  String get popupPassingQuestion =>
+      'Task: How do you rate your passing in the last match?';
 
   @override
   String get popupTomorrow => 'tomorrow';
@@ -660,5 +678,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fieldScreenPrepareTitle => 'Get ready\nfor the match!';
 
   @override
-  String get fieldScreenPrepareSubtitle => 'Prepare your mind and body for the upcoming match.';
+  String get fieldScreenPrepareSubtitle =>
+      'Prepare your mind and body for the upcoming match.';
 }

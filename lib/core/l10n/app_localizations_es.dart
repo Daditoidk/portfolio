@@ -24,19 +24,23 @@ class AppLocalizationsEs extends AppLocalizations {
   String get aboutTitle => 'Sobre Mí';
 
   @override
-  String get aboutDescription => 'Soy una persona curiosa apasionada por la tecnología, la comida, los videojuegos, el fútbol, el fitness, el baile, la música, la filosofía, la psicología y un poco de historia. Me encanta explorar mi país y aprender sobre sus diversas culturas y paisajes.';
+  String get aboutDescription =>
+      'Soy una persona curiosa apasionada por la tecnología, la comida, los videojuegos, el fútbol, el fitness, el baile, la música, la filosofía, la psicología y un poco de historia. Me encanta explorar mi país y aprender sobre sus diversas culturas y paisajes.';
 
   @override
-  String get aboutSubtitle => 'Un entusiasta de la tecnología que cree en el aprendizaje continuo y encuentra alegría tanto en la innovación digital como en los placeres simples de la vida.';
+  String get aboutSubtitle =>
+      'Un entusiasta de la tecnología que cree en el aprendizaje continuo y encuentra alegría tanto en la innovación digital como en los placeres simples de la vida.';
 
   @override
-  String get aboutSkills => 'Flutter, Kotlin, Swift, Rive, Cursor, CodeMagic, REST APIs, Git, Diseño UX/UI';
+  String get aboutSkills =>
+      'Flutter, Kotlin, Swift, Rive, Cursor, CodeMagic, REST APIs, Git, Diseño UX/UI';
 
   @override
   String get skillsTitle => 'Habilidades y Tecnologías';
 
   @override
-  String get skillsSubtitle => 'Mi experiencia técnica y herramientas con las que trabajo';
+  String get skillsSubtitle =>
+      'Mi experiencia técnica y herramientas con las que trabajo';
 
   @override
   String get skillsLanguages => 'Lenguajes de Programación';
@@ -167,19 +171,22 @@ class AppLocalizationsEs extends AppLocalizations {
   String get projectEcommerceTitle => 'App de E-Commerce';
 
   @override
-  String get projectEcommerceDescription => 'Una aplicación móvil de compras completa con integración de pagos';
+  String get projectEcommerceDescription =>
+      'Una aplicación móvil de compras completa con integración de pagos';
 
   @override
   String get projectTaskManagerTitle => 'Gestor de Tareas';
 
   @override
-  String get projectTaskManagerDescription => 'Aplicación simple e intuitiva para gestión de tareas';
+  String get projectTaskManagerDescription =>
+      'Aplicación simple e intuitiva para gestión de tareas';
 
   @override
   String get projectWeatherTitle => 'App del Clima';
 
   @override
-  String get projectWeatherDescription => 'Actualizaciones del clima en tiempo real con una hermosa interfaz';
+  String get projectWeatherDescription =>
+      'Actualizaciones del clima en tiempo real con una hermosa interfaz';
 
   @override
   String get labTitle => 'Laboratorio';
@@ -191,7 +198,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get labAIChatTitle => 'Chat Bot IA';
 
   @override
-  String get labAIChatDescription => 'Chatbot experimental usando aprendizaje automático';
+  String get labAIChatDescription =>
+      'Chatbot experimental usando aprendizaje automático';
 
   @override
   String get labARTitle => 'Experiencia RA';
@@ -251,7 +259,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get a11yCurrentlySelectedLanguage => 'Idioma actualmente seleccionado';
 
   @override
-  String get a11yDoubleTapToSwitchToEnglish => 'Doble toque para cambiar a Inglés';
+  String get a11yDoubleTapToSwitchToEnglish =>
+      'Doble toque para cambiar a Inglés';
 
   @override
   String get a11ySelected => 'Seleccionado';
@@ -284,7 +293,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get mainSelectionPortfolioTitle => 'Portafolio';
 
   @override
-  String get mainSelectionPortfolioSubtitle => 'Ver mis proyectos y experiencia';
+  String get mainSelectionPortfolioSubtitle =>
+      'Ver mis proyectos y experiencia';
 
   @override
   String get mainSelectionLabTitle => 'Laboratorio';
@@ -293,25 +303,31 @@ class AppLocalizationsEs extends AppLocalizations {
   String get mainSelectionLabSubtitle => 'Explorar proyectos experimentales';
 
   @override
-  String get a11y_mainSelectionPortfolioButton => 'Botón de navegación al portafolio';
+  String get a11y_mainSelectionPortfolioButton =>
+      'Botón de navegación al portafolio';
 
   @override
-  String get a11y_mainSelectionPortfolioButtonHint => 'Doble toque para navegar al portafolio';
+  String get a11y_mainSelectionPortfolioButtonHint =>
+      'Doble toque para navegar al portafolio';
 
   @override
-  String get a11y_mainSelectionLabButton => 'Botón de navegación al laboratorio';
+  String get a11y_mainSelectionLabButton =>
+      'Botón de navegación al laboratorio';
 
   @override
-  String get a11y_mainSelectionLabButtonHint => 'Doble toque para navegar al laboratorio';
+  String get a11y_mainSelectionLabButtonHint =>
+      'Doble toque para navegar al laboratorio';
 
   @override
   String get a11y_mainSelectionScreen => 'Pantalla de selección principal';
 
   @override
-  String get a11y_mainSelectionScreenHint => 'Elige entre las secciones de portafolio y laboratorio';
+  String get a11y_mainSelectionScreenHint =>
+      'Elige entre las secciones de portafolio y laboratorio';
 
   @override
-  String get a11y_currentSectionHint => 'Sección actual, doble toque para permanecer aquí';
+  String get a11y_currentSectionHint =>
+      'Sección actual, doble toque para permanecer aquí';
 
   @override
   String a11y_doubleTapToNavigateToSection(String section) {
@@ -402,7 +418,8 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get a11y_experimentalProjectHint => 'Doble toque para ver detalles del proyecto experimental';
+  String get a11y_experimentalProjectHint =>
+      'Doble toque para ver detalles del proyecto experimental';
 
   @override
   String get a11y_experimentalBadge => 'Insignia experimental';
@@ -436,7 +453,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get projectDemoHelloWorld => 'Hola mundo';
 
   @override
-  String get projectDemoAvailableOnTabletOrDesktop => 'La demo está disponible en tablet o dispositivo de escritorio';
+  String get projectDemoAvailableOnTabletOrDesktop =>
+      'La demo está disponible en tablet o dispositivo de escritorio';
 
   @override
   String get projectKnowMore => 'Saber más';
@@ -492,7 +510,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get resumeSectionTitle => 'Currículum';
 
   @override
-  String get resumeSectionDescription => 'Descarga mi currículum actualizado. Si quieres saber más sobre mi experiencia, ¡este es el lugar!';
+  String get resumeSectionDescription =>
+      'Descarga mi currículum actualizado. Si quieres saber más sobre mi experiencia, ¡este es el lugar!';
 
   @override
   String resumeLastUpdated(String date) {
@@ -557,7 +576,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get popupPastWeekTitle => 'Fecha finalizada';
 
   @override
-  String get popupPastWeekContent => 'Esta fecha ha finalizado, revisa tu progreso en tu perfil.';
+  String get popupPastWeekContent =>
+      'Esta fecha ha finalizado, revisa tu progreso en tu perfil.';
 
   @override
   String get popupCurrentWeekTitle => 'No disponible';
@@ -587,10 +607,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get popupNewTaskAssigned => 'Nueva tarea asignada';
 
   @override
-  String get popupDribblingQuestion => 'Tarea: ¿Cómo calificarías tu regate en el último partido?';
+  String get popupDribblingQuestion =>
+      'Tarea: ¿Cómo calificarías tu regate en el último partido?';
 
   @override
-  String get popupPassingQuestion => 'Tarea: ¿Cómo calificarías tu pase en el último partido?';
+  String get popupPassingQuestion =>
+      'Tarea: ¿Cómo calificarías tu pase en el último partido?';
 
   @override
   String get popupTomorrow => 'mañana';
@@ -660,5 +682,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get fieldScreenPrepareTitle => 'Prepárate\npara el partido!';
 
   @override
-  String get fieldScreenPrepareSubtitle => 'Prepare your mind and body for the upcoming match.';
+  String get fieldScreenPrepareSubtitle =>
+      'Prepare your mind and body for the upcoming match.';
 }
