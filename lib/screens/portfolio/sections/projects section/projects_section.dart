@@ -3,7 +3,7 @@ import '../../../../core/l10n/app_localizations.dart';
 import '../../../../core/constants/semantic_labels.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/helpers/frame_container.dart';
-import '../../../../widgets/accessibility floating button/accessibility_floating_button.dart';
+import '../../../../core/accessibility/accessibility_floating_button.dart';
 import 'project_page_arrow.dart';
 import 'demos/b4s demo/b4s_demo.dart';
 import 'demos/ecommerce_demo/ecommerce_demo.dart';

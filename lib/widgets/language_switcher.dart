@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import '../core/l10n/app_localizations.dart';
 import '../core/constants/semantic_labels.dart';
 import '../core/constants/language_config.dart';
-import 'accessibility floating button/widgets/global_cursor_manager.dart';
-import 'accessibility floating button/widgets/accessible_tooltip.dart';
+import '../core/accessibility/accessibility_floating_button.dart';
 
 class LanguageSwitcher extends StatelessWidget {
   final Locale currentLocale;

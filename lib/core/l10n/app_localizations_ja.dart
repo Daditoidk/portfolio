@@ -239,13 +239,13 @@ class AppLocalizationsJa extends AppLocalizations {
   String get contactSubtitle => 'あなたの次のプロジェクトで一緒に働きましょう';
 
   @override
-  String get contactEmail => 'email@example.com';
+  String get contactEmail => 'kamiomg99@gmail.com';
 
   @override
-  String get contactPhone => '+1 234 567 890';
+  String get contactPhone => '+57 3025298355';
 
   @override
-  String get contactLocation => 'あなたの街、国';
+  String get contactLocation => 'Funza, Cundinamarca.\nColombia';
 
   @override
   String get navHome => 'ホーム';

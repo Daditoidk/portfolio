@@ -3,7 +3,7 @@ import '../../../../core/l10n/app_localizations.dart';
 import '../../../../core/constants/semantic_labels.dart';
 import '../../../../core/helpers/responsive.dart';
 import 'skills_grid.dart';
-import '../../../../widgets/accessibility floating button/accessibility_floating_button.dart';
+import '../../../../core/accessibility/accessibility_floating_button.dart';
 
 class SkillsSectionScreen extends StatelessWidget {
   final Function(String)? onSectionTap; // Add this parameter

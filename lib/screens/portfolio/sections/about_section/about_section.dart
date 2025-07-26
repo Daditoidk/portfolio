@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/l10n/app_localizations.dart';
 import '../../../../core/constants/semantic_labels.dart';
 import '../../../../core/helpers/responsive.dart';
-import '../../../../widgets/accessibility floating button/accessibility_floating_button.dart';
+import '../../../../core/accessibility/accessibility_floating_button.dart';
 
 class AboutSection extends ConsumerWidget {
   final Function(String)? onSectionTap; // Add this parameter

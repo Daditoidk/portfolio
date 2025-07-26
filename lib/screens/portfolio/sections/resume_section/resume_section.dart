@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 // ignore: avoid_web_libraries_in_flutter, deprecated_member_use
 import 'dart:html' as html;
 import '../../../../core/l10n/app_localizations.dart';
-import '../../../../widgets/accessibility floating button/accessibility_floating_button.dart';
+import '../../../../core/accessibility/accessibility_floating_button.dart';
 
 class ResumeSection extends StatelessWidget {
   final Function(String)? onSectionTap; // Add this parameter

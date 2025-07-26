@@ -7,9 +7,7 @@ import 'sections/projects section/projects_section.dart';
 import 'sections/contact_section/contact_section.dart';
 import 'sections/resume_section/resume_section.dart';
 import '../../widgets/portfolio_nav_bar.dart';
-import '../../widgets/accessibility floating button/features/accessibility_menu.dart';
-import '../../widgets/accessibility floating button/features/accessibility_menu_content.dart';
-import '../../widgets/accessibility floating button/widgets/accessible_page_structure.dart';
+import '../../core/accessibility/accessibility_floating_button.dart';
 import '../../widgets/language_switcher.dart';
 import '../../core/helpers/section_scroll_service.dart';
 

@@ -4,7 +4,7 @@ import '../../../../core/constants/semantic_labels.dart';
 import '../../../../core/l10n/app_localizations.dart';
 import '../../../../core/helpers/responsive.dart';
 import '../../../../widgets/portfolio_nav_bar.dart';
-import '../../../../widgets/accessibility floating button/accessibility_floating_button.dart';
+import '../../../../core/accessibility/accessibility_floating_button.dart';
 
 class HeaderSection extends StatelessWidget {
   final Function(String) onSectionTap;

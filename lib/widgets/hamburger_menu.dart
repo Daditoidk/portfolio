@@ -5,7 +5,7 @@ import '../core/constants/semantic_labels.dart';
 import '../core/theme/app_theme.dart';
 import 'version_info.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'accessibility floating button/accessibility_floating_button.dart';
+import '../core/accessibility/accessibility_floating_button.dart';
 
 class HamburgerMenu extends ConsumerWidget {
   final Function(String) onSectionTap;

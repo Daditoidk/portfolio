@@ -380,17 +380,17 @@
     "description": "Subtitle of the contact section"
   },
   
-  "contactEmail": "email@example.com",
+  "contactEmail": "kamiomg99@gmail.com",
   "@contactEmail": {
     "description": "Contact email address"
   },
   
-  "contactPhone": "+1 234 567 890",
+  "contactPhone": "+57 3025298355",
   "@contactPhone": {
     "description": "Contact phone number"
   },
   
-  "contactLocation": "あなたの街、国",
+  "contactLocation": "Funza, Cundinamarca.\nColombia",
   "@contactLocation": {
     "description": "Contact location"
   },

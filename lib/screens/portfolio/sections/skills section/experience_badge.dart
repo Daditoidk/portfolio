@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/l10n/app_localizations.dart';
-import '../../../../widgets/accessibility floating button/widgets/accessible_text.dart';
-import '../../../../widgets/accessibility floating button/widgets/accessible_tooltip.dart';
+import '../../../../core/accessibility/accessibility_floating_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ExperienceBadge extends ConsumerWidget {

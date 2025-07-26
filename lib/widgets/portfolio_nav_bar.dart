@@ -4,7 +4,7 @@ import '../core/constants/semantic_labels.dart';
 import '../core/theme/app_theme.dart';
 import 'hamburger_menu.dart';
 import 'lab_icon_button.dart';
-import 'accessibility floating button/accessibility_floating_button.dart';
+import '../core/accessibility/accessibility_floating_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PortfolioNavBar extends ConsumerWidget {

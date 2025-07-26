@@ -5,7 +5,7 @@ import 'core/l10n/app_localizations.dart';
 import 'core/navigation/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'core/constants/language_config.dart';
-import 'widgets/accessibility floating button/widgets/global_cursor_manager.dart';
+import 'core/accessibility/accessibility_floating_button.dart';
 
 void main() {
   runApp(ProviderScope(child: PortfolioApp()));

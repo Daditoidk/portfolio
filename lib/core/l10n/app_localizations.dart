@@ -553,19 +553,19 @@ abstract class AppLocalizations {
   /// Contact email address
   ///
   /// In en, this message translates to:
-  /// **'email@example.com'**
+  /// **'kamiomg99@gmail.com'**
   String get contactEmail;
 
   /// Contact phone number
   ///
   /// In en, this message translates to:
-  /// **'+1 234 567 890'**
+  /// **'+57 3025298355'**
   String get contactPhone;
 
   /// Contact location
   ///
   /// In en, this message translates to:
-  /// **'Your City, Country'**
+  /// **'Funza, Cundinamarca.\nColombia'**
   String get contactLocation;
 
   /// Navigation item for home section

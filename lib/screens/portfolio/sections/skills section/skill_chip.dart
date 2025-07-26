@@ -3,7 +3,7 @@ import '../../../../core/l10n/app_localizations.dart';
 import 'skill_item.dart';
 import 'experience_badge.dart';
 import 'active_badge.dart';
-import '../../../../widgets/accessibility floating button/accessibility_floating_button.dart';
+import '../../../../core/accessibility/accessibility_floating_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SkillChip extends ConsumerStatefulWidget {

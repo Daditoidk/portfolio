@@ -3,7 +3,7 @@ import '../../../../core/l10n/app_localizations.dart';
 import 'skill_item.dart';
 import 'skill_chip.dart';
 import 'expanded_sub_technologies.dart';
-import '../../../../widgets/accessibility floating button/accessibility_floating_button.dart';
+import '../../../../core/accessibility/accessibility_floating_button.dart';
 
 class SkillCategory extends StatelessWidget {
   final String categoryTitle;

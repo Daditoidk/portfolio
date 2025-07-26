@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import '../last_update.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'accessibility floating button/widgets/accessible_text.dart';
+import '../core/accessibility/accessibility_floating_button.dart';
 
 class VersionInfo extends ConsumerWidget {
   final bool isMobile;
