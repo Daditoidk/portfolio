@@ -4,8 +4,10 @@ import '../core/constants/semantic_labels.dart';
 import '../core/theme/app_theme.dart';
 import 'hamburger_menu.dart';
 import 'lab_icon_button.dart';
+import 'accessibility floating button/accessibility_floating_button.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PortfolioNavBar extends StatelessWidget {
+class PortfolioNavBar extends ConsumerWidget {
   final Function(String) onSectionTap;
   final String currentSection;
   final Locale currentLocale;
@@ -24,10 +26,13 @@ class PortfolioNavBar extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     final screenWidth = MediaQuery.of(context).size.width;
     final isMobile = screenWidth < 600;
+    final isTablet = screenWidth >= 600 && screenWidth < 1024;
+    // final isDesktop = screenWidth >= 1024;
+    final settings = ref.watch(accessibilitySettingsProvider);
 
     if (isSticky && !isVisible) {
       return const SizedBox.shrink();
@@ -35,11 +40,11 @@ class PortfolioNavBar extends StatelessWidget {
     return Semantics(
       label: SemanticLabels.navigationMenu,
       hint: SemanticLabels.useToNavigate,
-      child: AnimatedOpacity(
+      child: AccessibleAnimatedOpacity(
         duration: const Duration(milliseconds: 300),
         opacity: isSticky && !isVisible ? 0.0 : 1.0,
         child: Container(
-          height: 60,
+          height: _calculateNavHeight(settings),
           color: isSticky ? _getStickyNavColor() : Colors.transparent,
           child: Container(
             padding: EdgeInsets.symmetric(
@@ -48,66 +53,68 @@ class PortfolioNavBar extends StatelessWidget {
             ),
             child: LayoutBuilder(
               builder: (context, constraints) {
-                final navItems = [
-                  _buildNavItem(l10n.navHome, 0),
-                  _buildNavItem(l10n.navAbout, 1),
-                  _buildNavItem(l10n.skillsTitle, 2),
-                  _buildNavItem(l10n.resumeSectionTitle, 3),
-                  _buildNavItem(l10n.navProjects, 4),
-                  _buildNavItem(l10n.navContact, 5),
-                ];
-                final estimatedNavWidth = navItems.length * 80.0;
-                final availableWidth = constraints.maxWidth - 100;
-                final shouldShowHamburger =
-                    estimatedNavWidth > availableWidth || isMobile;
+
 
                 return Row(
                   children: [
                     // Left: Title
                     Semantics(
                       label: SemanticLabels.portfolioTitle,
-                      child: Text(
+                      child: AccessibleText(
                         l10n.appTitle,
-                        style: Theme.of(
-                          context,
-                        ).textTheme.titleMedium?.copyWith(
-                          fontSize:
-                              (isMobile
-                                  ? 16
-                                  : (Theme.of(
-                                            context,
-                                          ).textTheme.titleMedium?.fontSize ??
-                                          20) +
-                                      5),
-                          fontWeight: FontWeight.bold,
-                        ),
+                        baseFontSize: (isMobile
+                            ? 16
+                            : (Theme.of(
+                                        context,
+                                      ).textTheme.titleMedium?.fontSize ??
+                                      20) +
+                                  5),
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(width: 16),
                     // Middle: Nav items or Hamburger
                     Expanded(
-                      child:
-                          shouldShowHamburger
-                              ? Align(
-                                alignment: Alignment.centerRight,
+                      child: LayoutBuilder(
+                        builder: (context, navConstraints) {
+                          // Create a test row to measure the actual width needed
+                          final testNavItems = [
+                            _buildNavItem(l10n.navHome, 0, settings),
+                            _buildNavItem(l10n.navAbout, 1, settings),
+                            _buildNavItem(l10n.skillsTitle, 2, settings),
+                            _buildNavItem(l10n.resumeSectionTitle, 3, settings),
+                            _buildNavItem(l10n.navProjects, 4, settings),
+                            _buildNavItem(l10n.navContact, 5, settings),
+                          ];
+
+                          // Always show hamburger on mobile/tablet
+                          if (isMobile || isTablet) {
+                            return Align(
+                              alignment: Alignment.centerRight,
+                              child: AccessibleCustomCursor(
                                 child: HamburgerMenu(
                                   onSectionTap: onSectionTap,
                                   currentSection: currentSection,
                                   currentLocale: currentLocale,
                                   onLocaleChanged: onLocaleChanged,
                                 ),
-                              )
-                              : Semantics(
-                                label: SemanticLabels.navigationLinks,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: navItems,
-                                ),
                               ),
+                            );
+                          }
+
+                          // For desktop, measure if nav items fit
+                          return _buildResponsiveNavItems(
+                            context,
+                            testNavItems,
+                            navConstraints.maxWidth,
+                            settings,
+                          );
+                        },
+                      ),
                     ),
                     const SizedBox(width: 16),
                     // Right: Lab icon
-                    LabIconButton(),
+                    AccessibleCustomCursor(child: LabIconButton()),
                   ],
                 );
               },
@@ -118,7 +125,92 @@ class PortfolioNavBar extends StatelessWidget {
     );
   }
 
-  Widget _buildNavItem(String title, int sectionIndex) {
+  double _calculateNavHeight(AccessibilitySettings settings) {
+    // Base height plus additional height for increased line height
+    final baseHeight = 60.0;
+    // Calculate height increase based on line height multiplier
+    // Line height goes from 1.2 to 2.0 (4 levels: 0,1,2,3)
+    final lineHeightMultiplier = 1.2 + settings.lineHeightLevel * 0.2;
+    final baseTextHeight = 16.0; // Base text height
+    final increasedTextHeight = baseTextHeight * lineHeightMultiplier;
+    final heightIncrease =
+        (increasedTextHeight - baseTextHeight) * 2; // Double for padding
+    return baseHeight + heightIncrease;
+  }
+
+  Widget _buildResponsiveNavItems(
+    BuildContext context,
+    List<Widget> navItems,
+    double availableWidth,
+    AccessibilitySettings settings,
+  ) {
+    // Calculate actual text widths for more accurate measurement
+    final navTitles = [
+      'Home',
+      'About',
+      'Skills',
+      'Resume',
+      'Projects',
+      'Contact',
+    ];
+
+    double totalNavWidth = 0;
+    for (int i = 0; i < navTitles.length; i++) {
+      final title = navTitles[i];
+      final textStyle = AccessibilityTextStyle.fromSettings(
+        settings,
+        baseFontSize: 12, // Base font size for nav items
+        fontWeight: FontWeight.w500,
+        applyPortfolioOnlyFeatures: true,
+      );
+
+      // Measure actual text width
+      final textSpan = TextSpan(text: title, style: textStyle);
+      final textPainter = TextPainter(
+        text: textSpan,
+        textDirection: TextDirection.ltr,
+        maxLines: 1,
+      );
+      textPainter.layout();
+
+      // Add padding and spacing
+      final itemWidth = textPainter.width + 32; // 16px padding on each side
+      totalNavWidth += itemWidth;
+    }
+
+    // Account for title, spacing, and lab icon with buffer
+    final reservedWidth = 260.0; // Increased buffer for safety
+    final availableNavWidth = availableWidth - reservedWidth;
+
+    // Show hamburger menu if nav items would overflow
+    if (totalNavWidth > availableNavWidth) {
+      return Align(
+        alignment: Alignment.centerRight,
+        child: AccessibleCustomCursor(
+          child: HamburgerMenu(
+            onSectionTap: onSectionTap,
+            currentSection: currentSection,
+            currentLocale: currentLocale,
+            onLocaleChanged: onLocaleChanged,
+          ),
+        ),
+      );
+    } else {
+      return Semantics(
+        label: SemanticLabels.navigationLinks,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: navItems,
+        ),
+      );
+    }
+  }
+
+  Widget _buildNavItem(
+    String title,
+    int sectionIndex,
+    AccessibilitySettings settings,
+  ) {
     final sections = [
       'home',
       'about',
@@ -142,36 +234,46 @@ class PortfolioNavBar extends StatelessWidget {
                 isActive ? SemanticLabels.current : SemanticLabels.notCurrent,
             button: true,
             selected: isActive,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: InkWell(
-                onTap: () => onSectionTap(sectionId),
-                child: SizedBox(
-                  height: 32,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        title,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontWeight:
-                              isActive ? FontWeight.bold : FontWeight.w500,
-                          color: _getTextColor(isActive),
-                        ),
+        child: AccessibleCustomCursor(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: AccessibleInkWell(
+              onTap: () => onSectionTap(sectionId),
+              highlightColor: AppTheme.navActive.withValues(alpha: 0.1),
+              borderRadius: BorderRadius.circular(4),
+              child: Container(
+                // Use flexible height instead of fixed SizedBox
+                constraints: BoxConstraints(
+                  minHeight: 32,
+                  maxHeight:
+                      32 +
+                      (settings.lineHeightLevel *
+                          6.0), // Dynamic height based on line height
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AccessibleText(
+                      title,
+                      baseFontSize:
+                          Theme.of(context).textTheme.bodySmall?.fontSize ?? 12,
+                      fontWeight: isActive ? FontWeight.bold : FontWeight.w500,
+                      color: _getTextColor(isActive),
+                    ),
+                    const SizedBox(height: 0),
+                    AccessibleAnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      height: 2,
+                      width: isActive ? 18 : 0,
+                      decoration: BoxDecoration(
+                        color: _getUnderlineColor(isActive),
+                        borderRadius: BorderRadius.circular(1),
                       ),
-                      const SizedBox(height: 0),
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
-                        height: 2,
-                        width: isActive ? 18 : 0,
-                        decoration: BoxDecoration(
-                          color: _getUnderlineColor(isActive),
-                          borderRadius: BorderRadius.circular(1),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
+                ),
+              ),
                 ),
               ),
             ),

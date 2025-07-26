@@ -96,6 +96,41 @@
     "description": "Swift skill name"
   },
 
+  "pageStructureTitle": "ページ構造",
+  "@pageStructureTitle": {
+    "description": "Title for the page structure dialog"
+  },
+
+  "pageStructureHeadings": "見出し",
+  "@pageStructureHeadings": {
+    "description": "Tab label for headings in page structure"
+  },
+
+  "pageStructureLandmarks": "ランドマーク",
+  "@pageStructureLandmarks": {
+    "description": "Tab label for landmarks in page structure"
+  },
+
+  "pageStructureLinks": "リンク",
+  "@pageStructureLinks": {
+    "description": "Tab label for links in page structure"
+  },
+
+  "pageStructureNoHeadings": "このページに見出しが見つかりません",
+  "@pageStructureNoHeadings": {
+    "description": "Message shown when no headings are found"
+  },
+
+  "pageStructureNoLandmarks": "このページにランドマークが見つかりません",
+  "@pageStructureNoLandmarks": {
+    "description": "Message shown when no landmarks are found"
+  },
+
+  "pageStructureNoLinks": "このページにリンクが見つかりません",
+  "@pageStructureNoLinks": {
+    "description": "Message shown when no links are found"
+  },
+
   "skillRive": "Rive",
   "@skillRive": {
     "description": "Rive skill name"
@@ -813,6 +848,27 @@
       }
     }
   },
+
+  "skillTooltipCurrentlyUsing": "現在使用中",
+  "@skillTooltipCurrentlyUsing": {
+    "description": "スキルが現在使用されていることを示すテキスト"
+  },
+
+  "skillTooltipClickToExpand": "クリックして展開",
+  "@skillTooltipClickToExpand": {
+    "description": "スキルをクリックして展開できることを示すテキスト"
+  },
+
+  "skillTooltipYears": "{years}年",
+  "@skillTooltipYears": {
+    "description": "経験年数を示すテキスト",
+    "placeholders": {
+      "years": {
+        "type": "String",
+        "example": "4"
+      }
+    }
+  },
   "resumeDownload": "ダウンロード",
   "@resumeDownload": {
     "description": "履歴書セクションのダウンロードボタンのテキスト。"
@@ -936,5 +992,81 @@
   "dayLongWed": "水曜日",
   "dayLongThu": "木曜日",
   "dayLongFri": "金曜日",
+  "headerSection": "ヘッダーセクション",
+  "@headerSection": { "description": "Label for the header section in page structure dialog" },
+  "navigationMenu": "ナビゲーションメニュー",
+  "@navigationMenu": { "description": "Label for navigation menu in page structure dialog" },
+  "profilePicture": "プロフィール写真",
+  "@profilePicture": { "description": "Label for profile picture in page structure dialog" },
+  "nameTitle": "名前",
+  "@nameTitle": { "description": "Label for name in page structure dialog" },
+  "professionalTitle": "職業タイトル",
+  "@professionalTitle": { "description": "Label for professional title in page structure dialog" },
+  "professionalDescription": "職業説明",
+  "@professionalDescription": { "description": "Label for professional description in page structure dialog" },
+  "aboutSection": "自己紹介セクション",
+  "@aboutSection": { "description": "Label for about section in page structure dialog" },
+  "aboutTitleLabel": "自己紹介タイトル",
+  "@aboutTitleLabel": { "description": "Label for about title in page structure dialog" },
+  "aboutDescriptionLabel": "自己紹介説明",
+  "@aboutDescriptionLabel": { "description": "Label for about description in page structure dialog" },
+  "aboutSubtitleLabel": "自己紹介サブタイトル",
+  "@aboutSubtitleLabel": { "description": "Label for about subtitle in page structure dialog" },
+  "skillsSection": "スキルセクション",
+  "@skillsSection": { "description": "Label for skills section in page structure dialog" },
+  "skillsTitleLabel": "スキルタイトル",
+  "@skillsTitleLabel": { "description": "Label for skills title in page structure dialog" },
+  "skillsDescriptionLabel": "スキル説明",
+  "@skillsDescriptionLabel": { "description": "Label for skills description in page structure dialog" },
+  "programmingLanguages": "プログラミング言語",
+  "@programmingLanguages": { "description": "Label for programming languages in page structure dialog" },
+  "designAnimation": "デザインとアニメーション",
+  "@designAnimation": { "description": "Label for design & animation in page structure dialog" },
+  "editorsTools": "エディターとツール",
+  "@editorsTools": { "description": "Label for editors & tools in page structure dialog" },
+  "devopsCICD": "DevOpsとCI/CD",
+  "@devopsCICD": { "description": "Label for devops & ci/cd in page structure dialog" },
+  "projectManagement": "プロジェクト管理",
+  "@projectManagement": { "description": "Label for project management in page structure dialog" },
+  "resumeSection": "履歴書セクション",
+  "@resumeSection": { "description": "Label for resume section in page structure dialog" },
+  "resumeTitleLabel": "履歴書タイトル",
+  "@resumeTitleLabel": { "description": "Label for resume title in page structure dialog" },
+  "resumeDescriptionLabel": "履歴書説明",
+  "@resumeDescriptionLabel": { "description": "Label for resume description in page structure dialog" },
+  "downloadResumeButton": "履歴書ダウンロードボタン",
+  "@downloadResumeButton": { "description": "Label for download resume button in page structure dialog" },
+  "lastUpdated": "最終更新",
+  "@lastUpdated": { "description": "Label for last updated in page structure dialog" },
+  "projectsSection": "プロジェクトセクション",
+  "@projectsSection": { "description": "Label for projects section in page structure dialog" },
+  "projectsTitleLabel": "プロジェクトタイトル",
+  "@projectsTitleLabel": { "description": "Label for projects title in page structure dialog" },
+  "projectsDescriptionLabel": "プロジェクト説明",
+  "@projectsDescriptionLabel": { "description": "Label for projects description in page structure dialog" },
+  "contactSection": "連絡先セクション",
+  "@contactSection": { "description": "Label for contact section in page structure dialog" },
+  "contactTitleLabel": "連絡先タイトル",
+  "@contactTitleLabel": { "description": "Label for contact title in page structure dialog" },
+  "contactDescriptionLabel": "連絡先説明",
+  "@contactDescriptionLabel": { "description": "Label for contact description in page structure dialog" },
+  "contactInfo": "連絡先情報",
+  "@contactInfo": { "description": "Label for contact information in page structure dialog" },
+  "socialLinks": "ソーシャルリンク",
+  "@socialLinks": { "description": "Label for social links in page structure dialog" },
+  "projectB4S": "Brain4Goalsアプリ",
+  "@projectB4S": { "description": "Label for B4S project in page structure dialog" },
+  "projectEcommerce": "Eコマースプラットフォーム",
+  "@projectEcommerce": { "description": "Label for e-commerce project in page structure dialog" },
+  "projectSocial": "ソーシャルメディアアプリ",
+  "@projectSocial": { "description": "Label for social media project in page structure dialog" },
+  "projectWeather": "天気予報",
+  "@projectWeather": { "description": "Label for weather project in page structure dialog" },
+  "projectMusic": "音楽プレーヤー",
+  "@projectMusic": { "description": "Label for music player project in page structure dialog" },
+  "projectTask": "タスクマネージャー",
+  "@projectTask": { "description": "Label for task manager project in page structure dialog" },
+  "projectFitness": "フィットネストラッカー",
+  "@projectFitness": { "description": "Label for fitness tracker project in page structure dialog" },
   "popupCenterFlagInfo": "このフラグは金曜日、土曜日、日曜日に有効になります。"
 } 

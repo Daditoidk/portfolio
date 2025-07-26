@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../core/l10n/app_localizations.dart';
 import '../core/constants/semantic_labels.dart';
+import '../core/constants/language_config.dart';
+import 'accessibility floating button/widgets/global_cursor_manager.dart';
+import 'accessibility floating button/widgets/accessible_tooltip.dart';
 
 class LanguageSwitcher extends StatelessWidget {
   final Locale currentLocale;
@@ -23,86 +26,97 @@ class LanguageSwitcher extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
+    final languages = LanguageConfig.getAllLanguages();
+
     return Semantics(
       label: SemanticLabels.languageSwitcher,
       hint: l10n.a11yLanguageSwitcherHint,
-      child: Material(
-        elevation: 8,
-        borderRadius: BorderRadius.circular(30),
-        color: Colors.transparent,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.95),
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.18),
-                blurRadius: 8,
-                offset: const Offset(0, 4),
-              ),
-            ],
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _buildFlagButton(context, '🇺🇸', const Locale('en'), 'English'),
-              const SizedBox(width: 3),
-              Container(
-                width: 1,
-                height: 24,
-                color: Colors.grey.withValues(alpha: 0.25),
-              ),
-              const SizedBox(width: 3),
-              _buildFlagButton(context, '🇨🇴', const Locale('es'), 'Español'),
-              const SizedBox(width: 3),
-              Container(
-                width: 1,
-                height: 24,
-                color: Colors.grey.withValues(alpha: 0.25),
-              ),
-              const SizedBox(width: 3),
-              _buildFlagButton(context, '🇯🇵', const Locale('ja'), '日本語'),
-            ],
+      child: AccessibleTooltip(
+        message: 'Language Switcher',
+        child: Material(
+          elevation: 8,
+          borderRadius: BorderRadius.circular(30),
+          color: Colors.transparent,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.95),
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.18),
+                  blurRadius: 8,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                for (int i = 0; i < languages.length; i++) ...[
+                  if (i > 0) ...[
+                    const SizedBox(width: 3),
+                    Container(
+                      width: 1,
+                      height: 24,
+                      color: Colors.grey.withValues(alpha: 0.25),
+                    ),
+                    const SizedBox(width: 3),
+                  ],
+                  ClickableCursor(
+                    onTap: () => onLocaleChanged(languages[i].locale),
+                    child: _buildFlagButton(context, languages[i]),
+                  ),
+                ],
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildFlagButton(
-    BuildContext context,
-    String flag,
-    Locale locale,
-    String languageName,
-  ) {
-    final isActive = currentLocale.languageCode == locale.languageCode;
-    final isEnglish = locale.languageCode == 'en';
-    final isSpanish = locale.languageCode == 'es';
-    final isJapanese = locale.languageCode == 'ja';
+  Widget _buildFlagButton(BuildContext context, LanguageInfo languageInfo) {
+    final isActive = currentLocale.languageCode == languageInfo.code;
 
     String getLabel() {
-      if (isEnglish) return SemanticLabels.switchToEnglish;
-      if (isSpanish) return SemanticLabels.switchToSpanish;
-      if (isJapanese) return SemanticLabels.switchToJapanese;
-      return SemanticLabels.switchToEnglish;
+      switch (languageInfo.code) {
+        case 'en':
+          return SemanticLabels.switchToEnglish;
+        case 'es':
+          return SemanticLabels.switchToSpanish;
+        case 'ja':
+          return SemanticLabels.switchToJapanese;
+        default:
+          return SemanticLabels.switchToEnglish;
+      }
     }
 
     String getHint() {
       if (isActive) return SemanticLabels.currentlySelectedLanguage;
-      if (isEnglish) return SemanticLabels.doubleTapToSwitchToEnglish;
-      if (isSpanish) return SemanticLabels.doubleTapToSwitchToSpanish;
-      if (isJapanese) return SemanticLabels.doubleTapToSwitchToJapanese;
-      return SemanticLabels.doubleTapToSwitchToEnglish;
+      
+      switch (languageInfo.code) {
+        case 'en':
+          return SemanticLabels.doubleTapToSwitchToEnglish;
+        case 'es':
+          return SemanticLabels.doubleTapToSwitchToSpanish;
+        case 'ja':
+          return SemanticLabels.doubleTapToSwitchToJapanese;
+        default:
+          return SemanticLabels.doubleTapToSwitchToEnglish;
+      }
     }
 
     // Custom border radius based on position and selection state
     BorderRadius getBorderRadius() {
+      final languages = LanguageConfig.getAllLanguages();
+      final index = languages.indexOf(languageInfo);
+      
       if (!isActive) {
         return BorderRadius.circular(18);
       }
 
-      if (isEnglish) {
+      if (index == 0) {
         // First item: no border on right corners (adjacent to divider)
         return const BorderRadius.only(
           topLeft: Radius.circular(18),
@@ -110,10 +124,7 @@ class LanguageSwitcher extends StatelessWidget {
           topRight: Radius.zero,
           bottomRight: Radius.zero,
         );
-      } else if (isSpanish) {
-        // Middle item: no border on both sides (adjacent to dividers)
-        return BorderRadius.zero;
-      } else if (isJapanese) {
+      } else if (index == languages.length - 1) {
         // Last item: no border on left corners (adjacent to divider)
         return const BorderRadius.only(
           topLeft: Radius.zero,
@@ -121,9 +132,10 @@ class LanguageSwitcher extends StatelessWidget {
           topRight: Radius.circular(18),
           bottomRight: Radius.circular(18),
         );
+      } else {
+        // Middle item: no border on both sides (adjacent to dividers)
+        return BorderRadius.zero;
       }
-
-      return BorderRadius.circular(18);
     }
 
     return Semantics(
@@ -146,7 +158,9 @@ class LanguageSwitcher extends StatelessWidget {
               setState(() => isHovered = false);
             },
             child: GestureDetector(
-              onTap: isActive ? null : () => onLocaleChanged(locale),
+              onTap: isActive
+                  ? null
+                  : () => onLocaleChanged(languageInfo.locale),
               child: Builder(
                 builder: (context) {
                   Color backgroundColor;
@@ -171,9 +185,9 @@ class LanguageSwitcher extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Semantics(
-                          label: SemanticLabels.americanFlag,
+                          label: _getFlagLabel(languageInfo.code),
                           child: Text(
-                            flag,
+                            languageInfo.flag,
                             style: const TextStyle(fontSize: 16),
                           ),
                         ),
@@ -198,5 +212,18 @@ class LanguageSwitcher extends StatelessWidget {
         },
       ),
     );
+  }
+
+  String _getFlagLabel(String languageCode) {
+    switch (languageCode) {
+      case 'en':
+        return SemanticLabels.australianFlag;
+      case 'es':
+        return SemanticLabels.colombianFlag;
+      case 'ja':
+        return SemanticLabels.japaneseFlag;
+      default:
+        return SemanticLabels.australianFlag;
+    }
   }
 }

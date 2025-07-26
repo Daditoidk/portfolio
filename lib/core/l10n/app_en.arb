@@ -99,6 +99,41 @@
     "description": "Swift skill name"
   },
 
+  "pageStructureTitle": "Page Structure",
+  "@pageStructureTitle": {
+    "description": "Title for the page structure dialog"
+  },
+
+  "pageStructureHeadings": "Headings",
+  "@pageStructureHeadings": {
+    "description": "Tab label for headings in page structure"
+  },
+
+  "pageStructureLandmarks": "Landmarks",
+  "@pageStructureLandmarks": {
+    "description": "Tab label for landmarks in page structure"
+  },
+
+  "pageStructureLinks": "Links",
+  "@pageStructureLinks": {
+    "description": "Tab label for links in page structure"
+  },
+
+  "pageStructureNoHeadings": "No headings found on this page",
+  "@pageStructureNoHeadings": {
+    "description": "Message shown when no headings are found"
+  },
+
+  "pageStructureNoLandmarks": "No landmarks found on this page",
+  "@pageStructureNoLandmarks": {
+    "description": "Message shown when no landmarks are found"
+  },
+
+  "pageStructureNoLinks": "No links found on this page",
+  "@pageStructureNoLinks": {
+    "description": "Message shown when no links are found"
+  },
+
   "skillRive": "Rive",
   "@skillRive": {
     "description": "Rive skill name"
@@ -807,6 +842,27 @@
     }
   },
 
+  "skillTooltipCurrentlyUsing": "Currently using",
+  "@skillTooltipCurrentlyUsing": {
+    "description": "Text indicating a skill is currently being used"
+  },
+
+  "skillTooltipClickToExpand": "Click to expand",
+  "@skillTooltipClickToExpand": {
+    "description": "Text indicating a skill can be clicked to expand"
+  },
+
+  "skillTooltipYears": "{years} years",
+  "@skillTooltipYears": {
+    "description": "Text showing years of experience",
+    "placeholders": {
+      "years": {
+        "type": "String",
+        "example": "4"
+      }
+    }
+  },
+
   "resumeDownload": "Download",
   "@resumeDownload": {
     "description": "Button text for downloading the resume in the Resume section."
@@ -935,5 +991,81 @@
   "dayLongTue": "Tuesday",
   "dayLongWed": "Wednesday",
   "dayLongThu": "Thursday",
-  "dayLongFri": "Friday"
+  "dayLongFri": "Friday",
+  "headerSection": "Header Section",
+  "@headerSection": { "description": "Label for the header section in page structure dialog" },
+  "navigationMenu": "Navigation Menu",
+  "@navigationMenu": { "description": "Label for navigation menu in page structure dialog" },
+  "profilePicture": "Profile Picture",
+  "@profilePicture": { "description": "Label for profile picture in page structure dialog" },
+  "nameTitle": "Name",
+  "@nameTitle": { "description": "Label for name in page structure dialog" },
+  "professionalTitle": "Professional Title",
+  "@professionalTitle": { "description": "Label for professional title in page structure dialog" },
+  "professionalDescription": "Professional Description",
+  "@professionalDescription": { "description": "Label for professional description in page structure dialog" },
+  "aboutSection": "About Section",
+  "@aboutSection": { "description": "Label for about section in page structure dialog" },
+  "aboutTitleLabel": "About Title",
+  "@aboutTitleLabel": { "description": "Label for about title in page structure dialog" },
+  "aboutDescriptionLabel": "About Description",
+  "@aboutDescriptionLabel": { "description": "Label for about description in page structure dialog" },
+  "aboutSubtitleLabel": "About Subtitle",
+  "@aboutSubtitleLabel": { "description": "Label for about subtitle in page structure dialog" },
+  "skillsSection": "Skills Section",
+  "@skillsSection": { "description": "Label for skills section in page structure dialog" },
+  "skillsTitleLabel": "Skills Title",
+  "@skillsTitleLabel": { "description": "Label for skills title in page structure dialog" },
+  "skillsDescriptionLabel": "Skills Description",
+  "@skillsDescriptionLabel": { "description": "Label for skills description in page structure dialog" },
+  "programmingLanguages": "Programming Languages",
+  "@programmingLanguages": { "description": "Label for programming languages in page structure dialog" },
+  "designAnimation": "Design & Animation",
+  "@designAnimation": { "description": "Label for design & animation in page structure dialog" },
+  "editorsTools": "Editors & Tools",
+  "@editorsTools": { "description": "Label for editors & tools in page structure dialog" },
+  "devopsCICD": "DevOps & CI/CD",
+  "@devopsCICD": { "description": "Label for devops & ci/cd in page structure dialog" },
+  "projectManagement": "Project Management",
+  "@projectManagement": { "description": "Label for project management in page structure dialog" },
+  "resumeSection": "Resume Section",
+  "@resumeSection": { "description": "Label for resume section in page structure dialog" },
+  "resumeTitleLabel": "Resume Title",
+  "@resumeTitleLabel": { "description": "Label for resume title in page structure dialog" },
+  "resumeDescriptionLabel": "Resume Description",
+  "@resumeDescriptionLabel": { "description": "Label for resume description in page structure dialog" },
+  "downloadResumeButton": "Download Resume Button",
+  "@downloadResumeButton": { "description": "Label for download resume button in page structure dialog" },
+  "lastUpdated": "Last Updated",
+  "@lastUpdated": { "description": "Label for last updated in page structure dialog" },
+  "projectsSection": "Projects Section",
+  "@projectsSection": { "description": "Label for projects section in page structure dialog" },
+  "projectsTitleLabel": "Projects Title",
+  "@projectsTitleLabel": { "description": "Label for projects title in page structure dialog" },
+  "projectsDescriptionLabel": "Projects Description",
+  "@projectsDescriptionLabel": { "description": "Label for projects description in page structure dialog" },
+  "contactSection": "Contact Section",
+  "@contactSection": { "description": "Label for contact section in page structure dialog" },
+  "contactTitleLabel": "Contact Title",
+  "@contactTitleLabel": { "description": "Label for contact title in page structure dialog" },
+  "contactDescriptionLabel": "Contact Description",
+  "@contactDescriptionLabel": { "description": "Label for contact description in page structure dialog" },
+  "contactInfo": "Contact Information",
+  "@contactInfo": { "description": "Label for contact information in page structure dialog" },
+  "socialLinks": "Social Links",
+  "@socialLinks": { "description": "Label for social links in page structure dialog" },
+  "projectB4S": "Brain4Goals App",
+  "@projectB4S": { "description": "Label for B4S project in page structure dialog" },
+  "projectEcommerce": "E-commerce Platform",
+  "@projectEcommerce": { "description": "Label for e-commerce project in page structure dialog" },
+  "projectSocial": "Social Media App",
+  "@projectSocial": { "description": "Label for social media project in page structure dialog" },
+  "projectWeather": "Weather Forecast",
+  "@projectWeather": { "description": "Label for weather project in page structure dialog" },
+  "projectMusic": "Music Player",
+  "@projectMusic": { "description": "Label for music player project in page structure dialog" },
+  "projectTask": "Task Manager",
+  "@projectTask": { "description": "Label for task manager project in page structure dialog" },
+  "projectFitness": "Fitness Tracker",
+  "@projectFitness": { "description": "Label for fitness tracker project in page structure dialog" }
 } 

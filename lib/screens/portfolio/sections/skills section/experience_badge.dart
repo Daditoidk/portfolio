@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import '../../../../core/l10n/app_localizations.dart';
+import '../../../../widgets/accessibility floating button/widgets/accessible_text.dart';
+import '../../../../widgets/accessibility floating button/widgets/accessible_tooltip.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ExperienceBadge extends StatelessWidget {
+class ExperienceBadge extends ConsumerWidget {
   final int years;
   final AppLocalizations l10n;
 
   const ExperienceBadge({super.key, required this.years, required this.l10n});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     Color badgeColor;
     Color textColor;
 
@@ -26,24 +29,25 @@ class ExperienceBadge extends StatelessWidget {
       textColor = Colors.black87;
     }
 
-    return Tooltip(
-      message:
-          years == 1
-              ? l10n.experienceTooltipOneYear
-              : l10n.experienceTooltipYears(years.toString()),
+    final tooltipMessage = years == 1
+        ? l10n.experienceTooltipOneYear
+        : l10n.experienceTooltipYears(years.toString());
+
+    return AccessibleTooltip(
+      message: tooltipMessage,
+      baseFontSize: 12,
+      color: Colors.white,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
         decoration: BoxDecoration(
           color: badgeColor,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Text(
+        child: AccessibleText(
           '$years',
-          style: TextStyle(
-            color: textColor,
-            fontSize: 10,
-            fontWeight: FontWeight.bold,
-          ),
+          baseFontSize: 10,
+          fontWeight: FontWeight.bold,
+          color: textColor,
         ),
       ),
     );

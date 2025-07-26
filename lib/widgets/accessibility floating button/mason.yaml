@@ -1,0 +1,67 @@
+name: accessibility_floating_button
+description: A comprehensive Flutter accessibility component with floating button and menu
+version: 1.0.0
+
+vars:
+  project_name:
+    type: string
+    description: The name of your Flutter project
+    default: my_app
+    prompt: What is the name of your Flutter project?
+
+files:
+  - source: "{{'lib/widgets/accessibility floating button'}}"
+    destination: "{{'lib/widgets/accessibility floating button'}}"
+
+  - source: "{{'test/accessibility_floating_button_test.dart'}}"
+    destination: "{{'test/accessibility_floating_button_test.dart'}}"
+
+hooks:
+  post_gen:
+    - dart pub get
+    - flutter analyze
+    - flutter test
+
+# Documentation
+documentation: |
+  # Accessibility Floating Button Brick
+
+  This brick adds a comprehensive accessibility component to your Flutter project.
+
+  ## Features
+
+  - Floating accessibility button with menu
+  - 13+ accessibility features
+  - Multi-language support
+  - Automatic widget integration
+  - Comprehensive test coverage
+
+  ## Usage
+
+  After running this brick, you can use the accessibility components like this:
+
+  ```dart
+  import 'package:{{project_name}}/widgets/accessibility floating button/accessibility_floating_button.dart';
+
+  // Use any of the accessible widgets
+  AccessibleText('Hello World');
+  AccessibleHighContrast(child: YourWidget());
+  AccessibleHideImages(altText: 'Description', child: Image.asset('...'));
+  ```
+
+  ## Dependencies
+
+  Make sure you have these dependencies in your pubspec.yaml:
+
+  ```yaml
+  dependencies:
+    flutter_riverpod: ^2.0.0
+  ```
+
+  ## Testing
+
+  Run the tests with:
+
+  ```bash
+  flutter test test/accessibility_floating_button_test.dart
+  ```

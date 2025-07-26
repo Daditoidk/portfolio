@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'core/l10n/app_localizations.dart';
 import 'core/navigation/app_router.dart';
 import 'core/theme/app_theme.dart';
+import 'core/constants/language_config.dart';
+import 'widgets/accessibility floating button/widgets/global_cursor_manager.dart';
 
 void main() {
-  runApp(const PortfolioApp());
+  runApp(ProviderScope(child: PortfolioApp()));
 }
 
 class PortfolioApp extends StatelessWidget {
@@ -13,17 +16,21 @@ class PortfolioApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Portfolio',
-      theme: AppTheme.lightTheme,
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [Locale('en'), Locale('es'), Locale('ja')],
-      routerConfig: AppRouter.createRouter(),
+    return GlobalCursorManager(
+      child: MaterialApp.router(
+        title: 'Portfolio',
+        theme: AppTheme.lightTheme,
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: LanguageConfig.getAllLanguages()
+            .map((lang) => lang.locale)
+            .toList(),
+        routerConfig: AppRouter.createRouter(),
+      ),
     );
   }
 }

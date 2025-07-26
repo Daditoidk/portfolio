@@ -220,6 +220,48 @@ abstract class AppLocalizations {
   /// **'Swift'**
   String get skillSwift;
 
+  /// Title for the page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Page Structure'**
+  String get pageStructureTitle;
+
+  /// Tab label for headings in page structure
+  ///
+  /// In en, this message translates to:
+  /// **'Headings'**
+  String get pageStructureHeadings;
+
+  /// Tab label for landmarks in page structure
+  ///
+  /// In en, this message translates to:
+  /// **'Landmarks'**
+  String get pageStructureLandmarks;
+
+  /// Tab label for links in page structure
+  ///
+  /// In en, this message translates to:
+  /// **'Links'**
+  String get pageStructureLinks;
+
+  /// Message shown when no headings are found
+  ///
+  /// In en, this message translates to:
+  /// **'No headings found on this page'**
+  String get pageStructureNoHeadings;
+
+  /// Message shown when no landmarks are found
+  ///
+  /// In en, this message translates to:
+  /// **'No landmarks found on this page'**
+  String get pageStructureNoLandmarks;
+
+  /// Message shown when no links are found
+  ///
+  /// In en, this message translates to:
+  /// **'No links found on this page'**
+  String get pageStructureNoLinks;
+
   /// Rive skill name
   ///
   /// In en, this message translates to:
@@ -1000,7 +1042,7 @@ abstract class AppLocalizations {
   /// **'Development Tools'**
   String get developmentTools;
 
-  /// Category title for project management skills
+  /// Label for project management in page structure dialog
   ///
   /// In en, this message translates to:
   /// **'Project Management'**
@@ -1017,6 +1059,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{years}+ years of experience'**
   String experienceTooltipYears(String years);
+
+  /// Text indicating a skill is currently being used
+  ///
+  /// In en, this message translates to:
+  /// **'Currently using'**
+  String get skillTooltipCurrentlyUsing;
+
+  /// Text indicating a skill can be clicked to expand
+  ///
+  /// In en, this message translates to:
+  /// **'Click to expand'**
+  String get skillTooltipClickToExpand;
+
+  /// Text showing years of experience
+  ///
+  /// In en, this message translates to:
+  /// **'{years} years'**
+  String skillTooltipYears(String years);
 
   /// Button text for downloading the resume in the Resume section.
   ///
@@ -1737,6 +1797,228 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Friday'**
   String get dayLongFri;
+
+  /// Label for the header section in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Header Section'**
+  String get headerSection;
+
+  /// Label for navigation menu in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Navigation Menu'**
+  String get navigationMenu;
+
+  /// Label for profile picture in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Picture'**
+  String get profilePicture;
+
+  /// Label for name in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get nameTitle;
+
+  /// Label for professional title in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Professional Title'**
+  String get professionalTitle;
+
+  /// Label for professional description in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Professional Description'**
+  String get professionalDescription;
+
+  /// Label for about section in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'About Section'**
+  String get aboutSection;
+
+  /// Label for about title in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'About Title'**
+  String get aboutTitleLabel;
+
+  /// Label for about description in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'About Description'**
+  String get aboutDescriptionLabel;
+
+  /// Label for about subtitle in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'About Subtitle'**
+  String get aboutSubtitleLabel;
+
+  /// Label for skills section in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Skills Section'**
+  String get skillsSection;
+
+  /// Label for skills title in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Skills Title'**
+  String get skillsTitleLabel;
+
+  /// Label for skills description in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Skills Description'**
+  String get skillsDescriptionLabel;
+
+  /// Label for programming languages in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Programming Languages'**
+  String get programmingLanguages;
+
+  /// Label for design & animation in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Design & Animation'**
+  String get designAnimation;
+
+  /// Label for editors & tools in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Editors & Tools'**
+  String get editorsTools;
+
+  /// Label for devops & ci/cd in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'DevOps & CI/CD'**
+  String get devopsCICD;
+
+  /// Label for resume section in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Resume Section'**
+  String get resumeSection;
+
+  /// Label for resume title in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Resume Title'**
+  String get resumeTitleLabel;
+
+  /// Label for resume description in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Resume Description'**
+  String get resumeDescriptionLabel;
+
+  /// Label for download resume button in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Download Resume Button'**
+  String get downloadResumeButton;
+
+  /// Label for last updated in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Last Updated'**
+  String get lastUpdated;
+
+  /// Label for projects section in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Projects Section'**
+  String get projectsSection;
+
+  /// Label for projects title in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Projects Title'**
+  String get projectsTitleLabel;
+
+  /// Label for projects description in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Projects Description'**
+  String get projectsDescriptionLabel;
+
+  /// Label for contact section in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Section'**
+  String get contactSection;
+
+  /// Label for contact title in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Title'**
+  String get contactTitleLabel;
+
+  /// Label for contact description in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Description'**
+  String get contactDescriptionLabel;
+
+  /// Label for contact information in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Information'**
+  String get contactInfo;
+
+  /// Label for social links in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Social Links'**
+  String get socialLinks;
+
+  /// Label for B4S project in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Brain4Goals App'**
+  String get projectB4S;
+
+  /// Label for e-commerce project in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'E-commerce Platform'**
+  String get projectEcommerce;
+
+  /// Label for social media project in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Social Media App'**
+  String get projectSocial;
+
+  /// Label for weather project in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Weather Forecast'**
+  String get projectWeather;
+
+  /// Label for music player project in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Music Player'**
+  String get projectMusic;
+
+  /// Label for task manager project in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Task Manager'**
+  String get projectTask;
+
+  /// Label for fitness tracker project in page structure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Fitness Tracker'**
+  String get projectFitness;
 }
 
 class _AppLocalizationsDelegate

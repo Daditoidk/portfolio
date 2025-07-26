@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../../../core/l10n/app_localizations.dart';
 import 'skill_item.dart';
+import '../../../../widgets/accessibility floating button/widgets/accessible_text.dart';
+import '../../../../widgets/accessibility floating button/widgets/accessible_tooltip.dart';
+import '../../../../widgets/accessibility floating button/widgets/global_cursor_manager.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ExpandedSubTechnologies extends StatelessWidget {
+class ExpandedSubTechnologies extends ConsumerWidget {
   final SkillItem skill;
   final AppLocalizations l10n;
 
@@ -13,7 +17,7 @@ class ExpandedSubTechnologies extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       margin: const EdgeInsets.only(top: 12),
       padding: const EdgeInsets.all(16),
@@ -25,25 +29,23 @@ class ExpandedSubTechnologies extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          AccessibleText(
             '${skill.name} Technologies',
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              fontWeight: FontWeight.w600,
-              color: Colors.blue[700],
-            ),
+            baseFontSize:
+                Theme.of(context).textTheme.titleSmall?.fontSize ?? 16,
+            fontWeight: FontWeight.w600,
+            color: Colors.blue[700],
           ),
           const SizedBox(height: 12),
           ...skill.subTechnologies!.entries.map((entry) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                AccessibleText(
                   entry.key,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.grey[700],
-                    fontSize: 12,
-                  ),
+                  baseFontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey[700],
                 ),
                 const SizedBox(height: 6),
                 Wrap(
@@ -51,7 +53,12 @@ class ExpandedSubTechnologies extends StatelessWidget {
                   runSpacing: 6,
                   children:
                       entry.value.map((tech) {
-                        return Container(
+                    return ClickableCursor(
+                      child: AccessibleTooltip(
+                        message: '$tech - Sub-technology of ${skill.name}',
+                        baseFontSize: 11,
+                        color: Colors.white,
+                        child: Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 8,
                             vertical: 4,
@@ -61,18 +68,16 @@ class ExpandedSubTechnologies extends StatelessWidget {
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(color: Colors.blue[300]!),
                           ),
-                          child: Text(
+                          child: AccessibleText(
                             tech,
-                            style: Theme.of(
-                              context,
-                            ).textTheme.bodySmall?.copyWith(
-                              color: Colors.blue[700],
-                              fontSize: 11,
-                              fontWeight: FontWeight.w500,
-                            ),
+                            baseFontSize: 11,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.blue[700],
                           ),
-                        );
-                      }).toList(),
+                        ),
+                      ),
+                    );
+                  }).toList(),
                 ),
                 const SizedBox(height: 12),
               ],

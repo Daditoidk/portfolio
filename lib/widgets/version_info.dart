@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import '../last_update.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'accessibility floating button/widgets/accessible_text.dart';
 
-class VersionInfo extends StatelessWidget {
+class VersionInfo extends ConsumerWidget {
   final bool isMobile;
   final EdgeInsets? padding;
 
   const VersionInfo({super.key, this.isMobile = false, this.padding});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return FutureBuilder<PackageInfo>(
       future: PackageInfo.fromPlatform(),
       builder: (context, snapshot) {
@@ -22,19 +24,19 @@ class VersionInfo extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
+                AccessibleText(
                   'Last update: $lastUpdate',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  baseFontSize:
+                      Theme.of(context).textTheme.bodySmall?.fontSize ?? 12,
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w500,
                 ),
-                Text(
+                AccessibleText(
                   'v$version',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  baseFontSize:
+                      Theme.of(context).textTheme.bodySmall?.fontSize ?? 12,
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w500,
                 ),
               ],
             ),

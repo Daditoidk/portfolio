@@ -45,6 +45,9 @@ class SemanticLabels {
   // Language switcher
   static const String languageSwitcher = 'Language switcher';
   static const String americanFlag = 'American flag';
+  static const String australianFlag = 'Australian flag';
+  static const String colombianFlag = 'Colombian flag';
+  static const String japaneseFlag = 'Japanese flag';
   static const String selected = 'Selected';
   static const String notSelected = 'Not selected';
 

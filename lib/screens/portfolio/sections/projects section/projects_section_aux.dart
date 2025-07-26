@@ -105,13 +105,26 @@ Widget _buildDesktopProjectPage(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(project['title'], style: theme.textTheme.headlineSmall),
+          AccessibleText(
+            project['title'],
+            baseFontSize: theme.textTheme.headlineSmall?.fontSize ?? 20,
+            fontWeight: theme.textTheme.headlineSmall?.fontWeight,
+          ),
           const SizedBox(height: 16),
-          Text(project['description'], style: theme.textTheme.bodyLarge),
+          AccessibleText(
+            project['description'],
+            baseFontSize: theme.textTheme.bodyLarge?.fontSize ?? 16,
+            fontWeight: theme.textTheme.bodyLarge?.fontWeight,
+          ),
           const SizedBox(height: 32),
           ElevatedButton(
             onPressed: () {},
-            child: Text(AppLocalizations.of(context)!.projectKnowMore),
+            child: AccessibleText(
+              AppLocalizations.of(context)!.projectKnowMore,
+              baseFontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: Colors.white,
+            ),
           ),
         ],
       ),
@@ -144,55 +157,55 @@ Widget _buildMobileProjectPage(
   Map<String, dynamic> project,
 ) {
   final theme = Theme.of(context);
-  return IntrinsicHeight(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: AppTheme.red.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(12),
+  final screenHeight = MediaQuery.of(context).size.height;
+  return SingleChildScrollView(
+    child: ConstrainedBox(
+      constraints: BoxConstraints(minHeight: screenHeight),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: FrameContainer(
+              frameAsset: project['frame'],
+              width: 400,
+              height: 600,
+              overlayPadding: const EdgeInsets.fromLTRB(40, 40, 40, 40),
+              borderRadius: BorderRadius.circular(24),
+              child: project['demo'],
             ),
-            child: Text(
-              AppLocalizations.of(
-                context,
-              )!.projectDemoAvailableOnTabletOrDesktop,
-              style: theme.textTheme.bodyLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: AppTheme.red.withValues(alpha: 0.5),
-                shadows: [
-                  Shadow(
-                    color: AppTheme.red.withValues(alpha: 0.2),
-                    blurRadius: 200,
-                    offset: Offset(0, 0),
+          ),
+          const SizedBox(height: 32),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AccessibleText(
+                  project['title'],
+                  baseFontSize: theme.textTheme.headlineSmall?.fontSize ?? 20,
+                  fontWeight: theme.textTheme.headlineSmall?.fontWeight,
+                ),
+                const SizedBox(height: 16),
+                AccessibleText(
+                  project['description'],
+                  baseFontSize: theme.textTheme.bodyLarge?.fontSize ?? 16,
+                  fontWeight: theme.textTheme.bodyLarge?.fontWeight,
+                ),
+                const SizedBox(height: 32),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: AccessibleText(
+                    AppLocalizations.of(context)!.projectKnowMore,
+                    baseFontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
                   ),
-                ],
-              ),
-              textAlign: TextAlign.center,
+                ),
+              ],
             ),
           ),
-        ),
-        SizedBox(height: 40),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(project['title'], style: theme.textTheme.headlineSmall),
-              const SizedBox(height: 12),
-              Text(project['description'], style: theme.textTheme.bodyLarge),
-              const SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text(AppLocalizations.of(context)!.projectKnowMore),
-              ),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     ),
   );
 }
@@ -202,37 +215,56 @@ Widget _buildTabletProjectPage(
   Map<String, dynamic> project,
 ) {
   final theme = Theme.of(context);
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Center(
-        child: FrameContainer(
-          frameAsset: project['frame'],
-          width: 400,
-          height: 600,
-          overlayPadding: const EdgeInsets.fromLTRB(40, 40, 40, 40),
-          borderRadius: BorderRadius.circular(24),
-          child: project['demo'],
-        ),
-      ),
-      const SizedBox(height: 32),
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(project['title'], style: theme.textTheme.headlineSmall),
-            const SizedBox(height: 16),
-            Text(project['description'], style: theme.textTheme.bodyLarge),
-            const SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text(AppLocalizations.of(context)!.projectKnowMore),
+  final screenHeight = MediaQuery.of(context).size.height;
+  return SingleChildScrollView(
+    child: ConstrainedBox(
+      constraints: BoxConstraints(minHeight: screenHeight),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: FrameContainer(
+              frameAsset: project['frame'],
+              width: 400,
+              height: 600,
+              overlayPadding: const EdgeInsets.fromLTRB(40, 40, 40, 40),
+              borderRadius: BorderRadius.circular(24),
+              child: project['demo'],
             ),
-          ],
-        ),
+          ),
+          const SizedBox(height: 32),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AccessibleText(
+                  project['title'],
+                  baseFontSize: theme.textTheme.headlineSmall?.fontSize ?? 20,
+                  fontWeight: theme.textTheme.headlineSmall?.fontWeight,
+                ),
+                const SizedBox(height: 16),
+                AccessibleText(
+                  project['description'],
+                  baseFontSize: theme.textTheme.bodyLarge?.fontSize ?? 16,
+                  fontWeight: theme.textTheme.bodyLarge?.fontWeight,
+                ),
+                const SizedBox(height: 32),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: AccessibleText(
+                    AppLocalizations.of(context)!.projectKnowMore,
+                    baseFontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
-    ],
+    ),
   );
 }
 

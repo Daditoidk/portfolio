@@ -72,6 +72,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get skillSwift => 'Swift';
 
   @override
+  String get pageStructureTitle => 'Page Structure';
+
+  @override
+  String get pageStructureHeadings => 'Headings';
+
+  @override
+  String get pageStructureLandmarks => 'Landmarks';
+
+  @override
+  String get pageStructureLinks => 'Links';
+
+  @override
+  String get pageStructureNoHeadings => 'No headings found on this page';
+
+  @override
+  String get pageStructureNoLandmarks => 'No landmarks found on this page';
+
+  @override
+  String get pageStructureNoLinks => 'No links found on this page';
+
+  @override
   String get skillRive => 'Rive';
 
   @override
@@ -500,6 +521,17 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get skillTooltipCurrentlyUsing => 'Currently using';
+
+  @override
+  String get skillTooltipClickToExpand => 'Click to expand';
+
+  @override
+  String skillTooltipYears(String years) {
+    return '$years years';
+  }
+
+  @override
   String get resumeDownload => 'Download';
 
   @override
@@ -881,4 +913,115 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dayLongFri => 'Friday';
+
+  @override
+  String get headerSection => 'Header Section';
+
+  @override
+  String get navigationMenu => 'Navigation Menu';
+
+  @override
+  String get profilePicture => 'Profile Picture';
+
+  @override
+  String get nameTitle => 'Name';
+
+  @override
+  String get professionalTitle => 'Professional Title';
+
+  @override
+  String get professionalDescription => 'Professional Description';
+
+  @override
+  String get aboutSection => 'About Section';
+
+  @override
+  String get aboutTitleLabel => 'About Title';
+
+  @override
+  String get aboutDescriptionLabel => 'About Description';
+
+  @override
+  String get aboutSubtitleLabel => 'About Subtitle';
+
+  @override
+  String get skillsSection => 'Skills Section';
+
+  @override
+  String get skillsTitleLabel => 'Skills Title';
+
+  @override
+  String get skillsDescriptionLabel => 'Skills Description';
+
+  @override
+  String get programmingLanguages => 'Programming Languages';
+
+  @override
+  String get designAnimation => 'Design & Animation';
+
+  @override
+  String get editorsTools => 'Editors & Tools';
+
+  @override
+  String get devopsCICD => 'DevOps & CI/CD';
+
+  @override
+  String get resumeSection => 'Resume Section';
+
+  @override
+  String get resumeTitleLabel => 'Resume Title';
+
+  @override
+  String get resumeDescriptionLabel => 'Resume Description';
+
+  @override
+  String get downloadResumeButton => 'Download Resume Button';
+
+  @override
+  String get lastUpdated => 'Last Updated';
+
+  @override
+  String get projectsSection => 'Projects Section';
+
+  @override
+  String get projectsTitleLabel => 'Projects Title';
+
+  @override
+  String get projectsDescriptionLabel => 'Projects Description';
+
+  @override
+  String get contactSection => 'Contact Section';
+
+  @override
+  String get contactTitleLabel => 'Contact Title';
+
+  @override
+  String get contactDescriptionLabel => 'Contact Description';
+
+  @override
+  String get contactInfo => 'Contact Information';
+
+  @override
+  String get socialLinks => 'Social Links';
+
+  @override
+  String get projectB4S => 'Brain4Goals App';
+
+  @override
+  String get projectEcommerce => 'E-commerce Platform';
+
+  @override
+  String get projectSocial => 'Social Media App';
+
+  @override
+  String get projectWeather => 'Weather Forecast';
+
+  @override
+  String get projectMusic => 'Music Player';
+
+  @override
+  String get projectTask => 'Task Manager';
+
+  @override
+  String get projectFitness => 'Fitness Tracker';
 }

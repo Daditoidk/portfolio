@@ -72,6 +72,27 @@ class AppLocalizationsJa extends AppLocalizations {
   String get skillSwift => 'Swift';
 
   @override
+  String get pageStructureTitle => 'ページ構造';
+
+  @override
+  String get pageStructureHeadings => '見出し';
+
+  @override
+  String get pageStructureLandmarks => 'ランドマーク';
+
+  @override
+  String get pageStructureLinks => 'リンク';
+
+  @override
+  String get pageStructureNoHeadings => 'このページに見出しが見つかりません';
+
+  @override
+  String get pageStructureNoLandmarks => 'このページにランドマークが見つかりません';
+
+  @override
+  String get pageStructureNoLinks => 'このページにリンクが見つかりません';
+
+  @override
   String get skillRive => 'Rive';
 
   @override
@@ -490,6 +511,17 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String get skillTooltipCurrentlyUsing => '現在使用中';
+
+  @override
+  String get skillTooltipClickToExpand => 'クリックして展開';
+
+  @override
+  String skillTooltipYears(String years) {
+    return '$years年';
+  }
+
+  @override
   String get resumeDownload => 'ダウンロード';
 
   @override
@@ -863,4 +895,115 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get dayLongFri => '金曜日';
+
+  @override
+  String get headerSection => 'ヘッダーセクション';
+
+  @override
+  String get navigationMenu => 'ナビゲーションメニュー';
+
+  @override
+  String get profilePicture => 'プロフィール写真';
+
+  @override
+  String get nameTitle => '名前';
+
+  @override
+  String get professionalTitle => '職業タイトル';
+
+  @override
+  String get professionalDescription => '職業説明';
+
+  @override
+  String get aboutSection => '自己紹介セクション';
+
+  @override
+  String get aboutTitleLabel => '自己紹介タイトル';
+
+  @override
+  String get aboutDescriptionLabel => '自己紹介説明';
+
+  @override
+  String get aboutSubtitleLabel => '自己紹介サブタイトル';
+
+  @override
+  String get skillsSection => 'スキルセクション';
+
+  @override
+  String get skillsTitleLabel => 'スキルタイトル';
+
+  @override
+  String get skillsDescriptionLabel => 'スキル説明';
+
+  @override
+  String get programmingLanguages => 'プログラミング言語';
+
+  @override
+  String get designAnimation => 'デザインとアニメーション';
+
+  @override
+  String get editorsTools => 'エディターとツール';
+
+  @override
+  String get devopsCICD => 'DevOpsとCI/CD';
+
+  @override
+  String get resumeSection => '履歴書セクション';
+
+  @override
+  String get resumeTitleLabel => '履歴書タイトル';
+
+  @override
+  String get resumeDescriptionLabel => '履歴書説明';
+
+  @override
+  String get downloadResumeButton => '履歴書ダウンロードボタン';
+
+  @override
+  String get lastUpdated => '最終更新';
+
+  @override
+  String get projectsSection => 'プロジェクトセクション';
+
+  @override
+  String get projectsTitleLabel => 'プロジェクトタイトル';
+
+  @override
+  String get projectsDescriptionLabel => 'プロジェクト説明';
+
+  @override
+  String get contactSection => '連絡先セクション';
+
+  @override
+  String get contactTitleLabel => '連絡先タイトル';
+
+  @override
+  String get contactDescriptionLabel => '連絡先説明';
+
+  @override
+  String get contactInfo => '連絡先情報';
+
+  @override
+  String get socialLinks => 'ソーシャルリンク';
+
+  @override
+  String get projectB4S => 'Brain4Goalsアプリ';
+
+  @override
+  String get projectEcommerce => 'Eコマースプラットフォーム';
+
+  @override
+  String get projectSocial => 'ソーシャルメディアアプリ';
+
+  @override
+  String get projectWeather => '天気予報';
+
+  @override
+  String get projectMusic => '音楽プレーヤー';
+
+  @override
+  String get projectTask => 'タスクマネージャー';
+
+  @override
+  String get projectFitness => 'フィットネストラッカー';
 }
