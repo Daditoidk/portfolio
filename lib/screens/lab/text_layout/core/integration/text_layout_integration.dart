@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import '../../../../../core/animations/text_animation_registry.dart';
 import '../models/text_layout_config.dart';
+import '../../widgets/custom_toast.dart';
 
 /// Integration layer between visual editor and text animation registry
 class TextLayoutIntegration {
@@ -26,8 +27,8 @@ class TextLayoutIntegration {
 
     // Apply section mappings to registry
     for (final section in config.sections) {
-      for (int i = section.startLine; i <= section.endLine; i++) {
-        _setManualBlockIndex(registry, i, _getSectionOrder(section));
+      for (final lineId in section.lineIds) {
+        _setManualBlockIndex(registry, lineId, _getSectionOrder(section));
       }
     }
 
@@ -49,11 +50,11 @@ class TextLayoutIntegration {
   /// Set manual block index for a specific line
   void _setManualBlockIndex(
     TextAnimationRegistry registry,
-    int lineIndex,
+    String lineId,
     int blockIndex,
   ) {
     // This would need to be implemented in the registry
-    print('Setting manual block index for line $lineIndex to $blockIndex');
+    print('Setting manual block index for line $lineId to $blockIndex');
   }
 
   /// Get section order (for block index)
@@ -120,51 +121,72 @@ class TextLayoutIntegration {
     final sections = [
       TextSection(
         name: 'Navigation',
-        startLine: 0,
-        endLine: 0,
+        lineIds: ['line_0'],
+        lineOrders: [0],
         color: Colors.blue,
+        order: 0,
       ),
       TextSection(
         name: 'Header',
-        startLine: 1,
-        endLine: 3,
+        lineIds: ['line_1', 'line_2', 'line_3'],
+        lineOrders: [1, 2, 3],
         color: Colors.green,
+        order: 1,
       ),
       TextSection(
         name: 'About',
-        startLine: 4,
-        endLine: 6,
+        lineIds: ['line_4', 'line_5', 'line_6'],
+        lineOrders: [4, 5, 6],
         color: Colors.orange,
+        order: 2,
       ),
       TextSection(
         name: 'Skills',
-        startLine: 7,
-        endLine: 18,
+        lineIds: [
+          'line_7',
+          'line_8',
+          'line_9',
+          'line_10',
+          'line_11',
+          'line_12',
+          'line_13',
+          'line_14',
+          'line_15',
+          'line_16',
+          'line_17',
+          'line_18',
+        ],
+        lineOrders: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
         color: Colors.purple,
+        order: 3,
       ),
       TextSection(
         name: 'Resume',
-        startLine: 19,
-        endLine: 22,
+        lineIds: ['line_19', 'line_20', 'line_21', 'line_22'],
+        lineOrders: [19, 20, 21, 22],
         color: Colors.red,
+        order: 4,
       ),
       TextSection(
         name: 'Projects',
-        startLine: 23,
-        endLine: 27,
+        lineIds: ['line_23', 'line_24', 'line_25', 'line_26', 'line_27'],
+        lineOrders: [23, 24, 25, 26, 27],
         color: Colors.teal,
+        order: 5,
       ),
       TextSection(
         name: 'Contact',
-        startLine: 28,
-        endLine: 30,
+        lineIds: ['line_28', 'line_29', 'line_30'],
+        lineOrders: [28, 29, 30],
         color: Colors.indigo,
+        order: 6,
       ),
       TextSection(
         name: 'Footer',
-        startLine: 31,
-        endLine: 32,
+        lineIds: ['line_31', 'line_32'],
+        lineOrders: [31, 32],
         color: Colors.grey,
+        order: 7,
       ),
     ];
 
@@ -220,11 +242,10 @@ class TextLayoutConfigurationWidget extends StatelessWidget {
         TextLayoutIntegration().applyConfiguration(config);
         onApplied?.call();
 
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Text layout configuration applied!'),
-            duration: Duration(seconds: 2),
-          ),
+        CustomToast.showSuccess(
+          context,
+          message: 'Text layout configuration applied!',
+          duration: const Duration(seconds: 2),
         );
       },
       child: const Text('Apply Text Layout'),

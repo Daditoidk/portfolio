@@ -20,51 +20,72 @@ class TextLayoutConfig {
       sections: [
         TextSection(
           name: 'Navigation',
-          startLine: 0,
-          endLine: 0,
+          lineIds: ['line_0'],
+          lineOrders: [0],
           color: Colors.blue,
+          order: 0,
         ),
         TextSection(
           name: 'Header',
-          startLine: 1,
-          endLine: 3,
+          lineIds: ['line_1', 'line_2', 'line_3'],
+          lineOrders: [1, 2, 3],
           color: Colors.green,
+          order: 1,
         ),
         TextSection(
           name: 'About',
-          startLine: 4,
-          endLine: 6,
+          lineIds: ['line_4', 'line_5', 'line_6'],
+          lineOrders: [4, 5, 6],
           color: Colors.orange,
+          order: 2,
         ),
         TextSection(
           name: 'Skills',
-          startLine: 7,
-          endLine: 18,
+          lineIds: [
+            'line_7',
+            'line_8',
+            'line_9',
+            'line_10',
+            'line_11',
+            'line_12',
+            'line_13',
+            'line_14',
+            'line_15',
+            'line_16',
+            'line_17',
+            'line_18',
+          ],
+          lineOrders: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
           color: Colors.purple,
+          order: 3,
         ),
         TextSection(
           name: 'Resume',
-          startLine: 19,
-          endLine: 22,
+          lineIds: ['line_19', 'line_20', 'line_21', 'line_22'],
+          lineOrders: [19, 20, 21, 22],
           color: Colors.red,
+          order: 4,
         ),
         TextSection(
           name: 'Projects',
-          startLine: 23,
-          endLine: 27,
+          lineIds: ['line_23', 'line_24', 'line_25', 'line_26', 'line_27'],
+          lineOrders: [23, 24, 25, 26, 27],
           color: Colors.teal,
+          order: 5,
         ),
         TextSection(
           name: 'Contact',
-          startLine: 28,
-          endLine: 30,
+          lineIds: ['line_28', 'line_29', 'line_30'],
+          lineOrders: [28, 29, 30],
           color: Colors.indigo,
+          order: 6,
         ),
         TextSection(
           name: 'Footer',
-          startLine: 31,
-          endLine: 32,
+          lineIds: ['line_31', 'line_32'],
+          lineOrders: [31, 32],
           color: Colors.grey,
+          order: 7,
         ),
       ],
       lines: [
@@ -390,7 +411,7 @@ class TextLayoutConfig {
 
     // Apply line mappings
     for (final line in lines) {
-      for (final l10nKey in line.l10nKeys) {
+      for (final _ in line.l10nKeys) {
         // This would need to be implemented in your registry
         // registry.setManualLineIndex(l10nKey, line.order);
       }
@@ -398,9 +419,9 @@ class TextLayoutConfig {
 
     // Apply section mappings
     for (final section in sections) {
-      for (int i = section.startLine; i <= section.endLine; i++) {
+      for (final _ in section.lineIds) {
         // This would need to be implemented in your registry
-        // registry.setManualBlockIndex(i, section.order);
+        // registry.setManualBlockIndex(lineId, section.order);
       }
     }
   }
@@ -417,11 +438,8 @@ class TextLayoutConfig {
 
   /// Get section for a specific line
   TextSection? getSectionForLine(int lineIndex) {
-    for (final section in sections) {
-      if (lineIndex >= section.startLine && lineIndex <= section.endLine) {
-        return section;
-      }
-    }
+    // This method needs to be updated to work with line IDs
+    // For now, return null as we're transitioning to line IDs
     return null;
   }
 
@@ -457,29 +475,35 @@ class TextLayoutConfig {
 
 class TextSection {
   final String name;
-  final int startLine;
-  final int endLine;
+  final List<String> lineIds; // Use line IDs instead of startLine/endLine
+  final List<int> lineOrders; // Add line orders for better import/export
   final Color color;
+  final int order; // Dynamic order based on Y position
 
   const TextSection({
     required this.name,
-    required this.startLine,
-    required this.endLine,
+    required this.lineIds,
+    required this.lineOrders,
     required this.color,
+    required this.order,
   });
 
   Map<String, dynamic> toJson() => {
     'name': name,
-    'startLine': startLine,
-    'endLine': endLine,
+    'lineIds': lineIds,
+    'lineOrders': lineOrders,
     'color': color.value,
+    'order': order,
   };
 
   factory TextSection.fromJson(Map<String, dynamic> json) => TextSection(
     name: json['name'],
-    startLine: json['startLine'],
-    endLine: json['endLine'],
+    lineIds: List<String>.from(json['lineIds']),
+    lineOrders: json['lineOrders'] != null
+        ? List<int>.from(json['lineOrders'])
+        : [], // Fallback for backward compatibility
     color: Color(json['color']),
+    order: json['order'] ?? 0,
   );
 }
 

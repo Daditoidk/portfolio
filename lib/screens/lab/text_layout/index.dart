@@ -14,6 +14,10 @@ export 'core/managers/drag_speed_manager.dart';
 // Core integration
 export 'core/integration/text_layout_integration.dart';
 
+// Core scanners
+export 'core/scanners/live_preview_text_scanner.dart';
+export 'app_bar_actions/index.dart';
+
 // Editor components
 export 'editor/text_layout_editor.dart';
 export 'editor/portfolio_preview_widget.dart';
@@ -21,7 +25,6 @@ export 'editor/portfolio_preview_widget.dart';
 // Widgets
 export 'widgets/line_widget.dart';
 export 'widgets/line_creation_widget.dart';
+export 'widgets/custom_toast.dart';
 
-// Debug tools
-export 'debug/text_layout_debug.dart';
-export 'debug/text_detection_integration.dart';
+// Debug tools removed - no longer needed

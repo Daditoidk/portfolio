@@ -43,8 +43,11 @@ class LineCreationWidget extends StatelessWidget {
         width: (previewEndX - editorCenterX).clamp(100.0, double.infinity),
         height: 40.0,
         decoration: BoxDecoration(
-          color: Colors.transparent,
-          border: Border.all(color: Colors.red.withOpacity(0.5), width: 2),
+          color: Colors.red.withValues(alpha: 0.1),
+          border: Border.all(
+            color: Colors.red.withValues(alpha: 0.8),
+            width: 2,
+          ),
         ),
         child: Padding(
           padding: const EdgeInsets.only(left: 16.0),
@@ -53,7 +56,7 @@ class LineCreationWidget extends StatelessWidget {
             child: Text(
               'Line $potentialLineNumber',
               style: TextStyle(
-                color: Colors.red.withOpacity(0.5),
+                color: Colors.red.withValues(alpha: 0.8),
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
               ),
