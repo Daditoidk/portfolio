@@ -11,6 +11,7 @@ class LineWidget extends StatelessWidget {
   final VoidCallback? onDragEnd;
   final Function(double delta, ResizeDirection direction) onResize;
   final double scrollOffset;
+  final VoidCallback? onDelete;
 
   const LineWidget({
     super.key,
@@ -21,6 +22,7 @@ class LineWidget extends StatelessWidget {
     this.onDragEnd,
     required this.onResize,
     required this.scrollOffset,
+    this.onDelete,
   });
 
   @override
@@ -73,18 +75,65 @@ class LineWidget extends StatelessWidget {
   Widget _buildLineContent() {
     return Padding(
       padding: const EdgeInsets.only(left: 16.0),
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: Text(
-          'Line ${line.order}',
-          style: const TextStyle(
-            color: Colors.red,
-            fontSize: 12,
-            fontWeight: FontWeight.bold,
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              'Line ${line.order}',
+              style: const TextStyle(
+                color: Colors.red,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-        ),
+          // Show detected texts count if any
+          if (line.detectedTexts.isNotEmpty)
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+              decoration: BoxDecoration(
+                color: Colors.green.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.green, width: 1),
+              ),
+              child: Text(
+                '${line.detectedTexts.length} texts',
+                style: const TextStyle(
+                  color: Colors.green,
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          const SizedBox(width: 8),
+          // Delete button
+          GestureDetector(
+            onTap: () => _showDeleteConfirmation(),
+            child: Container(
+              padding: const EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                color: Colors.red.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(color: Colors.red, width: 1),
+              ),
+              child: Icon(
+                Icons.delete_outline,
+                size: 14,
+                color: Colors.red,
+              ),
+            ),
+          ),
+        ],
       ),
     );
+  }
+
+  void _showDeleteConfirmation() {
+    // This will be handled by the parent widget
+    // For now, we'll use a simple callback
+    if (onDelete != null) {
+      onDelete!();
+    }
   }
 
   Widget _buildResizeHandle(ResizeDirection direction) {

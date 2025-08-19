@@ -488,12 +488,14 @@ class TextLine {
   final List<String> l10nKeys;
   final double height;
   final double yPosition;
+  final List<Map<String, dynamic>> detectedTexts;
 
   const TextLine({
     required this.order,
     required this.l10nKeys,
     required this.height,
     required this.yPosition,
+    this.detectedTexts = const [],
   });
 
   Map<String, dynamic> toJson() => {
@@ -501,6 +503,7 @@ class TextLine {
     'l10nKeys': l10nKeys,
     'height': height,
     'yPosition': yPosition,
+    'detectedTexts': detectedTexts,
   };
 
   factory TextLine.fromJson(Map<String, dynamic> json) => TextLine(
@@ -508,6 +511,9 @@ class TextLine {
     l10nKeys: List<String>.from(json['l10nKeys']),
     height: json['height'].toDouble(),
     yPosition: json['yPosition']?.toDouble() ?? 0.0,
+    detectedTexts: json['detectedTexts'] != null
+        ? List<Map<String, dynamic>>.from(json['detectedTexts'])
+        : [],
   );
 
   /// Create a copy of this TextLine with updated values
@@ -516,12 +522,14 @@ class TextLine {
     List<String>? l10nKeys,
     double? height,
     double? yPosition,
+    List<Map<String, dynamic>>? detectedTexts,
   }) {
     return TextLine(
       order: order ?? this.order,
       l10nKeys: l10nKeys ?? this.l10nKeys,
       height: height ?? this.height,
       yPosition: yPosition ?? this.yPosition,
+      detectedTexts: detectedTexts ?? this.detectedTexts,
     );
   }
 }

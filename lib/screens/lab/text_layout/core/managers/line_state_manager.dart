@@ -99,6 +99,29 @@ class LineStateManager {
     }
   }
 
+  /// Update detected texts for a specific line
+  void updateLineTexts(
+    String lineId,
+    List<Map<String, dynamic>> detectedTexts,
+  ) {
+    final index = _lines.indexWhere((line) => line.id == lineId);
+    if (index == -1) return;
+
+    _lines[index] = _lines[index].copyWith(detectedTexts: detectedTexts);
+    onLinesChanged?.call();
+  }
+
+  /// Delete a line by ID
+  void deleteLine(String lineId) {
+    final index = _lines.indexWhere((line) => line.id == lineId);
+    if (index == -1) return;
+
+    _lines.removeAt(index);
+    // Update line numbers after deletion
+    LineManager.updateLineNumbers(_lines);
+    onLinesChanged?.call();
+  }
+
   /// Check if a line is being dragged
   bool isLineDragging(String lineId) =>
       false; // This will be managed by the editor

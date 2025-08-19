@@ -10,6 +10,7 @@ class Line {
   final double xPosition;
   final bool isResizing;
   final ResizeDirection? resizeDirection;
+  final List<Map<String, dynamic>> detectedTexts;
 
   const Line({
     required this.id,
@@ -20,6 +21,7 @@ class Line {
     this.xPosition = 100.0,
     this.isResizing = false,
     this.resizeDirection,
+    this.detectedTexts = const [],
   });
 
   /// Create a copy of this Line with updated values
@@ -32,6 +34,7 @@ class Line {
     double? xPosition,
     bool? isResizing,
     ResizeDirection? resizeDirection,
+    List<Map<String, dynamic>>? detectedTexts,
   }) {
     return Line(
       id: id ?? this.id,
@@ -42,6 +45,7 @@ class Line {
       xPosition: xPosition ?? this.xPosition,
       isResizing: isResizing ?? this.isResizing,
       resizeDirection: resizeDirection ?? this.resizeDirection,
+      detectedTexts: detectedTexts ?? this.detectedTexts,
     );
   }
 
@@ -86,6 +90,7 @@ class Line {
     'height': height,
     'yPosition': yPosition,
     'xPosition': xPosition,
+    'detectedTexts': detectedTexts,
   };
 
   /// Create from JSON
@@ -96,6 +101,9 @@ class Line {
     height: json['height'].toDouble(),
     yPosition: json['yPosition'].toDouble(),
     xPosition: json['xPosition']?.toDouble() ?? 100.0,
+    detectedTexts: json['detectedTexts'] != null
+        ? List<Map<String, dynamic>>.from(json['detectedTexts'])
+        : [],
   );
 }
 

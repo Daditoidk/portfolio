@@ -37,6 +37,10 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
   Offset? _lineEndPosition;
   String? _draggingLineId;
 
+  // Text detection state
+  bool _isDetectionEnabled = false;
+  bool _hasDetectedTexts = false;
+
   // Portfolio measurement
   final GlobalKey _portfolioKey = GlobalKey();
   final double _viewportHeight = 800.0; // Height of what's visible on screen
@@ -197,10 +201,39 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
     return AppBar(
       title: const Text('Text Layout Editor'),
       actions: [
+        // Detection toggle
+        Container(
+          constraints: const BoxConstraints(maxWidth: 150),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text('Detection', style: TextStyle(fontSize: 12)),
+              const SizedBox(width: 8),
+              Switch(
+                value: _isDetectionEnabled,
+                onChanged: (value) {
+                  setState(() {
+                    _isDetectionEnabled = value;
+                    if (value) {
+                      _runTextDetection();
+                    } else {
+                      _clearTextDetection();
+                    }
+                  });
+                },
+                activeColor: Colors.green,
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(width: 16),
         // Import/Export buttons
         IconButton(
-          onPressed: _exportLayout,
-          tooltip: 'Export Layout',
+          onPressed: _canExport() ? _exportLayout : null,
+          tooltip: _canExport()
+              ? 'Export Layout'
+              : 'Enable detection and add lines to export',
           icon: const Icon(Icons.download),
         ),
         IconButton(
@@ -313,7 +346,7 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
         ? canvasHeight
         : screenHeight - appBarHeight;
 
-    return Container(
+    return SizedBox(
       height: validHeight,
       child: Row(
         children: [
@@ -375,6 +408,7 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
       onDragEnd: () => setState(() => _draggingLineId = null),
       onResize: (delta, direction) =>
           _lineStateManager.resizeLine(line.id, delta, direction),
+      onDelete: () => _deleteLine(line.id),
       scrollOffset: _scrollManager.scrollOffset,
     );
   }
@@ -411,9 +445,20 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
   }
 
   TextLayoutConfig _buildCurrentConfig() {
+    // Convert Line objects to TextLine objects
+    final textLines = _lineStateManager.lines.map((line) {
+      return TextLine(
+        order: line.order,
+        l10nKeys: line.l10nKeys,
+        height: line.height,
+        yPosition: line.yPosition,
+        detectedTexts: line.detectedTexts,
+      );
+    }).toList();
+
     return TextLayoutConfig(
       sections: _sections,
-      lines: _lineStateManager.toTextLines(),
+      lines: textLines,
       l10nKeyToText: _l10nKeyToText,
     );
   }
@@ -467,6 +512,17 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
     // For now, just print to console
     print('Layout exported: $json');
 
+    // Show success message
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Layout exported with ${_lineStateManager.lines.where((l) => l.detectedTexts.isNotEmpty).length} lines containing detected texts',
+        ),
+        backgroundColor: Colors.green,
+        duration: const Duration(seconds: 3),
+      ),
+    );
+
     // You could also implement a download mechanism here
     // or copy to clipboard functionality
   }
@@ -512,5 +568,122 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
 
     // Load l10n key mappings
     _l10nKeyToText.addAll(config.l10nKeyToText);
+  }
+
+  /// Run text detection on all lines
+  void _runTextDetection() {
+    if (!_isDetectionEnabled || _lineStateManager.lines.isEmpty) return;
+
+    setState(() {
+      _hasDetectedTexts = false;
+    });
+
+    // Get all text elements from the registry
+    final registry = TextAnimationRegistry();
+    final elements = registry.getSortedElements();
+
+    // Detect texts within each line's bounds
+    for (final line in _lineStateManager.lines) {
+      final detectedTexts = _detectTextsInLine(line, elements);
+      if (detectedTexts.isNotEmpty) {
+        _hasDetectedTexts = true;
+        // Update line with detected texts
+        _lineStateManager.updateLineTexts(line.id, detectedTexts);
+      }
+    }
+
+    setState(() {});
+  }
+
+  /// Clear text detection results
+  void _clearTextDetection() {
+    setState(() {
+      _hasDetectedTexts = false;
+    });
+
+    // Clear detected texts from all lines
+    for (final line in _lineStateManager.lines) {
+      _lineStateManager.updateLineTexts(line.id, []);
+    }
+  }
+
+  /// Detect texts within a line's bounds
+  List<Map<String, dynamic>> _detectTextsInLine(
+    Line line,
+    List<TextElement> elements,
+  ) {
+    final detectedTexts = <Map<String, dynamic>>[];
+
+    for (final element in elements) {
+      // Check if text element is within line bounds
+      if (_isTextInLineBounds(element, line)) {
+        detectedTexts.add({
+          'id':
+              element.id ?? 'unknown_${DateTime.now().millisecondsSinceEpoch}',
+          'text': element.text,
+          'y': element.yPosition,
+          'lineIndex': element.lineIndex,
+          'blockIndex': element.blockIndex,
+        });
+      }
+    }
+
+    return detectedTexts;
+  }
+
+  /// Check if a text element is within line bounds
+  bool _isTextInLineBounds(TextElement element, Line line) {
+    final elementY = element.yPosition;
+    final lineTop = line.yPosition;
+    final lineBottom = line.yPosition + line.height;
+
+    // Check if element Y position is within line bounds
+    return elementY >= lineTop && elementY <= lineBottom;
+  }
+
+  /// Check if export button should be enabled
+  bool _canExport() {
+    return _isDetectionEnabled &&
+        _lineStateManager.lines.isNotEmpty &&
+        _hasDetectedTexts;
+  }
+
+  /// Delete a line by its ID
+  void _deleteLine(String lineId) {
+    final line = _lineStateManager.getLineById(lineId);
+    if (line == null) return;
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Delete Line'),
+        content: Text('Are you sure you want to delete Line ${line.order}?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              _lineStateManager.deleteLine(lineId);
+              setState(() {});
+              widget.onLayoutChanged?.call();
+              
+              // Show success message
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Line ${line.order} deleted successfully'),
+                  backgroundColor: Colors.red,
+                  duration: const Duration(seconds: 2),
+                ),
+              );
+            },
+            style: TextButton.styleFrom(foregroundColor: Colors.red),
+            child: const Text('Delete'),
+          ),
+        ],
+      ),
+    );
   }
 }

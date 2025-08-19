@@ -24,16 +24,13 @@ class AppLocalizationsJa extends AppLocalizations {
   String get aboutTitle => '私について';
 
   @override
-  String get aboutDescription =>
-      '私は技術、食べ物、ビデオゲーム、サッカー、フィットネス、ダンス、音楽、哲学、心理学、そして少し歴史に情熱を持つ好奇心旺盛な人です。自分の国を探索し、その多様な文化や風景について学ぶことが大好きです。';
+  String get aboutDescription => '私は技術、食べ物、ビデオゲーム、サッカー、フィットネス、ダンス、音楽、哲学、心理学、そして少し歴史に情熱を持つ好奇心旺盛な人です。自分の国を探索し、その多様な文化や風景について学ぶことが大好きです。';
 
   @override
-  String get aboutSubtitle =>
-      '継続的な学習を信じ、デジタルイノベーションと人生のシンプルな喜びの両方に喜びを見出す技術愛好家です。';
+  String get aboutSubtitle => '継続的な学習を信じ、デジタルイノベーションと人生のシンプルな喜びの両方に喜びを見出す技術愛好家です。';
 
   @override
-  String get aboutSkills =>
-      'Flutter, Kotlin, Swift, Rive, Cursor, CodeMagic, REST API, Git, UX/UIデザイン';
+  String get aboutSkills => 'Flutter, Kotlin, Swift, Rive, Cursor, CodeMagic, REST API, Git, UX/UIデザイン';
 
   @override
   String get skillsTitle => 'スキルとテクノロジー';
@@ -460,8 +457,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get projectDemoHelloWorld => 'こんにちは世界';
 
   @override
-  String get projectDemoAvailableOnTabletOrDesktop =>
-      'デモはタブレットまたはデスクトップデバイスで利用できます';
+  String get projectDemoAvailableOnTabletOrDesktop => 'デモはタブレットまたはデスクトップデバイスで利用できます';
 
   @override
   String get projectKnowMore => 'もっと知る';
@@ -528,8 +524,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get resumeSectionTitle => '履歴書';
 
   @override
-  String get resumeSectionDescription =>
-      '最新の履歴書をダウンロードできます。私の経験についてもっと知りたい方はこちらから！';
+  String get resumeSectionDescription => '最新の履歴書をダウンロードできます。私の経験についてもっと知りたい方はこちらから！';
 
   @override
   String resumeLastUpdated(String date) {
