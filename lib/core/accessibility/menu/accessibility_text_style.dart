@@ -28,6 +28,7 @@ class AccessibilityTextStyle extends TextStyle {
     Color? color,
     bool applyPortfolioOnlyFeatures =
         true, // New parameter to control feature application
+    String? languageCode, // Add language code parameter
   }) {
     // Multi-level increments - only apply if portfolio-only features are enabled
     final fontSize =
@@ -40,8 +41,17 @@ class AccessibilityTextStyle extends TextStyle {
         ? (1.2 + settings.lineHeightLevel * 0.2)
         : 1.2;
 
-    // Dyslexia font is always applied (global feature)
-    final family = settings.dyslexiaFontEnabled ? 'OpenDyslexic' : null;
+    // Dyslexia font selection based on language and dyslexia setting
+    String? family;
+    if (settings.dyslexiaFontEnabled) {
+      if (languageCode == 'ja') {
+        // Use BIZUDGothic for Japanese dyslexia
+        family = 'BIZUDGothic';
+      } else {
+        // Use OpenDyslexic for other languages
+        family = 'OpenDyslexic';
+      }
+    }
 
     return AccessibilityTextStyle(
       fontSize: fontSize,

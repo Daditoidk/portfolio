@@ -66,9 +66,12 @@ Widget _buildDesktopProjectPage(
                 height: 655,
                 overlayPadding: const EdgeInsets.fromLTRB(52, 8, 52, 10),
                 borderRadius: BorderRadius.circular(32),
+              child: CachedDemoWidget(
+                index: project['id'].hashCode,
                 child: project['demo'],
               ),
             ),
+          ),
           )
           : Expanded(
             flex: 6,
@@ -90,8 +93,11 @@ Widget _buildDesktopProjectPage(
                         frameHeight * 0.14,
                       ),
                       borderRadius: BorderRadius.circular(24),
+                    child: CachedDemoWidget(
+                      index: project['id'].hashCode,
                       child: project['demo'],
                     ),
+                  ),
                   );
                 },
               ),
@@ -109,21 +115,29 @@ Widget _buildDesktopProjectPage(
             project['title'],
             baseFontSize: theme.textTheme.headlineSmall?.fontSize ?? 20,
             fontWeight: theme.textTheme.headlineSmall?.fontWeight,
+            languageCode: Localizations.localeOf(context).languageCode,
           ),
           const SizedBox(height: 16),
           AccessibleText(
             project['description'],
             baseFontSize: theme.textTheme.bodyLarge?.fontSize ?? 16,
             fontWeight: theme.textTheme.bodyLarge?.fontWeight,
+            languageCode: Localizations.localeOf(context).languageCode,
           ),
           const SizedBox(height: 32),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              final projectId = project['id'] as String?;
+              if (projectId != null) {
+                context.go('/project/$projectId');
+              }
+            },
             child: AccessibleText(
               AppLocalizations.of(context)!.projectKnowMore,
               baseFontSize: 14,
               fontWeight: FontWeight.w500,
               color: Colors.white,
+              languageCode: Localizations.localeOf(context).languageCode,
             ),
           ),
         ],
@@ -171,7 +185,10 @@ Widget _buildMobileProjectPage(
               height: 600,
               overlayPadding: const EdgeInsets.fromLTRB(40, 40, 40, 40),
               borderRadius: BorderRadius.circular(24),
-              child: project['demo'],
+              child: CachedDemoWidget(
+                index: project['id'].hashCode,
+                child: project['demo'],
+              ),
             ),
           ),
           const SizedBox(height: 32),
@@ -184,21 +201,29 @@ Widget _buildMobileProjectPage(
                   project['title'],
                   baseFontSize: theme.textTheme.headlineSmall?.fontSize ?? 20,
                   fontWeight: theme.textTheme.headlineSmall?.fontWeight,
+                  languageCode: Localizations.localeOf(context).languageCode,
                 ),
                 const SizedBox(height: 16),
                 AccessibleText(
                   project['description'],
                   baseFontSize: theme.textTheme.bodyLarge?.fontSize ?? 16,
                   fontWeight: theme.textTheme.bodyLarge?.fontWeight,
+                  languageCode: Localizations.localeOf(context).languageCode,
                 ),
                 const SizedBox(height: 32),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    final projectId = project['id'] as String?;
+                    if (projectId != null) {
+                      context.go('/project/$projectId');
+                    }
+                  },
                   child: AccessibleText(
                     AppLocalizations.of(context)!.projectKnowMore,
                     baseFontSize: 14,
                     fontWeight: FontWeight.w500,
                     color: Colors.white,
+                    languageCode: Localizations.localeOf(context).languageCode,
                   ),
                 ),
               ],
@@ -229,7 +254,10 @@ Widget _buildTabletProjectPage(
               height: 600,
               overlayPadding: const EdgeInsets.fromLTRB(40, 40, 40, 40),
               borderRadius: BorderRadius.circular(24),
-              child: project['demo'],
+              child: CachedDemoWidget(
+                index: project['id'].hashCode,
+                child: project['demo'],
+              ),
             ),
           ),
           const SizedBox(height: 32),
@@ -242,21 +270,29 @@ Widget _buildTabletProjectPage(
                   project['title'],
                   baseFontSize: theme.textTheme.headlineSmall?.fontSize ?? 20,
                   fontWeight: theme.textTheme.headlineSmall?.fontWeight,
+                  languageCode: Localizations.localeOf(context).languageCode,
                 ),
                 const SizedBox(height: 16),
                 AccessibleText(
                   project['description'],
                   baseFontSize: theme.textTheme.bodyLarge?.fontSize ?? 16,
                   fontWeight: theme.textTheme.bodyLarge?.fontWeight,
+                  languageCode: Localizations.localeOf(context).languageCode,
                 ),
                 const SizedBox(height: 32),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    final projectId = project['id'] as String?;
+                    if (projectId != null) {
+                      context.go('/project/$projectId');
+                    }
+                  },
                   child: AccessibleText(
                     AppLocalizations.of(context)!.projectKnowMore,
                     baseFontSize: 14,
                     fontWeight: FontWeight.w500,
                     color: Colors.white,
+                    languageCode: Localizations.localeOf(context).languageCode,
                   ),
                 ),
               ],

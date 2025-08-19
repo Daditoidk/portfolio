@@ -124,6 +124,7 @@ class HeaderSection extends StatelessWidget {
                         baseFontSize: isLandscape ? 24 : (isMobile ? 36 : null),
                         fontWeight: FontWeight.bold,
                         textAlign: TextAlign.center,
+                        languageCode: currentLocale.languageCode,
                       ),
                       SizedBox(height: isLandscape ? 5 : 10),
                       AccessibleText(
@@ -132,6 +133,7 @@ class HeaderSection extends StatelessWidget {
                         baseFontSize: isLandscape ? 14 : (isMobile ? 18 : null),
                         fontWeight: FontWeight.w500,
                         color: AppTheme.secondaryIcon,
+                        languageCode: currentLocale.languageCode,
                       ),
                       SizedBox(height: isLandscape ? 10 : 20),
                       AccessibleText(
@@ -146,6 +148,7 @@ class HeaderSection extends StatelessWidget {
                                         ).textTheme.bodyLarge?.fontSize ??
                                         16),
                         textAlign: TextAlign.center,
+                        languageCode: currentLocale.languageCode,
                       ),
                       SizedBox(height: isMobile && !isLandscape ? 40 : 0),
                     ],

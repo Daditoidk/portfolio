@@ -102,6 +102,9 @@ class ResumeSection extends StatelessWidget {
                           fontWeight: Theme.of(
                             context,
                           ).textTheme.headlineMedium?.fontWeight,
+                          languageCode: Localizations.localeOf(
+                            context,
+                          ).languageCode,
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -114,6 +117,9 @@ class ResumeSection extends StatelessWidget {
                               16,
                           color: Colors.grey[600],
                           textAlign: TextAlign.center,
+                          languageCode: Localizations.localeOf(
+                            context,
+                          ).languageCode,
                         ),
                       ),
                       const SizedBox(height: 32),
@@ -149,6 +155,7 @@ class ResumeSection extends StatelessWidget {
                                   baseFontSize: 16,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
+                                  languageCode: Localizations.localeOf(context).languageCode,
                                 ),
                               ),
                             ),
@@ -168,6 +175,7 @@ class ResumeSection extends StatelessWidget {
                       baseFontSize:
                           Theme.of(context).textTheme.bodySmall?.fontSize ?? 12,
                       color: Colors.grey[600],
+                      languageCode: Localizations.localeOf(context).languageCode,
                     ),
                   ),
                 ),

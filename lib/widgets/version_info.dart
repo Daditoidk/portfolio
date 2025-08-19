@@ -30,6 +30,7 @@ class VersionInfo extends ConsumerWidget {
                       Theme.of(context).textTheme.bodySmall?.fontSize ?? 12,
                   color: Colors.grey,
                   fontWeight: FontWeight.w500,
+                  languageCode: Localizations.localeOf(context).languageCode,
                 ),
                 AccessibleText(
                   'v$version',
@@ -37,6 +38,7 @@ class VersionInfo extends ConsumerWidget {
                       Theme.of(context).textTheme.bodySmall?.fontSize ?? 12,
                   color: Colors.grey,
                   fontWeight: FontWeight.w500,
+                  languageCode: Localizations.localeOf(context).languageCode,
                 ),
               ],
             ),

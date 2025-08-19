@@ -79,6 +79,7 @@ class ContactSection extends StatelessWidget {
                 semanticsLabel: SemanticLabels.sectionTitle,
                 baseFontSize: theme.textTheme.headlineMedium?.fontSize ?? 24,
                 fontWeight: theme.textTheme.headlineMedium?.fontWeight,
+                languageCode: Localizations.localeOf(context).languageCode,
               ),
               const SizedBox(height: 30),
               AccessibleText(
@@ -86,6 +87,7 @@ class ContactSection extends StatelessWidget {
                 semanticsLabel: SemanticLabels.sectionDescription,
                 baseFontSize: theme.textTheme.bodyLarge?.fontSize ?? 16,
                 textAlign: TextAlign.center,
+                languageCode: Localizations.localeOf(context).languageCode,
               ),
               const SizedBox(height: 40),
               Semantics(
@@ -176,12 +178,13 @@ class ContactSection extends StatelessWidget {
           SizedBox(height: isMobile ? 8 : 10),
           Semantics(
             label: 'Contact details',
-            child: Text(
+            child: AccessibleText(
               text,
-              style: theme.textTheme.bodySmall?.copyWith(
-                fontSize: isMobile ? 12 : null,
-              ),
+              baseFontSize: isMobile
+                  ? 12
+                  : theme.textTheme.bodySmall?.fontSize ?? 12,
               textAlign: TextAlign.center,
+              languageCode: Localizations.localeOf(context).languageCode,
             ),
           ),
         ],

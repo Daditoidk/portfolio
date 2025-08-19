@@ -5,9 +5,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/foundation.dart';
 import '../../../widgets/accessibility/accessible_text.dart';
 import '../../constants/language_config.dart';
 import 'accessibility_settings.dart';
+import '../../animations/language_change_animation.dart';
+import '../../animations/language_animation_debug.dart';
+import '../../animations/text_animation_registry.dart'
+    show TextAnimationRegistry, TextAnimationRegistryTable;
 
 class AccessibilityMenuContent extends ConsumerWidget {
   final String languageCode;
@@ -119,6 +124,7 @@ class AccessibilityMenuContent extends ConsumerWidget {
                   maxLines: 1,
                   applyPortfolioOnlyFeatures:
                       false, // Only dyslexia font applies to menu
+                  languageCode: languageCode,
                 ),
               ),
               IconButton(
@@ -151,6 +157,7 @@ class AccessibilityMenuContent extends ConsumerWidget {
                         maxLines: 1,
                         applyPortfolioOnlyFeatures:
                             false, // Only dyslexia font applies to menu
+                        languageCode: languageCode,
                       ),
                     ),
                   ],
@@ -195,6 +202,7 @@ class AccessibilityMenuContent extends ConsumerWidget {
                                 color: Colors.black,
                                 applyPortfolioOnlyFeatures:
                                     false, // Only dyslexia font applies to menu
+                                languageCode: languageCode,
                               ),
                             ],
                           );
@@ -219,6 +227,7 @@ class AccessibilityMenuContent extends ConsumerWidget {
                                 color: Colors.black,
                                 applyPortfolioOnlyFeatures:
                                     false, // Only dyslexia font applies to menu
+                                languageCode: languageCode,
                               ),
                               if (isSelected) ...[
                                 const SizedBox(width: 4),
@@ -232,9 +241,28 @@ class AccessibilityMenuContent extends ConsumerWidget {
                           ),
                         );
                       }).toList(),
-                      onChanged: (val) {
+                      onChanged: (val) async {
                         if (val != null && val != languageCode) {
-                          onLanguageChanged(val);
+                          debugPrint('Starting animation');
+                          final strategy = ref.read(
+                            languageAnimationStrategyProvider,
+                          );
+                          await LanguageChangeAnimationController()
+                              .animateLanguageChange(
+                                context: context,
+                                settings: LanguageChangeSettings(
+                                  strategy: strategy,
+                                ),
+                                onComplete: () {
+                                  onLanguageChanged(val);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text('Animation finished'),
+                                      duration: Duration(milliseconds: 1200),
+                                    ),
+                                  );
+                                },
+                              );
                         }
                       },
                     ),
@@ -266,6 +294,7 @@ class AccessibilityMenuContent extends ConsumerWidget {
               textAlign: TextAlign.center,
               applyPortfolioOnlyFeatures:
                   false, // Only dyslexia font applies to menu
+              languageCode: languageCode,
             ),
             onPressed: notifier.reset,
           ),
@@ -287,6 +316,7 @@ class AccessibilityMenuContent extends ConsumerWidget {
                     rightExample: 'A',
                     leftFontSize: 10,
                     rightFontSize: 20,
+                    languageCode: languageCode,
                   ),
                   _SliderFeatureRow(
                     icon: Icons.space_bar,
@@ -298,6 +328,7 @@ class AccessibilityMenuContent extends ConsumerWidget {
                     rightExample: 'A  B  C',
                     leftFontSize: 12,
                     rightFontSize: 12,
+                    languageCode: languageCode,
                   ),
                   _SliderFeatureRow(
                     icon: Icons.format_line_spacing,
@@ -309,6 +340,7 @@ class AccessibilityMenuContent extends ConsumerWidget {
                     rightExample: 'A\n\nB',
                     leftFontSize: 12,
                     rightFontSize: 12,
+                    languageCode: languageCode,
                   ),
                   const Divider(height: 32),
                   // Toggles
@@ -317,36 +349,42 @@ class AccessibilityMenuContent extends ConsumerWidget {
                     label: t('dyslexia'),
                     value: settings.dyslexiaFontEnabled,
                     onChanged: notifier.setDyslexiaFontEnabled,
+                    languageCode: languageCode,
                   ),
                   _SwitchFeatureRow(
                     icon: Icons.image_not_supported,
                     label: t('hideImages'),
                     value: settings.hideImages,
                     onChanged: notifier.setHideImages,
+                    languageCode: languageCode,
                   ),
                   _SwitchFeatureRow(
                     icon: Icons.link,
                     label: t('highlightLinks'),
                     value: settings.highlightLinks,
                     onChanged: notifier.setHighlightLinks,
+                    languageCode: languageCode,
                   ),
                   _SwitchFeatureRow(
                     icon: Icons.pause_circle,
                     label: t('stopAnimations'),
                     value: settings.pauseAnimations,
                     onChanged: notifier.setPauseAnimations,
+                    languageCode: languageCode,
                   ),
                   _SwitchFeatureRow(
                     icon: Icons.mouse,
                     label: t('cursor'),
                     value: settings.customCursor,
                     onChanged: notifier.setCustomCursor,
+                    languageCode: languageCode,
                   ),
                   _SwitchFeatureRow(
                     icon: Icons.info,
                     label: t('info'),
                     value: settings.tooltipsEnabled,
                     onChanged: notifier.setTooltipsEnabled,
+                    languageCode: languageCode,
                   ),
                   // Page Structure as a list tile instead of toggle
                   _ListTileFeatureRow(
@@ -357,7 +395,111 @@ class AccessibilityMenuContent extends ConsumerWidget {
                       notifier.setPageStructureEnabled(true);
                       onPageStructureOpen?.call();
                     },
+                    languageCode: languageCode,
                   ),
+                  if (kDebugMode) ...[
+                    const Divider(height: 32),
+                    // Debug: Enable Language Animations (mirrors pauseAnimations)
+                    _SwitchFeatureRow(
+                      icon: Icons.auto_awesome,
+                      label: 'Enable Language Animations (Debug)',
+                      value: !settings.pauseAnimations,
+                      onChanged: (enabled) {
+                        notifier.setPauseAnimations(!enabled);
+                      },
+                      languageCode: languageCode,
+                    ),
+                    // Debug: Choose Language Animation Strategy
+                    _DebugStrategySelector(languageCode: languageCode),
+                    const SizedBox(height: 8),
+                    // Debug: Show Registered Text Order
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: ElevatedButton.icon(
+                        icon: const Icon(Icons.list_alt, size: 16),
+                        label: const Text('Show Registered Text Order (Debug)'),
+                        onPressed: () {
+                          final debugData = TextAnimationRegistry()
+                              .getDebugData();
+                          showDialog(
+                            context: context,
+                            builder: (ctx) => Dialog(
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.8,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.8,
+                                padding: const EdgeInsets.all(16),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Text Animation Registry (Debug)',
+                                          style: Theme.of(
+                                            context,
+                                          ).textTheme.titleLarge,
+                                        ),
+                                        IconButton(
+                                          onPressed: () =>
+                                              Navigator.of(ctx).pop(),
+                                          icon: const Icon(Icons.close),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 16),
+                                    Expanded(
+                                      child: TextAnimationRegistryTable(
+                                        debugData: debugData,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    // Debug: Configure Registry Settings
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: ElevatedButton.icon(
+                        icon: const Icon(Icons.settings, size: 16),
+                        label: const Text(
+                          'Configure Registry Settings (Debug)',
+                        ),
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (ctx) => _RegistrySettingsDialog(),
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    // Debug: Apply Manual Overrides
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: ElevatedButton.icon(
+                        icon: const Icon(Icons.auto_fix_high, size: 16),
+                        label: const Text('Apply Manual Overrides (Debug)'),
+                        onPressed: () {
+                          TextAnimationRegistry().setupManualOverrides();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'Manual overrides applied! Check "Show Registered Text Order" to see the results.',
+                              ),
+                              duration: Duration(seconds: 2),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),
@@ -373,12 +515,14 @@ class _SwitchFeatureRow extends StatelessWidget {
   final String label;
   final bool value;
   final ValueChanged<bool> onChanged;
+  final String? languageCode;
 
   const _SwitchFeatureRow({
     required this.icon,
     required this.label,
     required this.value,
     required this.onChanged,
+    this.languageCode,
   });
 
   @override
@@ -395,6 +539,7 @@ class _SwitchFeatureRow extends StatelessWidget {
               baseFontSize: 13,
               color: Colors.grey.shade800,
               applyPortfolioOnlyFeatures: false,
+              languageCode: languageCode,
             ),
           ),
           Switch(
@@ -413,11 +558,13 @@ class _ListTileFeatureRow extends StatelessWidget {
   final IconData icon;
   final String label;
   final VoidCallback onTap;
+  final String? languageCode;
 
   const _ListTileFeatureRow({
     required this.icon,
     required this.label,
     required this.onTap,
+    this.languageCode,
   });
 
   @override
@@ -439,6 +586,7 @@ class _ListTileFeatureRow extends StatelessWidget {
                   baseFontSize: 13,
                   color: Colors.grey.shade800,
                   applyPortfolioOnlyFeatures: false,
+                  languageCode: languageCode,
                 ),
               ),
               Icon(
@@ -464,6 +612,7 @@ class _SliderFeatureRow extends StatelessWidget {
   final String? rightExample;
   final double? leftFontSize;
   final double? rightFontSize;
+  final String? languageCode;
 
   const _SliderFeatureRow({
     required this.icon,
@@ -475,6 +624,7 @@ class _SliderFeatureRow extends StatelessWidget {
     this.rightExample,
     this.leftFontSize,
     this.rightFontSize,
+    this.languageCode,
   });
 
   @override
@@ -493,6 +643,7 @@ class _SliderFeatureRow extends StatelessWidget {
                   baseFontSize: 13,
                   color: Colors.grey.shade800,
                   applyPortfolioOnlyFeatures: false,
+                  languageCode: languageCode,
                 ),
               ),
             ],
@@ -555,6 +706,123 @@ class _SliderFeatureRow extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _DebugStrategySelector extends ConsumerWidget {
+  final String? languageCode;
+  const _DebugStrategySelector({this.languageCode});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final strategy = ref.watch(languageAnimationStrategyProvider);
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        children: [
+          Icon(Icons.tune, size: 18, color: Colors.grey.shade600),
+          const SizedBox(width: 12),
+          Expanded(
+            child: AccessibleText(
+              'Language Animation (Debug)',
+              baseFontSize: 13,
+              color: Colors.grey.shade800,
+              applyPortfolioOnlyFeatures: false,
+              languageCode: languageCode,
+            ),
+          ),
+          DropdownButton<LanguageChangeStrategy>(
+            value: strategy,
+            onChanged: (val) {
+              if (val != null) {
+                ref.read(languageAnimationStrategyProvider.notifier).state =
+                    val;
+              }
+            },
+            items: const [
+              DropdownMenuItem(
+                value: LanguageChangeStrategy.readingWave,
+                child: Text('Reading Wave'),
+              ),
+              DropdownMenuItem(
+                value: LanguageChangeStrategy.cascadeTopToBottom,
+                child: Text('Cascade Top to Bottom'),
+              ),
+              DropdownMenuItem(
+                value: LanguageChangeStrategy.blockCascade,
+                child: Text('Block Cascade'),
+              ),
+              DropdownMenuItem(
+                value: LanguageChangeStrategy.fadeInOut,
+                child: Text('Fade In/Out'),
+              ),
+              DropdownMenuItem(
+                value: LanguageChangeStrategy.instant,
+                child: Text('Instant'),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _RegistrySettingsDialog extends ConsumerWidget {
+  const _RegistrySettingsDialog();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(textAnimationRegistryProvider);
+    final notifier = ref.read(textAnimationRegistryProvider.notifier);
+
+    return AlertDialog(
+      title: const Text('Text Animation Registry Settings'),
+      content: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _SliderFeatureRow(
+              icon: Icons.format_size,
+              label: 'Line Threshold',
+              value: settings.lineThreshold.toInt(),
+              max: 100,
+              onChanged: (value) => notifier.setLineThreshold(value.toDouble()),
+              leftExample: 'A',
+              rightExample: 'A',
+              leftFontSize: 10,
+              rightFontSize: 20,
+              languageCode: null, // No language specific for registry settings
+            ),
+            _SliderFeatureRow(
+              icon: Icons.format_line_spacing,
+              label: 'Block Size',
+              value: settings.blockSize,
+              max: 20,
+              onChanged: notifier.setBlockSize,
+              leftExample: 'A',
+              rightExample: 'A',
+              leftFontSize: 10,
+              rightFontSize: 20,
+              languageCode: null, // No language specific for registry settings
+            ),
+            _SwitchFeatureRow(
+              icon: Icons.settings_backup_restore,
+              label: 'Manual Overrides',
+              value: settings.manualOverridesEnabled,
+              onChanged: notifier.setManualOverridesEnabled,
+              languageCode: null, // No language specific for registry settings
+            ),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: const Text('Close'),
+        ),
+      ],
     );
   }
 }

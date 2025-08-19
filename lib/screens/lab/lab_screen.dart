@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../widgets/language_switcher.dart';
 import '../../widgets/nav_toggle_button.dart';
+import 'text_layout/editor/text_layout_editor.dart';
 
 class LabScreen extends StatefulWidget {
   const LabScreen({super.key});
@@ -71,6 +72,30 @@ class _LabScreenState extends State<LabScreen> {
                   child: LanguageSwitcher(
                     currentLocale: _currentLocale,
                     onLocaleChanged: _onLocaleChanged,
+                  ),
+                ),
+                // Text Layout Editor Button
+                Positioned(
+                  bottom: 40,
+                  right: 20,
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const TextLayoutEditor(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.edit),
+                    label: const Text('Text Layout'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
+                    ),
                   ),
                 ),
               ],

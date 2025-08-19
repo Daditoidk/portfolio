@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/l10n/app_localizations.dart';
 import '../core/constants/semantic_labels.dart';
 import '../core/constants/language_config.dart';
 import '../core/accessibility/accessibility_floating_button.dart';
+import '../core/animations/language_change_animation.dart';
+import '../core/animations/language_animation_debug.dart';
 
-class LanguageSwitcher extends StatelessWidget {
+class LanguageSwitcher extends ConsumerWidget {
   final Locale currentLocale;
   final Function(Locale) onLocaleChanged;
 
@@ -15,12 +18,11 @@ class LanguageSwitcher extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     final screenWidth = MediaQuery.of(context).size.width;
     final isMobile = screenWidth < 600;
 
-    // Hide language switcher on mobile
     if (isMobile) {
       return const SizedBox.shrink();
     }
@@ -63,7 +65,21 @@ class LanguageSwitcher extends StatelessWidget {
                     const SizedBox(width: 3),
                   ],
                   ClickableCursor(
-                    onTap: () => onLocaleChanged(languages[i].locale),
+                    onTap: () async {
+                      final strategy = ref.read(
+                        languageAnimationStrategyProvider,
+                      );
+                      await LanguageChangeAnimationController()
+                          .animateLanguageChange(
+                            context: context,
+                            settings: LanguageChangeSettings(
+                              strategy: strategy,
+                            ),
+                            onComplete: () {
+                              onLocaleChanged(languages[i].locale);
+                            },
+                          );
+                    },
                     child: _buildFlagButton(context, languages[i]),
                   ),
                 ],
@@ -93,7 +109,6 @@ class LanguageSwitcher extends StatelessWidget {
 
     String getHint() {
       if (isActive) return SemanticLabels.currentlySelectedLanguage;
-      
       switch (languageInfo.code) {
         case 'en':
           return SemanticLabels.doubleTapToSwitchToEnglish;
@@ -106,17 +121,13 @@ class LanguageSwitcher extends StatelessWidget {
       }
     }
 
-    // Custom border radius based on position and selection state
     BorderRadius getBorderRadius() {
       final languages = LanguageConfig.getAllLanguages();
       final index = languages.indexOf(languageInfo);
-      
       if (!isActive) {
         return BorderRadius.circular(18);
       }
-
       if (index == 0) {
-        // First item: no border on right corners (adjacent to divider)
         return const BorderRadius.only(
           topLeft: Radius.circular(18),
           bottomLeft: Radius.circular(18),
@@ -124,7 +135,6 @@ class LanguageSwitcher extends StatelessWidget {
           bottomRight: Radius.zero,
         );
       } else if (index == languages.length - 1) {
-        // Last item: no border on left corners (adjacent to divider)
         return const BorderRadius.only(
           topLeft: Radius.zero,
           bottomLeft: Radius.zero,
@@ -132,7 +142,6 @@ class LanguageSwitcher extends StatelessWidget {
           bottomRight: Radius.circular(18),
         );
       } else {
-        // Middle item: no border on both sides (adjacent to dividers)
         return BorderRadius.zero;
       }
     }
@@ -157,9 +166,7 @@ class LanguageSwitcher extends StatelessWidget {
               setState(() => isHovered = false);
             },
             child: GestureDetector(
-              onTap: isActive
-                  ? null
-                  : () => onLocaleChanged(languageInfo.locale),
+              onTap: isActive ? null : null, // handled above
               child: Builder(
                 builder: (context) {
                   Color backgroundColor;

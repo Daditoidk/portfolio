@@ -10,6 +10,9 @@ class RouteNames {
   static const String portfolioProjects = '/portfolio/projects';
   static const String portfolioContact = '/portfolio/contact';
 
+  // Project detail route
+  static const String projectDetail = '/project/:id';
+
   // Lab sub-routes (if needed in the future)
   static const String labMain = '/lab/main';
   static const String labExperiment = '/lab/experiment';

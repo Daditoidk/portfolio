@@ -140,6 +140,7 @@ class HamburgerMenu extends ConsumerWidget {
                               20,
                           color: AppTheme.navActive,
                           fontWeight: FontWeight.bold,
+                          languageCode: currentLocale.languageCode,
                         ),
                         AccessibleCustomCursor(
                           child: IconButton(
@@ -183,6 +184,7 @@ class HamburgerMenu extends ConsumerWidget {
                                 16,
                             color: AppTheme.navInactive,
                             fontWeight: FontWeight.w600,
+                            languageCode: currentLocale.languageCode,
                           ),
                         ),
                         // Language options

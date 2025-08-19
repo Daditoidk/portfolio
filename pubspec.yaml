@@ -20,6 +20,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   universal_html: ^2.2.4
   url_launcher: ^6.3.1
+  visibility_detector: ^0.4.0+2
 
 dev_dependencies:
   flutter_test:
@@ -36,10 +37,16 @@ flutter:
     - assets/demos/
     - assets/demos/b4s/
     - assets/icons/
+    - assets/videos/
     - assets/Camilo Santacruz Abadiano resume.pdf
   fonts:
     - family: OpenDyslexic
       fonts:
         - asset: assets/fonts/OpenDyslexic-Regular.otf
         - asset: assets/fonts/OpenDyslexic-Bold.otf
+          weight: 700
+    - family: BIZUDGothic
+      fonts:
+        - asset: assets/fonts/BIZUDGothic-Regular.ttf
+        - asset: assets/fonts/BIZUDGothic-Bold.ttf
           weight: 700

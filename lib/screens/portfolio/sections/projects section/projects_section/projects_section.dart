@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import '../../../../core/l10n/app_localizations.dart';
-import '../../../../core/constants/semantic_labels.dart';
-import '../../../../core/theme/app_theme.dart';
-import '../../../../core/helpers/frame_container.dart';
-import '../../../../core/accessibility/accessibility_floating_button.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../../core/l10n/app_localizations.dart';
+import '../../../../../core/constants/semantic_labels.dart';
+import '../../../../../core/theme/app_theme.dart';
+import '../../../../../core/helpers/frame_container.dart';
+import '../../../../../core/accessibility/accessibility_floating_button.dart';
 import 'project_page_arrow.dart';
-import 'demos/b4s demo/b4s_demo.dart';
-import 'demos/ecommerce_demo/ecommerce_demo.dart';
-import 'demos/social_media_demo/social_media_demo.dart';
-import 'demos/weather_demo/weather_demo.dart';
-import 'demos/music_player_demo/music_player_demo.dart';
-import 'demos/task_manager_demo/task_manager_demo.dart';
-import 'demos/fitness_tracker_demo/fitness_tracker_demo.dart';
+import '../demos/b4s demo/b4s_demo.dart';
+import '../demos/ecommerce_demo/ecommerce_demo.dart';
+import '../demos/social_media_demo/social_media_demo.dart';
+import '../demos/weather_demo/weather_demo.dart';
+import '../demos/music_player_demo/music_player_demo.dart';
+import '../demos/task_manager_demo/task_manager_demo.dart';
+import '../demos/fitness_tracker_demo/fitness_tracker_demo.dart';
+import 'cached_demo_widget.dart';
 part 'projects_section_aux.dart';
 
 class ProjectsSection extends StatefulWidget {
@@ -26,9 +28,11 @@ class ProjectsSection extends StatefulWidget {
   State<ProjectsSection> createState() => _ProjectsSectionState();
 }
 
-class _ProjectsSectionState extends State<ProjectsSection> {
+class _ProjectsSectionState extends State<ProjectsSection>
+    with AutomaticKeepAliveClientMixin {
   final List<Map<String, dynamic>> projects = [
     {
+      'id': 'brain4goals',
       'title': 'Brain4Goals App',
       'description':
           'A comprehensive sports management application with community features, profile management, and activity tracking.',
@@ -36,6 +40,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       'demo': const Brain4GoalsDemo(),
     },
     {
+      'id': 'ecommerce',
       'title': 'E-commerce Platform',
       'description':
           'Modern online shopping experience with product catalog, shopping cart, and secure payment processing.',
@@ -43,6 +48,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       'demo': const EcommerceDemo(),
     },
     {
+      'id': 'social-media',
       'title': 'Social Media App',
       'description':
           'Connect with friends and share moments through posts, likes, and real-time messaging.',
@@ -50,6 +56,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       'demo': const SocialMediaDemo(),
     },
     {
+      'id': 'weather',
       'title': 'Weather Forecast',
       'description':
           'Real-time weather information with detailed forecasts, location-based alerts, and beautiful UI.',
@@ -57,6 +64,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       'demo': const WeatherDemo(),
     },
     {
+      'id': 'music-player',
       'title': 'Music Player',
       'description':
           'Premium music streaming experience with playlists, offline mode, and high-quality audio.',
@@ -64,6 +72,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       'demo': const MusicPlayerDemo(),
     },
     {
+      'id': 'task-manager',
       'title': 'Task Manager',
       'description':
           'Organize your life with intuitive task management, priority levels, and progress tracking.',
@@ -71,6 +80,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       'demo': const TaskManagerDemo(),
     },
     {
+      'id': 'fitness-tracker',
       'title': 'Fitness Tracker',
       'description':
           'Monitor your health and fitness goals with step counting, calorie tracking, and workout plans.',
@@ -81,6 +91,9 @@ class _ProjectsSectionState extends State<ProjectsSection> {
   int _currentPage = 0;
   bool _isPageAnimating = false;
   final PageController _pageController = PageController();
+
+  @override
+  bool get wantKeepAlive => true;
 
   void _onDotTap(int i) async {
     if (_isPageAnimating) return;
@@ -95,6 +108,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context); // Required for AutomaticKeepAliveClientMixin
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final screenHeight = MediaQuery.of(context).size.height;
@@ -195,6 +209,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                     baseFontSize:
                         theme.textTheme.headlineMedium?.fontSize ?? 24,
                     fontWeight: theme.textTheme.headlineMedium?.fontWeight,
+                    languageCode: Localizations.localeOf(context).languageCode,
                   ),
                   const SizedBox(height: 12),
                   AccessibleText(
@@ -202,6 +217,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                     semanticsLabel: SemanticLabels.sectionDescription,
                     baseFontSize: theme.textTheme.bodyLarge?.fontSize ?? 16,
                     textAlign: TextAlign.center,
+                    languageCode: Localizations.localeOf(context).languageCode,
                   ),
                   const SizedBox(height: 16),
                   isTablet

@@ -70,6 +70,7 @@ class PortfolioNavBar extends ConsumerWidget {
                                       20) +
                                   5),
                         fontWeight: FontWeight.bold,
+                        languageCode: currentLocale.languageCode,
                       ),
                     ),
                     const SizedBox(width: 16),

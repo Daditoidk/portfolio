@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../../screens/main selection/main_selection_screen.dart';
 import '../../screens/portfolio/portfolio_screen.dart';
 import '../../screens/lab/lab_screen.dart';
+import '../../screens/portfolio/sections/projects section/project_detail/project_detail_screen.dart';
 import 'route_names.dart';
 
 class AppRouter {
@@ -29,6 +30,16 @@ class AppRouter {
           path: RouteNames.lab,
           name: 'lab',
           builder: (context, state) => const LabScreen(),
+        ),
+
+        // Project Detail Screen
+        GoRoute(
+          path: RouteNames.projectDetail,
+          name: 'project-detail',
+          builder: (context, state) {
+            final projectId = state.pathParameters['id'] ?? '';
+            return ProjectDetailScreen(projectId: projectId);
+          },
         ),
 
         // Portfolio sub-routes (for future use)

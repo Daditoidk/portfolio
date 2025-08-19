@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'sections/header_section/header_section.dart';
 import 'sections/about_section/about_section.dart';
 import 'sections/skills section/skills_section.dart';
-import 'sections/projects section/projects_section.dart';
+import 'sections/projects section/projects_section/projects_section.dart';
 import 'sections/contact_section/contact_section.dart';
 import 'sections/resume_section/resume_section.dart';
 import '../../widgets/portfolio_nav_bar.dart';
@@ -12,14 +12,16 @@ import '../../widgets/language_switcher.dart';
 import '../../core/helpers/section_scroll_service.dart';
 
 class PortfolioScreen extends ConsumerStatefulWidget {
-  const PortfolioScreen({super.key});
+  final ScrollController? scrollController;
+
+  const PortfolioScreen({super.key, this.scrollController});
 
   @override
   ConsumerState<PortfolioScreen> createState() => _PortfolioScreenState();
 }
 
 class _PortfolioScreenState extends ConsumerState<PortfolioScreen> {
-  final ScrollController _scrollController = ScrollController();
+  late final ScrollController _scrollController;
   final Map<String, GlobalKey> _sectionKeys = {
     'home': GlobalKey(),
     'about': GlobalKey(),
@@ -38,11 +40,22 @@ class _PortfolioScreenState extends ConsumerState<PortfolioScreen> {
   @override
   void initState() {
     super.initState();
-    _scrollService = SectionScrollService(
-      scrollController: _scrollController,
-      sectionKeys: _sectionKeys,
-    );
-    _scrollController.addListener(_onScroll);
+    // Only use scroll controller if provided, otherwise disable scrolling
+    if (widget.scrollController != null) {
+      _scrollController = widget.scrollController!;
+      _scrollService = SectionScrollService(
+        scrollController: _scrollController,
+        sectionKeys: _sectionKeys,
+      );
+      _scrollController.addListener(_onScroll);
+    } else {
+      // Disable scrolling when no controller provided
+      _scrollController = ScrollController();
+      _scrollService = SectionScrollService(
+        scrollController: _scrollController,
+        sectionKeys: _sectionKeys,
+      );
+    }
     
     // Clear page structure items when the page loads
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -51,7 +64,7 @@ class _PortfolioScreenState extends ConsumerState<PortfolioScreen> {
   }
 
   void _onScroll() {
-    if (!mounted) return;
+    if (!mounted || widget.scrollController == null) return;
 
     // Update current section
     final newSection = _scrollService.getCurrentSection(context);
@@ -77,10 +90,12 @@ class _PortfolioScreenState extends ConsumerState<PortfolioScreen> {
   }
 
   void scrollToSection(String sectionId) {
-    _scrollService.scrollToSection(
-      sectionId,
-      alignment: sectionId == 'resume' ? 0.5 : 0.0, // Center Resume section
-    );
+    if (widget.scrollController != null) {
+      _scrollService.scrollToSection(
+        sectionId,
+        alignment: sectionId == 'resume' ? 0.5 : 0.0, // Center Resume section
+      );
+    }
   }
 
   void _onLocaleChanged(Locale newLocale) {

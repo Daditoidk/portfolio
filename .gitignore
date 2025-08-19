@@ -14,6 +14,7 @@ migrate_working_dir/
 
 # Mason bricks
 bricks/
+.mason/
 
 # IntelliJ related
 *.iml
