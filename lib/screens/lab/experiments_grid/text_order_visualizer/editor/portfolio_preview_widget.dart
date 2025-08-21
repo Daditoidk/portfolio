@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../../screens/portfolio/portfolio_screen.dart';
-import '../core/models/text_layout_config.dart';
+import 'package:portfolio_web/screens/portfolio/portfolio_screen.dart';
+import '../core/models/text_order_config.dart';
 
-/// Portfolio preview widget for the visual editor
+/// Portfolio preview widget for the Text Order Visualizer
 class PortfolioPreviewWidget extends StatelessWidget {
-  final TextLayoutConfig? config;
+  final TextOrderConfig? config;
   final VoidCallback? onSectionTap;
   final ScrollController? scrollController;
 

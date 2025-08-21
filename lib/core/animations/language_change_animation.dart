@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'text_animation_registry.dart';
+import 'viewport_animation_system.dart';
+import 'json_layout_integrator.dart';
 
 /// Strategy for language change animations
 enum LanguageChangeStrategy {
@@ -114,6 +116,60 @@ class LanguageChangeAnimationController {
       _isAnimating = false;
       onComplete();
     }
+  }
+
+  /// Start viewport-aware language change animation
+  Future<void> animateLanguageChangeViewportAware({
+    required BuildContext context,
+    required ScrollController scrollController,
+    required double viewportHeight,
+    required double appBarHeight,
+    required VoidCallback onComplete,
+    LanguageChangeStrategy strategy = LanguageChangeStrategy.cascadeTopToBottom,
+    Duration? customDuration,
+    double? customViewportBuffer,
+  }) async {
+    if (_skipAnimations) {
+      onComplete();
+      return;
+    }
+
+    print('🎬 Starting viewport-aware language change animation...');
+
+    // Use the viewport animation system
+    final viewportSystem = ViewportAnimationSystem();
+
+    await viewportSystem.animateLanguageChangeViewportAware(
+      context: context,
+      scrollController: scrollController,
+      viewportHeight: viewportHeight,
+      appBarHeight: appBarHeight,
+      onComplete: onComplete,
+      strategy: strategy,
+      customDuration: customDuration,
+      customViewportBuffer: customViewportBuffer,
+    );
+  }
+
+  /// Load and apply JSON layout configuration
+  Future<bool> loadJsonLayoutConfiguration(String jsonString) async {
+    print('🔄 Loading JSON layout configuration...');
+
+    final integrator = JsonLayoutIntegrator();
+    final success = await integrator.loadLayoutFromJson(jsonString);
+
+    if (success) {
+      print('✅ JSON configuration loaded, applying to registry...');
+      return await integrator.applyConfigurationToRegistry();
+    }
+
+    return false;
+  }
+
+  /// Get current JSON layout status
+  Map<String, dynamic>? getJsonLayoutStatus() {
+    final integrator = JsonLayoutIntegrator();
+    return integrator.getConfigurationSummary();
   }
 
   /// Cascade animation: line by line from top to bottom

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/line.dart';
 import '../models/line_manager.dart';
-import '../models/text_layout_config.dart';
+import '../models/text_order_config.dart';
 import 'drag_speed_manager.dart';
 
 /// Manages the state and operations of lines in the text layout editor

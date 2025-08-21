@@ -5,6 +5,9 @@ import '../../screens/portfolio/portfolio_screen.dart';
 import '../../screens/lab/lab_screen.dart';
 import '../../screens/portfolio/sections/projects section/project_detail/project_detail_screen.dart';
 import 'route_names.dart';
+import '../../screens/lab/experiments_grid/text_order_visualizer/editor/text_order_visualizer.dart';
+import '../../screens/lab/experiments_grid/animation_editor/animation_editor_screen.dart';
+import '../../screens/lab/experiments_grid/diy_inbox_cleaner/diy_inbox_cleaner_screen.dart';
 
 class AppRouter {
   static GoRouter createRouter() {
@@ -78,6 +81,25 @@ class AppRouter {
           path: RouteNames.labExperiment,
           name: 'lab-experiment',
           builder: (context, state) => const LabScreen(),
+        ),
+
+        // Lab experiment routes
+        GoRoute(
+          path: RouteNames.textOrderVisualizer,
+          name: 'text-order-visualizer',
+          builder: (context, state) => const TextOrderVisualizer(),
+        ),
+
+        GoRoute(
+          path: RouteNames.animationEditor,
+          name: 'animation-editor',
+          builder: (context, state) => const AnimationEditorScreen(),
+        ),
+
+        GoRoute(
+          path: RouteNames.diyInboxCleaner,
+          name: 'diy-inbox-cleaner',
+          builder: (context, state) => const DIYInboxCleanerScreen(),
         ),
       ],
 

@@ -10,7 +10,7 @@ import '../../../widgets/accessibility/accessible_text.dart';
 import '../../constants/language_config.dart';
 import 'accessibility_settings.dart';
 import '../../animations/language_change_animation.dart';
-import '../../animations/language_animation_debug.dart';
+// import '../../animations/language_animation_debug.dart'; // Removed - file doesn't exist
 import '../../animations/text_animation_registry.dart'
     show TextAnimationRegistry, TextAnimationRegistryTable;
 
@@ -244,15 +244,11 @@ class AccessibilityMenuContent extends ConsumerWidget {
                       onChanged: (val) async {
                         if (val != null && val != languageCode) {
                           debugPrint('Starting animation');
-                          final strategy = ref.read(
-                            languageAnimationStrategyProvider,
-                          );
+                          // final strategy = ref.read(languageAnimationStrategyProvider); // Removed - provider doesn't exist
                           await LanguageChangeAnimationController()
                               .animateLanguageChange(
                                 context: context,
-                                settings: LanguageChangeSettings(
-                                  strategy: strategy,
-                                ),
+                                settings: const LanguageChangeSettings.fast(),
                                 onComplete: () {
                                   onLanguageChanged(val);
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -716,7 +712,7 @@ class _DebugStrategySelector extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final strategy = ref.watch(languageAnimationStrategyProvider);
+    // final strategy = ref.watch(languageAnimationStrategyProvider); // Removed - provider doesn't exist
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
@@ -733,11 +729,10 @@ class _DebugStrategySelector extends ConsumerWidget {
             ),
           ),
           DropdownButton<LanguageChangeStrategy>(
-            value: strategy,
+            value: LanguageChangeStrategy.readingWave, // Default value
             onChanged: (val) {
               if (val != null) {
-                ref.read(languageAnimationStrategyProvider.notifier).state =
-                    val;
+                // ref.read(languageAnimationStrategyProvider.notifier).state = val; // Removed - provider doesn't exist
               }
             },
             items: const [
@@ -774,48 +769,13 @@ class _RegistrySettingsDialog extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final settings = ref.watch(textAnimationRegistryProvider);
-    final notifier = ref.read(textAnimationRegistryProvider.notifier);
+    // final settings = ref.watch(textAnimationRegistryProvider); // Removed - provider doesn't exist
+    // final notifier = ref.read(textAnimationRegistryProvider.notifier); // Removed - provider doesn't exist
 
     return AlertDialog(
       title: const Text('Text Animation Registry Settings'),
-      content: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _SliderFeatureRow(
-              icon: Icons.format_size,
-              label: 'Line Threshold',
-              value: settings.lineThreshold.toInt(),
-              max: 100,
-              onChanged: (value) => notifier.setLineThreshold(value.toDouble()),
-              leftExample: 'A',
-              rightExample: 'A',
-              leftFontSize: 10,
-              rightFontSize: 20,
-              languageCode: null, // No language specific for registry settings
-            ),
-            _SliderFeatureRow(
-              icon: Icons.format_line_spacing,
-              label: 'Block Size',
-              value: settings.blockSize,
-              max: 20,
-              onChanged: notifier.setBlockSize,
-              leftExample: 'A',
-              rightExample: 'A',
-              leftFontSize: 10,
-              rightFontSize: 20,
-              languageCode: null, // No language specific for registry settings
-            ),
-            _SwitchFeatureRow(
-              icon: Icons.settings_backup_restore,
-              label: 'Manual Overrides',
-              value: settings.manualOverridesEnabled,
-              onChanged: notifier.setManualOverridesEnabled,
-              languageCode: null, // No language specific for registry settings
-            ),
-          ],
-        ),
+      content: const Text(
+        'Registry settings temporarily disabled - providers not available',
       ),
       actions: [
         TextButton(

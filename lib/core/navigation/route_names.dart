@@ -17,6 +17,11 @@ class RouteNames {
   static const String labMain = '/lab/main';
   static const String labExperiment = '/lab/experiment';
 
+  // Lab experiment routes
+  static const String textOrderVisualizer = '/lab/experiments/text-order-visualizer';
+  static const String animationEditor = '/lab/experiments/animation-editor';
+  static const String diyInboxCleaner = '/lab/experiments/diy-inbox-cleaner';
+
   // Error routes
   static const String notFound = '/404';
 }

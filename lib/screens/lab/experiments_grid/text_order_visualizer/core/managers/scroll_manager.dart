@@ -13,21 +13,39 @@ class ScrollManager {
   }
 
   /// Get current scroll offset safely
-  double get scrollOffset =>
-      scrollController.hasClients ? scrollController.offset : 0.0;
+  double get scrollOffset {
+    try {
+      return scrollController.hasClients ? scrollController.offset : 0.0;
+    } catch (e) {
+      // Controller might be disposed
+      return 0.0;
+    }
+  }
 
   /// Check if scroll controller has clients
-  bool get hasClients => scrollController.hasClients;
+  bool get hasClients {
+    try {
+      return scrollController.hasClients;
+    } catch (e) {
+      // Controller might be disposed
+      return false;
+    }
+  }
 
   /// Handle pointer scroll events and forward to scroll controller
   void handlePointerScroll(PointerScrollEvent event) {
-    if (scrollController.hasClients) {
-      final maxExtent = scrollController.position.maxScrollExtent;
-      final target = (scrollController.offset + event.scrollDelta.dy).clamp(
-        0.0,
-        maxExtent,
-      );
-      scrollController.jumpTo(target);
+    try {
+      if (scrollController.hasClients) {
+        final maxExtent = scrollController.position.maxScrollExtent;
+        final target = (scrollController.offset + event.scrollDelta.dy).clamp(
+          0.0,
+          maxExtent,
+        );
+        scrollController.jumpTo(target);
+      }
+    } catch (e) {
+      // Controller might be disposed
+      print('ScrollManager: Controller disposed, ignoring scroll event');
     }
   }
 
@@ -50,6 +68,13 @@ class ScrollManager {
 
   /// Dispose the scroll controller
   void dispose() {
-    scrollController.dispose();
+    try {
+      if (scrollController.hasClients) {
+        scrollController.dispose();
+      }
+    } catch (e) {
+      // Controller might already be disposed
+      print('ScrollManager: Controller already disposed');
+    }
   }
 }

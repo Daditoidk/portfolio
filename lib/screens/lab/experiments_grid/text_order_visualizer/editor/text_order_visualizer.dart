@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import '../../../../core/animations/text_animation_registry.dart';
-import '../core/integration/text_layout_integration.dart';
-import '../core/models/text_layout_config.dart';
+import 'package:go_router/go_router.dart';
+import 'package:portfolio_web/core/animations/text_animation_registry.dart';
+import '../core/integration/text_order_integration.dart';
+import '../core/models/text_order_config.dart';
 import '../core/scanners/live_preview_text_scanner.dart';
 import 'portfolio_preview_widget.dart';
 import '../core/models/line.dart';
@@ -16,20 +17,20 @@ import 'package:flutter/services.dart';
 
 import '../widgets/line_widget.dart';
 import '../widgets/line_creation_widget.dart';
-import '../widgets/custom_toast.dart';
+import '../../../widgets/custom_toast.dart';
 import '../app_bar_actions/index.dart';
 
-/// Visual layout editor for organizing text lines and sections
-class TextLayoutEditor extends StatefulWidget {
+/// Visual tool for organizing and ordering text elements across web pages into lines and blocks
+class TextOrderVisualizer extends StatefulWidget {
   final VoidCallback? onLayoutChanged;
 
-  const TextLayoutEditor({super.key, this.onLayoutChanged});
+  const TextOrderVisualizer({super.key, this.onLayoutChanged});
 
   @override
-  State<TextLayoutEditor> createState() => _TextLayoutEditorState();
+  State<TextOrderVisualizer> createState() => _TextOrderVisualizerState();
 }
 
-class _TextLayoutEditorState extends State<TextLayoutEditor> {
+class _TextOrderVisualizerState extends State<TextOrderVisualizer> {
   final List<TextSection> _sections = [];
   final Map<String, String> _l10nKeyToText = {};
 
@@ -56,7 +57,7 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
 
   // Portfolio measurement
   final GlobalKey _portfolioKey = GlobalKey();
-  final double _viewportHeight = 800.0; // Height of what's visible on screen
+  // final double _viewportHeight = 800.0; // Height of what's visible on screen - TODO: Use this for viewport calculations
   double _absoluteHeight = 800.0; // Total height of entire page content
 
   @override
@@ -82,8 +83,13 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
     });
   }
 
+  bool _disposed = false;
+
   @override
   void dispose() {
+    if (_disposed) return;
+    _disposed = true;
+
     _focusNode.dispose();
     _scrollManager.dispose();
     super.dispose();
@@ -91,6 +97,9 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
 
   void _measurePortfolioHeights() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Check if widget is still mounted before proceeding
+      if (!mounted) return;
+
       if (_portfolioKey.currentContext != null) {
         final RenderBox renderBox =
             _portfolioKey.currentContext!.findRenderObject() as RenderBox;
@@ -98,12 +107,19 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
 
         // Get the absolute height from the portfolio's scroll controller
         double absoluteHeight = viewportHeight;
-        if (_scrollManager.scrollController.hasClients) {
-          final maxScrollExtent =
-              _scrollManager.scrollController.position.maxScrollExtent;
-          final scrollViewportHeight =
-              _scrollManager.scrollController.position.viewportDimension;
-          absoluteHeight = maxScrollExtent + scrollViewportHeight;
+        try {
+          if (_scrollManager.hasClients) {
+            final maxScrollExtent =
+                _scrollManager.scrollController.position.maxScrollExtent;
+            final scrollViewportHeight =
+                _scrollManager.scrollController.position.viewportDimension;
+            absoluteHeight = maxScrollExtent + scrollViewportHeight;
+          }
+        } catch (e) {
+          // ScrollManager might be disposed, use viewport height as fallback
+          print(
+            'TextOrderVisualizer: ScrollManager disposed, using viewport height',
+          );
         }
 
         if (absoluteHeight > 0 && absoluteHeight != _absoluteHeight) {
@@ -148,7 +164,6 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
     // Create sections based on the actual lines loaded
     _sections.clear();
     if (_lineStateManager.lines.isNotEmpty) {
-
       // Create sections dynamically based on loaded lines
       _sections.addAll([
         TextSection(
@@ -231,7 +246,12 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
 
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      title: const Text('Text Layout Editor'),
+      leading: IconButton(
+        onPressed: () => context.go('/lab'),
+        tooltip: 'Back to Lab',
+        icon: const Icon(Icons.arrow_back),
+      ),
+      title: const Text('Text Order Visualizer'),
       actions: [
         // Detection toggle
         DetectionToggleAction(
@@ -507,7 +527,7 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
     print('📈 Sorted blocks by Y position:');
     for (int i = 0; i < blocksWithY.length; i++) {
       print(
-        '   ${i}: "${blocksWithY[i].key.name}" - Y: ${blocksWithY[i].value.toStringAsFixed(1)}',
+        '   $i: "${blocksWithY[i].key.name}" - Y: ${blocksWithY[i].value.toStringAsFixed(1)}',
       );
     }
 
@@ -694,7 +714,6 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
     return keyNames.join(' + ');
   }
 
-
   Widget _buildBody() {
     return Focus(
       autofocus: true,
@@ -823,7 +842,7 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
     // Calculate available width: screen width - editor width (200) - padding (6)
     final screenWidth = MediaQuery.of(context).size.width;
     final availableWidth = screenWidth - 200 - 6; // 200 editor + 6 padding
-    
+
     return LineWidget(
       key: ValueKey(line.id),
       line: line,
@@ -962,7 +981,7 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
     );
   }
 
-  TextLayoutConfig _buildCurrentConfig() {
+  TextOrderConfig _buildCurrentConfig() {
     // Convert Line objects to TextLine objects
     final textLines = _lineStateManager.lines.map((line) {
       // Convert detected texts to use absolute coordinates for export
@@ -1014,14 +1033,12 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
       );
     }).toList();
 
-    return TextLayoutConfig(
+    return TextOrderConfig(
       sections: exportSections,
       lines: textLines,
       l10nKeyToText: _l10nKeyToText,
     );
   }
-
-
 
   void _saveLayout() {
     final config = _buildCurrentConfig();
@@ -1029,7 +1046,7 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
     print('Layout saved: $json');
 
     // Update the registry using integration
-    TextLayoutIntegration().applyConfiguration(config);
+    TextOrderIntegration().applyConfiguration(config);
 
     // Re-measure portfolio height after layout changes
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -1077,7 +1094,7 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
       print('Cleaned length: ${cleanedJson.length}');
 
       final json = jsonDecode(cleanedJson) as Map<String, dynamic>;
-      final config = TextLayoutConfig.fromJson(json);
+      final config = TextOrderConfig.fromJson(json);
 
       // Clear current lines and sections
       _lineStateManager.clearLines();
@@ -1113,7 +1130,7 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
   }
 
   /// Load imported layout configuration
-  void _loadImportedLayout(TextLayoutConfig config) {
+  void _loadImportedLayout(TextOrderConfig config) {
     print('🔄 Starting import process...');
     print('📊 Config contains:');
     print('   - ${config.sections.length} sections');
@@ -1141,7 +1158,7 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
       // We'll use the order as a temporary key since we don't have the old ID
       final tempKey = 'line_${textLine.order}';
       lineIdMapping[tempKey] = newLineId;
-      
+
       final line = Line(
         id: newLineId,
         order: textLine.order,
@@ -1150,10 +1167,10 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
         yPosition: textLine.yPosition,
         detectedTexts: textLine.detectedTexts, // Include detected texts
       );
-      
+
       // Add the line to the manager
       _lineStateManager.addLine(line);
-      
+
       // Update the line's detected texts
       if (textLine.detectedTexts.isNotEmpty) {
         _lineStateManager.updateLineTexts(line.id, textLine.detectedTexts);
@@ -1280,7 +1297,7 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
 
     // Load l10n key mappings
     _l10nKeyToText.addAll(config.l10nKeyToText);
-    
+
     // Reorder blocks based on imported positions
     _reorderBlocks();
 
@@ -1705,16 +1722,12 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
     });
   }
 
-
-
   /// Clear all line selections
   void _clearLineSelections() {
     setState(() {
       _selectedLineIds.clear();
     });
   }
-
-
 
   /// Check if a detected text is within line bounds
   /// Line uses ABSOLUTE coordinates, Text uses VIEWPORT coordinates
@@ -1793,7 +1806,7 @@ class _TextLayoutEditorState extends State<TextLayoutEditor> {
               _lineStateManager.deleteLine(lineId);
               setState(() {});
               widget.onLayoutChanged?.call();
-              
+
               // Show success message
               CustomToast.showError(
                 context,

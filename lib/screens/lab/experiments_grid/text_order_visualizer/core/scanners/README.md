@@ -1,6 +1,6 @@
 # Live Preview Text Scanner
 
-This module provides real-time text detection and positioning for the portfolio's live preview.
+This module provides real-time text detection and positioning for the portfolio's live preview in the Text Order Visualizer.
 
 ## 🔍 **How It Works**
 
@@ -64,7 +64,7 @@ Text styling information container.
 ## 🎯 **Usage**
 
 ```dart
-// In text_layout_editor.dart
+// In text_order_visualizer.dart
 void _runTextDetection() {
   final detectedTexts = LivePreviewTextScanner.scanLivePreview(
     _portfolioKey.currentContext!
@@ -122,7 +122,7 @@ void _runTextDetection() {
 
 ## 🚀 **Integration**
 
-### **With Text Layout Editor:**
+### **With Text Order Visualizer:**
 
 ```dart
 // Replace old TextAnimationRegistry scanning

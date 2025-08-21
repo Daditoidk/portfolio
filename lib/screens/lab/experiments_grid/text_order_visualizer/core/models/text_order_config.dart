@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import '../../../../../core/animations/text_animation_registry.dart';
+import 'package:portfolio_web/core/animations/text_animation_registry.dart';
 
-/// Configuration-driven text layout system
-class TextLayoutConfig {
+/// Configuration-driven text ordering system
+class TextOrderConfig {
   final List<TextSection> sections;
   final List<TextLine> lines;
   final Map<String, String> l10nKeyToText;
 
-  const TextLayoutConfig({
+  const TextOrderConfig({
     required this.sections,
     required this.lines,
     required this.l10nKeyToText,
   });
 
   /// Create default configuration based on your current layout
-  factory TextLayoutConfig.defaultConfig() {
-    return const TextLayoutConfig(
+  factory TextOrderConfig.defaultConfig() {
+    return const TextOrderConfig(
       sections: [
         TextSection(
           name: 'Navigation',
@@ -461,8 +461,8 @@ class TextLayoutConfig {
   };
 
   /// Import from JSON
-  factory TextLayoutConfig.fromJson(Map<String, dynamic> json) =>
-      TextLayoutConfig(
+  factory TextOrderConfig.fromJson(Map<String, dynamic> json) =>
+      TextOrderConfig(
         sections: (json['sections'] as List)
             .map((s) => TextSection.fromJson(s))
             .toList(),
@@ -559,19 +559,19 @@ class TextLine {
 }
 
 /// Global configuration manager
-class TextLayoutConfigManager {
-  static final TextLayoutConfigManager _instance =
-      TextLayoutConfigManager._internal();
-  factory TextLayoutConfigManager() => _instance;
-  TextLayoutConfigManager._internal();
+class TextOrderConfigManager {
+  static final TextOrderConfigManager _instance =
+      TextOrderConfigManager._internal();
+  factory TextOrderConfigManager() => _instance;
+  TextOrderConfigManager._internal();
 
-  TextLayoutConfig _config = TextLayoutConfig.defaultConfig();
+  TextOrderConfig _config = TextOrderConfig.defaultConfig();
 
   /// Get current configuration
-  TextLayoutConfig get config => _config;
+  TextOrderConfig get config => _config;
 
   /// Update configuration
-  void updateConfig(TextLayoutConfig newConfig) {
+  void updateConfig(TextOrderConfig newConfig) {
     _config = newConfig;
     _config.applyToRegistry();
   }
@@ -579,7 +579,7 @@ class TextLayoutConfigManager {
   /// Load configuration from JSON string
   void loadFromJson(String jsonString) {
     final json = jsonDecode(jsonString);
-    _config = TextLayoutConfig.fromJson(json);
+    _config = TextOrderConfig.fromJson(json);
     _config.applyToRegistry();
   }
 
@@ -590,7 +590,7 @@ class TextLayoutConfigManager {
 
   /// Reset to default configuration
   void resetToDefault() {
-    _config = TextLayoutConfig.defaultConfig();
+    _config = TextOrderConfig.defaultConfig();
     _config.applyToRegistry();
   }
 }

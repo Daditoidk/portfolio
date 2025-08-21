@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import '../../../../../core/animations/text_animation_registry.dart';
-import '../models/text_layout_config.dart';
-import '../../widgets/custom_toast.dart';
+import 'package:portfolio_web/core/animations/text_animation_registry.dart';
+import '../models/text_order_config.dart';
+import '../../../../widgets/custom_toast.dart';
 
-/// Integration layer between visual editor and text animation registry
-class TextLayoutIntegration {
-  static final TextLayoutIntegration _instance =
-      TextLayoutIntegration._internal();
-  factory TextLayoutIntegration() => _instance;
-  TextLayoutIntegration._internal();
+/// Integration layer between Text Order Visualizer and text animation registry
+class TextOrderIntegration {
+  static final TextOrderIntegration _instance =
+      TextOrderIntegration._internal();
+  factory TextOrderIntegration() => _instance;
+  TextOrderIntegration._internal();
 
   /// Apply configuration to the text animation registry
-  void applyConfiguration(TextLayoutConfig config) {
+  void applyConfiguration(TextOrderConfig config) {
     final registry = TextAnimationRegistry();
 
     // Clear existing manual overrides
@@ -84,7 +84,7 @@ class TextLayoutIntegration {
   }
 
   /// Get current configuration from registry
-  TextLayoutConfig getCurrentConfiguration() {
+  TextOrderConfig getCurrentConfiguration() {
     final registry = TextAnimationRegistry();
     final elements = registry.getSortedElements();
 
@@ -190,7 +190,7 @@ class TextLayoutIntegration {
       ),
     ];
 
-    return TextLayoutConfig(
+    return TextOrderConfig(
       sections: sections,
       lines: lines,
       l10nKeyToText: _getL10nKeyToText(),
@@ -201,11 +201,11 @@ class TextLayoutIntegration {
   Map<String, String> _getL10nKeyToText() {
     // This should come from your actual localization system
     // For now, using the default mapping
-    return TextLayoutConfig.defaultConfig().l10nKeyToText;
+    return TextOrderConfig.defaultConfig().l10nKeyToText;
   }
 
   /// Save configuration to shared preferences or file
-  Future<void> saveConfiguration(TextLayoutConfig config) async {
+  Future<void> saveConfiguration(TextOrderConfig config) async {
     final json = config.toJson();
     final jsonString = jsonEncode(json);
 
@@ -217,19 +217,19 @@ class TextLayoutIntegration {
   }
 
   /// Load configuration from storage
-  Future<TextLayoutConfig?> loadConfiguration() async {
+  Future<TextOrderConfig?> loadConfiguration() async {
     // You can load from SharedPreferences, file, or any storage
     // For now, return default config
-    return TextLayoutConfig.defaultConfig();
+    return TextOrderConfig.defaultConfig();
   }
 }
 
 /// Widget to apply configuration in production
-class TextLayoutConfigurationWidget extends StatelessWidget {
-  final TextLayoutConfig config;
+class TextOrderConfigurationWidget extends StatelessWidget {
+  final TextOrderConfig config;
   final VoidCallback? onApplied;
 
-  const TextLayoutConfigurationWidget({
+  const TextOrderConfigurationWidget({
     super.key,
     required this.config,
     this.onApplied,
@@ -239,7 +239,7 @@ class TextLayoutConfigurationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        TextLayoutIntegration().applyConfiguration(config);
+        TextOrderIntegration().applyConfiguration(config);
         onApplied?.call();
 
         CustomToast.showSuccess(
