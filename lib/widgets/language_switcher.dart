@@ -4,7 +4,7 @@ import '../core/l10n/app_localizations.dart';
 import '../core/constants/semantic_labels.dart';
 import '../core/constants/language_config.dart';
 import '../core/accessibility/accessibility_floating_button.dart';
-import '../core/animations/language_change_animation.dart';
+
 // import '../core/animations/language_animation_debug.dart'; // Removed - file doesn't exist
 
 class LanguageSwitcher extends ConsumerWidget {
@@ -65,16 +65,8 @@ class LanguageSwitcher extends ConsumerWidget {
                     const SizedBox(width: 3),
                   ],
                   ClickableCursor(
-                    onTap: () async {
-                      // final strategy = ref.read(languageAnimationStrategyProvider); // Removed - provider doesn't exist
-                      await LanguageChangeAnimationController()
-                          .animateLanguageChange(
-                            context: context,
-                            settings: const LanguageChangeSettings.fast(),
-                            onComplete: () {
-                              onLocaleChanged(languages[i].locale);
-                            },
-                          );
+                    onTap: () {
+                      onLocaleChanged(languages[i].locale);
                     },
                     child: _buildFlagButton(context, languages[i]),
                   ),

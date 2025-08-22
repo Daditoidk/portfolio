@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'package:portfolio_web/core/animations/text_animation_registry.dart';
+
 
 /// Configuration-driven text ordering system
 class TextOrderConfig {
@@ -403,27 +403,10 @@ class TextOrderConfig {
   }
 
   /// Apply this configuration to the text animation registry
+  /// Note: This functionality is temporarily disabled during refactor
   void applyToRegistry() {
-    final registry = TextAnimationRegistry();
-
-    // Clear existing manual overrides
-    registry.clear();
-
-    // Apply line mappings
-    for (final line in lines) {
-      for (final _ in line.l10nKeys) {
-        // This would need to be implemented in your registry
-        // registry.setManualLineIndex(l10nKey, line.order);
-      }
-    }
-
-    // Apply section mappings
-    for (final section in sections) {
-      for (final _ in section.lineIds) {
-        // This would need to be implemented in your registry
-        // registry.setManualBlockIndex(lineId, section.order);
-      }
-    }
+    // TODO: Implement with new animation system
+    print('Registry application temporarily disabled');
   }
 
   /// Get line index for a specific l10n key

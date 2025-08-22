@@ -9,10 +9,7 @@ import 'package:flutter/foundation.dart';
 import '../../../widgets/accessibility/accessible_text.dart';
 import '../../constants/language_config.dart';
 import 'accessibility_settings.dart';
-import '../../animations/language_change_animation.dart';
-// import '../../animations/language_animation_debug.dart'; // Removed - file doesn't exist
-import '../../animations/text_animation_registry.dart'
-    show TextAnimationRegistry, TextAnimationRegistryTable;
+
 
 class AccessibilityMenuContent extends ConsumerWidget {
   final String languageCode;
@@ -241,24 +238,9 @@ class AccessibilityMenuContent extends ConsumerWidget {
                           ),
                         );
                       }).toList(),
-                      onChanged: (val) async {
+                      onChanged: (val) {
                         if (val != null && val != languageCode) {
-                          debugPrint('Starting animation');
-                          // final strategy = ref.read(languageAnimationStrategyProvider); // Removed - provider doesn't exist
-                          await LanguageChangeAnimationController()
-                              .animateLanguageChange(
-                                context: context,
-                                settings: const LanguageChangeSettings.fast(),
-                                onComplete: () {
-                                  onLanguageChanged(val);
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text('Animation finished'),
-                                      duration: Duration(milliseconds: 1200),
-                                    ),
-                                  );
-                                },
-                              );
+                          onLanguageChanged(val);
                         }
                       },
                     ),
@@ -406,95 +388,8 @@ class AccessibilityMenuContent extends ConsumerWidget {
                       languageCode: languageCode,
                     ),
                     // Debug: Choose Language Animation Strategy
-                    _DebugStrategySelector(languageCode: languageCode),
-                    const SizedBox(height: 8),
-                    // Debug: Show Registered Text Order
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: ElevatedButton.icon(
-                        icon: const Icon(Icons.list_alt, size: 16),
-                        label: const Text('Show Registered Text Order (Debug)'),
-                        onPressed: () {
-                          final debugData = TextAnimationRegistry()
-                              .getDebugData();
-                          showDialog(
-                            context: context,
-                            builder: (ctx) => Dialog(
-                              child: Container(
-                                width: MediaQuery.of(context).size.width * 0.8,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.8,
-                                padding: const EdgeInsets.all(16),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Text Animation Registry (Debug)',
-                                          style: Theme.of(
-                                            context,
-                                          ).textTheme.titleLarge,
-                                        ),
-                                        IconButton(
-                                          onPressed: () =>
-                                              Navigator.of(ctx).pop(),
-                                          icon: const Icon(Icons.close),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 16),
-                                    Expanded(
-                                      child: TextAnimationRegistryTable(
-                                        debugData: debugData,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    // Debug: Configure Registry Settings
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: ElevatedButton.icon(
-                        icon: const Icon(Icons.settings, size: 16),
-                        label: const Text(
-                          'Configure Registry Settings (Debug)',
-                        ),
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (ctx) => _RegistrySettingsDialog(),
-                          );
-                        },
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    // Debug: Apply Manual Overrides
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: ElevatedButton.icon(
-                        icon: const Icon(Icons.auto_fix_high, size: 16),
-                        label: const Text('Apply Manual Overrides (Debug)'),
-                        onPressed: () {
-                          TextAnimationRegistry().setupManualOverrides();
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                'Manual overrides applied! Check "Show Registered Text Order" to see the results.',
-                              ),
-                              duration: Duration(seconds: 2),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
+                    
+
                   ],
                 ],
               ),
@@ -706,83 +601,4 @@ class _SliderFeatureRow extends StatelessWidget {
   }
 }
 
-class _DebugStrategySelector extends ConsumerWidget {
-  final String? languageCode;
-  const _DebugStrategySelector({this.languageCode});
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // final strategy = ref.watch(languageAnimationStrategyProvider); // Removed - provider doesn't exist
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        children: [
-          Icon(Icons.tune, size: 18, color: Colors.grey.shade600),
-          const SizedBox(width: 12),
-          Expanded(
-            child: AccessibleText(
-              'Language Animation (Debug)',
-              baseFontSize: 13,
-              color: Colors.grey.shade800,
-              applyPortfolioOnlyFeatures: false,
-              languageCode: languageCode,
-            ),
-          ),
-          DropdownButton<LanguageChangeStrategy>(
-            value: LanguageChangeStrategy.readingWave, // Default value
-            onChanged: (val) {
-              if (val != null) {
-                // ref.read(languageAnimationStrategyProvider.notifier).state = val; // Removed - provider doesn't exist
-              }
-            },
-            items: const [
-              DropdownMenuItem(
-                value: LanguageChangeStrategy.readingWave,
-                child: Text('Reading Wave'),
-              ),
-              DropdownMenuItem(
-                value: LanguageChangeStrategy.cascadeTopToBottom,
-                child: Text('Cascade Top to Bottom'),
-              ),
-              DropdownMenuItem(
-                value: LanguageChangeStrategy.blockCascade,
-                child: Text('Block Cascade'),
-              ),
-              DropdownMenuItem(
-                value: LanguageChangeStrategy.fadeInOut,
-                child: Text('Fade In/Out'),
-              ),
-              DropdownMenuItem(
-                value: LanguageChangeStrategy.instant,
-                child: Text('Instant'),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _RegistrySettingsDialog extends ConsumerWidget {
-  const _RegistrySettingsDialog();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // final settings = ref.watch(textAnimationRegistryProvider); // Removed - provider doesn't exist
-    // final notifier = ref.read(textAnimationRegistryProvider.notifier); // Removed - provider doesn't exist
-
-    return AlertDialog(
-      title: const Text('Text Animation Registry Settings'),
-      content: const Text(
-        'Registry settings temporarily disabled - providers not available',
-      ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Close'),
-        ),
-      ],
-    );
-  }
-}

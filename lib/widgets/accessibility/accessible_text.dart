@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/accessibility/menu/accessibility_settings.dart';
 import '../../core/accessibility/menu/accessibility_text_style.dart';
-import '../../core/animations/animated_text_widget.dart';
-import '../../core/animations/language_change_animation.dart';
 
 class AccessibleText extends StatelessWidget {
   final String text;
@@ -42,11 +40,7 @@ class AccessibleText extends StatelessWidget {
       child: Consumer(
         builder: (context, ref, _) {
           final settings = ref.watch(accessibilitySettingsProvider);
-          // Link accessibility "pause animations" to language animation skip
-          LanguageChangeAnimationController().setSkipAnimations(
-            settings.pauseAnimations,
-          );
-          return LanguageAnimatedText(
+          return Text(
             text,
             style: AccessibilityTextStyle.fromSettings(
               settings,
@@ -59,8 +53,6 @@ class AccessibleText extends StatelessWidget {
             textAlign: textAlign,
             maxLines: maxLines,
             overflow: overflow,
-            manualLineIndex: manualLineIndex,
-            manualBlockIndex: manualBlockIndex,
           );
         },
       ),

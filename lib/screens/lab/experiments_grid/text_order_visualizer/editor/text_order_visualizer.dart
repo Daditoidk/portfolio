@@ -3,7 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
-import 'package:portfolio_web/core/animations/text_animation_registry.dart';
+
 import '../core/integration/text_order_integration.dart';
 import '../core/models/text_order_config.dart';
 import '../core/scanners/live_preview_text_scanner.dart';
@@ -135,31 +135,11 @@ class _TextOrderVisualizerState extends State<TextOrderVisualizer> {
 
   void _loadCurrentLayout() {
     // Load current layout from registry
-    final registry = TextAnimationRegistry();
-    final elements = registry.getSortedElements();
-
-    // Group by line index
-    final lineGroups = <int, List<TextElement>>{};
-    for (final element in elements) {
-      lineGroups.putIfAbsent(element.lineIndex, () => []).add(element);
-    }
-
-    // Create lines only from existing elements in the registry
-    for (final entry in lineGroups.entries) {
-      final lineIndex = entry.key;
-      final lineElements = entry.value;
-      final line = Line(
-        id: LineManager.generateId(),
-        order: lineIndex,
-        l10nKeys: lineElements
-            .map((e) => e.id ?? '')
-            .where((id) => id.isNotEmpty)
-            .toList(),
-        height: 60.0,
-        yPosition: lineIndex * 60.0,
-      );
-      _lineStateManager.addLine(line);
-    }
+    // Note: TextAnimationRegistry functionality has been removed during refactor
+    // TODO: Implement with new animation system
+    
+    // For now, create empty lines
+    print('Loading current layout temporarily disabled');
 
     // Create sections based on the actual lines loaded
     _sections.clear();
