@@ -14,7 +14,7 @@ class AnimationLogic with AnimationBehaviors {
   final BaseAnimationPropertiesData config;
   final String? textOrderId;
   final TextOrderData? textOrderData;
-  final AnimationType type;
+  final TextAnimationType type;
   final WidgetRef ref;
 
   AnimationInstanceState? _animationState;
@@ -54,7 +54,7 @@ class AnimationLogic with AnimationBehaviors {
   void _setupOrchestratedMode() {
     _animationState = AnimationInstanceState.initial(
       id: textOrderId!,
-      type: type.name,
+      type: textAnimationTypeToString(type) ?? 'unknown',
       config: _configToMap(), // Convert typed config to map for orchestrator
     );
 

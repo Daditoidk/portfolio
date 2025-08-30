@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../screens/lab/experiments_grid/animation_editor/animation_panel/animation_properties/providers/animation_properties_providers.dart';
 
 /// Controller for preview-level animations that controls a single TextAnimation widget
 class PreviewAnimationController extends ChangeNotifier {
@@ -9,6 +10,10 @@ class PreviewAnimationController extends ChangeNotifier {
 
   /// Reference to the TextAnimation's internal controller
   AnimationController? _textAnimationController;
+
+  /// Loop state
+  bool _shouldLoop = false;
+  bool _loopPaused = false; // Track if loop was paused
 
   /// Callbacks for external control
   VoidCallback? onAnimationStart;
@@ -20,6 +25,17 @@ class PreviewAnimationController extends ChangeNotifier {
   bool get isPlaying => _isPlaying;
   bool get isPaused => _isPaused;
   AnimationController? get textAnimationController => _textAnimationController;
+  bool get shouldLoop => _shouldLoop;
+
+  /// Update the loop property from the provider
+  void updateLoopProperty(bool shouldLoop) {
+    _shouldLoop = shouldLoop;
+    // If loop is disabled, reset the loop paused state
+    if (!shouldLoop) {
+      _loopPaused = false;
+    }
+    notifyListeners();
+  }
 
   /// Set the TextAnimation's internal controller
   void setTextAnimationController(AnimationController controller) {
@@ -38,6 +54,7 @@ class PreviewAnimationController extends ChangeNotifier {
     // If animation is paused, resume it
     if (_isPlaying && _isPaused) {
       _isPaused = false;
+      _loopPaused = false; // Re-enable looping when resuming
       controller.forward(); // Resume from current position
       notifyListeners();
       return;
@@ -49,6 +66,7 @@ class PreviewAnimationController extends ChangeNotifier {
     // Start new animation
     _isPlaying = true;
     _isPaused = false;
+    _loopPaused = false; // Reset loop paused state
 
     if (controller.status == AnimationStatus.completed) {
       controller.reset();
@@ -64,6 +82,7 @@ class PreviewAnimationController extends ChangeNotifier {
     if (!_isPlaying || _isPaused || _textAnimationController == null) return;
 
     _isPaused = true;
+    _loopPaused = _shouldLoop; // Remember if loop was enabled
 
     final controller = _textAnimationController!;
     if (controller.isAnimating) {
@@ -79,6 +98,7 @@ class PreviewAnimationController extends ChangeNotifier {
     if (!_isPlaying || !_isPaused || _textAnimationController == null) return;
 
     _isPaused = false;
+    _loopPaused = false; // Re-enable looping when resuming
 
     final controller = _textAnimationController!;
     if (controller.value > 0 &&
@@ -95,6 +115,7 @@ class PreviewAnimationController extends ChangeNotifier {
 
     _isPlaying = false;
     _isPaused = false;
+    _loopPaused = false; // Reset loop paused state
 
     final controller = _textAnimationController!;
     controller.reset();
@@ -109,6 +130,7 @@ class PreviewAnimationController extends ChangeNotifier {
 
     _isPlaying = false;
     _isPaused = false;
+    _loopPaused = false; // Reset loop paused state
 
     final controller = _textAnimationController!;
     controller.stop();
@@ -120,8 +142,17 @@ class PreviewAnimationController extends ChangeNotifier {
   void _onAnimationStatusChange(AnimationStatus status) {
     switch (status) {
       case AnimationStatus.completed:
-        _isPlaying = false;
-        onAnimationComplete?.call();
+        // Only loop if loop is enabled AND not paused
+        if (_shouldLoop && !_loopPaused) {
+          // 🔄 Loop enabled and not paused - restart animation
+          _textAnimationController?.reset();
+          _textAnimationController?.forward();
+          // Keep playing state for looping
+        } else {
+          // ⏹️ No loop or loop paused - stop animation
+          _isPlaying = false;
+          onAnimationComplete?.call();
+        }
         notifyListeners();
         break;
       case AnimationStatus.dismissed:
@@ -144,7 +175,7 @@ class PreviewAnimationController extends ChangeNotifier {
 
   /// Check if animation can be paused
   bool get canPause =>
-      _textAnimationController != null && _isPlaying && !_isPaused;
+      _textAnimationController != null && _isPlaying;
 
   /// Check if animation can be resumed
   bool get canResume =>

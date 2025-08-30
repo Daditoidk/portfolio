@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/index.dart';
+import '../../../../../../../core/animations_core/base/animation_types.dart';
 
 // =============================================================================
 // PROVIDERS
@@ -20,19 +21,19 @@ class AnimationPropertiesNotifier
     }
   }
 
-  /// Update multiple properties at once
-  void updateMultipleProperties(Map<String, dynamic> properties) {
-    var newProperties = state;
-    for (final entry in properties.entries) {
-      newProperties = newProperties.updateProperty(entry.key, entry.value);
-    }
-    if (newProperties != state) {
-      print(
-        'AnimationPropertiesNotifier: Updating multiple properties: $properties',
-      );
-      state = newProperties;
-    }
-  }
+  // /// Update multiple properties at once
+  // void updateMultipleProperties(Map<String, dynamic> properties) {
+  //   var newProperties = state;
+  //   for (final entry in properties.entries) {
+  //     newProperties = newProperties.updateProperty(entry.key, entry.value);
+  //   }
+  //   if (newProperties != state) {
+  //     print(
+  //       'AnimationPropertiesNotifier: Updating multiple properties: $properties',
+  //     );
+  //     state = newProperties;
+  //   }
+  // }
 
   /// Reset to default values
   void resetToDefaults() {
@@ -56,8 +57,11 @@ class AnimationPropertiesNotifier
     }
   }
 
-  /// Get a property value with type safety
-  T? getProperty<T>(String propertyName) {
+  /// Get a property value with type-specific access for better type safety
+  /// This method leverages the existing getProperty methods from each subclass
+  T? getTypedProperty<T>(String propertyName) {
+    // For all properties, just use the existing getProperty method
+    // Each subclass already handles its own properties correctly
     return state.getProperty<T>(propertyName);
   }
 
@@ -69,6 +73,20 @@ class AnimationPropertiesNotifier
   /// Switch to a different animation type
   void switchToAnimationType(BaseAnimationPropertiesData newProperties) {
     state = newProperties;
+  }
+
+  /// Get the current animation type as an enum
+  TextAnimationType getCurrentAnimationType() {
+    if (state is ScrambleTextPropertiesData) {
+      return TextAnimationType.text_scramble;
+    }
+    if (state is FadeTextPropertiesData) {
+      return TextAnimationType.text_fade_in;
+    }
+    if (state is SlideTextPropertiesData) {
+      return TextAnimationType.text_slide;
+    }
+    return TextAnimationType.none;
   }
 }
 
@@ -86,4 +104,10 @@ final animationIdProvider = Provider<String?>((ref) {
   if (properties is FadeTextPropertiesData) return 'text_fade';
   if (properties is SlideTextPropertiesData) return 'text_slide';
   return null;
+});
+
+/// Provider for current animation type as enum
+final currentAnimationTypeProvider = Provider<TextAnimationType>((ref) {
+  final notifier = ref.watch(animationPropertiesProvider.notifier);
+  return notifier.getCurrentAnimationType();
 });

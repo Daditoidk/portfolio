@@ -18,7 +18,7 @@ class TextAnimation<T extends BaseAnimationPropertiesData>
   final String text;
 
   /// Type of animation to apply
-  final AnimationType type;
+  final TextAnimationType type;
 
   /// Optional text order ID for orchestrated animations
   /// If null, the animation runs independently
@@ -230,7 +230,7 @@ class _TextAnimationState<T extends BaseAnimationPropertiesData>
   @override
   Widget build(BuildContext context) {
     switch (widget.type) {
-      case AnimationType.scramble:
+      case TextAnimationType.text_scramble:
         return buildScrambleText(
           text: widget.text,
           config: widget.config as ScrambleTextPropertiesData,
@@ -240,7 +240,7 @@ class _TextAnimationState<T extends BaseAnimationPropertiesData>
           maxLines: widget.maxLines,
           overflow: widget.overflow,
         );
-      case AnimationType.fade:
+      case TextAnimationType.text_fade_in:
         return buildFadeText(
           text: widget.text,
           config: widget.config as FadeTextPropertiesData,
@@ -250,7 +250,7 @@ class _TextAnimationState<T extends BaseAnimationPropertiesData>
           maxLines: widget.maxLines,
           overflow: widget.overflow,
         );
-      case AnimationType.slide:
+      case TextAnimationType.text_slide:
         return buildSlideText(
           text: widget.text,
           config: widget.config as SlideTextPropertiesData,

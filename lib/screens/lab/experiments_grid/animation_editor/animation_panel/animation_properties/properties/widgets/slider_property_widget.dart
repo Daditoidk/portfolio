@@ -29,11 +29,13 @@ class SliderPropertyWidget extends PropertyWidget {
   Widget buildPropertyContent() {
     return Consumer(
       builder: (context, ref, child) {
+        // Watch the state to rebuild when it changes
         final properties = ref.watch(animationPropertiesProvider);
         final notifier = ref.read(animationPropertiesProvider.notifier);
 
+        // Use the new typed property access method from the provider
         final value =
-            properties.getProperty<double>(propertyName) ?? defaultValue;
+            notifier.getTypedProperty<double>(propertyName) ?? defaultValue;
 
         return Row(
           children: [

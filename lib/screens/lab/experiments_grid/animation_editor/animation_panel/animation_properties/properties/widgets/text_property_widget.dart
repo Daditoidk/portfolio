@@ -6,8 +6,7 @@ import '../../providers/animation_properties_providers.dart';
 /// Text property widget with Riverpod integration
 class TextPropertyWidget extends PropertyWidget {
   final String defaultValue;
-  final String? placeholder;
-  final TextInputType? keyboardType;
+  final String? hintText;
 
   const TextPropertyWidget({
     super.key,
@@ -15,32 +14,31 @@ class TextPropertyWidget extends PropertyWidget {
     super.description,
     super.required,
     required this.defaultValue,
-    this.placeholder,
-    this.keyboardType,
+    this.hintText,
   });
 
   @override
   Widget buildPropertyContent() {
     return Consumer(
       builder: (context, ref, child) {
+        // Watch the state to rebuild when it changes
         final properties = ref.watch(animationPropertiesProvider);
         final notifier = ref.read(animationPropertiesProvider.notifier);
 
+        // Use the new typed property access method from the provider
         final value =
-            properties.getProperty<String>(propertyName) ?? defaultValue;
+            notifier.getTypedProperty<String>(propertyName) ?? defaultValue;
 
-        return TextField(
-          controller: TextEditingController(text: value),
+        return TextFormField(
+          initialValue: value,
           decoration: InputDecoration(
-            border: const OutlineInputBorder(),
+            hintText: hintText ?? defaultValue,
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 12,
               vertical: 8,
             ),
-            isDense: true,
-            hintText: placeholder,
           ),
-          keyboardType: keyboardType ?? TextInputType.text,
           onChanged: (newValue) {
             notifier.updateProperty(propertyName, newValue);
           },

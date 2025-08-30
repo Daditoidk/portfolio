@@ -1,4 +1,5 @@
 import 'scramble_text_properties_data.dart';
+import '../constants/property_names.dart';
 
 /// Base class for all animation properties
 abstract class BaseAnimationPropertiesData {
@@ -55,12 +56,13 @@ abstract class BaseAnimationPropertiesData {
 
   /// Get a property value by name
   T? getProperty<T>(String propertyName) {
-    switch (propertyName.toLowerCase()) {
-      case 'loop':
+    final normalizedName = propertyName.toLowerCase();
+    switch (normalizedName) {
+      case PropertyNames.loop:
         return loop as T?;
-      case 'speed':
+      case PropertyNames.speed:
         return speed as T?;
-      case 'previewtext':
+      case PropertyNames.previewText:
         return previewText as T?;
       default:
         return null;
@@ -72,12 +74,13 @@ abstract class BaseAnimationPropertiesData {
     String propertyName,
     dynamic value,
   ) {
-    switch (propertyName.toLowerCase()) {
-      case 'loop':
+    final normalizedName = propertyName.toLowerCase();
+    switch (normalizedName) {
+      case PropertyNames.loop:
         return copyWith(loop: value as bool);
-      case 'speed':
+      case PropertyNames.speed:
         return copyWith(speed: value as double);
-      case 'previewtext':
+      case PropertyNames.previewText:
         return copyWith(previewText: value as String);
       default:
         return this;

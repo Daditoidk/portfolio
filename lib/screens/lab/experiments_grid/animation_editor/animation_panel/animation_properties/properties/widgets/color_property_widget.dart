@@ -1,83 +1,134 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../styles/styles.dart';
 import 'base_property_widget.dart';
 import '../../providers/animation_properties_providers.dart';
+import '../../../styles/styles.dart';
 
-/// Color picker property widget with Riverpod integration
+/// Color property widget with Riverpod integration
 class ColorPropertyWidget extends PropertyWidget {
   final Color defaultValue;
-  final List<Color>? predefinedColors;
 
   const ColorPropertyWidget({
     super.key,
     required super.propertyName,
     super.description,
     super.required,
-    super.unit,
-    this.defaultValue = Colors.white,
-    this.predefinedColors,
+    required this.defaultValue,
   });
 
   @override
   Widget buildPropertyContent() {
     return Consumer(
       builder: (context, ref, child) {
-        // Watch the specific property value from Riverpod
+        // Watch the state to rebuild when it changes
         final properties = ref.watch(animationPropertiesProvider);
         final notifier = ref.read(animationPropertiesProvider.notifier);
+
+        // Use the new typed property access method from the provider
         final value =
-            properties.getProperty<Color>(propertyName) ?? defaultValue;
+            notifier.getTypedProperty<Color>(propertyName) ?? defaultValue;
 
         return Row(
           children: [
-            // Color preview
-            GestureDetector(
-              onTap: () {
-                // TODO: Implement color picker dialog
-                // For now, cycle through predefined colors
-                if (predefinedColors != null && predefinedColors!.isNotEmpty) {
-                  final currentIndex = predefinedColors!.indexOf(value);
-                  final nextIndex =
-                      (currentIndex + 1) % predefinedColors!.length;
-                  // Update the new provider
-                  notifier.updateProperty(
-                    propertyName,
-                    predefinedColors![nextIndex],
-                  );
-                }
-              },
-              child: Container(
-                width: 32,
-                height: 32,
-                decoration: BoxDecoration(
-                  color: value,
-                  borderRadius: BorderRadius.circular(6),
-                  border: Border.all(color: Colors.grey.shade300),
-                ),
-                child: Icon(
-                  Icons.color_lens,
-                  color: _getContrastColor(value),
-                  size: 16,
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                color: value,
+                border: Border.all(color: Colors.grey.shade300),
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                propertyName,
+                style: AnimationPanelStyles.label.copyWith(
+                  color: Colors.grey.shade700,
                 ),
               ),
             ),
-            const SizedBox(width: 8),
-            Text(
-              'Tap to cycle colors',
-              style: AnimationPanelStyles.label.copyWith(
-                color: Colors.grey.shade600,
-                fontSize: 10,
-              ),
+            IconButton(
+              onPressed: () async {
+                final newColor = await showDialog<Color>(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text('Select Color for $propertyName'),
+                    content: const SingleChildScrollView(child: ColorPicker()),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: const Text('Cancel'),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.of(context).pop(value),
+                        child: const Text('OK'),
+                      ),
+                    ],
+                  ),
+                );
+
+                if (newColor != null) {
+                  notifier.updateProperty(propertyName, newColor);
+                }
+              },
+              icon: const Icon(Icons.color_lens),
+              tooltip: 'Change Color',
             ),
           ],
         );
       },
     );
   }
+}
 
-  Color _getContrastColor(Color backgroundColor) {
-    final luminance = backgroundColor.computeLuminance();
-    return luminance > 0.5 ? Colors.black : Colors.white;
+/// Simple color picker widget
+class ColorPicker extends StatelessWidget {
+  const ColorPicker({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = [
+      Colors.red,
+      Colors.pink,
+      Colors.purple,
+      Colors.deepPurple,
+      Colors.indigo,
+      Colors.blue,
+      Colors.lightBlue,
+      Colors.cyan,
+      Colors.teal,
+      Colors.green,
+      Colors.lightGreen,
+      Colors.lime,
+      Colors.yellow,
+      Colors.amber,
+      Colors.orange,
+      Colors.deepOrange,
+      Colors.brown,
+      Colors.grey,
+      Colors.blueGrey,
+      Colors.black,
+      Colors.white,
+    ];
+
+    return Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: colors.map((color) {
+        return GestureDetector(
+          onTap: () => Navigator.of(context).pop(color),
+          child: Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: color,
+              border: Border.all(color: Colors.grey.shade300),
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+        );
+      }).toList(),
+    );
   }
 }

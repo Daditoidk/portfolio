@@ -20,10 +20,13 @@ class PreviewPropertyWidget extends PropertyWidget {
   Widget buildPropertyContent() {
     return Consumer(
       builder: (context, ref, child) {
+
         final properties = ref.watch(animationPropertiesProvider);
         final previewController = ref.watch(
           previewAnimationControllerProvider.notifier,
         );
+        // Update the controller with current loop property
+        previewController.updateLoopProperty(properties.loop);
 
         // Determine the animation type and create the appropriate TextAnimation
         if (properties is ScrambleTextPropertiesData) {
@@ -32,7 +35,7 @@ class PreviewPropertyWidget extends PropertyWidget {
             previewController: previewController,
             child: TextAnimation<ScrambleTextPropertiesData>(
               text: properties.previewText,
-              type: AnimationType.scramble,
+              type: TextAnimationType.text_scramble,
               config: properties,
               onControllerReady: (controller) {
                 // Connect the TextAnimation's internal controller to our preview controller
@@ -46,7 +49,7 @@ class PreviewPropertyWidget extends PropertyWidget {
             previewController: previewController,
             child: TextAnimation<FadeTextPropertiesData>(
               text: properties.previewText,
-              type: AnimationType.fade,
+              type: TextAnimationType.text_fade_in,
               config: properties,
               onControllerReady: (controller) {
                 previewController.setTextAnimationController(controller);
@@ -59,7 +62,7 @@ class PreviewPropertyWidget extends PropertyWidget {
             previewController: previewController,
             child: TextAnimation<SlideTextPropertiesData>(
               text: properties.previewText,
-              type: AnimationType.slide,
+              type: TextAnimationType.text_slide,
               config: properties,
               onControllerReady: (controller) {
                 previewController.setTextAnimationController(controller);
@@ -89,7 +92,6 @@ class _PreviewPropertyContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final previewState = ref.watch(previewAnimationControllerProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,16 +101,12 @@ class _PreviewPropertyContent extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             IconButton(
-              onPressed: previewController.canPlay
-                  ? previewController.playPreview
-                  : null,
+              onPressed: previewController.playPreview,
               icon: Icon(Icons.play_arrow),
               tooltip: 'Play Animation',
             ),
             IconButton(
-              onPressed: previewController.canPause
-                  ? previewController.pausePreview
-                  : null,
+              onPressed: previewController.pausePreview,
               icon: const Icon(Icons.pause),
               tooltip: 'Pause Animation',
             ),

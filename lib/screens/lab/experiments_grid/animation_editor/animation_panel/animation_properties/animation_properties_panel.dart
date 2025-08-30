@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../styles/styles.dart';
 import 'properties/widgets/index.dart';
+import '../../../../../../core/animations_core/base/animation_types.dart';
+import 'constants/property_names.dart';
 
 /// Simplified animation properties panel - Pure Riverpod implementation
 class AnimationPropertiesPanel extends ConsumerWidget {
@@ -54,16 +56,31 @@ class AnimationPropertiesPanel extends ConsumerWidget {
   }
 
   Widget _buildProperties(WidgetRef ref) {
-    switch (selectedAnimation) {
-      case 'scramble':
-        return _buildScrambleProperties();
-      case 'fade':
-        return _buildFadeProperties();
-      case 'slide':
-        return _buildSlideProperties();
-      default:
-        return _buildDefaultProperties();
+    // Convert string ID to enum for type safety
+    final textAnimationType = stringToTextAnimationType(selectedAnimation);
+
+    if (textAnimationType != null) {
+      // Use enum-based switching for better type safety
+      switch (textAnimationType) {
+        case TextAnimationType.text_scramble:
+          return _buildScrambleProperties();
+        case TextAnimationType.text_fade_in:
+          return _buildFadeProperties();
+        case TextAnimationType.text_typewriter:
+          // For now, show scramble properties since typewriter is not implemented
+          return _buildScrambleProperties();
+        case TextAnimationType.text_wave:
+          // For now, show scramble properties since wave is not implemented
+          return _buildScrambleProperties();
+        case TextAnimationType.text_slide:
+          return _buildSlideProperties();
+        case TextAnimationType.none:
+          return _buildDefaultProperties();
+      }
     }
+    
+    // Fallback for unknown animation types
+    return _buildDefaultProperties();
   }
 
   Widget _buildScrambleProperties() {
@@ -71,7 +88,7 @@ class AnimationPropertiesPanel extends ConsumerWidget {
       children: [
         // Speed slider - using professional SliderProperty
         SliderPropertyWidget(
-          propertyName: 'Speed',
+          propertyName: PropertyNames.speed,
           description: 'Animation speed multiplier',
           defaultValue: 1.0,
           min: 0.1,
@@ -84,7 +101,7 @@ class AnimationPropertiesPanel extends ConsumerWidget {
 
         // Scramble intensity slider - using professional SliderProperty
         SliderPropertyWidget(
-          propertyName: 'Scramble Intensity',
+          propertyName: PropertyNames.scrambleIntensity,
           description: 'How much the text gets scrambled during animation',
           defaultValue: 0.5,
           min: 0.0,
@@ -97,7 +114,7 @@ class AnimationPropertiesPanel extends ConsumerWidget {
 
         // Direction dropdown - using professional DropdownProperty
         DropdownPropertyWidget(
-          propertyName: 'Direction',
+          propertyName: PropertyNames.direction,
           description: 'Animation direction and flow',
           defaultValue: 'Left to Right',
           options: [
@@ -112,7 +129,7 @@ class AnimationPropertiesPanel extends ConsumerWidget {
 
         // Loop checkbox - using professional CheckboxProperty
         CheckboxPropertyWidget(
-          propertyName: 'Loop',
+          propertyName: PropertyNames.loop,
           description: 'Enable continuous looping of the animation',
         ),
       ],
@@ -124,7 +141,7 @@ class AnimationPropertiesPanel extends ConsumerWidget {
       children: [
         // Speed slider
         SliderPropertyWidget(
-          propertyName: 'Speed',
+          propertyName: PropertyNames.speed,
           description: 'Animation speed multiplier',
           defaultValue: 1.0,
           min: 0.1,
@@ -137,7 +154,7 @@ class AnimationPropertiesPanel extends ConsumerWidget {
 
         // Fade duration slider
         SliderPropertyWidget(
-          propertyName: 'Fade Duration',
+          propertyName: PropertyNames.fadeDuration,
           description: 'How long the fade effect takes',
           defaultValue: 1.0,
           min: 0.1,
@@ -150,7 +167,7 @@ class AnimationPropertiesPanel extends ConsumerWidget {
 
         // Fade type dropdown
         DropdownPropertyWidget(
-          propertyName: 'Fade Type',
+          propertyName: PropertyNames.fadeType,
           description: 'Type of fade effect',
           defaultValue: 'Fade In',
           options: ['Fade In', 'Fade Out', 'Fade In Out'],
@@ -160,70 +177,7 @@ class AnimationPropertiesPanel extends ConsumerWidget {
 
         // Loop checkbox
         CheckboxPropertyWidget(
-          propertyName: 'Loop',
-          description: 'Enable continuous looping of the animation',
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSlideProperties() {
-    return Column(
-      children: [
-        // Speed slider
-        SliderPropertyWidget(
-          propertyName: 'Speed',
-          description: 'Animation speed multiplier',
-          defaultValue: 1.0,
-          min: 0.1,
-          max: 5.0,
-          divisions: 50,
-          unit: 'x',
-        ),
-
-        const SizedBox(height: 16),
-
-        // Slide distance slider
-        SliderPropertyWidget(
-          propertyName: 'Slide Distance',
-          description: 'How far the text slides',
-          defaultValue: 100.0,
-          min: 20.0,
-          max: 300.0,
-          divisions: 28,
-          unit: 'px',
-        ),
-
-        const SizedBox(height: 16),
-
-        // Direction dropdown
-        DropdownPropertyWidget(
-          propertyName: 'Direction',
-          description: 'Slide direction',
-          defaultValue: 'Left to Right',
-          options: [
-            'Left to Right',
-            'Right to Left',
-            'Top to Bottom',
-            'Bottom to Top',
-          ],
-        ),
-
-        const SizedBox(height: 16),
-
-        // Easing dropdown
-        DropdownPropertyWidget(
-          propertyName: 'Easing',
-          description: 'Animation easing curve',
-          defaultValue: 'Ease In Out',
-          options: ['Ease In Out', 'Ease In', 'Ease Out', 'Linear', 'Bounce'],
-        ),
-
-        const SizedBox(height: 16),
-
-        // Loop checkbox
-        CheckboxPropertyWidget(
-          propertyName: 'Loop',
+          propertyName: PropertyNames.loop,
           description: 'Enable continuous looping of the animation',
         ),
       ],
@@ -235,7 +189,7 @@ class AnimationPropertiesPanel extends ConsumerWidget {
       children: [
         // Speed slider - common to all animations
         SliderPropertyWidget(
-          propertyName: 'Speed',
+          propertyName: PropertyNames.speed,
           description: 'Animation speed multiplier',
           defaultValue: 1.0,
           min: 0.1,
@@ -248,7 +202,42 @@ class AnimationPropertiesPanel extends ConsumerWidget {
 
         // Loop checkbox - common to all animations
         CheckboxPropertyWidget(
-          propertyName: 'Loop',
+          propertyName: PropertyNames.loop,
+          description: 'Enable continuous looping of the animation',
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSlideProperties() {
+    return Column(
+      children: [
+        // Speed slider
+        SliderPropertyWidget(
+          propertyName: PropertyNames.speed,
+          description: 'Animation speed multiplier',
+          defaultValue: 1.0,
+          min: 0.1,
+          max: 5.0,
+          divisions: 50,
+          unit: 'x',
+        ),
+
+        const SizedBox(height: 16),
+
+        // Slide direction dropdown
+        DropdownPropertyWidget(
+          propertyName: PropertyNames.direction,
+          description: 'Direction in which the text slides',
+          defaultValue: 'Left',
+          options: ['Left', 'Right', 'Up', 'Down'],
+        ),
+
+        const SizedBox(height: 16),
+
+        // Loop checkbox
+        CheckboxPropertyWidget(
+          propertyName: PropertyNames.loop,
           description: 'Enable continuous looping of the animation',
         ),
       ],

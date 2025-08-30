@@ -1,4 +1,5 @@
 import 'base_animation_properties_data.dart';
+import '../constants/property_names.dart';
 
 /// Properties specific to fade text animation
 class FadeTextPropertiesData extends BaseAnimationPropertiesData {
@@ -51,10 +52,11 @@ class FadeTextPropertiesData extends BaseAnimationPropertiesData {
 
   @override
   T? getProperty<T>(String propertyName) {
-    switch (propertyName.toLowerCase()) {
-      case 'duration':
+    final normalizedName = propertyName.toLowerCase();
+    switch (normalizedName) {
+      case PropertyNames.fadeDuration:
         return duration as T?;
-      case 'fadetype':
+      case PropertyNames.fadeType:
         return fadeType as T?;
       default:
         return super.getProperty<T>(propertyName);
@@ -66,13 +68,14 @@ class FadeTextPropertiesData extends BaseAnimationPropertiesData {
     String propertyName,
     dynamic value,
   ) {
-    switch (propertyName.toLowerCase()) {
-      case 'duration':
+    final normalizedName = propertyName.toLowerCase();
+    switch (normalizedName) {
+      case PropertyNames.fadeDuration:
         return copyWith(duration: value as double);
-      case 'fadetype':
+      case PropertyNames.fadeType:
         return copyWith(fadeType: value as String);
       default:
-        return this;
+         return super.updateProperty(propertyName, value);
     }
   }
 

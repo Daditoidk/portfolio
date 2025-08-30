@@ -1,4 +1,5 @@
 import 'base_animation_properties_data.dart';
+import '../constants/property_names.dart';
 
 /// Properties specific to scramble text animation
 class ScrambleTextPropertiesData extends BaseAnimationPropertiesData {
@@ -51,10 +52,11 @@ class ScrambleTextPropertiesData extends BaseAnimationPropertiesData {
 
   @override
   T? getProperty<T>(String propertyName) {
-    switch (propertyName.toLowerCase()) {
-      case 'intensity':
+    final normalizedName = propertyName.toLowerCase();
+    switch (normalizedName) {
+      case PropertyNames.scrambleIntensity:
         return intensity as T?;
-      case 'direction':
+      case PropertyNames.direction:
         return direction as T?;
       default:
         return super.getProperty<T>(propertyName);
@@ -66,13 +68,14 @@ class ScrambleTextPropertiesData extends BaseAnimationPropertiesData {
     String propertyName,
     dynamic value,
   ) {
-    switch (propertyName.toLowerCase()) {
-      case 'intensity':
+    final normalizedName = propertyName.toLowerCase();
+    switch (normalizedName) {
+      case PropertyNames.scrambleIntensity:
         return copyWith(intensity: value as double);
-      case 'direction':
+      case PropertyNames.direction:
         return copyWith(direction: value as String);
       default:
-        return this;
+        return super.updateProperty(propertyName, value);
     }
   }
 

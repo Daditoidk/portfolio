@@ -1,4 +1,5 @@
 import 'base_animation_properties_data.dart';
+import '../constants/property_names.dart';
 
 /// Properties specific to slide text animation
 class SlideTextPropertiesData extends BaseAnimationPropertiesData {
@@ -56,12 +57,13 @@ class SlideTextPropertiesData extends BaseAnimationPropertiesData {
 
   @override
   T? getProperty<T>(String propertyName) {
-    switch (propertyName.toLowerCase()) {
-      case 'distance':
+    final normalizedName = propertyName.toLowerCase();
+    switch (normalizedName) {
+      case PropertyNames.slideDistance:
         return distance as T?;
-      case 'direction':
+      case PropertyNames.direction:
         return direction as T?;
-      case 'easing':
+      case PropertyNames.easing:
         return easing as T?;
       default:
         return super.getProperty<T>(propertyName);
@@ -73,15 +75,16 @@ class SlideTextPropertiesData extends BaseAnimationPropertiesData {
     String propertyName,
     dynamic value,
   ) {
-    switch (propertyName.toLowerCase()) {
-      case 'distance':
+    final normalizedName = propertyName.toLowerCase();
+    switch (normalizedName) {
+      case PropertyNames.slideDistance:
         return copyWith(distance: value as double);
-      case 'direction':
+      case PropertyNames.direction:
         return copyWith(direction: value as String);
-      case 'easing':
+      case PropertyNames.easing:
         return copyWith(easing: value as String);
       default:
-        return this;
+         return super.updateProperty(propertyName, value);
     }
   }
 
