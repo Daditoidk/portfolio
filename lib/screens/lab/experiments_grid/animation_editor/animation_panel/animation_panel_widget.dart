@@ -34,11 +34,11 @@ class _AnimationPanelWidgetState extends State<AnimationPanelWidget> {
           availableCanvases: widget.availableCanvases,
           onCanvasChanged: widget.onCanvasChanged,
         ),
-
+    
         // Scrollable content area (combines animation selection and settings)
         Expanded(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(4),
+            padding: const EdgeInsets.all(16),
             child: Column(
               children: [
                 // Animation Selection Container
@@ -55,23 +55,12 @@ class _AnimationPanelWidgetState extends State<AnimationPanelWidget> {
                     });
                   },
                 ),
-
+    
                 // Animation Properties Panel (appears when animation is selected)
                 if (_showAnimationSettings) ...[
                   const SizedBox(height: 16),
                   AnimationPropertiesPanel(
                     selectedAnimation: _selectedAnimation,
-                    onAnimationChanged: (animationId) {
-                      setState(() {
-                        _selectedAnimation = animationId;
-                        _showAnimationSettings = animationId.isNotEmpty;
-                      });
-                    },
-                    onSettingsChanged: (settings) {
-                      // Handle settings changes if needed
-                      // Settings are now managed by the AnimationPropertiesPanel
-                    },
-                    currentSettings: {},
                   ),
                 ],
               ],

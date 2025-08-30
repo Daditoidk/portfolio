@@ -1,4 +1,4 @@
-import '../../../../../../core/animations/base/animation_config.dart';
+import 'package:portfolio_web/core/animations_core/base/animation_config.dart';
 
 /// Animation modes for text
 enum AnimationMode {
