@@ -20,13 +20,16 @@ class PreviewPropertyWidget extends PropertyWidget {
   Widget buildPropertyContent() {
     return Consumer(
       builder: (context, ref, child) {
-
         final properties = ref.watch(animationPropertiesProvider);
         final previewController = ref.watch(
           previewAnimationControllerProvider.notifier,
         );
-        // Update the controller with current loop property
-        previewController.updateLoopProperty(properties.loop);
+        
+        // Schedule the loop property update for after build is complete
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          // Update the controller with current loop property
+          previewController.updateLoopProperty(properties.loop);
+        });
 
         // Determine the animation type and create the appropriate TextAnimation
         if (properties is ScrambleTextPropertiesData) {
@@ -92,7 +95,6 @@ class _PreviewPropertyContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

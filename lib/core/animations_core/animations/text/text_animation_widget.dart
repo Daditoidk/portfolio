@@ -9,6 +9,7 @@ import 'scramble.dart';
 import 'fade.dart';
 import 'slide.dart';
 import '../../../../screens/lab/experiments_grid/animation_editor/animation_panel/animation_properties/data/index.dart';
+import '../../../../screens/lab/experiments_grid/animation_editor/animation_panel/animation_properties/providers/animation_properties_providers.dart';
 
 /// Unified text animation widget that handles all animation types
 /// Generic type T ensures type safety for animation properties
@@ -106,6 +107,9 @@ class _TextAnimationState<T extends BaseAnimationPropertiesData>
   /// Whether the widget has been initialized
   bool _isInitialized = false;
 
+  /// Track if this is the first build to avoid auto-start on rebuilds
+  bool _isFirstBuild = true;
+
   @override
   void initState() {
     super.initState();
@@ -123,10 +127,8 @@ class _TextAnimationState<T extends BaseAnimationPropertiesData>
 
   /// Initialize the animation engine and logic
   void _initializeAnimation() {
-    // Get duration from widget.config
-    final duration = Duration(
-      milliseconds: (widget.config.speed * 1000).round(),
-    );
+    // Set a fixed, common animation duration (2 seconds)
+    final duration = Duration(milliseconds: 2000);
 
     _animationEngine = AnimationController(duration: duration, vsync: this);
 
@@ -158,11 +160,13 @@ class _TextAnimationState<T extends BaseAnimationPropertiesData>
       widget.onControllerReady?.call(_animationEngine);
     });
 
-    // Auto-start if enabled
-    if (widget.autoStart) {
+    // Only auto-start on the very first build, not on rebuilds
+    if (widget.autoStart && _isFirstBuild) {
       _startAnimation();
+      _isFirstBuild = false;
     }
   }
+
 
   /// Setup orchestrator integration
   void _setupOrchestrator() {
@@ -232,9 +236,10 @@ class _TextAnimationState<T extends BaseAnimationPropertiesData>
     switch (widget.type) {
       case TextAnimationType.text_scramble:
         return buildScrambleText(
-          text: widget.text,
+          beforeText: widget.text,
+          afterText: "Hola mundo",
           config: widget.config as ScrambleTextPropertiesData,
-          controller: _animationEngine,
+          timeline: _animationEngine,
           style: widget.style,
           textAlign: widget.textAlign,
           maxLines: widget.maxLines,

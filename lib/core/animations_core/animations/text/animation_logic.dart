@@ -137,7 +137,7 @@ class AnimationLogic with AnimationBehaviors {
       startAnimation();
     } else {
       debugPrint('AnimationLogic: ⏹️ Looping disabled - just resetting');
-      animationEngine.reset();
+      // animationEngine.reset();
     }
   }
 
