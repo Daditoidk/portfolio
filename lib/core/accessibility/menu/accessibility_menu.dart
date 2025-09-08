@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../widgets/accessibility/accessible_tooltip.dart';
+import '../../../shared/accessibility/accessible_tooltip.dart';
 import '../../theme/accessibility_menu_theme.dart';
 
 /// Alignment for the menu panel: AlignmentDirectional.end (right) or AlignmentDirectional.start (left)

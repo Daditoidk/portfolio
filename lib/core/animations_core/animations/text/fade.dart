@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../screens/lab/experiments_grid/animation_editor/animation_panel/animation_properties/data/index.dart';
+import '../../../../apps/lab/experiments_grid/animation_editor/animation_panel/animation_properties/data/index.dart';
 
 mixin SimpleFadeMixin {
   /// Builds a text widget with fade animation effect

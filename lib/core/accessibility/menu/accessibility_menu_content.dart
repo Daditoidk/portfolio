@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/foundation.dart';
-import '../../../widgets/accessibility/accessible_text.dart';
+import '../../../shared/accessibility/accessible_text.dart';
 import '../../constants/language_config.dart';
 import 'accessibility_settings.dart';
 

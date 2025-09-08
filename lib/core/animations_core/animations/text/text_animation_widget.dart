@@ -8,8 +8,7 @@ import 'animation_mixins.dart';
 import 'scramble.dart';
 import 'fade.dart';
 import 'slide.dart';
-import '../../../../screens/lab/experiments_grid/animation_editor/animation_panel/animation_properties/data/index.dart';
-import '../../../../screens/lab/experiments_grid/animation_editor/animation_panel/animation_properties/providers/animation_properties_providers.dart';
+import '../../../../apps/lab/experiments_grid/animation_editor/animation_panel/animation_properties/data/index.dart';
 
 /// Unified text animation widget that handles all animation types
 /// Generic type T ensures type safety for animation properties

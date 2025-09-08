@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import '../../../../screens/lab/experiments_grid/animation_editor/animation_panel/animation_properties/data/index.dart';
+import '../../../../apps/lab/experiments_grid/animation_editor/animation_panel/animation_properties/data/index.dart';
 
 mixin SimpleScrambleMixin {
   // Cache for scramble info only (no longer need scrambled text cache)
@@ -82,7 +82,7 @@ mixin SimpleScrambleMixin {
     int? maxLines,
     TextOverflow? overflow,
   }) {
-    final cacheKey = '${text}_${scrambleIntensity}';
+    final cacheKey = '${text}_$scrambleIntensity';
 
     // Get or create scramble info (only once)
     if (!_scrambleInfoCache.containsKey(cacheKey)) {

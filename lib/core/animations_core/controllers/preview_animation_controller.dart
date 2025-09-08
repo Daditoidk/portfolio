@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../screens/lab/experiments_grid/animation_editor/animation_panel/animation_properties/providers/animation_properties_providers.dart';
 
 /// Controller for preview-level animations that controls a single TextAnimation widget
 class PreviewAnimationController extends ChangeNotifier {

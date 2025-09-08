@@ -6,7 +6,7 @@ import '../../providers/animation_orchestrator_provider.dart';
 import '../../text_order/text_order_data.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'animation_mixins.dart';
-import '../../../../screens/lab/experiments_grid/animation_editor/animation_panel/animation_properties/data/index.dart';
+import '../../../../apps/lab/experiments_grid/animation_editor/animation_panel/animation_properties/data/index.dart';
 
 /// Animation logic that handles the business rules for text animations
 class AnimationLogic with AnimationBehaviors {

@@ -2019,6 +2019,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fitness Tracker'**
   String get projectFitness;
+
+  /// Description for Brain4Goals project
+  ///
+  /// In en, this message translates to:
+  /// **'I led the development of Brain4Goals, a cross-platform mobile app built with Flutter that helps young footballers track performance and mental wellness. The app provides personalised, AI-powered recommendations based on weekly evaluations. I collaborated with a team of designers and a backend developer, using Scrum methodology, to deliver this project.'**
+  String get projectBrain4GoalsDescription;
+
+  /// Description for Kinpos Corporation project
+  ///
+  /// In en, this message translates to:
+  /// **'I was part of the innovation team that migrated multiple MPOS and POS applications to a single, unified Flutter codebase. This new architecture leveraged Kotlin Multiplatform and Flutter plugins to consolidate over seven individual apps into one streamlined solution. The project achieved a 66% reduction in update time and a 30% reduction in new feature implementation by allowing changes to be made once and applied across all clients.'**
+  String get projectKinposDescription;
 }
 
 class _AppLocalizationsDelegate

@@ -1006,4 +1006,12 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get projectFitness => 'フィットネストラッカー';
+
+  @override
+  String get projectBrain4GoalsDescription =>
+      'Brain4Goalsの開発をリードしました。これは、若いサッカー選手がパフォーマンスとメンタルウェルネスを追跡するのに役立つFlutterで構築されたクロスプラットフォームモバイルアプリです。アプリは週次評価に基づいて、AI駆動のパーソナライズされた推奨事項を提供します。スクラム手法を使用して、デザイナーチームとバックエンド開発者と協力し、このプロジェクトを提供しました。';
+
+  @override
+  String get projectKinposDescription =>
+      '複数のMPOSおよびPOSアプリケーションを単一の統一されたFlutterコードベースに移行したイノベーションチームの一員でした。この新しいアーキテクチャは、Kotlin MultiplatformとFlutterプラグインを活用して、7つ以上の個別アプリを1つの合理化されたソリューションに統合しました。プロジェクトは、変更を一度行い、すべてのクライアントに適用することで、更新時間を66％削減し、新機能の実装を30％削減しました。';
 }

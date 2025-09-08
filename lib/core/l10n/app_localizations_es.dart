@@ -1030,4 +1030,12 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get projectFitness => 'Rastreador de Fitness';
+
+  @override
+  String get projectBrain4GoalsDescription =>
+      'Lideré el desarrollo de Brain4Goals, una aplicación móvil multiplataforma construida con Flutter que ayuda a jóvenes futbolistas a rastrear su rendimiento y bienestar mental. La aplicación proporciona recomendaciones personalizadas impulsadas por IA basadas en evaluaciones semanales. Colaboré con un equipo de diseñadores y un desarrollador backend, utilizando metodología Scrum, para entregar este proyecto.';
+
+  @override
+  String get projectKinposDescription =>
+      'Fui parte del equipo de innovación que migró múltiples aplicaciones MPOS y POS a una única base de código Flutter unificada. Esta nueva arquitectura aprovechó Kotlin Multiplatform y plugins de Flutter para consolidar más de siete aplicaciones individuales en una solución optimizada. El proyecto logró una reducción del 66% en el tiempo de actualización y una reducción del 30% en la implementación de nuevas características al permitir que los cambios se realicen una vez y se apliquen a todos los clientes.';
 }

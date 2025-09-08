@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../screens/main selection/main_selection_screen.dart';
-import '../../screens/portfolio/portfolio_screen.dart';
-import '../../screens/lab/lab_screen.dart';
-import '../../screens/portfolio/sections/projects section/project_detail/project_detail_screen.dart';
+import 'package:portfolio_web/apps/portfolio_v2/presentation/pages/portfolio_screen.dart';
+import '../../apps/main selection/main_selection_screen.dart';
+import '../../apps/portfolio/portfolio_screen.dart';
+import '../../apps/lab/lab_screen.dart';
+import '../../apps/portfolio/sections/projects section/project_detail/project_detail_screen.dart';
 import 'route_names.dart';
-import '../../screens/lab/experiments_grid/text_order_visualizer/editor/text_order_visualizer.dart';
-import '../../screens/lab/experiments_grid/animation_editor/animation_editor_screen.dart';
-import '../../screens/lab/experiments_grid/diy_inbox_cleaner/diy_inbox_cleaner_screen.dart';
+import '../../apps/lab/experiments_grid/text_order_visualizer/editor/text_order_visualizer.dart';
+import '../../apps/lab/experiments_grid/animation_editor/animation_editor_screen.dart';
+import '../../apps/lab/experiments_grid/diy_inbox_cleaner/diy_inbox_cleaner_screen.dart';
 
 class AppRouter {
   static GoRouter createRouter() {
@@ -25,7 +26,7 @@ class AppRouter {
         GoRoute(
           path: RouteNames.portfolio,
           name: 'portfolio',
-          builder: (context, state) => const PortfolioScreen(),
+          builder: (context, state) => const PortfolioV2Screen(),
         ),
 
         // Lab Screen
