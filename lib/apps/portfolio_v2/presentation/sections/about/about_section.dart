@@ -13,7 +13,7 @@ class AboutSection extends ConsumerWidget {
   String _getCvLastModifiedDate() {
     // For web, we can't access file system directly
     // You can manually update this date when you update the CV
-    return 'Updated: 16/08/2025';
+    return 'Updated: 15/08/2025';
   }
 
   /// Download the CV PDF
@@ -21,7 +21,7 @@ class AboutSection extends ConsumerWidget {
     try {
       // For web, we need to use the asset URL that will be served by Flutter
       const cvUrl =
-          'assets/portfolio/about/Camilo%20Santacruz%20Abadiano%20resume%20Flutter%20Dev.pdf';
+          'assets/portfolio/about/resume.pdf';
       final uri = Uri.parse(cvUrl);
 
       if (await canLaunchUrl(uri)) {

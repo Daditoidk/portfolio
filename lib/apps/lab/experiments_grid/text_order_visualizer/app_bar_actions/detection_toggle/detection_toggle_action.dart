@@ -29,7 +29,7 @@ class DetectionToggleAction extends StatelessWidget {
           Switch(
             value: isDetectionEnabled,
             onChanged: onChanged,
-            activeColor: Colors.green,
+            activeThumbColor: Colors.green,
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
           const SizedBox(width: 8),

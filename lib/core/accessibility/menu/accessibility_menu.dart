@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_web/apps/portfolio_v2/presentation/theme/portfolio_theme.dart';
 import '../../../shared/accessibility/accessible_tooltip.dart';
 import '../../theme/accessibility_menu_theme.dart';
 
@@ -30,28 +31,29 @@ class AccessibilityMenu extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: AccessibleTooltip(
-            message: 'Open Accessibility Menu',
+            // message: 'Open accessibility settings',
+            message: 'We are still working on this feature',
             child: InkWell(
               borderRadius: BorderRadius.circular(t.buttonSize / 2),
               onTap: onPressed,
               child: Container(
-                width: t.buttonSize,
-                height: t.buttonSize,
+                width: 56,
+                height: 56,
                 decoration: BoxDecoration(
-                  color: t.backgroundColor,
+                  color: PortfolioTheme.orangeColor,
                   shape: BoxShape.circle,
-                  border: Border.all(
-                    color: t.borderColor,
-                    width: t.borderWidth,
-                  ),
-                  boxShadow: t.boxShadow,
+                  boxShadow: [
+                    BoxShadow(
+                      color: PortfolioTheme.shadowColor,
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
                 ),
-                child: Center(
-                  child: Icon(
-                    Icons.accessibility_new,
-                    color: t.iconColor,
-                    size: t.iconSize,
-                  ),
+                child: const Icon(
+                  Icons.accessibility,
+                  color: PortfolioTheme.whiteColor,
+                  size: 24,
                 ),
               ),
             ),

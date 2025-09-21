@@ -30,7 +30,7 @@ class DropdownPropertyWidget extends PropertyWidget {
             notifier.getTypedProperty<String>(propertyName) ?? defaultValue;
 
         return DropdownButtonFormField<String>(
-          value: value,
+          initialValue: value,
           decoration: InputDecoration(
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
             contentPadding: const EdgeInsets.symmetric(

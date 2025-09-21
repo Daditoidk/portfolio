@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio_web/core/accessibility/menu/accessibility_menu.dart';
+import 'package:portfolio_web/core/accessibility/menu/accessibility_menu_content.dart';
+
 import '../sections/header/header_section.dart';
 import '../sections/about/about_section.dart';
 import '../sections/skills/skills_section.dart';
@@ -10,6 +13,7 @@ import '../theme/portfolio_theme.dart';
 import '../../data/providers/project_providers.dart';
 import '../../../../core/l10n/app_localizations.dart';
 import '../providers/scroll_providers.dart';
+import '../providers/accessibility_providers.dart';
 
 class PortfolioV2Screen extends ConsumerWidget {
   const PortfolioV2Screen({super.key});
@@ -18,83 +22,92 @@ class PortfolioV2Screen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Get localized projects
-    final l10n = AppLocalizations.of(context);
-    final projects = l10n != null
-        ? ref.watch(localizedProjectsProvider(l10n))
-        : ref.watch(projectsProvider);
-    final scrollController = ref.watch(scrollControllerProvider);
-    final sectionKeys = ref.watch(sectionKeysProvider);
-    final sectionScrollService = ref.watch(sectionScrollServiceProvider);
-    final screenSize = MediaQuery.of(context).size;
-    final isStackedHeader = screenSize.width < 1024;
-    final topLeftHeaderBackground = isStackedHeader
-        ? PortfolioTheme.grayColor
-        : PortfolioTheme.bgColor;
-    const topRightHeaderBackground = PortfolioTheme.grayColor;
+    final currentLocale = ref.watch(accessibilityLocaleProvider);
 
-    // Listen to scroll updates to update current section for nav highlighting
-    scrollController.addListener(() {
-      final current = sectionScrollService.getCurrentSection(context);
-      final prev = ref.read(currentSectionProvider);
-      if (current != prev) {
-        ref.read(currentSectionProvider.notifier).state = current;
-      }
-    });
+    return Localizations.override(
+      context: context,
+      locale: currentLocale,
+      child: Builder(
+        builder: (localeContext) {
+          final l10n = AppLocalizations.of(localeContext);
+          final projects = l10n != null
+              ? ref.watch(localizedProjectsProvider(l10n))
+              : ref.watch(projectsProvider);
+          final scrollController = ref.watch(scrollControllerProvider);
+          final sectionKeys = ref.watch(sectionKeysProvider);
+          final sectionScrollService = ref.watch(sectionScrollServiceProvider);
+          final screenSize = MediaQuery.of(localeContext).size;
+          final isStackedHeader = screenSize.width < 1024;
+          final topLeftHeaderBackground = isStackedHeader
+              ? PortfolioTheme.grayColor
+              : PortfolioTheme.bgColor;
+          const topRightHeaderBackground = PortfolioTheme.grayColor;
 
-    return Scaffold(
-      backgroundColor: PortfolioTheme.bgColor,
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            controller: scrollController,
-            child: Column(
+          scrollController.addListener(() {
+            final current =
+                sectionScrollService.getCurrentSection(localeContext);
+            final prev = ref.read(currentSectionProvider);
+            if (current != prev) {
+              ref.read(currentSectionProvider.notifier).state = current;
+            }
+          });
+
+          return Scaffold(
+            backgroundColor: PortfolioTheme.bgColor,
+            body: Stack(
               children: [
-                // Home section
-                KeyedSubtree(
-                  key: sectionKeys['home'],
-                  child: const HeaderSection(),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: horizontalPadding,
-                  ),
+                SingleChildScrollView(
+                  controller: scrollController,
                   child: Column(
                     children: [
-                      // About section
                       KeyedSubtree(
-                        key: sectionKeys['about'],
-                        child: const AboutSection(),
+                        key: sectionKeys['home'],
+                        child: const HeaderSection(),
                       ),
-                      // Skills section
-                      KeyedSubtree(
-                        key: sectionKeys['skills'],
-                        child: SkillsSection(),
-                      ),
-                      // Projects section wrapper (list remains inside)
-                      KeyedSubtree(
-                        key: sectionKeys['projects'],
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: horizontalPadding,
+                        ),
                         child: Column(
                           children: [
-                            ...projects.map(
-                              (project) => ProjectItem(project: project),
+                            KeyedSubtree(
+                              key: sectionKeys['about'],
+                              child: const AboutSection(),
+                            ),
+                            KeyedSubtree(
+                              key: sectionKeys['skills'],
+                              child: SkillsSection(),
+                            ),
+                            KeyedSubtree(
+                              key: sectionKeys['projects'],
+                              child: Column(
+                                children: [
+                                  ...projects.map(
+                                    (project) => ProjectItem(project: project),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            KeyedSubtree(
+                              key: sectionKeys['contact'],
+                              child: const ContactSection(),
                             ),
                           ],
                         ),
                       ),
-                      // Contact section
-                      KeyedSubtree(
-                        key: sectionKeys['contact'],
-                        child: const ContactSection(),
-                      ),
                     ],
                   ),
                 ),
+                ...fixedItems(
+                  ref,
+                  topLeftHeaderBackground,
+                  topRightHeaderBackground,
+                ),
+                accessibilityMenuPanel(localeContext, ref),
               ],
             ),
-          ),
-          ...fixedItems(ref, topLeftHeaderBackground, topRightHeaderBackground),
-        ],
+          );
+        },
       ),
     );
   }
@@ -159,6 +172,7 @@ class PortfolioV2Screen extends ConsumerWidget {
   }
 
   Widget bottomRightAccesibilityButton(WidgetRef ref) {
+    final locale = ref.watch(accessibilityLocaleProvider);
     return Positioned(
       bottom: 20,
       right: horizontalPadding,
@@ -167,24 +181,56 @@ class PortfolioV2Screen extends ConsumerWidget {
         from: RevealFrom.right,
         fadeDuration: Duration(milliseconds: 1200),
         staggerDelay: Duration(milliseconds: 1200),
-        child: Container(
-          width: 56,
-          height: 56,
-          decoration: BoxDecoration(
-            color: PortfolioTheme.orangeColor,
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: PortfolioTheme.shadowColor,
-                blurRadius: 8,
-                offset: const Offset(0, 4),
-              ),
-            ],
-          ),
-          child: const Icon(
-            Icons.accessibility,
-            color: PortfolioTheme.whiteColor,
-            size: 24,
+        child: AccessibilityMenu(
+          languageCode: locale.languageCode,
+          onLanguageChanged: (lang) {
+            ref.read(accessibilityLocaleProvider.notifier).state = Locale(lang);
+          },
+          onPressed: () {
+            final controller =
+                ref.read(isAccessibilityMenuOpenProvider.notifier);
+            controller.state = !controller.state;
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget accessibilityMenuPanel(BuildContext context, WidgetRef ref) {
+    final isOpen = ref.watch(isAccessibilityMenuOpenProvider);
+    final locale = ref.watch(accessibilityLocaleProvider);
+    final menuWidth = (MediaQuery.of(context).size.width * 0.9)
+        .clamp(0, 340)
+        .toDouble();
+
+    return AnimatedPositioned(
+      duration: const Duration(milliseconds: 350),
+      curve: Curves.easeOutCubic,
+      top: 0,
+      bottom: 0,
+      right: isOpen ? 0 : -menuWidth,
+      child: IgnorePointer(
+        ignoring: !isOpen,
+        child: Material(
+          color: Colors.grey.shade100,
+          child: SizedBox(
+            width: menuWidth,
+            height: MediaQuery.of(context).size.height,
+            child: AccessibilityMenuContent(
+              languageCode: locale.languageCode,
+              onLanguageChanged: (lang) {
+                ref.read(accessibilityLocaleProvider.notifier).state =
+                    Locale(lang);
+              },
+              onClose: () {
+                ref.read(isAccessibilityMenuOpenProvider.notifier).state =
+                    false;
+              },
+              onPageStructureOpen: () {
+                ref.read(isAccessibilityMenuOpenProvider.notifier).state =
+                    false;
+              },
+            ),
           ),
         ),
       ),

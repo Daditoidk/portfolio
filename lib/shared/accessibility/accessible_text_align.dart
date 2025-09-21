@@ -90,11 +90,11 @@ class _TextAlignWrapper extends StatelessWidget {
     }
   }
 
-  InputDecorationTheme _getAlignedInputDecorationTheme(
-    InputDecorationTheme? inputTheme,
+  InputDecorationThemeData _getAlignedInputDecorationTheme(
+    InputDecorationThemeData inputTheme,
     TextAlign textAlign,
   ) {
-    return (inputTheme ?? const InputDecorationTheme()).copyWith(
+    return inputTheme.copyWith(
       alignLabelWithHint: true,
     );
   }

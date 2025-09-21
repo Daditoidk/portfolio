@@ -436,7 +436,7 @@ class _SwitchFeatureRow extends StatelessWidget {
           Switch(
             value: value,
             onChanged: onChanged,
-            activeColor: Colors.blue.shade600,
+            activeThumbColor: Colors.blue.shade600,
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
         ],
@@ -569,7 +569,7 @@ class _SliderFeatureRow extends StatelessWidget {
                     thumbColor: Colors.blue.shade700,
                     overlayColor: Colors.blue.withValues(alpha: 0.2),
                     // Show divisions
-                    showValueIndicator: ShowValueIndicator.always,
+                    showValueIndicator: ShowValueIndicator.onDrag,
                   ),
                   child: Slider(
                     value: value.toDouble(),
