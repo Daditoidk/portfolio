@@ -40,9 +40,11 @@ class CustomTextButton extends StatelessWidget {
     final effectiveArrowSize = arrowSize ?? 16;
     final effectiveSpacing = spacing ?? 8;
 
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,6 +85,7 @@ class CustomTextButton extends StatelessWidget {
             ),
           ],
         ),
+      ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 /// Widget that shows a video with hover-to-play functionality
 /// Shows a thumbnail image initially, and plays video on hover
@@ -11,6 +12,8 @@ class HoverVideoWidget extends StatefulWidget {
   final BoxFit fit;
   final Widget? errorWidget;
   final bool autoPlay; // New parameter to control auto-play behavior
+  final bool enableLooping; // Enable video looping
+  final double viewportOffset; // Offset for viewport detection (in pixels)
 
   const HoverVideoWidget({
     super.key,
@@ -21,6 +24,8 @@ class HoverVideoWidget extends StatefulWidget {
     this.fit = BoxFit.contain,
     this.errorWidget,
     this.autoPlay = false, // Default to false (hover required)
+    this.enableLooping = true, // Default to true for looping
+    this.viewportOffset = 100.0, // 100px offset for early detection
   });
 
   @override
@@ -43,6 +48,12 @@ class _HoverVideoWidgetState extends State<HoverVideoWidget> {
     try {
       _controller = VideoPlayerController.asset(widget.videoPath);
       await _controller!.initialize();
+      
+      // Enable looping if specified
+      if (widget.enableLooping) {
+        _controller!.setLooping(true);
+      }
+      
       if (mounted) {
         setState(() {
           _isInitialized = true;
@@ -63,6 +74,7 @@ class _HoverVideoWidgetState extends State<HoverVideoWidget> {
   }
 
   void _startPlaying() {
+    if (!mounted || !_isInitialized || _hasError) return;
     if (_isInitialized && !_hasError) {
       setState(() {
         _isPlaying = true;
@@ -72,6 +84,7 @@ class _HoverVideoWidgetState extends State<HoverVideoWidget> {
   }
 
   void _stopPlaying() {
+    if (!mounted || !_isInitialized || _hasError) return;
     if (_isInitialized && !_hasError) {
       setState(() {
         _isPlaying = false;
@@ -88,6 +101,7 @@ class _HoverVideoWidgetState extends State<HoverVideoWidget> {
   }
 
   void _onHoverEnter() {
+    if (!mounted || !_isInitialized || _hasError) return;
     if (_isInitialized && !_hasError) {
       // Only start playing on hover if auto-play is disabled
       if (!widget.autoPlay) {
@@ -97,9 +111,29 @@ class _HoverVideoWidgetState extends State<HoverVideoWidget> {
   }
 
   void _onHoverExit() {
+    if (!mounted || !_isInitialized || _hasError) return;
     if (_isInitialized && !_hasError) {
       // Only stop playing on hover exit if auto-play is disabled
       if (!widget.autoPlay) {
+        _stopPlaying();
+      }
+    }
+  }
+
+  void _onVisibilityChanged(VisibilityInfo visibilityInfo) {
+    // Only handle viewport detection for auto-play videos
+    if (!widget.autoPlay || !_isInitialized || _hasError) return;
+
+    final visibleFraction = visibilityInfo.visibleFraction;
+
+    if (visibleFraction > 0.3) {
+      // Video is entering viewport - start playing
+      if (!_isPlaying) {
+        _startPlaying();
+      }
+    } else {
+      // Video is leaving viewport - stop playing
+      if (_isPlaying) {
         _stopPlaying();
       }
     }
@@ -111,7 +145,7 @@ class _HoverVideoWidgetState extends State<HoverVideoWidget> {
       return _buildErrorWidget();
     }
 
-    return MouseRegion(
+    Widget videoContent = MouseRegion(
       onEnter: (_) => _onHoverEnter(),
       onExit: (_) => _onHoverExit(),
       child: Container(
@@ -127,6 +161,17 @@ class _HoverVideoWidgetState extends State<HoverVideoWidget> {
         ),
       ),
     );
+
+    // Wrap with VisibilityDetector only for auto-play videos
+    if (widget.autoPlay) {
+      return VisibilityDetector(
+        key: Key('video_${widget.videoPath}'),
+        onVisibilityChanged: _onVisibilityChanged,
+        child: videoContent,
+      );
+    }
+
+    return videoContent;
   }
 
   Widget _buildVideoPlayer() {

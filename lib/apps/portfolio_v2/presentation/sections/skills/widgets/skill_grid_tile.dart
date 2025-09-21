@@ -47,17 +47,22 @@ class SkillGridTile extends StatelessWidget {
           ),
           CircleAvatar(
             backgroundColor: Colors.transparent,
+            radius: 28,
             child: Image.asset(
               skill.image,
               errorBuilder: (context, error, stackTrace) =>
                   ColoredBox(color: PortfolioTheme.grayColor),
             ),
           ),
-          Text(
-            skill.name,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: PortfolioTheme.manropeRegular16,
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              skill.name,
+              maxLines: 2,
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              style: PortfolioTheme.manropeRegular16,
+            ),
           ),
         ],
       ),

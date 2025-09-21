@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio_web/core/navigation/app_router.dart';
 import 'core/models/experiment.dart';
 import 'core/repositories/experiment_repository.dart';
 import 'widgets/experiment_card.dart';
 import 'widgets/custom_toast.dart';
-import '../../../core/navigation/route_names.dart';
 
 class LabScreen extends StatefulWidget {
   const LabScreen({super.key});
@@ -55,13 +55,13 @@ class _LabScreenState extends State<LabScreen> {
   void _onExperimentTap(Experiment experiment) {
     switch (experiment.id) {
       case 'text_order_visualizer':
-        context.go(RouteNames.textOrderVisualizer);
+        context.goNamed(RouteNames.textOrderVisualizer);
         break;
       case 'animation_editor':
-        context.go(RouteNames.animationEditor);
+        context.goNamed(RouteNames.animationEditor);
         break;
       case 'diy_inbox_cleaner':
-        context.go(RouteNames.diyInboxCleaner);
+        context.goNamed(RouteNames.diyInboxCleaner);
         break;
       default:
         CustomToast.showError(

@@ -1,6 +1,7 @@
 import '../enums/project_type.dart';
 
 class Project {
+  final String id;
   final String companyName;
   final String companyLogo;
   final String companyLocation;
@@ -10,11 +11,21 @@ class Project {
   final String projectHashtags;
   final String? mediaMainRectangle;
   final String mediaSecondRectangle;
-  final String projectDetailInfo;
-  final String projectDetailMedia1;
-  final String projectDetailMedia2;
+  final String companyTeamAndObjectivesParagraph1;
+  final String companyTeamAndObjectivesParagraph2;
+  final String companyTeamAndObjectivesParagraph3;
+  final String companyTeamAndObjectivesMedia;
+  final String requestOrProblemParagraph1;
+  final String requestOrProblemParagraph2;
+  final String requestOrProblemParagraph3;
+  final String requestOrProblemMedia;
+  final String solutionParagraph1;
+  final String solutionParagraph2;
+  final String solutionParagraph3;
+  final String solutionMedia;
 
   const Project({
+    required this.id,
     required this.companyName,
     required this.companyLogo,
     required this.companyLocation,
@@ -24,13 +35,23 @@ class Project {
     required this.projectHashtags,
     this.mediaMainRectangle,
     required this.mediaSecondRectangle,
-    required this.projectDetailInfo,
-    required this.projectDetailMedia1,
-    required this.projectDetailMedia2,
+    required this.companyTeamAndObjectivesParagraph1,
+    required this.companyTeamAndObjectivesParagraph2,
+    required this.companyTeamAndObjectivesParagraph3,
+    required this.companyTeamAndObjectivesMedia,
+    required this.requestOrProblemParagraph1,
+    required this.requestOrProblemParagraph2,
+    required this.requestOrProblemParagraph3,
+    required this.requestOrProblemMedia,
+    required this.solutionParagraph1,
+    required this.solutionParagraph2,
+    required this.solutionParagraph3,
+    required this.solutionMedia,
   });
 
   /// Create a copy of this project with updated values
   Project copyWith({
+    String? id,
     String? companyName,
     String? companyLogo,
     String? companyLocation,
@@ -40,11 +61,21 @@ class Project {
     String? projectHashtags,
     String? mediaMainRectangle,
     String? mediaSecondRectangle,
-    String? projectDetailInfo,
-    String? projectDetailMedia1,
-    String? projectDetailMedia2,
+    String? companyTeamAndObjectivesParagraph1,
+    String? companyTeamAndObjectivesParagraph2,
+    String? companyTeamAndObjectivesParagraph3,
+    String? companyTeamAndObjectivesMedia,
+    String? requestOrProblemParagraph1,
+    String? requestOrProblemParagraph2,
+    String? requestOrProblemParagraph3,
+    String? requestOrProblemMedia,
+    String? solutionParagraph1,
+    String? solutionParagraph2,
+    String? solutionParagraph3,
+    String? solutionMedia,
   }) {
     return Project(
+      id: id ?? this.id,
       companyName: companyName ?? this.companyName,
       companyLogo: companyLogo ?? this.companyLogo,
       companyLocation: companyLocation ?? this.companyLocation,
@@ -54,15 +85,36 @@ class Project {
       projectHashtags: projectHashtags ?? this.projectHashtags,
       mediaMainRectangle: mediaMainRectangle ?? this.mediaMainRectangle,
       mediaSecondRectangle: mediaSecondRectangle ?? this.mediaSecondRectangle,
-      projectDetailInfo: projectDetailInfo ?? this.projectDetailInfo,
-      projectDetailMedia1: projectDetailMedia1 ?? this.projectDetailMedia1,
-      projectDetailMedia2: projectDetailMedia2 ?? this.projectDetailMedia2,
+      companyTeamAndObjectivesParagraph1:
+          companyTeamAndObjectivesParagraph1 ??
+          this.companyTeamAndObjectivesParagraph1,
+      companyTeamAndObjectivesParagraph2:
+          companyTeamAndObjectivesParagraph2 ??
+          this.companyTeamAndObjectivesParagraph2,
+      companyTeamAndObjectivesParagraph3:
+          companyTeamAndObjectivesParagraph3 ??
+          this.companyTeamAndObjectivesParagraph3,
+      companyTeamAndObjectivesMedia:
+          companyTeamAndObjectivesMedia ?? this.companyTeamAndObjectivesMedia,
+      requestOrProblemParagraph1:
+          requestOrProblemParagraph1 ?? this.requestOrProblemParagraph1,
+      requestOrProblemParagraph2:
+          requestOrProblemParagraph2 ?? this.requestOrProblemParagraph2,
+      requestOrProblemParagraph3:
+          requestOrProblemParagraph3 ?? this.requestOrProblemParagraph3,
+      requestOrProblemMedia:
+          requestOrProblemMedia ?? this.requestOrProblemMedia,
+      solutionParagraph1: solutionParagraph1 ?? this.solutionParagraph1,
+      solutionParagraph2: solutionParagraph2 ?? this.solutionParagraph2,
+      solutionParagraph3: solutionParagraph3 ?? this.solutionParagraph3,
+      solutionMedia: solutionMedia ?? this.solutionMedia,
     );
   }
 
   /// Convert Project to JSON
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'companyName': companyName,
       'companyLogo': companyLogo,
       'companyLocation': companyLocation,
@@ -72,15 +124,25 @@ class Project {
       'projectHashtags': projectHashtags,
       'mediaMainRectangle': mediaMainRectangle,
       'mediaSecondRectangle': mediaSecondRectangle,
-      'projectDetailInfo': projectDetailInfo,
-      'projectDetailMedia1': projectDetailMedia1,
-      'projectDetailMedia2': projectDetailMedia2,
+      'companyTeamAndObjectivesParagraph1': companyTeamAndObjectivesParagraph1,
+      'companyTeamAndObjectivesParagraph2': companyTeamAndObjectivesParagraph2,
+      'companyTeamAndObjectivesParagraph3': companyTeamAndObjectivesParagraph3,
+      'companyTeamAndObjectivesMedia': companyTeamAndObjectivesMedia,
+      'requestOrProblemParagraph1': requestOrProblemParagraph1,
+      'requestOrProblemParagraph2': requestOrProblemParagraph2,
+      'requestOrProblemParagraph3': requestOrProblemParagraph3,
+      'requestOrProblemMedia': requestOrProblemMedia,
+      'solutionParagraph1': solutionParagraph1,
+      'solutionParagraph2': solutionParagraph2,
+      'solutionParagraph3': solutionParagraph3,
+      'solutionMedia': solutionMedia,
     };
   }
 
   /// Create Project from JSON
   factory Project.fromJson(Map<String, dynamic> json) {
     return Project(
+      id: json['id'] as String,
       companyName: json['companyName'] as String,
       companyLogo: json['companyLogo'] as String,
       companyLocation: json['companyLocation'] as String,
@@ -93,9 +155,22 @@ class Project {
       projectHashtags: json['projectHashtags'] as String,
       mediaMainRectangle: json['mediaMainRectangle'] as String?,
       mediaSecondRectangle: json['mediaSecondRectangle'] as String,
-      projectDetailInfo: json['projectDetailInfo'] as String,
-      projectDetailMedia1: json['projectDetailMedia1'] as String,
-      projectDetailMedia2: json['projectDetailMedia2'] as String,
+      companyTeamAndObjectivesParagraph1:
+          json['companyTeamAndObjectivesParagraph1'] as String,
+      companyTeamAndObjectivesParagraph2:
+          json['companyTeamAndObjectivesParagraph2'] as String,
+      companyTeamAndObjectivesParagraph3:
+          json['companyTeamAndObjectivesParagraph3'] as String,
+      companyTeamAndObjectivesMedia:
+          json['companyTeamAndObjectivesMedia'] as String,
+      requestOrProblemParagraph1: json['requestOrProblemParagraph1'] as String,
+      requestOrProblemParagraph2: json['requestOrProblemParagraph2'] as String,
+      requestOrProblemParagraph3: json['requestOrProblemParagraph3'] as String,
+      requestOrProblemMedia: json['requestOrProblemMedia'] as String,
+      solutionParagraph1: json['solutionParagraph1'] as String,
+      solutionParagraph2: json['solutionParagraph2'] as String,
+      solutionParagraph3: json['solutionParagraph3'] as String,
+      solutionMedia: json['solutionMedia'] as String,
     );
   }
 
@@ -124,20 +199,50 @@ class Project {
       mediaList.add(mediaMainRectangle!);
     }
 
-    mediaList.addAll([
-      mediaSecondRectangle,
-      projectDetailMedia1,
-      projectDetailMedia2,
-    ]);
+    void addIfNotEmpty(String value) {
+      if (value.isNotEmpty) {
+        mediaList.add(value);
+      }
+    }
+
+    addIfNotEmpty(mediaSecondRectangle);
+    addIfNotEmpty(companyTeamAndObjectivesMedia);
+    addIfNotEmpty(requestOrProblemMedia);
+    addIfNotEmpty(solutionMedia);
 
     return mediaList;
   }
 
+  /// Company, team & objectives paragraphs concatenated
+  List<String> get companyTeamAndObjectivesParagraphs => [
+    companyTeamAndObjectivesParagraph1,
+    companyTeamAndObjectivesParagraph2,
+    companyTeamAndObjectivesParagraph3,
+  ].where((paragraph) => paragraph.trim().isNotEmpty).toList();
+
+  /// Request/problem paragraphs concatenated
+  List<String> get requestOrProblemParagraphs => [
+    requestOrProblemParagraph1,
+    requestOrProblemParagraph2,
+    requestOrProblemParagraph3,
+  ].where((paragraph) => paragraph.trim().isNotEmpty).toList();
+
+  /// Solution paragraphs concatenated
+  List<String> get solutionParagraphs => [
+    solutionParagraph1,
+    solutionParagraph2,
+    solutionParagraph3,
+  ].where((paragraph) => paragraph.trim().isNotEmpty).toList();
+
+  /// Combine all detail paragraphs for searches or summaries
+  String get combinedDetailText => [
+    ...companyTeamAndObjectivesParagraphs,
+    ...requestOrProblemParagraphs,
+    ...solutionParagraphs,
+  ].join('\n\n');
+
   /// Check if project has main media
   bool get hasMainMedia => mediaMainRectangle != null;
-
-  /// Get project display title (company + project name)
-  String get displayTitle => '$companyName - $projectName';
 
   /// Get project short description (first 100 characters)
   String get shortDescription {
@@ -175,6 +280,7 @@ class Project {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     return other is Project &&
+        other.id == id &&
         other.companyName == companyName &&
         other.companyLogo == companyLogo &&
         other.companyLocation == companyLocation &&
@@ -184,14 +290,27 @@ class Project {
         other.projectHashtags == projectHashtags &&
         other.mediaMainRectangle == mediaMainRectangle &&
         other.mediaSecondRectangle == mediaSecondRectangle &&
-        other.projectDetailInfo == projectDetailInfo &&
-        other.projectDetailMedia1 == projectDetailMedia1 &&
-        other.projectDetailMedia2 == projectDetailMedia2;
+        other.companyTeamAndObjectivesParagraph1 ==
+            companyTeamAndObjectivesParagraph1 &&
+        other.companyTeamAndObjectivesParagraph2 ==
+            companyTeamAndObjectivesParagraph2 &&
+        other.companyTeamAndObjectivesParagraph3 ==
+            companyTeamAndObjectivesParagraph3 &&
+        other.companyTeamAndObjectivesMedia == companyTeamAndObjectivesMedia &&
+        other.requestOrProblemParagraph1 == requestOrProblemParagraph1 &&
+        other.requestOrProblemParagraph2 == requestOrProblemParagraph2 &&
+        other.requestOrProblemParagraph3 == requestOrProblemParagraph3 &&
+        other.requestOrProblemMedia == requestOrProblemMedia &&
+        other.solutionParagraph1 == solutionParagraph1 &&
+        other.solutionParagraph2 == solutionParagraph2 &&
+        other.solutionParagraph3 == solutionParagraph3 &&
+        other.solutionMedia == solutionMedia;
   }
 
   @override
   int get hashCode {
     return Object.hash(
+      id,
       companyName,
       companyLogo,
       companyLocation,
@@ -201,14 +320,11 @@ class Project {
       projectHashtags,
       mediaMainRectangle,
       mediaSecondRectangle,
-      projectDetailInfo,
-      projectDetailMedia1,
-      projectDetailMedia2,
     );
   }
 
   @override
   String toString() {
-    return 'Project(companyName: $companyName, projectName: $projectName, projectType: $projectType, projectHashtags: $projectHashtags)';
+    return 'Project(id: $id, companyName: $companyName, projectName: $projectName, projectType: $projectType, projectHashtags: $projectHashtags)';
   }
 }

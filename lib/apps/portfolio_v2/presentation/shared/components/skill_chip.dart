@@ -34,6 +34,7 @@ class SkillChip extends StatelessWidget {
           text,
           style: PortfolioTheme.manropeLight14.copyWith(
             color: PortfolioTheme.bgColor,
+            fontSize: 12,
           ),
         ),
       ),

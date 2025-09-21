@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio_web/core/navigation/app_router.dart';
 import '../../../../../core/theme/app_theme.dart';
 import '../../../../../core/accessibility/accessibility_floating_button.dart';
-import '../../../../../core/navigation/route_names.dart';
 
 class ProjectDetailScreen extends StatefulWidget {
   final String projectId;
@@ -271,7 +271,7 @@ Technologies Used:
           leading: AccessibleCustomCursor(
             child: IconButton(
               icon: const Icon(Icons.arrow_back, color: AppTheme.navy),
-              onPressed: () => context.go(RouteNames.portfolio),
+              onPressed: () => context.goNamed(RouteNames.portfolio),
             ),
           ),
           title: Text(

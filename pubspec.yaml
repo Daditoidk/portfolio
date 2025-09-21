@@ -43,8 +43,8 @@ flutter:
     - assets/portfolio/projects/
     - assets/portfolio/projects/b4s/
     - assets/portfolio/projects/kinpos/
+    - assets/portfolio/about/
     - assets/videos/
-    - assets/Camilo Santacruz Abadiano resume.pdf
   fonts:
     - family: OpenDyslexic
       fonts:

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio_web/core/navigation/app_router.dart';
 import '../core/theme/app_theme.dart';
-import '../core/navigation/route_names.dart';
 
 class NavToggleButton extends StatelessWidget {
   final bool goLab;

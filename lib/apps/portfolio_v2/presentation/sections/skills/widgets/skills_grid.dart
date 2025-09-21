@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../data/models/skill.dart';
+import '../../../providers/scroll_providers.dart';
+import '../../../shared/widgets/reveal_from_animation.dart';
 import '../../../theme/portfolio_theme.dart';
 import '../../../../data/repositories/skill_repository.dart';
 import 'skill_grid_tile.dart';
 
-class SkillsGrid extends StatelessWidget {
+class SkillsGrid extends ConsumerWidget {
   SkillsGrid({super.key});
 
   double itemWidth = 0;
@@ -12,7 +15,7 @@ class SkillsGrid extends StatelessWidget {
   // Initialize the skill repository
   final SkillRepository _skillRepository = SkillRepository();
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return LayoutBuilder(
       builder: (context, constraints) {
         // Calculate aspect ratio that fits best while showing all items
@@ -37,16 +40,22 @@ class SkillsGrid extends StatelessWidget {
             }
 
             if (row == 3 && col == 2) {
-              return Transform.translate(
-                offset: Offset(-(itemWidth / 3), 0),
-                child: Center(
-                  child: Text(
-                    'skills',
-                    style: PortfolioTheme.monotonRegular80,
-                    overflow: TextOverflow.visible,
-                    softWrap: false,
-                    maxLines: 1,
-                    textAlign: TextAlign.center,
+              return RevealOnScroll(
+                scrollController: ref.watch(scrollControllerProvider),
+                from: RevealFrom.center,
+                fadeDuration: Duration(microseconds: 600),
+                staggerDelay: Duration(microseconds: 600),
+                child: Transform.translate(
+                  offset: Offset(-(itemWidth / 3), 0),
+                  child: Center(
+                    child: Text(
+                      'skills',
+                      style: PortfolioTheme.monotonRegular80,
+                      overflow: TextOverflow.visible,
+                      softWrap: false,
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
               );

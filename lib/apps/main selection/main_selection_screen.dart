@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../core/navigation/route_names.dart';
+import '../../core/navigation/app_router.dart';
 import '../../core/l10n/app_localizations.dart';
 
 class MainSelectionScreen extends StatelessWidget {
@@ -47,7 +47,8 @@ class MainSelectionScreen extends StatelessWidget {
                         SizedBox(
                           width: 200, // Fixed width for both labels
                           child: GestureDetector(
-                            onTap: () => context.go(RouteNames.portfolio),
+                            onTap: () =>
+                                context.goNamed(RouteNames.portfolio),
                             child: Container(
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 32,
@@ -78,7 +79,7 @@ class MainSelectionScreen extends StatelessWidget {
                         SizedBox(
                           width: 200, // Same fixed width as Portfolio
                           child: GestureDetector(
-                            onTap: () => context.go(RouteNames.lab),
+                            onTap: () => context.goNamed(RouteNames.lab),
                             child: Container(
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 32,

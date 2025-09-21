@@ -10,6 +10,8 @@ class MediaWidget extends StatelessWidget {
   final double? height;
   final Widget? errorWidget;
   final bool autoPlayVideo; // New parameter for video auto-play
+  final bool enableLooping; // Enable video looping
+  final double viewportOffset; // Offset for viewport detection (in pixels)
 
   const MediaWidget({
     super.key,
@@ -19,6 +21,8 @@ class MediaWidget extends StatelessWidget {
     this.height,
     this.errorWidget,
     this.autoPlayVideo = false, // Default to false (hover required)
+    this.enableLooping = true, // Default to true for looping
+    this.viewportOffset = 100.0, // 100px offset for early detection
   });
 
   @override
@@ -53,6 +57,8 @@ class MediaWidget extends StatelessWidget {
       height: height,
       fit: fit,
       autoPlay: autoPlayVideo,
+      enableLooping: enableLooping,
+      viewportOffset: viewportOffset,
       errorWidget: _buildErrorWidget(),
     );
   }

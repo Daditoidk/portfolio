@@ -5,10 +5,11 @@ import '../sections/about/about_section.dart';
 import '../sections/skills/skills_section.dart';
 import '../sections/projects/project_item.dart';
 import '../sections/contact/contact_section.dart';
-import '../shared/components/custom_nav_bar_portfolio_v2.dart';
+import '../shared/widgets/reveal_from_animation.dart';
 import '../theme/portfolio_theme.dart';
 import '../../data/providers/project_providers.dart';
 import '../../../../core/l10n/app_localizations.dart';
+import '../providers/scroll_providers.dart';
 
 class PortfolioV2Screen extends ConsumerWidget {
   const PortfolioV2Screen({super.key});
@@ -22,103 +23,178 @@ class PortfolioV2Screen extends ConsumerWidget {
     final projects = l10n != null
         ? ref.watch(localizedProjectsProvider(l10n))
         : ref.watch(projectsProvider);
+    final scrollController = ref.watch(scrollControllerProvider);
+    final sectionKeys = ref.watch(sectionKeysProvider);
+    final sectionScrollService = ref.watch(sectionScrollServiceProvider);
+    final screenSize = MediaQuery.of(context).size;
+    final isStackedHeader = screenSize.width < 1024;
+    final topLeftHeaderBackground = isStackedHeader
+        ? PortfolioTheme.grayColor
+        : PortfolioTheme.bgColor;
+    const topRightHeaderBackground = PortfolioTheme.grayColor;
+
+    // Listen to scroll updates to update current section for nav highlighting
+    scrollController.addListener(() {
+      final current = sectionScrollService.getCurrentSection(context);
+      final prev = ref.read(currentSectionProvider);
+      if (current != prev) {
+        ref.read(currentSectionProvider.notifier).state = current;
+      }
+    });
+
     return Scaffold(
       backgroundColor: PortfolioTheme.bgColor,
       body: Stack(
         children: [
           SingleChildScrollView(
-            primary: true,
+            controller: scrollController,
             child: Column(
               children: [
-                const HeaderSection(),
+                // Home section
+                KeyedSubtree(
+                  key: sectionKeys['home'],
+                  child: const HeaderSection(),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: horizontalPadding,
                   ),
                   child: Column(
                     children: [
-                      const AboutSection(),
-                      SkillsSection(),
-                      ...projects.map(
-                        (project) => ProjectItem(project: project),
+                      // About section
+                      KeyedSubtree(
+                        key: sectionKeys['about'],
+                        child: const AboutSection(),
                       ),
-                      const ContactSection(),
+                      // Skills section
+                      KeyedSubtree(
+                        key: sectionKeys['skills'],
+                        child: SkillsSection(),
+                      ),
+                      // Projects section wrapper (list remains inside)
+                      KeyedSubtree(
+                        key: sectionKeys['projects'],
+                        child: Column(
+                          children: [
+                            ...projects.map(
+                              (project) => ProjectItem(project: project),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // Contact section
+                      KeyedSubtree(
+                        key: sectionKeys['contact'],
+                        child: const ContactSection(),
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
           ),
-          ...fixedItems(),
+          ...fixedItems(ref, topLeftHeaderBackground, topRightHeaderBackground),
         ],
       ),
     );
   }
 
-  List<Widget> fixedItems() {
+  List<Widget> fixedItems(
+    WidgetRef ref,
+    Color topLeftHeaderBackground,
+    Color topRightHeaderBackground,
+  ) {
     return [
-      topLeftCornerText(),
-      // topCenterNavBar(),
-      topRightCornerText(),
-      bottomRightAccesibilityButton(),
+      topLeftCornerText(ref, topLeftHeaderBackground),
+      topRightCornerText(ref, topRightHeaderBackground),
+      bottomRightAccesibilityButton(ref),
     ];
   }
 
-  Widget topLeftCornerText() {
+  Widget topLeftCornerText(WidgetRef ref, Color headerBackgroundColor) {
+    final isInHeader = ref.watch(currentSectionProvider) == 'home';
+    final textColor = isInHeader
+        ? _foregroundForBackground(headerBackgroundColor)
+        : PortfolioTheme.whiteColor;
+
     return Positioned(
       top: 20,
       left: horizontalPadding,
-      child: Text(
-        'Bring ideas to life \nsince 2021 --',
-        style: PortfolioTheme.manropeRegular16,
+      child: RevealOnScroll(
+        scrollController: ref.watch(scrollControllerProvider),
+        from: RevealFrom.left,
+        fadeDuration: Duration(milliseconds: 1200),
+        staggerDelay: Duration(milliseconds: 1200),
+        child: Text(
+          'Bring ideas to life \nsince 2021 --',
+          style: PortfolioTheme.manropeRegular16.copyWith(color: textColor),
+        ),
       ),
     );
   }
 
-  Widget topCenterNavBar() {
-    return const Positioned(
-      top: 20,
-      left: 0,
-      right: 0,
-      child: Center(child: CustomNavBarPortfolioV2()),
-    );
-  }
+  Widget topRightCornerText(WidgetRef ref, Color headerBackgroundColor) {
+    final currentSection = ref.watch(currentSectionProvider);
+    final isInHeader = currentSection == 'home';
+    final textColor = isInHeader
+        ? _foregroundForBackground(headerBackgroundColor)
+        : PortfolioTheme.whiteColor;
 
-  Widget topRightCornerText() {
     return Positioned(
       top: 20,
       right: horizontalPadding,
-      child: Text(
-        'Portfolio\n   -- Vol 2',
-        style: PortfolioTheme.manropeRegular16,
+      child: RevealOnScroll(
+        scrollController: ref.watch(scrollControllerProvider),
+        from: RevealFrom.right,
+        fadeDuration: Duration(milliseconds: 1200),
+        staggerDelay: Duration(milliseconds: 1200),
+        child: Text(
+          'Portfolio\n   -- Vol 2',
+          style: PortfolioTheme.manropeRegular16.copyWith(
+            color: textColor,
+          ),
+        ),
       ),
     );
   }
 
-  Widget bottomRightAccesibilityButton() {
+  Widget bottomRightAccesibilityButton(WidgetRef ref) {
     return Positioned(
       bottom: 20,
       right: horizontalPadding,
-      child: Container(
-        width: 56,
-        height: 56,
-        decoration: BoxDecoration(
-          color: PortfolioTheme.orangeColor,
-          shape: BoxShape.circle,
-          boxShadow: [
-            BoxShadow(
-              color: PortfolioTheme.shadowColor,
-              blurRadius: 8,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: const Icon(
-          Icons.accessibility,
-          color: PortfolioTheme.whiteColor,
-          size: 24,
+      child: RevealOnScroll(
+        scrollController: ref.watch(scrollControllerProvider),
+        from: RevealFrom.right,
+        fadeDuration: Duration(milliseconds: 1200),
+        staggerDelay: Duration(milliseconds: 1200),
+        child: Container(
+          width: 56,
+          height: 56,
+          decoration: BoxDecoration(
+            color: PortfolioTheme.orangeColor,
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: PortfolioTheme.shadowColor,
+                blurRadius: 8,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: const Icon(
+            Icons.accessibility,
+            color: PortfolioTheme.whiteColor,
+            size: 24,
+          ),
         ),
       ),
     );
+  }
+
+  Color _foregroundForBackground(Color background) {
+    final brightness = ThemeData.estimateBrightnessForColor(background);
+    return brightness == Brightness.dark
+        ? PortfolioTheme.whiteColor
+        : PortfolioTheme.bgColor;
   }
 }

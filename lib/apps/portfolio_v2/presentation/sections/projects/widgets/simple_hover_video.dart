@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 /// Simple hover video widget for direct use
 /// Shows a thumbnail and plays video on hover
@@ -10,6 +11,8 @@ class SimpleHoverVideo extends StatefulWidget {
   final double? height;
   final BoxFit fit;
   final bool autoPlay; // New parameter for auto-play
+  final bool enableLooping; // Enable video looping
+  final double viewportOffset; // Offset for viewport detection (in pixels)
 
   const SimpleHoverVideo({
     super.key,
@@ -19,6 +22,8 @@ class SimpleHoverVideo extends StatefulWidget {
     this.height,
     this.fit = BoxFit.cover,
     this.autoPlay = false, // Default to false (hover required)
+    this.enableLooping = true, // Default to true for looping
+    this.viewportOffset = 100.0, // 100px offset for early detection
   });
 
   @override
@@ -40,6 +45,12 @@ class _SimpleHoverVideoState extends State<SimpleHoverVideo> {
     try {
       _controller = VideoPlayerController.asset(widget.videoAsset);
       await _controller!.initialize();
+      
+      // Enable looping if specified
+      if (widget.enableLooping) {
+        _controller!.setLooping(true);
+      }
+      
       if (mounted) {
         setState(() {
           _isInitialized = true;
@@ -58,6 +69,28 @@ class _SimpleHoverVideoState extends State<SimpleHoverVideo> {
     }
   }
 
+  void _onVisibilityChanged(VisibilityInfo visibilityInfo) {
+    // Only handle viewport detection for auto-play videos
+    if (!widget.autoPlay || !_isInitialized) return;
+
+    final visibleFraction = visibilityInfo.visibleFraction;
+
+    if (visibleFraction > 0.3) {
+      // Video is entering viewport - start playing
+      if (!_isPlaying) {
+        setState(() => _isPlaying = true);
+        _controller?.play();
+      }
+    } else {
+      // Video is leaving viewport - stop playing
+      if (_isPlaying) {
+        setState(() => _isPlaying = false);
+        _controller?.pause();
+        _controller?.seekTo(Duration.zero);
+      }
+    }
+  }
+
   @override
   void dispose() {
     _controller?.dispose();
@@ -66,7 +99,7 @@ class _SimpleHoverVideoState extends State<SimpleHoverVideo> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
+    Widget videoContent = MouseRegion(
       onEnter: (_) {
         if (_isInitialized) {
           // Only start playing on hover if auto-play is disabled
@@ -101,6 +134,17 @@ class _SimpleHoverVideoState extends State<SimpleHoverVideo> {
             : _buildThumbnail(),
       ),
     );
+
+    // Wrap with VisibilityDetector only for auto-play videos
+    if (widget.autoPlay) {
+      return VisibilityDetector(
+        key: Key('simple_video_${widget.videoAsset}'),
+        onVisibilityChanged: _onVisibilityChanged,
+        child: videoContent,
+      );
+    }
+
+    return videoContent;
   }
 
   Widget _buildThumbnail() {

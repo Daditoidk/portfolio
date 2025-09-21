@@ -193,7 +193,7 @@ class ProjectRepository {
                 lowercaseQuery,
               ) ||
               project.companyName.toLowerCase().contains(lowercaseQuery) ||
-              project.projectDetailInfo.toLowerCase().contains(lowercaseQuery),
+              project.combinedDetailText.toLowerCase().contains(lowercaseQuery),
         )
         .toList();
   }
@@ -233,6 +233,7 @@ class ProjectRepository {
     // Brain4Goals Project
     addProject(
       Project(
+        id: 'brain4goals-app',
         companyName: 'Brain 4 Goals',
         companyLogo: 'assets/portfolio/projects/b4s/logomark.png',
         companyLocation: 'Barcelona, España',
@@ -246,16 +247,34 @@ class ProjectRepository {
         mediaMainRectangle: null, // Will show demo instead
         mediaSecondRectangle:
             'assets/portfolio/projects/b4s/secondary_media.mov',
-        projectDetailInfo:
-            'Brain4Goals is a comprehensive mobile application designed to support young footballers in their development journey. The app combines performance tracking with mental wellness features, providing a holistic approach to player development.\n\nKey Features:\n• Cross-platform mobile app built with Flutter\n• AI-powered personalized recommendations\n• Weekly performance evaluations\n• Mental wellness tracking and support\n• Team collaboration tools\n• Scrum methodology implementation\n• Available on both App Store and Play Store\n\nTechnical Implementation:\n• Flutter framework for cross-platform development\n• AI integration for personalized recommendations\n• Real-time data synchronization\n• User-friendly interface with focus on UX/UI\n• Integration with backend services\n• Comprehensive testing and quality assurance\n\nThis project demonstrates expertise in mobile development, AI integration, team collaboration, and agile methodologies.',
-        projectDetailMedia1: 'assets/projects/brain4goals_detail1.png',
-        projectDetailMedia2: 'assets/projects/brain4goals_detail2.png',
+        companyTeamAndObjectivesParagraph1:
+            'Brain4Goals helps youth football academies align athletes, coaches, and families around shared performance objectives.',
+        companyTeamAndObjectivesParagraph2:
+            'I partnered with product, design, and data teams to deliver a Flutter experience that works seamlessly on iOS and Android.',
+        companyTeamAndObjectivesParagraph3:
+            'Our objective was to give players one place to track progress, receive coaching insights, and stay motivated throughout the season.',
+        companyTeamAndObjectivesMedia: '',
+        requestOrProblemParagraph1:
+            'The academy relied on spreadsheets and disconnected tools, making it hard to see trends in player wellness or performance.',
+        requestOrProblemParagraph2:
+            'Stakeholders needed a secure way to centralise evaluations, weekly check-ins, and AI-driven recommendations.',
+        requestOrProblemParagraph3:
+            'The existing process created silos between coaches and support staff, slowing down interventions for the players who needed them most.',
+        requestOrProblemMedia: '',
+        solutionParagraph1:
+            'We built a cross-platform Flutter app with personalised dashboards, progress visualisations, and structured evaluations.',
+        solutionParagraph2:
+            'AI-driven insights surface focus areas for each athlete while Scrum ceremonies kept the delivery cadence predictable.',
+        solutionParagraph3:
+            'Deep testing and a scalable architecture mean new clubs can onboard quickly without sacrificing data quality.',
+        solutionMedia: '',
       ),
     );
 
     // Kinpos Corporation Project
     addProject(
       Project(
+        id: 'kinpos-corporation-refactoring',
         companyName: 'Kinpos Corporation',
         companyLogo: 'assets/portfolio/projects/kinpos/logomark.png',
         companyLocation: 'Miami, USA',
@@ -269,12 +288,28 @@ class ProjectRepository {
         mediaMainRectangle: 'assets/portfolio/projects/kinpos/main_media.mp4',
         mediaSecondRectangle:
             'assets/portfolio/projects/kinpos/secondary_media.png',
-        projectDetailInfo:
-            'This project involved a comprehensive migration strategy to consolidate multiple Point of Sale (POS) and Mobile Point of Sale (MPOS) applications into a unified Flutter-based solution. The migration addressed significant technical debt and operational inefficiencies in the existing system.\n\nProject Challenges:\n• Multiple legacy applications with different codebases\n• Inconsistent user experiences across platforms\n• High maintenance overhead for updates and new features\n• Complex business logic scattered across different apps\n• Native platform dependencies and integrations\n\nSolution Architecture:\n• Unified Flutter codebase for cross-platform consistency\n• Kotlin Multiplatform integration for shared business logic\n• Custom Flutter plugins for native functionality\n• BLoC state management for complex application state\n• Monolithic architecture for simplified deployment\n• Native interoperability for platform-specific features\n\nKey Achievements:\n• 66% reduction in update deployment time\n• 30% reduction in new feature implementation time\n• Consolidated 7+ individual applications into 1 solution\n• Improved code maintainability and consistency\n• Enhanced developer productivity and team collaboration\n• Reduced technical debt and operational complexity\n\nTechnical Implementation:\n• Flutter framework for cross-platform development\n• Kotlin Multiplatform for shared business logic\n• Custom Flutter plugins for native integrations\n• BLoC pattern for state management\n• Comprehensive testing and quality assurance\n• CI/CD pipeline optimization\n• Performance monitoring and analytics\n\nThis project demonstrates expertise in large-scale application migration, cross-platform development, architecture design, and team leadership in complex enterprise environments.',
-        projectDetailMedia1:
+        companyTeamAndObjectivesParagraph1:
+            'Kinpos needed a unified platform to support enterprise retailers with both POS and MPOS experiences.',
+        companyTeamAndObjectivesParagraph2:
+            'Our distributed team included Flutter engineers, Kotlin specialists, QA, and product stakeholders across the Americas.',
+        companyTeamAndObjectivesParagraph3:
+            'The shared objective: reduce maintenance overhead while delivering a consistent interface to every franchise partner.',
+        companyTeamAndObjectivesMedia: '',
+        requestOrProblemParagraph1:
+            'Legacy native apps were expensive to update and introduced feature drift between markets.',
+        requestOrProblemParagraph2:
+            'Merchants needed faster rollouts, but fragmented codebases made regression risk unmanageable.',
+        requestOrProblemParagraph3:
+            'Offline support, fiscal integrations, and hardware compatibility all had to co-exist in one roadmap.',
+        requestOrProblemMedia:
             'assets/portfolio/projects/kinpos/detail_media1.png',
-        projectDetailMedia2:
-            'assets/portfolio/projects/kinpos/detail_media2.png',
+        solutionParagraph1:
+            'We migrated the suite to Flutter with Kotlin Multiplatform for shared business logic and custom plugins for peripherals.',
+        solutionParagraph2:
+            'Centralising UI and state management with BLoC gave us deterministic behaviour across every storefront.',
+        solutionParagraph3:
+            'Automation, CI/CD, and strong observability cut release times by 66% and simplified onboarding for new clients.',
+        solutionMedia: 'assets/portfolio/projects/kinpos/detail_media2.png',
       ),
     );
   }
